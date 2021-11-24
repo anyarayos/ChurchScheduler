@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "WxdXN4di8CrcNnVxvQ+cNIWXR9ZDAnGEszQoDSss0X+Lil3vCA7wRlnT1ZZCrTrisGEeofhGl/6D5c5ps5FnOQ==",
+  "success": true,
+  "projectFilePath": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jblolz8\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.19\\microsoft.netcore.app.host.win-x64.3.1.19.nupkg.sha512"
+  ],
+  "logs": []
+}
