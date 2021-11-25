@@ -9,7 +9,19 @@ namespace ChurchNameSpace
         private long id;
         string type, name, contactNumber, emailAddress, homeAddress;
         DateTime date, time;
-
+        public Reservation() { }
+        public Reservation(long id, string type, string name, string contactNumber, string emailAddress, 
+            string homeAddress, DateTime date, DateTime time)
+        {
+            this.id = id;
+            this.type = type;
+            this.name = name;
+            this.contactNumber = contactNumber;
+            this.emailAddress = emailAddress;
+            this.homeAddress = homeAddress;
+            this.date = date;
+            this.time = time;
+        }
         public void confirmReservation()
         {
 
