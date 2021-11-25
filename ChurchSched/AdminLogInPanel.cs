@@ -40,7 +40,7 @@ namespace ChurchSched
 								}
 
         // variables
-        private int attempt = 0;
+        private int attempt = 3;
         
         // 
         private void btnLogIn_Click(object sender, EventArgs e)
@@ -61,16 +61,18 @@ namespace ChurchSched
             }
             else
             {
-                attempt++;
-                MessageBox.Show("Incorrect Username or Password. \nPlease try again: \nAttempts: " + attempt);
-                txtUserName.Text = "";
-                txtPassword.Text = "";
-
-                if (attempt == 5)
+                attempt--;
+                if (attempt == 0)
                 {
-                    MessageBox.Show("Maximum attempts is reach. \nApplication will now exit");
+                    MessageBox.Show("No more attempts left. \nApplication will now exit");
                     this.DialogResult = DialogResult.No;
                     this.Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect Username or Password. \nPlease try again: \nAttempts: " + attempt);
+                    txtUserName.Text = "";
+                    txtPassword.Text = "";
                 }
             }
         }
