@@ -14,14 +14,15 @@ using System.Data.SqlClient;
 
 namespace ChurchSched
 {
-	public partial class frmLogIn : Form
-				{
+    public partial class frmLogIn : Form
+    {
         private string username, password;
         private int attempt = 0;
+        
         public frmLogIn()
-		{
-			InitializeComponent();
-		}
+        {
+            InitializeComponent();
+        }
 
       
 
