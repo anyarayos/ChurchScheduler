@@ -17,3 +17,37 @@ C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp
 C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.Properties.Resources.resources
 C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.ForgotPassSendCode.resources
 C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.ResetPass.resources
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.exe
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.deps.json
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.runtimeconfig.json
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.runtimeconfig.dev.json
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.pdb
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\EntityFramework.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\System.Data.SQLite.EF6.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\SQLite.Interop.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\SQLite.Interop.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\SQLite.Interop.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SQLite.Interop.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.AssemblyReference.cache
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmLogIn.resources
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.ForgotPassSendCode.resources
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.Properties.Resources.resources
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.ResetPass.resources
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.GenerateResource.cache
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.GeneratedMSBuildEditorConfig.editorconfig
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.AssemblyInfoInputs.cache
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.AssemblyInfo.cs
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.CoreCompileInputs.cache
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.CopyComplete
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.dll
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.pdb
+C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.genruntimeconfig.cache
