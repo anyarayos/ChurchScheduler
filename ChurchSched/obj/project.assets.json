@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\63927\\.nuget\\packages\\": {}
+    "C:\\Users\\RUBEN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\63927\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
+      "projectUniqueName": "C:\\Users\\RUBEN\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
       "projectName": "ChurchSched",
-      "projectPath": "C:\\Users\\63927\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
-      "packagesPath": "C:\\Users\\63927\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\63927\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\obj\\",
+      "projectPath": "C:\\Users\\RUBEN\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
+      "packagesPath": "C:\\Users\\RUBEN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RUBEN\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\63927\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RUBEN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
