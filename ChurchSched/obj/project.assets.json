@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\jblolz8\\.nuget\\packages\\": {}
+    "C:\\Users\\RUBEN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
+      "projectUniqueName": "C:\\Users\\RUBEN\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
       "projectName": "ChurchSched",
-      "projectPath": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
-      "packagesPath": "C:\\Users\\jblolz8\\.nuget\\packages\\",
-      "outputPath": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\obj\\",
+      "projectPath": "C:\\Users\\RUBEN\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
+      "packagesPath": "C:\\Users\\RUBEN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RUBEN\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jblolz8\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RUBEN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -55,12 +55,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.19, 3.1.19]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -69,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

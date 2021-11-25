@@ -1,0 +1,16 @@
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.AssemblyReference.cache
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmLogIn.resources
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.GenerateResource.cache
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.AssemblyInfoInputs.cache
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.AssemblyInfo.cs
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.CoreCompileInputs.cache
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.exe
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.deps.json
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.runtimeconfig.json
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.runtimeconfig.dev.json
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.dll
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\ChurchSched.pdb
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.dll
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.pdb
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.genruntimeconfig.cache
