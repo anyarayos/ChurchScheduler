@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChurchNameSpace
+namespace ReservationNameSpace
 {
     class Reservation
     {
@@ -24,15 +24,15 @@ namespace ChurchNameSpace
         }
         public void confirmReservation()
         {
-
+            //Do something
         }
         public void editReservation()
         {
-
+            //Do something
         }
         public void cancelReservation()
         {
-
+            //Do something
         }
 
         public long newID

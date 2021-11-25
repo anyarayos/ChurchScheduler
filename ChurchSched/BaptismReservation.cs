@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChurchNameSpace
+namespace ReservationNameSpace
 {
     class BaptismReservation:Reservation
     {
         private string candidate;
-        BaptismReservation(long id, string type, string name, string contactNumber, string emailAddress,
+        public BaptismReservation(long id, string type, string name, string contactNumber, string emailAddress,
             string homeAddress,string candidate, DateTime date, DateTime time):base(id,type,name,contactNumber,
                 emailAddress,homeAddress,date,time)
         {
