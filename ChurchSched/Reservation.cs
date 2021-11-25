@@ -7,8 +7,8 @@ namespace ChurchNameSpace
     class Reservation
     {
         private long id;
-        string type, name, contactNumber, emailAddress, homeAddress;
-        DateTime date, time;
+        private string type, name, contactNumber, emailAddress, homeAddress;
+        private DateTime date, time;
         public Reservation() { }
         public Reservation(long id, string type, string name, string contactNumber, string emailAddress, 
             string homeAddress, DateTime date, DateTime time)
