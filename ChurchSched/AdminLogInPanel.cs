@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 
-
 namespace ChurchSched
 {
     public partial class frmLogIn : Form
@@ -28,7 +27,7 @@ namespace ChurchSched
             sql_con = new SQLiteConnection("Data Source=Church.db; Version=3; New=False; Compress=True;");
 								}
 
-        // execute query NOT SURE IF IMPORTANT
+        // execute query method
         private void ExecuteQuery(string txtQuery)
 								{
             SetConnection();
@@ -42,7 +41,7 @@ namespace ChurchSched
         // variables
         private int attempt = 3;
         
-        // 
+        // login button
         private void btnLogIn_Click(object sender, EventArgs e)
         {
             // sql connection 
@@ -61,7 +60,9 @@ namespace ChurchSched
             }
             else
             {
+                // decrement attempts
                 attempt--;
+                // message box about the attempts
                 if (attempt == 0)
                 {
                     MessageBox.Show("No more attempts left. \nApplication will now exit");
