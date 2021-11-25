@@ -4,5 +4,11 @@
     <Compile Update="AdminLogInPanel.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ForgotPassSendCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ResetPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

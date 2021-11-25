@@ -14,3 +14,6 @@ C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp
 C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.dll
 C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.pdb
 C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.genruntimeconfig.cache
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.Properties.Resources.resources
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.ForgotPassSendCode.resources
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.ResetPass.resources
