@@ -33,63 +33,104 @@ namespace ChurchSched
         {
             // sql connection with Church.db
             SetConnection("Church.db");
+            //con = new SqlConnection(cs);  
+            //con.Open();  
+            //adapt = new SqlDataAdapter("select * from ----",con);  
+            //dt = new DataTable();  
+            //dapt.Fill(dt);  
+            //dataGridViewExistingRequestees.DataSource = dt;  //populate mo yung datagrid ng existing duh
+            //con.Close();
 
-            // if (isAdmin)
-            // {
-            //      AdminButtonsAndTab.Show();
-            // }
-            // else
-            // {
-            //      AdminButtonsAndTab.Hide();
-            // }
-
-        }
-
-        // FOR CONFIRM RESERVATION METHOD FOR WEDDINGS (pseudocode)
-        //
-        // display message box asking a yes or no if the user is sure with the input
-        // 
-        // if (check if all text boxes are filled)
-        // {
-        //      open SQLite connection
-        //
-        //      input.txt (values from text boxes)
-        //
-        //      INSERT input.txt into RESERVATION TABLE
-        //      FIND input.txt FROM RESERVATION TABLE AND GET THE VALUE ID = id.input
-        //      INSERT id.input, groom_name, bride_name into WEDDING TABLE
-        //
-        //      close SQLite connection
-        // }
-        // else
-        // {
-        //      display message box that the text boxes are incomplete
-        // }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void btnWeddCancel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label31_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Are you sure that you would cancel this reservation???");
 
         }
+
+        private void btnConfirmRequestee_Click(object sender, EventArgs e)
+        {
+            //if(all fields !empty)
+            //	if(requestee !exists) //get username & email address then compare it
+            //		//get the inputted values and store in database
+            //	else
+            //		print requestee already exists
+            //else
+            //print there are incomplete fields in your submission.
+            //empty out the fields
+
+            // sql connection with Church.db
+             
+            //dataGridViewExistingRequestees.DataSource = dt;  //populate mo yung datagrid ng existing duh
+            //con.Close();
+
+            bool isEmpty = txtRequestName.Text == "" && txtContactNum.Text == "" && txtEmailAdd.Text == "" && txtAddress.Text == "";
+            
+            if (!isEmpty)
+            {
+                SetConnection("Church.db");
+                DB = new SQLiteDataAdapter("SELECT id FROM UserInfo WHERE name='" + txtRequestName.Text + "' OR email='" + txtEmailAdd.Text + "' OR contact=''" + txtContactNum.Text + "'", sql_con);
+                DT = new DataTable();
+                DB.Fill(DT);
+                bool userExists = DT.Rows.Count == 1;
+                if (!userExists)
+                {
+                    MessageBox.Show("Success!");
+                }
+                else
+                {
+                    MessageBox.Show("User already exists!");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("There are incomplete fields in your submission.");
+            }
+        }
+        private void btnEditrequestee_Click(object sender, EventArgs e)
+        {
+            //update existing data using whatever was changed in the field
+        }
+
+        private void btnCancelRequestee_Click(object sender, EventArgs e)
+        {
+            //delete highlighted 
+        }
+
+        private void btnClearRequestee_Click(object sender, EventArgs e)
+        {
+            txtRequestName.Clear();
+            txtContactNum.Clear();
+            txtEmailAdd.Clear();
+            txtAddress.Clear();
+        }
+        DataGridViewRow selectedRow;
+
+        private void dgvRequestees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            selectedRow = dgvRequestees.Rows[index];
+            //txtRequestName.Text = selectedRow.Cells[].Value.ToString();
+            //txtContactNum = selectedRow.Cells[].Value.ToString();
+            //txtEmailAdd = selectedRow.Cells[].Value.ToString();
+            //txtAddress = selectedRow.Cells[].Value.ToString();
+        }
+
+        private void textSearchRequestee_TextChanged(object sender, EventArgs e)
+        {
+            //con = new SqlConnection(cs);  
+            //con.Open();  
+            //adapt = new SqlDataAdapter("select * from ---- where FirstName like '"+textSearchRequestee.Text+"%'", con);  
+            //dt = new DataTable();  
+            //adapt.Fill(dt);  
+            //dataGridViewExistingRequestees.DataSource = dt;  
+            //con.Close();
+
+        }
+
     }
 }
