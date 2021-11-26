@@ -17,7 +17,13 @@ namespace ChurchSched
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            // if (isAdmin){
+            //      AdminButtonsAndTab.Show();
+            // }
+            // else
+            // {
+            //      AdminButtonsAndTab.Hide();
+            // }
         }
 
         private void tabPage2_Click(object sender, EventArgs e)

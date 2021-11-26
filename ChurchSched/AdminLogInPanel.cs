@@ -43,6 +43,7 @@ namespace ChurchSched
 												// if data table has returned a record then proceed to login
 												if(DT.Rows.Count == 1)
 												{
+																// bool isAdmin = txtUserName.Text == admLopez;
 																this.DialogResult = DialogResult.Yes;
 																this.Dispose();
 																}
