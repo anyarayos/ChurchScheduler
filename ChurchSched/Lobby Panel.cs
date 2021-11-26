@@ -75,5 +75,21 @@ namespace ChurchSched
         {
 
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Are you sure that you would cancel this reservation???");
+
+        }
     }
 }
