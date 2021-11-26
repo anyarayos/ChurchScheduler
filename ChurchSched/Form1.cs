@@ -20,6 +20,14 @@ namespace ChurchSched
 
         }
 
-      
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnWeddCancel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

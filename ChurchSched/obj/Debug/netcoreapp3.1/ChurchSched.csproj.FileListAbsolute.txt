@@ -51,3 +51,4 @@ C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp
 C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.dll
 C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.pdb
 C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.genruntimeconfig.cache
+C:\Users\RUBEN\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.Form1.resources
