@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChurchNameSpace
+namespace ReservationNameSpace
 {
     class WeddingReservation:Reservation
     {
