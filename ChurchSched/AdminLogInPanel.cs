@@ -32,6 +32,7 @@ namespace ChurchSched
 								// login button
 								private void btnLogIn_Click(object sender, EventArgs e)
 								{
+												
 												// sql connection with Church.db
 												SetConnection("Church.db");
 
@@ -45,23 +46,26 @@ namespace ChurchSched
 												{
 																// bool isAdmin = txtUserName.Text == admLopez;
 																this.DialogResult = DialogResult.Yes;
-																this.Dispose();
+																this.Hide();
+																frmLobbyPanel lobby = new frmLobbyPanel();
+																lobby.ShowDialog();
+
+			}
+												else
+												{
+												// loginAttempt if else
+												loginAttempt--;
+												if(loginAttempt == 0)
+																{
+																MessageBox.Show("No more attempts left.\nApplication will now exit.");
+																this.DialogResult = DialogResult.No;
+														    	this.Dispose();
 																}
-																else
-																{
-																// loginAttempt if else
-																loginAttempt--;
-																if(loginAttempt == 0)
-																{
-																				MessageBox.Show("No more attempts left.\nApplication will now exit.");
-																				this.DialogResult = DialogResult.No;
-																				this.Dispose();
-																}
-																else
-																{
-																				txtUserName.Text = "";
-																				txtPassword.Text = "";
-																				MessageBox.Show("Incorrect Username or Password.\nPlease try again.\nAttempts left: " + loginAttempt);
+												else
+												{
+																txtUserName.Text = "";
+																txtPassword.Text = "";
+																MessageBox.Show("Incorrect Username or Password.\nPlease try again.\nAttempts left: " + loginAttempt);
 																}
 												}
 								}

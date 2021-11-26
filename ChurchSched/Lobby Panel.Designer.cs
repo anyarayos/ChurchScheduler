@@ -1,7 +1,7 @@
 ﻿
 namespace ChurchSched
 {
-    partial class Form1
+    partial class frmLobbyPanel
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,19 @@ namespace ChurchSched
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLobbyPanel));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnWeddReject = new System.Windows.Forms.Button();
             this.txtWeddBrideName = new System.Windows.Forms.TextBox();
+            this.btnWeddApprove = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
+            this.btnWeddCancel = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnWeddEditReserve = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnWeddConfirm = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.cmbWeddTime = new System.Windows.Forms.ComboBox();
             this.txtWeddGroomName = new System.Windows.Forms.TextBox();
@@ -54,6 +59,11 @@ namespace ChurchSched
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnBaptizReject = new System.Windows.Forms.Button();
+            this.btnBaptizApprove = new System.Windows.Forms.Button();
+            this.btnBaptizCancel = new System.Windows.Forms.Button();
+            this.btnBaptizEditReserve = new System.Windows.Forms.Button();
+            this.btnBaptizConfirm = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -73,6 +83,11 @@ namespace ChurchSched
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnMassConfessReject = new System.Windows.Forms.Button();
+            this.btnMassConfessApprove = new System.Windows.Forms.Button();
+            this.btnMassConfessCancel = new System.Windows.Forms.Button();
+            this.btnMassConfessEditReserve = new System.Windows.Forms.Button();
+            this.btnMassConfessConfirm = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -92,10 +107,15 @@ namespace ChurchSched
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnCnfrmResvReject = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnCnfrmResvApprove = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnCnfrmResvCancel = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.btnCnfrmResvEdit = new System.Windows.Forms.Button();
             this.cmbCnfrmResvTime = new System.Windows.Forms.ComboBox();
+            this.btnCnfrmResvConfirm = new System.Windows.Forms.Button();
             this.txtCnfrmResvConfirmand = new System.Windows.Forms.TextBox();
             this.dtpCnfrmResvTime = new System.Windows.Forms.DateTimePicker();
             this.txtCnfrmResvAdd = new System.Windows.Forms.TextBox();
@@ -111,26 +131,6 @@ namespace ChurchSched
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.btnCnfrmResvReject = new System.Windows.Forms.Button();
-            this.btnCnfrmResvApprove = new System.Windows.Forms.Button();
-            this.btnCnfrmResvCancel = new System.Windows.Forms.Button();
-            this.btnCnfrmResvEdit = new System.Windows.Forms.Button();
-            this.btnCnfrmResvConfirm = new System.Windows.Forms.Button();
-            this.btnMassConfessReject = new System.Windows.Forms.Button();
-            this.btnMassConfessApprove = new System.Windows.Forms.Button();
-            this.btnMassConfessCancel = new System.Windows.Forms.Button();
-            this.btnMassConfessEditReserve = new System.Windows.Forms.Button();
-            this.btnMassConfessConfirm = new System.Windows.Forms.Button();
-            this.btnBaptizReject = new System.Windows.Forms.Button();
-            this.btnBaptizApprove = new System.Windows.Forms.Button();
-            this.btnBaptizCancel = new System.Windows.Forms.Button();
-            this.btnBaptizEditReserve = new System.Windows.Forms.Button();
-            this.btnBaptizConfirm = new System.Windows.Forms.Button();
-            this.btnWeddReject = new System.Windows.Forms.Button();
-            this.btnWeddApprove = new System.Windows.Forms.Button();
-            this.btnWeddCancel = new System.Windows.Forms.Button();
-            this.btnWeddEditReserve = new System.Windows.Forms.Button();
-            this.btnWeddConfirm = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -210,6 +210,17 @@ namespace ChurchSched
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // btnWeddReject
+            // 
+            this.btnWeddReject.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWeddReject.Location = new System.Drawing.Point(211, 453);
+            this.btnWeddReject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnWeddReject.Name = "btnWeddReject";
+            this.btnWeddReject.Size = new System.Drawing.Size(159, 22);
+            this.btnWeddReject.TabIndex = 55;
+            this.btnWeddReject.Text = "Reject";
+            this.btnWeddReject.UseVisualStyleBackColor = true;
+            // 
             // txtWeddBrideName
             // 
             this.txtWeddBrideName.Location = new System.Drawing.Point(194, 264);
@@ -217,6 +228,17 @@ namespace ChurchSched
             this.txtWeddBrideName.Name = "txtWeddBrideName";
             this.txtWeddBrideName.Size = new System.Drawing.Size(154, 23);
             this.txtWeddBrideName.TabIndex = 43;
+            // 
+            // btnWeddApprove
+            // 
+            this.btnWeddApprove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWeddApprove.Location = new System.Drawing.Point(32, 453);
+            this.btnWeddApprove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnWeddApprove.Name = "btnWeddApprove";
+            this.btnWeddApprove.Size = new System.Drawing.Size(159, 22);
+            this.btnWeddApprove.TabIndex = 54;
+            this.btnWeddApprove.Text = "Approve";
+            this.btnWeddApprove.UseVisualStyleBackColor = true;
             // 
             // label33
             // 
@@ -226,6 +248,18 @@ namespace ChurchSched
             this.label33.Size = new System.Drawing.Size(77, 15);
             this.label33.TabIndex = 42;
             this.label33.Text = "Bride\'s Name";
+            // 
+            // btnWeddCancel
+            // 
+            this.btnWeddCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWeddCancel.Location = new System.Drawing.Point(124, 420);
+            this.btnWeddCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnWeddCancel.Name = "btnWeddCancel";
+            this.btnWeddCancel.Size = new System.Drawing.Size(159, 22);
+            this.btnWeddCancel.TabIndex = 53;
+            this.btnWeddCancel.Text = "Cancel Reservation";
+            this.btnWeddCancel.UseVisualStyleBackColor = true;
+            this.btnWeddCancel.Click += new System.EventHandler(this.btnWeddCancel_Click);
             // 
             // pictureBox4
             // 
@@ -238,6 +272,17 @@ namespace ChurchSched
             this.pictureBox4.TabIndex = 41;
             this.pictureBox4.TabStop = false;
             // 
+            // btnWeddEditReserve
+            // 
+            this.btnWeddEditReserve.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWeddEditReserve.Location = new System.Drawing.Point(211, 385);
+            this.btnWeddEditReserve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnWeddEditReserve.Name = "btnWeddEditReserve";
+            this.btnWeddEditReserve.Size = new System.Drawing.Size(159, 22);
+            this.btnWeddEditReserve.TabIndex = 52;
+            this.btnWeddEditReserve.Text = "Edit Reservation";
+            this.btnWeddEditReserve.UseVisualStyleBackColor = true;
+            // 
             // groupBox4
             // 
             this.groupBox4.Location = new System.Drawing.Point(419, 352);
@@ -248,6 +293,17 @@ namespace ChurchSched
             this.groupBox4.TabIndex = 40;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
+            // 
+            // btnWeddConfirm
+            // 
+            this.btnWeddConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWeddConfirm.Location = new System.Drawing.Point(32, 385);
+            this.btnWeddConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnWeddConfirm.Name = "btnWeddConfirm";
+            this.btnWeddConfirm.Size = new System.Drawing.Size(159, 22);
+            this.btnWeddConfirm.TabIndex = 51;
+            this.btnWeddConfirm.Text = "Confirm Reservation";
+            this.btnWeddConfirm.UseVisualStyleBackColor = true;
             // 
             // dataGridView4
             // 
@@ -322,7 +378,7 @@ namespace ChurchSched
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(46, 334);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(34, 15);
+            this.label25.Size = new System.Drawing.Size(33, 15);
             this.label25.TabIndex = 28;
             this.label25.Text = "Time";
             // 
@@ -424,6 +480,56 @@ namespace ChurchSched
             this.tabPage3.Text = "Baptization";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnBaptizReject
+            // 
+            this.btnBaptizReject.Location = new System.Drawing.Point(211, 453);
+            this.btnBaptizReject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBaptizReject.Name = "btnBaptizReject";
+            this.btnBaptizReject.Size = new System.Drawing.Size(159, 22);
+            this.btnBaptizReject.TabIndex = 50;
+            this.btnBaptizReject.Text = "Reject";
+            this.btnBaptizReject.UseVisualStyleBackColor = true;
+            // 
+            // btnBaptizApprove
+            // 
+            this.btnBaptizApprove.Location = new System.Drawing.Point(32, 453);
+            this.btnBaptizApprove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBaptizApprove.Name = "btnBaptizApprove";
+            this.btnBaptizApprove.Size = new System.Drawing.Size(159, 22);
+            this.btnBaptizApprove.TabIndex = 49;
+            this.btnBaptizApprove.Text = "Approve";
+            this.btnBaptizApprove.UseVisualStyleBackColor = true;
+            // 
+            // btnBaptizCancel
+            // 
+            this.btnBaptizCancel.Location = new System.Drawing.Point(124, 420);
+            this.btnBaptizCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBaptizCancel.Name = "btnBaptizCancel";
+            this.btnBaptizCancel.Size = new System.Drawing.Size(159, 22);
+            this.btnBaptizCancel.TabIndex = 48;
+            this.btnBaptizCancel.Text = "Cancel Reservation";
+            this.btnBaptizCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnBaptizEditReserve
+            // 
+            this.btnBaptizEditReserve.Location = new System.Drawing.Point(211, 385);
+            this.btnBaptizEditReserve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBaptizEditReserve.Name = "btnBaptizEditReserve";
+            this.btnBaptizEditReserve.Size = new System.Drawing.Size(159, 22);
+            this.btnBaptizEditReserve.TabIndex = 47;
+            this.btnBaptizEditReserve.Text = "Edit Reservation";
+            this.btnBaptizEditReserve.UseVisualStyleBackColor = true;
+            // 
+            // btnBaptizConfirm
+            // 
+            this.btnBaptizConfirm.Location = new System.Drawing.Point(32, 385);
+            this.btnBaptizConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBaptizConfirm.Name = "btnBaptizConfirm";
+            this.btnBaptizConfirm.Size = new System.Drawing.Size(159, 22);
+            this.btnBaptizConfirm.TabIndex = 46;
+            this.btnBaptizConfirm.Text = "Confirm Reservation";
+            this.btnBaptizConfirm.UseVisualStyleBackColor = true;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -519,7 +625,7 @@ namespace ChurchSched
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(46, 318);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 15);
+            this.label8.Size = new System.Drawing.Size(33, 15);
             this.label8.TabIndex = 7;
             this.label8.Text = "Time";
             // 
@@ -621,6 +727,61 @@ namespace ChurchSched
             this.tabPage4.Text = "Mass/Confession";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // btnMassConfessReject
+            // 
+            this.btnMassConfessReject.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMassConfessReject.Location = new System.Drawing.Point(211, 453);
+            this.btnMassConfessReject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMassConfessReject.Name = "btnMassConfessReject";
+            this.btnMassConfessReject.Size = new System.Drawing.Size(159, 22);
+            this.btnMassConfessReject.TabIndex = 60;
+            this.btnMassConfessReject.Text = "Reject";
+            this.btnMassConfessReject.UseVisualStyleBackColor = true;
+            // 
+            // btnMassConfessApprove
+            // 
+            this.btnMassConfessApprove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMassConfessApprove.Location = new System.Drawing.Point(32, 453);
+            this.btnMassConfessApprove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMassConfessApprove.Name = "btnMassConfessApprove";
+            this.btnMassConfessApprove.Size = new System.Drawing.Size(159, 22);
+            this.btnMassConfessApprove.TabIndex = 59;
+            this.btnMassConfessApprove.Text = "Approve";
+            this.btnMassConfessApprove.UseVisualStyleBackColor = true;
+            // 
+            // btnMassConfessCancel
+            // 
+            this.btnMassConfessCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMassConfessCancel.Location = new System.Drawing.Point(124, 420);
+            this.btnMassConfessCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMassConfessCancel.Name = "btnMassConfessCancel";
+            this.btnMassConfessCancel.Size = new System.Drawing.Size(159, 22);
+            this.btnMassConfessCancel.TabIndex = 58;
+            this.btnMassConfessCancel.Text = "Cancel Reservation";
+            this.btnMassConfessCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnMassConfessEditReserve
+            // 
+            this.btnMassConfessEditReserve.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMassConfessEditReserve.Location = new System.Drawing.Point(211, 385);
+            this.btnMassConfessEditReserve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMassConfessEditReserve.Name = "btnMassConfessEditReserve";
+            this.btnMassConfessEditReserve.Size = new System.Drawing.Size(159, 22);
+            this.btnMassConfessEditReserve.TabIndex = 57;
+            this.btnMassConfessEditReserve.Text = "Edit Reservation";
+            this.btnMassConfessEditReserve.UseVisualStyleBackColor = true;
+            // 
+            // btnMassConfessConfirm
+            // 
+            this.btnMassConfessConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMassConfessConfirm.Location = new System.Drawing.Point(32, 385);
+            this.btnMassConfessConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMassConfessConfirm.Name = "btnMassConfessConfirm";
+            this.btnMassConfessConfirm.Size = new System.Drawing.Size(159, 22);
+            this.btnMassConfessConfirm.TabIndex = 56;
+            this.btnMassConfessConfirm.Text = "Confirm Reservation";
+            this.btnMassConfessConfirm.UseVisualStyleBackColor = true;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -716,7 +877,7 @@ namespace ChurchSched
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(46, 318);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 15);
+            this.label9.Size = new System.Drawing.Size(33, 15);
             this.label9.TabIndex = 28;
             this.label9.Text = "Time";
             // 
@@ -818,6 +979,17 @@ namespace ChurchSched
             this.tabPage5.Text = "Confirmation Reservation";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // btnCnfrmResvReject
+            // 
+            this.btnCnfrmResvReject.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCnfrmResvReject.Location = new System.Drawing.Point(211, 453);
+            this.btnCnfrmResvReject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCnfrmResvReject.Name = "btnCnfrmResvReject";
+            this.btnCnfrmResvReject.Size = new System.Drawing.Size(159, 22);
+            this.btnCnfrmResvReject.TabIndex = 55;
+            this.btnCnfrmResvReject.Text = "Reject";
+            this.btnCnfrmResvReject.UseVisualStyleBackColor = true;
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
@@ -828,6 +1000,17 @@ namespace ChurchSched
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 41;
             this.pictureBox3.TabStop = false;
+            // 
+            // btnCnfrmResvApprove
+            // 
+            this.btnCnfrmResvApprove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCnfrmResvApprove.Location = new System.Drawing.Point(32, 453);
+            this.btnCnfrmResvApprove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCnfrmResvApprove.Name = "btnCnfrmResvApprove";
+            this.btnCnfrmResvApprove.Size = new System.Drawing.Size(159, 22);
+            this.btnCnfrmResvApprove.TabIndex = 54;
+            this.btnCnfrmResvApprove.Text = "Approve";
+            this.btnCnfrmResvApprove.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -840,6 +1023,17 @@ namespace ChurchSched
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
             // 
+            // btnCnfrmResvCancel
+            // 
+            this.btnCnfrmResvCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCnfrmResvCancel.Location = new System.Drawing.Point(124, 420);
+            this.btnCnfrmResvCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCnfrmResvCancel.Name = "btnCnfrmResvCancel";
+            this.btnCnfrmResvCancel.Size = new System.Drawing.Size(159, 22);
+            this.btnCnfrmResvCancel.TabIndex = 53;
+            this.btnCnfrmResvCancel.Text = "Cancel Reservation";
+            this.btnCnfrmResvCancel.UseVisualStyleBackColor = true;
+            // 
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -851,6 +1045,17 @@ namespace ChurchSched
             this.dataGridView3.Size = new System.Drawing.Size(459, 279);
             this.dataGridView3.TabIndex = 39;
             // 
+            // btnCnfrmResvEdit
+            // 
+            this.btnCnfrmResvEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCnfrmResvEdit.Location = new System.Drawing.Point(211, 385);
+            this.btnCnfrmResvEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCnfrmResvEdit.Name = "btnCnfrmResvEdit";
+            this.btnCnfrmResvEdit.Size = new System.Drawing.Size(159, 22);
+            this.btnCnfrmResvEdit.TabIndex = 52;
+            this.btnCnfrmResvEdit.Text = "Edit Reservation";
+            this.btnCnfrmResvEdit.UseVisualStyleBackColor = true;
+            // 
             // cmbCnfrmResvTime
             // 
             this.cmbCnfrmResvTime.FormattingEnabled = true;
@@ -859,6 +1064,17 @@ namespace ChurchSched
             this.cmbCnfrmResvTime.Name = "cmbCnfrmResvTime";
             this.cmbCnfrmResvTime.Size = new System.Drawing.Size(133, 23);
             this.cmbCnfrmResvTime.TabIndex = 35;
+            // 
+            // btnCnfrmResvConfirm
+            // 
+            this.btnCnfrmResvConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCnfrmResvConfirm.Location = new System.Drawing.Point(32, 385);
+            this.btnCnfrmResvConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCnfrmResvConfirm.Name = "btnCnfrmResvConfirm";
+            this.btnCnfrmResvConfirm.Size = new System.Drawing.Size(159, 22);
+            this.btnCnfrmResvConfirm.TabIndex = 51;
+            this.btnCnfrmResvConfirm.Text = "Confirm Reservation";
+            this.btnCnfrmResvConfirm.UseVisualStyleBackColor = true;
             // 
             // txtCnfrmResvConfirmand
             // 
@@ -913,7 +1129,7 @@ namespace ChurchSched
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(46, 318);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(34, 15);
+            this.label17.Size = new System.Drawing.Size(33, 15);
             this.label17.TabIndex = 28;
             this.label17.Text = "Time";
             // 
@@ -992,231 +1208,15 @@ namespace ChurchSched
             this.tabPage6.Text = "Requested Mass";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // btnCnfrmResvReject
-            // 
-            this.btnCnfrmResvReject.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCnfrmResvReject.Location = new System.Drawing.Point(211, 453);
-            this.btnCnfrmResvReject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCnfrmResvReject.Name = "btnCnfrmResvReject";
-            this.btnCnfrmResvReject.Size = new System.Drawing.Size(159, 22);
-            this.btnCnfrmResvReject.TabIndex = 55;
-            this.btnCnfrmResvReject.Text = "Reject";
-            this.btnCnfrmResvReject.UseVisualStyleBackColor = true;
-            // 
-            // btnCnfrmResvApprove
-            // 
-            this.btnCnfrmResvApprove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCnfrmResvApprove.Location = new System.Drawing.Point(32, 453);
-            this.btnCnfrmResvApprove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCnfrmResvApprove.Name = "btnCnfrmResvApprove";
-            this.btnCnfrmResvApprove.Size = new System.Drawing.Size(159, 22);
-            this.btnCnfrmResvApprove.TabIndex = 54;
-            this.btnCnfrmResvApprove.Text = "Approve";
-            this.btnCnfrmResvApprove.UseVisualStyleBackColor = true;
-            // 
-            // btnCnfrmResvCancel
-            // 
-            this.btnCnfrmResvCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCnfrmResvCancel.Location = new System.Drawing.Point(124, 420);
-            this.btnCnfrmResvCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCnfrmResvCancel.Name = "btnCnfrmResvCancel";
-            this.btnCnfrmResvCancel.Size = new System.Drawing.Size(159, 22);
-            this.btnCnfrmResvCancel.TabIndex = 53;
-            this.btnCnfrmResvCancel.Text = "Cancel Reservation";
-            this.btnCnfrmResvCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnCnfrmResvEdit
-            // 
-            this.btnCnfrmResvEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCnfrmResvEdit.Location = new System.Drawing.Point(211, 385);
-            this.btnCnfrmResvEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCnfrmResvEdit.Name = "btnCnfrmResvEdit";
-            this.btnCnfrmResvEdit.Size = new System.Drawing.Size(159, 22);
-            this.btnCnfrmResvEdit.TabIndex = 52;
-            this.btnCnfrmResvEdit.Text = "Edit Reservation";
-            this.btnCnfrmResvEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnCnfrmResvConfirm
-            // 
-            this.btnCnfrmResvConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCnfrmResvConfirm.Location = new System.Drawing.Point(32, 385);
-            this.btnCnfrmResvConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCnfrmResvConfirm.Name = "btnCnfrmResvConfirm";
-            this.btnCnfrmResvConfirm.Size = new System.Drawing.Size(159, 22);
-            this.btnCnfrmResvConfirm.TabIndex = 51;
-            this.btnCnfrmResvConfirm.Text = "Confirm Reservation";
-            this.btnCnfrmResvConfirm.UseVisualStyleBackColor = true;
-            // 
-            // btnMassConfessReject
-            // 
-            this.btnMassConfessReject.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMassConfessReject.Location = new System.Drawing.Point(211, 453);
-            this.btnMassConfessReject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMassConfessReject.Name = "btnMassConfessReject";
-            this.btnMassConfessReject.Size = new System.Drawing.Size(159, 22);
-            this.btnMassConfessReject.TabIndex = 60;
-            this.btnMassConfessReject.Text = "Reject";
-            this.btnMassConfessReject.UseVisualStyleBackColor = true;
-            // 
-            // btnMassConfessApprove
-            // 
-            this.btnMassConfessApprove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMassConfessApprove.Location = new System.Drawing.Point(32, 453);
-            this.btnMassConfessApprove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMassConfessApprove.Name = "btnMassConfessApprove";
-            this.btnMassConfessApprove.Size = new System.Drawing.Size(159, 22);
-            this.btnMassConfessApprove.TabIndex = 59;
-            this.btnMassConfessApprove.Text = "Approve";
-            this.btnMassConfessApprove.UseVisualStyleBackColor = true;
-            // 
-            // btnMassConfessCancel
-            // 
-            this.btnMassConfessCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMassConfessCancel.Location = new System.Drawing.Point(124, 420);
-            this.btnMassConfessCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMassConfessCancel.Name = "btnMassConfessCancel";
-            this.btnMassConfessCancel.Size = new System.Drawing.Size(159, 22);
-            this.btnMassConfessCancel.TabIndex = 58;
-            this.btnMassConfessCancel.Text = "Cancel Reservation";
-            this.btnMassConfessCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnMassConfessEditReserve
-            // 
-            this.btnMassConfessEditReserve.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMassConfessEditReserve.Location = new System.Drawing.Point(211, 385);
-            this.btnMassConfessEditReserve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMassConfessEditReserve.Name = "btnMassConfessEditReserve";
-            this.btnMassConfessEditReserve.Size = new System.Drawing.Size(159, 22);
-            this.btnMassConfessEditReserve.TabIndex = 57;
-            this.btnMassConfessEditReserve.Text = "Edit Reservation";
-            this.btnMassConfessEditReserve.UseVisualStyleBackColor = true;
-            // 
-            // btnMassConfessConfirm
-            // 
-            this.btnMassConfessConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMassConfessConfirm.Location = new System.Drawing.Point(32, 385);
-            this.btnMassConfessConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMassConfessConfirm.Name = "btnMassConfessConfirm";
-            this.btnMassConfessConfirm.Size = new System.Drawing.Size(159, 22);
-            this.btnMassConfessConfirm.TabIndex = 56;
-            this.btnMassConfessConfirm.Text = "Confirm Reservation";
-            this.btnMassConfessConfirm.UseVisualStyleBackColor = true;
-            // 
-            // btnBaptizReject
-            // 
-            this.btnBaptizReject.Location = new System.Drawing.Point(211, 453);
-            this.btnBaptizReject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBaptizReject.Name = "btnBaptizReject";
-            this.btnBaptizReject.Size = new System.Drawing.Size(159, 22);
-            this.btnBaptizReject.TabIndex = 50;
-            this.btnBaptizReject.Text = "Reject";
-            this.btnBaptizReject.UseVisualStyleBackColor = true;
-            // 
-            // btnBaptizApprove
-            // 
-            this.btnBaptizApprove.Location = new System.Drawing.Point(32, 453);
-            this.btnBaptizApprove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBaptizApprove.Name = "btnBaptizApprove";
-            this.btnBaptizApprove.Size = new System.Drawing.Size(159, 22);
-            this.btnBaptizApprove.TabIndex = 49;
-            this.btnBaptizApprove.Text = "Approve";
-            this.btnBaptizApprove.UseVisualStyleBackColor = true;
-            // 
-            // btnBaptizCancel
-            // 
-            this.btnBaptizCancel.Location = new System.Drawing.Point(124, 420);
-            this.btnBaptizCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBaptizCancel.Name = "btnBaptizCancel";
-            this.btnBaptizCancel.Size = new System.Drawing.Size(159, 22);
-            this.btnBaptizCancel.TabIndex = 48;
-            this.btnBaptizCancel.Text = "Cancel Reservation";
-            this.btnBaptizCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnBaptizEditReserve
-            // 
-            this.btnBaptizEditReserve.Location = new System.Drawing.Point(211, 385);
-            this.btnBaptizEditReserve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBaptizEditReserve.Name = "btnBaptizEditReserve";
-            this.btnBaptizEditReserve.Size = new System.Drawing.Size(159, 22);
-            this.btnBaptizEditReserve.TabIndex = 47;
-            this.btnBaptizEditReserve.Text = "Edit Reservation";
-            this.btnBaptizEditReserve.UseVisualStyleBackColor = true;
-            // 
-            // btnBaptizConfirm
-            // 
-            this.btnBaptizConfirm.Location = new System.Drawing.Point(32, 385);
-            this.btnBaptizConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBaptizConfirm.Name = "btnBaptizConfirm";
-            this.btnBaptizConfirm.Size = new System.Drawing.Size(159, 22);
-            this.btnBaptizConfirm.TabIndex = 46;
-            this.btnBaptizConfirm.Text = "Confirm Reservation";
-            this.btnBaptizConfirm.UseVisualStyleBackColor = true;
-            // 
-            // btnWeddReject
-            // 
-            this.btnWeddReject.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWeddReject.Location = new System.Drawing.Point(211, 453);
-            this.btnWeddReject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnWeddReject.Name = "btnWeddReject";
-            this.btnWeddReject.Size = new System.Drawing.Size(159, 22);
-            this.btnWeddReject.TabIndex = 55;
-            this.btnWeddReject.Text = "Reject";
-            this.btnWeddReject.UseVisualStyleBackColor = true;
-            // 
-            // btnWeddApprove
-            // 
-            this.btnWeddApprove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWeddApprove.Location = new System.Drawing.Point(32, 453);
-            this.btnWeddApprove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnWeddApprove.Name = "btnWeddApprove";
-            this.btnWeddApprove.Size = new System.Drawing.Size(159, 22);
-            this.btnWeddApprove.TabIndex = 54;
-            this.btnWeddApprove.Text = "Approve";
-            this.btnWeddApprove.UseVisualStyleBackColor = true;
-            // 
-            // btnWeddCancel
-            // 
-            this.btnWeddCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWeddCancel.Location = new System.Drawing.Point(124, 420);
-            this.btnWeddCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnWeddCancel.Name = "btnWeddCancel";
-            this.btnWeddCancel.Size = new System.Drawing.Size(159, 22);
-            this.btnWeddCancel.TabIndex = 53;
-            this.btnWeddCancel.Text = "Cancel Reservation";
-            this.btnWeddCancel.UseVisualStyleBackColor = true;
-            this.btnWeddCancel.Click += new System.EventHandler(this.btnWeddCancel_Click);
-            // 
-            // btnWeddEditReserve
-            // 
-            this.btnWeddEditReserve.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWeddEditReserve.Location = new System.Drawing.Point(211, 385);
-            this.btnWeddEditReserve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnWeddEditReserve.Name = "btnWeddEditReserve";
-            this.btnWeddEditReserve.Size = new System.Drawing.Size(159, 22);
-            this.btnWeddEditReserve.TabIndex = 52;
-            this.btnWeddEditReserve.Text = "Edit Reservation";
-            this.btnWeddEditReserve.UseVisualStyleBackColor = true;
-            // 
-            // btnWeddConfirm
-            // 
-            this.btnWeddConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWeddConfirm.Location = new System.Drawing.Point(32, 385);
-            this.btnWeddConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnWeddConfirm.Name = "btnWeddConfirm";
-            this.btnWeddConfirm.Size = new System.Drawing.Size(159, 22);
-            this.btnWeddConfirm.TabIndex = 51;
-            this.btnWeddConfirm.Text = "Confirm Reservation";
-            this.btnWeddConfirm.UseVisualStyleBackColor = true;
-            // 
-            // Form1
+            // frmLobbyPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 637);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "frmLobbyPanel";
+            this.Text = "Lobby Panel";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);

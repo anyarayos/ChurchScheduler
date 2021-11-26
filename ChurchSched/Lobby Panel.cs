@@ -9,7 +9,7 @@ using System.Data.SQLite;
 
 namespace ChurchSched
 {
-    public partial class Form1 : Form
+    public partial class frmLobbyPanel : Form
     {
         // sql variables and objects
         private SQLiteConnection sql_con;
@@ -24,7 +24,7 @@ namespace ChurchSched
             sql_con = new SQLiteConnection("Data Source=" + database + "; Version=3; New=False; Compress=True;");
         }
 
-        public Form1()
+        public frmLobbyPanel()
         {
             InitializeComponent();
         }
