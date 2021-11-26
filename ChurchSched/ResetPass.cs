@@ -38,7 +38,7 @@ namespace ChurchSched
 
         private void btnLogInOnReset_Click(object sender, EventArgs e)
         {
-            frmLogIn fLog = new frmLogIn();
+            frmAdminLogin fLog = new frmAdminLogin();
             this.Hide();
             fLog.Show();
         }

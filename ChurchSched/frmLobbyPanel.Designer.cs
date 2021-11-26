@@ -652,7 +652,7 @@ namespace ChurchSched
             this.Controls.Add(this.tbcon1);
             this.Name = "frmLobbyPanel";
             this.Text = "Lobby Panel";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.frmLobbyPanel_Load);
             this.tbRequestee.ResumeLayout(false);
             this.tbRequestee.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

@@ -12,7 +12,7 @@ using System.Data.SQLite;
 
 namespace ChurchSched
 {
-				public partial class frmLogIn : Form
+				public partial class frmAdminLogin : Form
 				{
 								// sql variables and objects
 								private SQLiteConnection sql_con;
@@ -32,25 +32,25 @@ namespace ChurchSched
 								// login button
 								private void btnLogIn_Click(object sender, EventArgs e)
 								{
-												
 												// sql connection with Church.db
 												SetConnection("Church.db");
 
 												// data table will have a row if query returns a record
-												DB = new SQLiteDataAdapter("SELECT * FROM Accounts WHERE username='" + txtUserName.Text + "' AND password='" + txtPassword.Text + "'", sql_con);
+												DB = new SQLiteDataAdapter("SELECT id FROM Accounts WHERE username='" + txtUserName.Text + "' AND password='" + txtPassword.Text + "'", sql_con);
 												DT = new DataTable();
 												DB.Fill(DT);
 
 												// if data table has returned a record then proceed to login
 												if(DT.Rows.Count == 1)
 												{
-																// bool isAdmin = txtUserName.Text == admLopez;
+																// adminID IS THE VARIABLE TO HOLD THE ID OF WHICH ADMIN THAT LOGGED IN, FIGURE OUT HOW TO PASS INTO LOBBY PANEL
+																int adminID = Convert.ToInt32(DT.Rows[0][0]);
+
 																this.DialogResult = DialogResult.Yes;
 																this.Hide();
 																frmLobbyPanel lobby = new frmLobbyPanel();
 																lobby.ShowDialog();
-
-			}
+												}
 												else
 												{
 												// loginAttempt if else
@@ -70,7 +70,7 @@ namespace ChurchSched
 												}
 								}
 
-								public frmLogIn()
+								public frmAdminLogin()
 								{
 												InitializeComponent();
 								}

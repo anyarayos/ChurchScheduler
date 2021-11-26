@@ -24,31 +24,30 @@ namespace ChurchSched
             sql_con = new SQLiteConnection("Data Source=" + database + "; Version=3; New=False; Compress=True;");
         }
 
+        // execute query method
+        private void ExecuteQuery(string txtQuery)
+        {
+            SetConnection("Church.db");
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            sql_cmd.CommandText = txtQuery;
+            sql_cmd.ExecuteNonQuery();
+            sql_con.Close();
+        }
+
         public frmLobbyPanel()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void frmLobbyPanel_Load(object sender, EventArgs e)
         {
-            // sql connection with Church.db
-            SetConnection("Church.db");
-            //con = new SqlConnection(cs);  
-            //con.Open();  
-            //adapt = new SqlDataAdapter("select * from ----",con);  
-            //dt = new DataTable();  
-            //dapt.Fill(dt);  
-            //dataGridViewExistingRequestees.DataSource = dt;  //populate mo yung datagrid ng existing duh
-            //con.Close();
-
-
+            // when LobbyPanel form loads, update the data grid view from the UserInfo table
         }
-
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Are you sure that you would cancel this reservation???");
-
         }
 
         private void btnConfirmRequestee_Click(object sender, EventArgs e)
@@ -67,30 +66,40 @@ namespace ChurchSched
             //dataGridViewExistingRequestees.DataSource = dt;  //populate mo yung datagrid ng existing duh
             //con.Close();
 
-            bool isEmpty = txtRequestName.Text == "" && txtContactNum.Text == "" && txtEmailAdd.Text == "" && txtAddress.Text == "";
-            
-            if (!isEmpty)
+            // check if fields are complete
+            bool fieldAreComplete = !(txtRequestName.Text == "" || txtContactNum.Text == "" || txtEmailAdd.Text == "" || txtAddress.Text == "");
+            if (fieldAreComplete)
             {
+                // sql connection with Church.db
                 SetConnection("Church.db");
-                DB = new SQLiteDataAdapter("SELECT id FROM UserInfo WHERE name='" + txtRequestName.Text + "' OR email='" + txtEmailAdd.Text + "' OR contact=''" + txtContactNum.Text + "'", sql_con);
+
+                // data table will have a row if query returns a record
+                DB = new SQLiteDataAdapter("SELECT id FROM UserInfo WHERE name='" + txtRequestName.Text + "' OR email='" + txtEmailAdd.Text + "' OR contact='" + txtContactNum.Text + "'", sql_con);
                 DT = new DataTable();
                 DB.Fill(DT);
+
+                // if data table returns a record, tell that the user exists
                 bool userExists = DT.Rows.Count == 1;
                 if (!userExists)
                 {
-                    MessageBox.Show("Success!");
+                    // THIS IS THE QUERY USED TO INSERT VALUES INTO THE UserInfo TABLE
+                    /*
+                    string query = "INSERT INTO UserInfo (name, contact, email, address) VALUES ('" + txtRequestName.Text + "', '" + txtContactNum.Text + "', '" + txtEmailAdd.Text + "', '" + txtAddress.Text + "');";
+                    ExecuteQuery(query);
+                    */
+                    MessageBox.Show("Success! New user created.");
                 }
                 else
                 {
                     MessageBox.Show("User already exists!");
                 }
-
             }
             else
             {
                 MessageBox.Show("There are incomplete fields in your submission.");
             }
         }
+
         private void btnEditrequestee_Click(object sender, EventArgs e)
         {
             //update existing data using whatever was changed in the field
@@ -129,8 +138,6 @@ namespace ChurchSched
             //adapt.Fill(dt);  
             //dataGridViewExistingRequestees.DataSource = dt;  
             //con.Close();
-
         }
-
     }
 }
