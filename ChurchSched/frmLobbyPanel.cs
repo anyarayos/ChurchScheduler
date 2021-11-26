@@ -43,6 +43,7 @@ namespace ChurchSched
         private void frmLobbyPanel_Load(object sender, EventArgs e)
         {
             // when LobbyPanel form loads, update the data grid view from the UserInfo table
+            // query to show data ("SELECT * FROM UserInfo")
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
