@@ -29,18 +29,18 @@ namespace ChurchSched
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtRemark = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancelConfirm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtRemark
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 40);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(525, 199);
-            this.textBox1.TabIndex = 0;
+            this.txtRemark.Location = new System.Drawing.Point(12, 40);
+            this.txtRemark.Multiline = true;
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(525, 199);
+            this.txtRemark.TabIndex = 0;
             // 
             // label1
             // 
@@ -70,7 +70,7 @@ namespace ChurchSched
             this.ClientSize = new System.Drawing.Size(549, 287);
             this.Controls.Add(this.btnCancelConfirm);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtRemark);
             this.Name = "frmCancelationRemark";
             this.Text = "Cancelation Remark";
             this.ResumeLayout(false);
@@ -80,7 +80,7 @@ namespace ChurchSched
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtRemark;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelConfirm;
     }
