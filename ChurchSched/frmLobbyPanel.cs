@@ -135,6 +135,16 @@ namespace ChurchSched
         private void btnCancelRequestee_Click(object sender, EventArgs e)
         {
             //delete highlighted 
+            DialogResult dialogResult = MessageBox.Show("Are you sure that you would delete this Requestee ???", "Warning !!!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //
+            }
+            else
+            {
+                //  
+            }
+            
         }
 
         private void btnClearRequestee_Click(object sender, EventArgs e)
