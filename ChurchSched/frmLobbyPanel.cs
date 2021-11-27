@@ -165,7 +165,9 @@ namespace ChurchSched
             txtEmailAdd.Text = selectedRow.Cells[3].Value.ToString();
             txtAddress.Text = selectedRow.Cells[4].Value.ToString();
 
-            userIDAndName = selectedRow.Cells[0].Value.ToString() + selectedRow.Cells[1].Value.ToString();
+            userIDAndName = selectedRow.Cells[0].Value.ToString() + "_" + selectedRow.Cells[1].Value.ToString();
+
+            txtIDNameReserve.Text = userIDAndName;
         }
         private void dgvRequestees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -211,13 +213,21 @@ namespace ChurchSched
 
         private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)//Hide/Show Attendees according to event
         {
-
+            string[] weddingReqs = {"Marriage License","Baptismal certificate (Groom)"
+            , "Baptismal certificate (Bride)","Confirmation certificate (Groom)","Confirmation certificate (Bride)",
+            "Birth certificate (Groom)", "Birth certificate (Bride)", "CENOMAR (Groom)", "CENOMAR (Bride)","Marriage preparation Seminar",
+            "Canonical interview","Marriage Banns","Confession","Sponsors (At least 1)"};
+            string[] baptismReqs = {"Birth certificate (Candidate)", "Marriage certificate (Parents)" };
+            string[] confirmationReqs = { "Baptismal certificate","Seminar Attendance","Pair of Witnesses"};
             if (cmbEvents.SelectedItem.ToString()=="Wedding")
             {
                 lblAttendee1.Text = "Groom:";
                 lblAttendee2.Text = "Bride:";
                 lblAttendee2.Visible = true;
                 txtAttendee2.Visible = true;
+                checkedListBoxRequirements.Items.Clear();
+                checkedListBoxRequirements.Items.AddRange(weddingReqs);
+               
                 //Change dgv
             }
             else if(cmbEvents.SelectedItem.ToString() == "Baptism")
@@ -225,6 +235,8 @@ namespace ChurchSched
                 lblAttendee1.Text = "Candidate:";
                 lblAttendee2.Visible = false;
                 txtAttendee2.Visible = false;
+                checkedListBoxRequirements.Items.Clear();
+                checkedListBoxRequirements.Items.AddRange(baptismReqs);
                 //Change dgv
             }
             else if (cmbEvents.SelectedItem.ToString() == "Confirmation")
@@ -232,6 +244,8 @@ namespace ChurchSched
                 lblAttendee1.Text = "Confirmand:";
                 lblAttendee2.Visible = false;
                 txtAttendee2.Visible = false;
+                checkedListBoxRequirements.Items.Clear();
+                checkedListBoxRequirements.Items.AddRange(confirmationReqs);
                 //Change dgv
             }
             else
@@ -239,8 +253,31 @@ namespace ChurchSched
                 lblAttendee1.Text = "Purpose:";
                 lblAttendee2.Visible = false;
                 txtAttendee2.Visible = false;
+                checkedListBoxRequirements.Items.Clear();
                 //Change dgv
             }
+        }
+
+        private void checkedListBoxRequirements_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.NewValue == CheckState.Checked)
+            {
+                if (e.Index==13)
+                {
+                    MessageBox.Show("Check Box is Checked!");
+                }
+                   
+            }
+        }
+
+        private void btnConfirmReserve_Click(object sender, EventArgs e)
+        {
+            //Getting everything that is checked in the ListBox
+           // foreach (int indexChecked in checkedListBoxRequirements.CheckedIndices)
+            //{
+                // The indexChecked variable contains the index of the item.
+               // MessageBox.Show("Index: " + indexChecked.ToString() + ", is checked. Checked state is:" + checkedListBoxRequirements.GetItemCheckState(indexChecked).ToString() + ".");
+            //}
         }
     }
 }

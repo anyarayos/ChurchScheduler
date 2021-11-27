@@ -31,6 +31,7 @@ namespace ChurchSched
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLobbyPanel));
             this.tbRequestee = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
             this.btnDelRequestee = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,8 +51,10 @@ namespace ChurchSched
             this.label31 = new System.Windows.Forms.Label();
             this.tbcon1 = new System.Windows.Forms.TabControl();
             this.tbReservation = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.checkedListBoxRequirements = new System.Windows.Forms.CheckedListBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtIDNameReserve = new System.Windows.Forms.TextBox();
-            this.listBoxRequirements = new System.Windows.Forms.ListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtAttendee2 = new System.Windows.Forms.TextBox();
             this.rdbtnGCash = new System.Windows.Forms.RadioButton();
@@ -85,8 +88,6 @@ namespace ChurchSched
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.tbRequestee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRequestees)).BeginInit();
@@ -123,22 +124,30 @@ namespace ChurchSched
             this.tbRequestee.Controls.Add(this.label30);
             this.tbRequestee.Controls.Add(this.label31);
             this.tbRequestee.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.tbRequestee.Location = new System.Drawing.Point(4, 24);
-            this.tbRequestee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbRequestee.Location = new System.Drawing.Point(4, 29);
             this.tbRequestee.Name = "tbRequestee";
-            this.tbRequestee.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbRequestee.Size = new System.Drawing.Size(950, 609);
+            this.tbRequestee.Padding = new System.Windows.Forms.Padding(3);
+            this.tbRequestee.Size = new System.Drawing.Size(1087, 866);
             this.tbRequestee.TabIndex = 1;
             this.tbRequestee.Text = "REQUESTEE";
             this.tbRequestee.UseVisualStyleBackColor = true;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(53, 29);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(226, 17);
+            this.label13.TabIndex = 61;
+            this.label13.Text = "Fill out the  field with Requestee\'s Infomation";
+            // 
             // btnDelRequestee
             // 
             this.btnDelRequestee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelRequestee.Location = new System.Drawing.Point(211, 354);
-            this.btnDelRequestee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelRequestee.Location = new System.Drawing.Point(241, 472);
             this.btnDelRequestee.Name = "btnDelRequestee";
-            this.btnDelRequestee.Size = new System.Drawing.Size(137, 37);
+            this.btnDelRequestee.Size = new System.Drawing.Size(157, 49);
             this.btnDelRequestee.TabIndex = 57;
             this.btnDelRequestee.Text = "Delete Requestee";
             this.btnDelRequestee.UseVisualStyleBackColor = true;
@@ -148,68 +157,64 @@ namespace ChurchSched
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(596, 34);
+            this.label9.Location = new System.Drawing.Point(681, 45);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 15);
+            this.label9.Size = new System.Drawing.Size(137, 20);
             this.label9.TabIndex = 56;
             this.label9.Text = "List of Requestees";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(468, 545);
+            this.label4.Location = new System.Drawing.Point(535, 727);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 15);
+            this.label4.Size = new System.Drawing.Size(68, 20);
             this.label4.TabIndex = 55;
             this.label4.Text = "Search : ";
             // 
             // textSearchRequestee
             // 
-            this.textSearchRequestee.Location = new System.Drawing.Point(525, 542);
+            this.textSearchRequestee.Location = new System.Drawing.Point(600, 723);
+            this.textSearchRequestee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textSearchRequestee.Name = "textSearchRequestee";
-            this.textSearchRequestee.Size = new System.Drawing.Size(316, 24);
+            this.textSearchRequestee.Size = new System.Drawing.Size(361, 28);
             this.textSearchRequestee.TabIndex = 54;
             this.textSearchRequestee.TextChanged += new System.EventHandler(this.textSearchRequestee_TextChanged);
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(193, 185);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAddress.Location = new System.Drawing.Point(221, 247);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(154, 24);
+            this.txtAddress.Size = new System.Drawing.Size(175, 28);
             this.txtAddress.TabIndex = 32;
             // 
             // txtEmailAdd
             // 
-            this.txtEmailAdd.Location = new System.Drawing.Point(193, 144);
-            this.txtEmailAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmailAdd.Location = new System.Drawing.Point(221, 192);
             this.txtEmailAdd.Name = "txtEmailAdd";
-            this.txtEmailAdd.Size = new System.Drawing.Size(154, 24);
+            this.txtEmailAdd.Size = new System.Drawing.Size(175, 28);
             this.txtEmailAdd.TabIndex = 31;
             // 
             // txtContactNum
             // 
-            this.txtContactNum.Location = new System.Drawing.Point(193, 97);
-            this.txtContactNum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtContactNum.Location = new System.Drawing.Point(221, 129);
             this.txtContactNum.Name = "txtContactNum";
-            this.txtContactNum.Size = new System.Drawing.Size(154, 24);
+            this.txtContactNum.Size = new System.Drawing.Size(175, 28);
             this.txtContactNum.TabIndex = 30;
             // 
             // txtRequestName
             // 
-            this.txtRequestName.Location = new System.Drawing.Point(194, 51);
-            this.txtRequestName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRequestName.Location = new System.Drawing.Point(222, 68);
             this.txtRequestName.Name = "txtRequestName";
-            this.txtRequestName.Size = new System.Drawing.Size(154, 24);
+            this.txtRequestName.Size = new System.Drawing.Size(175, 28);
             this.txtRequestName.TabIndex = 29;
             // 
             // btnClearRequestee
             // 
             this.btnClearRequestee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClearRequestee.Location = new System.Drawing.Point(46, 354);
-            this.btnClearRequestee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClearRequestee.Location = new System.Drawing.Point(53, 472);
             this.btnClearRequestee.Name = "btnClearRequestee";
-            this.btnClearRequestee.Size = new System.Drawing.Size(127, 37);
+            this.btnClearRequestee.Size = new System.Drawing.Size(145, 49);
             this.btnClearRequestee.TabIndex = 53;
             this.btnClearRequestee.Text = "Clear";
             this.btnClearRequestee.UseVisualStyleBackColor = true;
@@ -219,10 +224,9 @@ namespace ChurchSched
             // 
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(33, 465);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(38, 620);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(336, 78);
+            this.pictureBox4.Size = new System.Drawing.Size(384, 104);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 41;
             this.pictureBox4.TabStop = false;
@@ -230,10 +234,9 @@ namespace ChurchSched
             // btnEditrequestee
             // 
             this.btnEditrequestee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditrequestee.Location = new System.Drawing.Point(211, 289);
-            this.btnEditrequestee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditrequestee.Location = new System.Drawing.Point(241, 385);
             this.btnEditrequestee.Name = "btnEditrequestee";
-            this.btnEditrequestee.Size = new System.Drawing.Size(137, 41);
+            this.btnEditrequestee.Size = new System.Drawing.Size(157, 55);
             this.btnEditrequestee.TabIndex = 52;
             this.btnEditrequestee.Text = "Edit Requestee";
             this.btnEditrequestee.UseVisualStyleBackColor = true;
@@ -242,10 +245,9 @@ namespace ChurchSched
             // btnConfirmRequestee
             // 
             this.btnConfirmRequestee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConfirmRequestee.Location = new System.Drawing.Point(46, 289);
-            this.btnConfirmRequestee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnConfirmRequestee.Location = new System.Drawing.Point(53, 385);
             this.btnConfirmRequestee.Name = "btnConfirmRequestee";
-            this.btnConfirmRequestee.Size = new System.Drawing.Size(127, 41);
+            this.btnConfirmRequestee.Size = new System.Drawing.Size(145, 55);
             this.btnConfirmRequestee.TabIndex = 51;
             this.btnConfirmRequestee.Text = "Confirm Requestee";
             this.btnConfirmRequestee.UseVisualStyleBackColor = true;
@@ -254,12 +256,11 @@ namespace ChurchSched
             // dgvRequestees
             // 
             this.dgvRequestees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRequestees.Location = new System.Drawing.Point(407, 51);
-            this.dgvRequestees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvRequestees.Location = new System.Drawing.Point(465, 68);
             this.dgvRequestees.Name = "dgvRequestees";
             this.dgvRequestees.RowHeadersWidth = 51;
             this.dgvRequestees.RowTemplate.Height = 29;
-            this.dgvRequestees.Size = new System.Drawing.Size(492, 457);
+            this.dgvRequestees.Size = new System.Drawing.Size(562, 609);
             this.dgvRequestees.TabIndex = 39;
             this.dgvRequestees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRequestees_CellClick);
             this.dgvRequestees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRequestees_CellDoubleClick);
@@ -268,9 +269,9 @@ namespace ChurchSched
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label28.Location = new System.Drawing.Point(46, 188);
+            this.label28.Location = new System.Drawing.Point(53, 251);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(65, 19);
+            this.label28.Size = new System.Drawing.Size(79, 23);
             this.label28.TabIndex = 25;
             this.label28.Text = "Address :";
             // 
@@ -278,9 +279,9 @@ namespace ChurchSched
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label29.Location = new System.Drawing.Point(46, 147);
+            this.label29.Location = new System.Drawing.Point(53, 196);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(103, 19);
+            this.label29.Size = new System.Drawing.Size(125, 23);
             this.label29.TabIndex = 24;
             this.label29.Text = "Email Address :";
             // 
@@ -288,9 +289,9 @@ namespace ChurchSched
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label30.Location = new System.Drawing.Point(46, 100);
+            this.label30.Location = new System.Drawing.Point(53, 133);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(120, 19);
+            this.label30.Size = new System.Drawing.Size(147, 23);
             this.label30.TabIndex = 23;
             this.label30.Text = "Contact Number :";
             // 
@@ -298,9 +299,9 @@ namespace ChurchSched
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label31.Location = new System.Drawing.Point(46, 52);
+            this.label31.Location = new System.Drawing.Point(53, 69);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(53, 19);
+            this.label31.Size = new System.Drawing.Size(65, 23);
             this.label31.TabIndex = 22;
             this.label31.Text = "Name :";
             // 
@@ -312,17 +313,17 @@ namespace ChurchSched
             this.tbcon1.Controls.Add(this.tbPastEvents);
             this.tbcon1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcon1.Location = new System.Drawing.Point(0, 0);
-            this.tbcon1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbcon1.Name = "tbcon1";
             this.tbcon1.SelectedIndex = 0;
-            this.tbcon1.Size = new System.Drawing.Size(958, 637);
+            this.tbcon1.Size = new System.Drawing.Size(1095, 899);
             this.tbcon1.TabIndex = 0;
             // 
             // tbReservation
             // 
+            this.tbReservation.Controls.Add(this.label14);
+            this.tbReservation.Controls.Add(this.checkedListBoxRequirements);
             this.tbReservation.Controls.Add(this.label12);
             this.tbReservation.Controls.Add(this.txtIDNameReserve);
-            this.tbReservation.Controls.Add(this.listBoxRequirements);
             this.tbReservation.Controls.Add(this.pictureBox1);
             this.tbReservation.Controls.Add(this.txtAttendee2);
             this.tbReservation.Controls.Add(this.rdbtnGCash);
@@ -345,58 +346,75 @@ namespace ChurchSched
             this.tbReservation.Controls.Add(this.label2);
             this.tbReservation.Controls.Add(this.label1);
             this.tbReservation.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tbReservation.Location = new System.Drawing.Point(4, 24);
-            this.tbReservation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbReservation.Location = new System.Drawing.Point(4, 29);
             this.tbReservation.Name = "tbReservation";
-            this.tbReservation.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbReservation.Size = new System.Drawing.Size(950, 609);
+            this.tbReservation.Padding = new System.Windows.Forms.Padding(3);
+            this.tbReservation.Size = new System.Drawing.Size(1087, 866);
             this.tbReservation.TabIndex = 2;
             this.tbReservation.Text = "RESERVATION";
             this.tbReservation.UseVisualStyleBackColor = true;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(53, 514);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(120, 23);
+            this.label14.TabIndex = 62;
+            this.label14.Text = "Requirements:";
+            // 
+            // checkedListBoxRequirements
+            // 
+            this.checkedListBoxRequirements.FormattingEnabled = true;
+            this.checkedListBoxRequirements.Location = new System.Drawing.Point(57, 551);
+            this.checkedListBoxRequirements.Name = "checkedListBoxRequirements";
+            this.checkedListBoxRequirements.Size = new System.Drawing.Size(343, 172);
+            this.checkedListBoxRequirements.TabIndex = 61;
+            this.checkedListBoxRequirements.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxRequirements_ItemCheck);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(53, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(189, 17);
+            this.label12.TabIndex = 60;
+            this.label12.Text = "Fill out the  field for event reservation";
+            // 
             // txtIDNameReserve
             // 
-            this.txtIDNameReserve.Location = new System.Drawing.Point(151, 51);
+            this.txtIDNameReserve.Location = new System.Drawing.Point(173, 68);
+            this.txtIDNameReserve.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIDNameReserve.Name = "txtIDNameReserve";
             this.txtIDNameReserve.ReadOnly = true;
-            this.txtIDNameReserve.Size = new System.Drawing.Size(199, 25);
+            this.txtIDNameReserve.Size = new System.Drawing.Size(227, 29);
             this.txtIDNameReserve.TabIndex = 59;
-            // 
-            // listBoxRequirements
-            // 
-            this.listBoxRequirements.FormattingEnabled = true;
-            this.listBoxRequirements.ItemHeight = 17;
-            this.listBoxRequirements.Location = new System.Drawing.Point(46, 385);
-            this.listBoxRequirements.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxRequirements.Name = "listBoxRequirements";
-            this.listBoxRequirements.Size = new System.Drawing.Size(309, 123);
-            this.listBoxRequirements.TabIndex = 58;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(461, 512);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(527, 683);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(388, 94);
+            this.pictureBox1.Size = new System.Drawing.Size(443, 125);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 57;
             this.pictureBox1.TabStop = false;
             // 
             // txtAttendee2
             // 
-            this.txtAttendee2.Location = new System.Drawing.Point(151, 344);
-            this.txtAttendee2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAttendee2.Location = new System.Drawing.Point(173, 459);
             this.txtAttendee2.Name = "txtAttendee2";
-            this.txtAttendee2.Size = new System.Drawing.Size(196, 25);
+            this.txtAttendee2.Size = new System.Drawing.Size(223, 29);
             this.txtAttendee2.TabIndex = 3;
             // 
             // rdbtnGCash
             // 
             this.rdbtnGCash.AutoSize = true;
-            this.rdbtnGCash.Location = new System.Drawing.Point(279, 231);
+            this.rdbtnGCash.Location = new System.Drawing.Point(319, 308);
+            this.rdbtnGCash.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdbtnGCash.Name = "rdbtnGCash";
-            this.rdbtnGCash.Size = new System.Drawing.Size(69, 21);
+            this.rdbtnGCash.Size = new System.Drawing.Size(87, 27);
             this.rdbtnGCash.TabIndex = 56;
             this.rdbtnGCash.TabStop = true;
             this.rdbtnGCash.Text = "G-Cash";
@@ -404,18 +422,18 @@ namespace ChurchSched
             // 
             // txtAttendee1
             // 
-            this.txtAttendee1.Location = new System.Drawing.Point(154, 300);
-            this.txtAttendee1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAttendee1.Location = new System.Drawing.Point(176, 400);
             this.txtAttendee1.Name = "txtAttendee1";
-            this.txtAttendee1.Size = new System.Drawing.Size(196, 25);
+            this.txtAttendee1.Size = new System.Drawing.Size(223, 29);
             this.txtAttendee1.TabIndex = 2;
             // 
             // rdbtn
             // 
             this.rdbtn.AutoSize = true;
-            this.rdbtn.Location = new System.Drawing.Point(185, 258);
+            this.rdbtn.Location = new System.Drawing.Point(211, 344);
+            this.rdbtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdbtn.Name = "rdbtn";
-            this.rdbtn.Size = new System.Drawing.Size(119, 21);
+            this.rdbtn.Size = new System.Drawing.Size(149, 27);
             this.rdbtn.TabIndex = 55;
             this.rdbtn.TabStop = true;
             this.rdbtn.Text = "Down Payment";
@@ -424,18 +442,19 @@ namespace ChurchSched
             // lblAttendee2
             // 
             this.lblAttendee2.AutoSize = true;
-            this.lblAttendee2.Location = new System.Drawing.Point(46, 344);
+            this.lblAttendee2.Location = new System.Drawing.Point(53, 459);
             this.lblAttendee2.Name = "lblAttendee2";
-            this.lblAttendee2.Size = new System.Drawing.Size(85, 17);
+            this.lblAttendee2.Size = new System.Drawing.Size(107, 23);
             this.lblAttendee2.TabIndex = 1;
             this.lblAttendee2.Text = "lblAttendee2";
             // 
             // rdbtnCash
             // 
             this.rdbtnCash.AutoSize = true;
-            this.rdbtnCash.Location = new System.Drawing.Point(185, 231);
+            this.rdbtnCash.Location = new System.Drawing.Point(211, 308);
+            this.rdbtnCash.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdbtnCash.Name = "rdbtnCash";
-            this.rdbtnCash.Size = new System.Drawing.Size(55, 21);
+            this.rdbtnCash.Size = new System.Drawing.Size(68, 27);
             this.rdbtnCash.TabIndex = 54;
             this.rdbtnCash.TabStop = true;
             this.rdbtnCash.Text = "Cash";
@@ -444,9 +463,9 @@ namespace ChurchSched
             // lblAttendee1
             // 
             this.lblAttendee1.AutoSize = true;
-            this.lblAttendee1.Location = new System.Drawing.Point(46, 304);
+            this.lblAttendee1.Location = new System.Drawing.Point(53, 405);
             this.lblAttendee1.Name = "lblAttendee1";
-            this.lblAttendee1.Size = new System.Drawing.Size(83, 17);
+            this.lblAttendee1.Size = new System.Drawing.Size(105, 23);
             this.lblAttendee1.TabIndex = 0;
             this.lblAttendee1.Text = "lblAttendee1";
             // 
@@ -454,27 +473,27 @@ namespace ChurchSched
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(46, 233);
+            this.label11.Location = new System.Drawing.Point(53, 311);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(120, 19);
+            this.label11.Size = new System.Drawing.Size(149, 23);
             this.label11.TabIndex = 53;
             this.label11.Text = "Mode of Payment";
             // 
             // cmbEvents
             // 
             this.cmbEvents.FormattingEnabled = true;
-            this.cmbEvents.Location = new System.Drawing.Point(152, 97);
+            this.cmbEvents.Location = new System.Drawing.Point(174, 129);
+            this.cmbEvents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbEvents.Name = "cmbEvents";
-            this.cmbEvents.Size = new System.Drawing.Size(198, 25);
+            this.cmbEvents.Size = new System.Drawing.Size(226, 29);
             this.cmbEvents.TabIndex = 52;
             this.cmbEvents.SelectedIndexChanged += new System.EventHandler(this.cmbEvents_SelectedIndexChanged);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(130, 562);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Location = new System.Drawing.Point(151, 806);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(139, 28);
+            this.btnCancel.Size = new System.Drawing.Size(159, 37);
             this.btnCancel.TabIndex = 48;
             this.btnCancel.Text = "Cancel Reservation";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -482,59 +501,55 @@ namespace ChurchSched
             // 
             // btnEditReserve
             // 
-            this.btnEditReserve.Location = new System.Drawing.Point(217, 527);
-            this.btnEditReserve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditReserve.Location = new System.Drawing.Point(247, 754);
             this.btnEditReserve.Name = "btnEditReserve";
-            this.btnEditReserve.Size = new System.Drawing.Size(139, 28);
+            this.btnEditReserve.Size = new System.Drawing.Size(159, 37);
             this.btnEditReserve.TabIndex = 47;
             this.btnEditReserve.Text = "Edit Reservation";
             this.btnEditReserve.UseVisualStyleBackColor = true;
             // 
             // btnConfirmReserve
             // 
-            this.btnConfirmReserve.Location = new System.Drawing.Point(38, 527);
-            this.btnConfirmReserve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnConfirmReserve.Location = new System.Drawing.Point(43, 754);
             this.btnConfirmReserve.Name = "btnConfirmReserve";
-            this.btnConfirmReserve.Size = new System.Drawing.Size(139, 28);
+            this.btnConfirmReserve.Size = new System.Drawing.Size(159, 37);
             this.btnConfirmReserve.TabIndex = 46;
             this.btnConfirmReserve.Text = "Confirm Reservation";
             this.btnConfirmReserve.UseVisualStyleBackColor = true;
+            this.btnConfirmReserve.Click += new System.EventHandler(this.btnConfirmReserve_Click);
             // 
             // dgvList
             // 
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvList.Location = new System.Drawing.Point(407, 51);
-            this.dgvList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvList.Location = new System.Drawing.Point(465, 68);
             this.dgvList.Name = "dgvList";
             this.dgvList.RowHeadersWidth = 51;
             this.dgvList.RowTemplate.Height = 29;
-            this.dgvList.Size = new System.Drawing.Size(492, 457);
+            this.dgvList.Size = new System.Drawing.Size(562, 609);
             this.dgvList.TabIndex = 18;
             // 
             // cmbTime
             // 
             this.cmbTime.FormattingEnabled = true;
-            this.cmbTime.Location = new System.Drawing.Point(151, 185);
-            this.cmbTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbTime.Location = new System.Drawing.Point(173, 247);
             this.cmbTime.Name = "cmbTime";
-            this.cmbTime.Size = new System.Drawing.Size(198, 25);
+            this.cmbTime.Size = new System.Drawing.Size(226, 29);
             this.cmbTime.TabIndex = 14;
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(151, 141);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpDate.Location = new System.Drawing.Point(173, 188);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(198, 25);
+            this.dtpDate.Size = new System.Drawing.Size(226, 29);
             this.dtpDate.TabIndex = 12;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(46, 188);
+            this.label8.Location = new System.Drawing.Point(53, 251);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 19);
+            this.label8.Size = new System.Drawing.Size(61, 23);
             this.label8.TabIndex = 7;
             this.label8.Text = "Time : ";
             // 
@@ -542,9 +557,9 @@ namespace ChurchSched
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(46, 147);
+            this.label7.Location = new System.Drawing.Point(53, 196);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 19);
+            this.label7.Size = new System.Drawing.Size(60, 23);
             this.label7.TabIndex = 6;
             this.label7.Text = "Date : ";
             // 
@@ -552,9 +567,9 @@ namespace ChurchSched
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(46, 100);
+            this.label3.Location = new System.Drawing.Point(53, 133);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 19);
+            this.label3.Size = new System.Drawing.Size(124, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "Type of Event :";
             // 
@@ -562,19 +577,19 @@ namespace ChurchSched
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(46, 54);
+            this.label2.Location = new System.Drawing.Point(53, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 19);
+            this.label2.Size = new System.Drawing.Size(94, 23);
             this.label2.TabIndex = 1;
-            this.label2.Text = "ID - Name :";
+            this.label2.Text = "Requestee:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(596, 34);
+            this.label1.Location = new System.Drawing.Point(681, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 15);
+            this.label1.Size = new System.Drawing.Size(141, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "List of Reservation";
             // 
@@ -586,11 +601,10 @@ namespace ChurchSched
             this.tbAllReserve.Controls.Add(this.pictureBox2);
             this.tbAllReserve.Controls.Add(this.label16);
             this.tbAllReserve.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.tbAllReserve.Location = new System.Drawing.Point(4, 24);
-            this.tbAllReserve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbAllReserve.Location = new System.Drawing.Point(4, 29);
             this.tbAllReserve.Name = "tbAllReserve";
-            this.tbAllReserve.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbAllReserve.Size = new System.Drawing.Size(950, 609);
+            this.tbAllReserve.Padding = new System.Windows.Forms.Padding(3);
+            this.tbAllReserve.Size = new System.Drawing.Size(1087, 866);
             this.tbAllReserve.TabIndex = 3;
             this.tbAllReserve.Text = "UPCOMING EVENTS";
             this.tbAllReserve.UseVisualStyleBackColor = true;
@@ -598,37 +612,38 @@ namespace ChurchSched
             // dgvAllSched
             // 
             this.dgvAllSched.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllSched.Location = new System.Drawing.Point(8, 41);
+            this.dgvAllSched.Location = new System.Drawing.Point(9, 55);
+            this.dgvAllSched.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvAllSched.Name = "dgvAllSched";
             this.dgvAllSched.RowHeadersWidth = 51;
             this.dgvAllSched.RowTemplate.Height = 25;
-            this.dgvAllSched.Size = new System.Drawing.Size(934, 450);
+            this.dgvAllSched.Size = new System.Drawing.Size(1067, 600);
             this.dgvAllSched.TabIndex = 58;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(468, 545);
+            this.label5.Location = new System.Drawing.Point(535, 727);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 17);
+            this.label5.Size = new System.Drawing.Size(75, 23);
             this.label5.TabIndex = 57;
             this.label5.Text = "Search : ";
             // 
             // txtSearchAllSched
             // 
-            this.txtSearchAllSched.Location = new System.Drawing.Point(533, 542);
+            this.txtSearchAllSched.Location = new System.Drawing.Point(609, 723);
+            this.txtSearchAllSched.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearchAllSched.Name = "txtSearchAllSched";
-            this.txtSearchAllSched.Size = new System.Drawing.Size(316, 25);
+            this.txtSearchAllSched.Size = new System.Drawing.Size(361, 29);
             this.txtSearchAllSched.TabIndex = 56;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(8, 508);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(9, 677);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(388, 94);
+            this.pictureBox2.Size = new System.Drawing.Size(443, 125);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 41;
             this.pictureBox2.TabStop = false;
@@ -637,9 +652,9 @@ namespace ChurchSched
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(372, 23);
+            this.label16.Location = new System.Drawing.Point(425, 31);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(165, 15);
+            this.label16.Size = new System.Drawing.Size(206, 20);
             this.label16.TabIndex = 21;
             this.label16.Text = "Upcoming Scheduled Events";
             // 
@@ -651,10 +666,11 @@ namespace ChurchSched
             this.tbPastEvents.Controls.Add(this.pictureBox3);
             this.tbPastEvents.Controls.Add(this.dataGridView1);
             this.tbPastEvents.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tbPastEvents.Location = new System.Drawing.Point(4, 24);
+            this.tbPastEvents.Location = new System.Drawing.Point(4, 29);
+            this.tbPastEvents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbPastEvents.Name = "tbPastEvents";
-            this.tbPastEvents.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPastEvents.Size = new System.Drawing.Size(950, 609);
+            this.tbPastEvents.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbPastEvents.Size = new System.Drawing.Size(1087, 866);
             this.tbPastEvents.TabIndex = 4;
             this.tbPastEvents.Text = "PAST EVENTS";
             this.tbPastEvents.UseVisualStyleBackColor = true;
@@ -663,35 +679,35 @@ namespace ChurchSched
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(396, 23);
+            this.label10.Location = new System.Drawing.Point(453, 31);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(131, 15);
+            this.label10.Size = new System.Drawing.Size(164, 20);
             this.label10.TabIndex = 63;
             this.label10.Text = "Past Scheduled Events";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(468, 545);
+            this.label6.Location = new System.Drawing.Point(535, 727);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 17);
+            this.label6.Size = new System.Drawing.Size(75, 23);
             this.label6.TabIndex = 62;
             this.label6.Text = "Search : ";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(533, 542);
+            this.textBox1.Location = new System.Drawing.Point(609, 723);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(316, 25);
+            this.textBox1.Size = new System.Drawing.Size(361, 29);
             this.textBox1.TabIndex = 61;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(8, 508);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(9, 677);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(388, 94);
+            this.pictureBox3.Size = new System.Drawing.Size(443, 125);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 60;
             this.pictureBox3.TabStop = false;
@@ -699,40 +715,20 @@ namespace ChurchSched
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 41);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 55);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(934, 450);
+            this.dataGridView1.Size = new System.Drawing.Size(1067, 600);
             this.dataGridView1.TabIndex = 59;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(46, 22);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(163, 15);
-            this.label12.TabIndex = 60;
-            this.label12.Text = "Fill out the  field for event reservation";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(46, 22);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(196, 15);
-            this.label13.TabIndex = 61;
-            this.label13.Text = "Fill out the  field with Requestee\'s Infomation";
             // 
             // frmLobbyPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 637);
+            this.ClientSize = new System.Drawing.Size(1095, 899);
             this.Controls.Add(this.tbcon1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmLobbyPanel";
             this.Text = "Lobby Panel";
             this.Load += new System.EventHandler(this.frmLobbyPanel_Load);
@@ -812,9 +808,10 @@ namespace ChurchSched
         private System.Windows.Forms.Label lblAttendee2;
         private System.Windows.Forms.Label lblAttendee1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ListBox listBoxRequirements;
         private System.Windows.Forms.TextBox txtIDNameReserve;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckedListBox checkedListBoxRequirements;
+        private System.Windows.Forms.Label label14;
     }
 }
