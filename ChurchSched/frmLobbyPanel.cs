@@ -154,11 +154,13 @@ namespace ChurchSched
         }
         private void dgvRequestees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            tbcon1.TabPages.Remove(tbReservation);
             tbcon1.TabPages.Remove(tbAllReserve);
             tbcon1.TabPages.Remove(tbPastEvents);
             tbcon1.TabPages.Add(tbReservation);
             tbcon1.TabPages.Add(tbAllReserve);
             tbcon1.TabPages.Add(tbPastEvents);
+           
         }
         private void textSearchRequestee_TextChanged(object sender, EventArgs e)
         {
