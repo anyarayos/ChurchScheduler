@@ -210,15 +210,19 @@ namespace ChurchSched
             Object[] timeRange = timeIntervals.Cast<object>().ToArray();
             combobox.Items.AddRange(timeRange);
         }
-
+        int state = 0;//Gagamitin to sa submit kunyari state 1, gamitin mo yung query related sa wedding
         private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)//Hide/Show Attendees according to event
         {
-            string[] weddingReqs = {"Marriage License","Baptismal certificate (Groom)"
-            , "Baptismal certificate (Bride)","Confirmation certificate (Groom)","Confirmation certificate (Bride)",
-            "Birth certificate (Groom)", "Birth certificate (Bride)", "CENOMAR (Groom)", "CENOMAR (Bride)","Marriage preparation Seminar",
-            "Canonical interview","Marriage Banns","Confession","Sponsors (At least 1)"};
+            string[] weddingReqs = {"Marriage License",
+                "Baptismal certificate (Groom)","Baptismal certificate (Bride)",
+                "Confirmation certificate (Groom)","Confirmation certificate (Bride)",
+                "Birth certificate (Groom)", "Birth certificate (Bride)",
+                "CENOMAR (Groom)", "CENOMAR (Bride)",
+                "Marriage preparation Seminar",
+                "Canonical interview","Marriage Banns",
+                "Confession"};
             string[] baptismReqs = {"Birth certificate (Candidate)", "Marriage certificate (Parents)" };
-            string[] confirmationReqs = { "Baptismal certificate","Seminar Attendance","Pair of Witnesses"};
+            string[] confirmationReqs = { "Baptismal certificate","Seminar Attendance"};
             if (cmbEvents.SelectedItem.ToString()=="Wedding")
             {
                 lblAttendee1.Text = "Groom:";
@@ -227,7 +231,7 @@ namespace ChurchSched
                 txtAttendee2.Visible = true;
                 checkedListBoxRequirements.Items.Clear();
                 checkedListBoxRequirements.Items.AddRange(weddingReqs);
-               
+                state = 1;
                 //Change dgv
             }
             else if(cmbEvents.SelectedItem.ToString() == "Baptism")
@@ -237,6 +241,7 @@ namespace ChurchSched
                 txtAttendee2.Visible = false;
                 checkedListBoxRequirements.Items.Clear();
                 checkedListBoxRequirements.Items.AddRange(baptismReqs);
+                state = 2;
                 //Change dgv
             }
             else if (cmbEvents.SelectedItem.ToString() == "Confirmation")
@@ -246,6 +251,7 @@ namespace ChurchSched
                 txtAttendee2.Visible = false;
                 checkedListBoxRequirements.Items.Clear();
                 checkedListBoxRequirements.Items.AddRange(confirmationReqs);
+                state = 3;
                 //Change dgv
             }
             else
@@ -254,30 +260,83 @@ namespace ChurchSched
                 lblAttendee2.Visible = false;
                 txtAttendee2.Visible = false;
                 checkedListBoxRequirements.Items.Clear();
+                state = 4;
                 //Change dgv
             }
         }
-
-        private void checkedListBoxRequirements_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (e.NewValue == CheckState.Checked)
-            {
-                if (e.Index==13)
-                {
-                    MessageBox.Show("Check Box is Checked!");
-                }
-                   
-            }
-        }
-
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
-            //Getting everything that is checked in the ListBox
-           // foreach (int indexChecked in checkedListBoxRequirements.CheckedIndices)
-            //{
-                // The indexChecked variable contains the index of the item.
-               // MessageBox.Show("Index: " + indexChecked.ToString() + ", is checked. Checked state is:" + checkedListBoxRequirements.GetItemCheckState(indexChecked).ToString() + ".");
-            //}
+            //Get all the requirements that were checked
+            List<string> selectedRequirements= new List<string>();
+            foreach (string items in checkedListBoxRequirements.CheckedItems)
+            {
+                selectedRequirements.Add(items);
+            }
+            //Check which requirement is fulfilled
+            //ito ibabato mong variables sa query
+            bool marriageLicense = false, baptismalCertGroom = false, baptismalCertBride = false,
+                confirmationCertGroom = false, confirmationCertBride = false, birthCertGroom = false, birthCertBride = false,
+                cenomarGroom = false, cenomarBride = false, marrySeminar = false, canonInterview = false, marriageBanns = false, confession = false,
+                birthCertCandidate = false, marryCert = false, baptismalCert = false, seminarAttendace = false;
+            foreach (string requirement in selectedRequirements)
+            {
+                switch (requirement)
+                {
+                    case "Marriage License":
+                        marriageLicense = true;
+                        break;
+                    case "Baptismal certificate (Groom)":
+                        baptismalCertGroom = true;
+                        break;
+                    case "Baptismal certificate (Bride)":
+                        baptismalCertBride = true;
+                        break;
+                    case "Confirmation certificate (Groom)":
+                        confirmationCertGroom = true;
+                        break;
+                    case "Confirmation certificate (Bride)":
+                        confirmationCertBride = true;
+                        break;
+                    case "Birth certificate (Groom)":
+                        birthCertGroom = true;
+                        break;
+                    case "Birth certificate (Bride)":
+                        birthCertBride = true;
+                        break;
+                    case "CENOMAR (Groom)":
+                        cenomarGroom = true;
+                        break;
+                    case "CENOMAR (Bride)":
+                        cenomarBride = true;
+                        break;
+                    case "Marriage preparation Seminar":
+                        marrySeminar = true;
+                        break;
+                    case "Canonical interview":
+                        canonInterview = true;
+                        break;
+                    case "Marriage Banns":
+                        marriageBanns = true;
+                        break;
+                    case "Confession":
+                        confession = true;
+                        break;
+                    case "Birth certificate (Candidate)":
+                        birthCertCandidate = true;
+                        break;
+                    case "Marriage certificate (Parents)":
+                        marryCert = true;
+                        break;
+                    case "Baptismal certificate":
+                        baptismalCert = true;
+                        break;
+                    case "Seminar Attendance":
+                        seminarAttendace = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

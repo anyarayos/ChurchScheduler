@@ -370,7 +370,6 @@ namespace ChurchSched
             this.checkedListBoxRequirements.Name = "checkedListBoxRequirements";
             this.checkedListBoxRequirements.Size = new System.Drawing.Size(343, 172);
             this.checkedListBoxRequirements.TabIndex = 61;
-            this.checkedListBoxRequirements.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxRequirements_ItemCheck);
             // 
             // label12
             // 
