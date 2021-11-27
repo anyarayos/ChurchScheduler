@@ -39,6 +39,33 @@ namespace ChurchSched
             sql_con.Close();
         }
 
+        // RESERVATION PANEL ================================================
+
+        // populate combo box with events
+        private void populateWEvents(ComboBox combobox)
+        {
+            String[] events = { "Wedding", "Baptism", "Confirmation", "Mass" };
+            foreach(string ev in events)
+            {
+                combobox.Items.Add(ev);
+            }
+        }
+
+        // populate combo box with time
+        private void populateWTime(ComboBox combobox)
+        {
+            List<String> timeIntervals = new List<String>();
+            var item = DateTime.Today.AddHours(7);
+            while (item <= DateTime.Today.AddHours(15))
+            {
+                string format = item.ToString("hh:mm tt") + " - " + item.AddMinutes(120).ToString("hh:mm tt");
+                timeIntervals.Add(format);
+                item = item.AddMinutes(60);
+            }
+            Object[] timeRange = timeIntervals.Cast<object>().ToArray();
+            combobox.Items.AddRange(timeRange);
+        }
+
         public frmLobbyPanel()
         {
             InitializeComponent();
@@ -46,8 +73,7 @@ namespace ChurchSched
 
         private void frmLobbyPanel_Load(object sender, EventArgs e)
         {
-            // when LobbyPanel form loads, update the data grid view from the UserInfo table
-            // query to show data ("SELECT * FROM UserInfo")
+            // loads UserInfo into Requestees data grid view.
             SetConnection("Church.db");
             sql_con.Open();
             DB = new SQLiteDataAdapter("SELECT * FROM UserInfo", sql_con);
@@ -59,7 +85,7 @@ namespace ChurchSched
 
             populateWEvents(cmbEvents);//Populates comboboxes wag tanggalin please lng
             populateWTime(cmbTime);
-            cmbEvents.SelectedIndex = 0;//Wag rin mga to 
+            cmbEvents.SelectedIndex = 0;//Wag rin mga to
             cmbTime.SelectedIndex = 0;//
         }
 
@@ -189,27 +215,7 @@ namespace ChurchSched
             //dataGridViewExistingRequestees.DataSource = dt;  
             //con.Close();
         }
-        private void populateWEvents(ComboBox combobox)
-        {
-            String[] events = { "Wedding", "Baptism", "Confirmation", "Mass" };
-            foreach (string ev in events)
-            {
-                combobox.Items.Add(ev);
-            }
-        }
-        private void populateWTime(ComboBox combobox)
-        {
-            List<String> timeIntervals = new List<String>();
-            var item = DateTime.Today.AddHours(7);
-            while (item <= DateTime.Today.AddHours(15))
-            {
-                string format = item.ToString("hh:mm tt") + " - " + item.AddMinutes(120).ToString("hh:mm tt");
-                timeIntervals.Add(format);
-                item = item.AddMinutes(60);
-            }
-            Object[] timeRange = timeIntervals.Cast<object>().ToArray();
-            combobox.Items.AddRange(timeRange);
-        }
+        
         int state = 0;//Gagamitin to sa submit kunyari state 1, gamitin mo yung query related sa wedding
         private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)//Hide/Show Attendees according to event
         {
