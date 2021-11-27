@@ -12,6 +12,9 @@ namespace ChurchSched
 {
     public partial class frmLobbyPanel : Form
     {
+        // variables
+        string userIDAndName = "";
+
         // sql variables and objects
         private SQLiteConnection sql_con;
         private SQLiteCommand sql_cmd;
@@ -151,6 +154,8 @@ namespace ChurchSched
             txtContactNum.Text = selectedRow.Cells[2].Value.ToString();
             txtEmailAdd.Text = selectedRow.Cells[3].Value.ToString();
             txtAddress.Text = selectedRow.Cells[4].Value.ToString();
+
+            userIDAndName = selectedRow.Cells[0].Value.ToString() + selectedRow.Cells[1].Value.ToString();
         }
         private void dgvRequestees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
