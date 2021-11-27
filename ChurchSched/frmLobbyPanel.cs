@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Linq;
 
 namespace ChurchSched
 {
@@ -44,6 +45,11 @@ namespace ChurchSched
         {
             // when LobbyPanel form loads, update the data grid view from the UserInfo table
             // query to show data ("SELECT * FROM UserInfo")
+
+            populateWEvents(cmbEvents);//Populates comboboxes wag tanggalin please lng
+            populateWTime(cmbTime);
+            cmbEvents.SelectedIndex = 0;//Wag rin mga to 
+            cmbTime.SelectedIndex = 0;//
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -148,6 +154,61 @@ namespace ChurchSched
             //adapt.Fill(dt);  
             //dataGridViewExistingRequestees.DataSource = dt;  
             //con.Close();
+        }
+        private void populateWEvents(ComboBox combobox)
+        {
+            String[] events = { "Wedding", "Baptism", "Confirmation", "Mass" };
+            foreach (string ev in events)
+            {
+                combobox.Items.Add(ev);
+            }
+        }
+        private void populateWTime(ComboBox combobox)
+        {
+            List<String> timeIntervals = new List<String>();
+            var item = DateTime.Today.AddHours(7);
+            while (item <= DateTime.Today.AddHours(15))
+            {
+                string format = item.ToString("hh:mm tt") + " - " + item.AddMinutes(120).ToString("hh:mm tt");
+                timeIntervals.Add(format);
+                item = item.AddMinutes(60);
+            }
+            Object[] timeRange = timeIntervals.Cast<object>().ToArray();
+            combobox.Items.AddRange(timeRange);
+        }
+
+        private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)//Hide/Show Attendees according to event
+        {
+
+            if (cmbEvents.SelectedItem.ToString()=="Wedding")
+            {
+                lblAttendee1.Text = "Groom:";
+                lblAttendee2.Text = "Bride:";
+                lblAttendee2.Visible = true;
+                txtAttendee2.Visible = true;
+                //Change dgv
+            }
+            else if(cmbEvents.SelectedItem.ToString() == "Baptism")
+            {
+                lblAttendee1.Text = "Candidate:";
+                lblAttendee2.Visible = false;
+                txtAttendee2.Visible = false;
+                //Change dgv
+            }
+            else if (cmbEvents.SelectedItem.ToString() == "Confirmation")
+            {
+                lblAttendee1.Text = "Confirmand:";
+                lblAttendee2.Visible = false;
+                txtAttendee2.Visible = false;
+                //Change dgv
+            }
+            else
+            {
+                lblAttendee1.Text = "Purpose:";
+                lblAttendee2.Visible = false;
+                txtAttendee2.Visible = false;
+                //Change dgv
+            }
         }
     }
 }

@@ -50,19 +50,23 @@ namespace ChurchSched
             this.label31 = new System.Windows.Forms.Label();
             this.tbcon1 = new System.Windows.Forms.TabControl();
             this.tbReservation = new System.Windows.Forms.TabPage();
+            this.listBoxRequirements = new System.Windows.Forms.ListBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtAttendee2 = new System.Windows.Forms.TextBox();
             this.rdbtnGCash = new System.Windows.Forms.RadioButton();
+            this.txtAttendee1 = new System.Windows.Forms.TextBox();
             this.rdbtn = new System.Windows.Forms.RadioButton();
+            this.lblAttendee2 = new System.Windows.Forms.Label();
             this.rdbtnCash = new System.Windows.Forms.RadioButton();
+            this.lblAttendee1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbEvents = new System.Windows.Forms.ComboBox();
             this.cmbName = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnEditReserve = new System.Windows.Forms.Button();
             this.btnConfirmReserve = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvList = new System.Windows.Forms.DataGridView();
             this.cmbTime = new System.Windows.Forms.ComboBox();
-            this.grpbxAdditional = new System.Windows.Forms.GroupBox();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -204,10 +208,11 @@ namespace ChurchSched
             // 
             // pictureBox4
             // 
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(53, 563);
+            this.pictureBox4.Location = new System.Drawing.Point(38, 620);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(345, 156);
+            this.pictureBox4.Size = new System.Drawing.Size(384, 104);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 41;
             this.pictureBox4.TabStop = false;
@@ -300,19 +305,23 @@ namespace ChurchSched
             // 
             // tbReservation
             // 
+            this.tbReservation.Controls.Add(this.listBoxRequirements);
+            this.tbReservation.Controls.Add(this.pictureBox1);
+            this.tbReservation.Controls.Add(this.txtAttendee2);
             this.tbReservation.Controls.Add(this.rdbtnGCash);
+            this.tbReservation.Controls.Add(this.txtAttendee1);
             this.tbReservation.Controls.Add(this.rdbtn);
+            this.tbReservation.Controls.Add(this.lblAttendee2);
             this.tbReservation.Controls.Add(this.rdbtnCash);
+            this.tbReservation.Controls.Add(this.lblAttendee1);
             this.tbReservation.Controls.Add(this.label11);
-            this.tbReservation.Controls.Add(this.comboBox2);
+            this.tbReservation.Controls.Add(this.cmbEvents);
             this.tbReservation.Controls.Add(this.cmbName);
             this.tbReservation.Controls.Add(this.btnCancel);
             this.tbReservation.Controls.Add(this.btnEditReserve);
             this.tbReservation.Controls.Add(this.btnConfirmReserve);
-            this.tbReservation.Controls.Add(this.pictureBox1);
             this.tbReservation.Controls.Add(this.dgvList);
             this.tbReservation.Controls.Add(this.cmbTime);
-            this.tbReservation.Controls.Add(this.grpbxAdditional);
             this.tbReservation.Controls.Add(this.dtpDate);
             this.tbReservation.Controls.Add(this.label8);
             this.tbReservation.Controls.Add(this.label7);
@@ -328,6 +337,32 @@ namespace ChurchSched
             this.tbReservation.Text = "RESERVATION";
             this.tbReservation.UseVisualStyleBackColor = true;
             // 
+            // listBoxRequirements
+            // 
+            this.listBoxRequirements.FormattingEnabled = true;
+            this.listBoxRequirements.ItemHeight = 21;
+            this.listBoxRequirements.Location = new System.Drawing.Point(53, 513);
+            this.listBoxRequirements.Name = "listBoxRequirements";
+            this.listBoxRequirements.Size = new System.Drawing.Size(353, 172);
+            this.listBoxRequirements.TabIndex = 58;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(527, 683);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(443, 125);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 57;
+            this.pictureBox1.TabStop = false;
+            // 
+            // txtAttendee2
+            // 
+            this.txtAttendee2.Location = new System.Drawing.Point(173, 458);
+            this.txtAttendee2.Name = "txtAttendee2";
+            this.txtAttendee2.Size = new System.Drawing.Size(224, 29);
+            this.txtAttendee2.TabIndex = 3;
+            // 
             // rdbtnGCash
             // 
             this.rdbtnGCash.AutoSize = true;
@@ -339,6 +374,13 @@ namespace ChurchSched
             this.rdbtnGCash.TabStop = true;
             this.rdbtnGCash.Text = "G-Cash";
             this.rdbtnGCash.UseVisualStyleBackColor = true;
+            // 
+            // txtAttendee1
+            // 
+            this.txtAttendee1.Location = new System.Drawing.Point(176, 400);
+            this.txtAttendee1.Name = "txtAttendee1";
+            this.txtAttendee1.Size = new System.Drawing.Size(223, 29);
+            this.txtAttendee1.TabIndex = 2;
             // 
             // rdbtn
             // 
@@ -352,6 +394,15 @@ namespace ChurchSched
             this.rdbtn.Text = "Down Payment";
             this.rdbtn.UseVisualStyleBackColor = true;
             // 
+            // lblAttendee2
+            // 
+            this.lblAttendee2.AutoSize = true;
+            this.lblAttendee2.Location = new System.Drawing.Point(53, 458);
+            this.lblAttendee2.Name = "lblAttendee2";
+            this.lblAttendee2.Size = new System.Drawing.Size(107, 23);
+            this.lblAttendee2.TabIndex = 1;
+            this.lblAttendee2.Text = "lblAttendee2";
+            // 
             // rdbtnCash
             // 
             this.rdbtnCash.AutoSize = true;
@@ -364,6 +415,15 @@ namespace ChurchSched
             this.rdbtnCash.Text = "Cash";
             this.rdbtnCash.UseVisualStyleBackColor = true;
             // 
+            // lblAttendee1
+            // 
+            this.lblAttendee1.AutoSize = true;
+            this.lblAttendee1.Location = new System.Drawing.Point(53, 406);
+            this.lblAttendee1.Name = "lblAttendee1";
+            this.lblAttendee1.Size = new System.Drawing.Size(105, 23);
+            this.lblAttendee1.TabIndex = 0;
+            this.lblAttendee1.Text = "lblAttendee1";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -374,14 +434,15 @@ namespace ChurchSched
             this.label11.TabIndex = 53;
             this.label11.Text = "Mode of Payment";
             // 
-            // comboBox2
+            // cmbEvents
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(174, 129);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(223, 29);
-            this.comboBox2.TabIndex = 52;
+            this.cmbEvents.FormattingEnabled = true;
+            this.cmbEvents.Location = new System.Drawing.Point(174, 129);
+            this.cmbEvents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbEvents.Name = "cmbEvents";
+            this.cmbEvents.Size = new System.Drawing.Size(223, 29);
+            this.cmbEvents.TabIndex = 52;
+            this.cmbEvents.SelectedIndexChanged += new System.EventHandler(this.cmbEvents_SelectedIndexChanged);
             // 
             // cmbName
             // 
@@ -420,16 +481,6 @@ namespace ChurchSched
             this.btnConfirmReserve.Text = "Confirm Reservation";
             this.btnConfirmReserve.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(465, 683);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(562, 104);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
-            // 
             // dgvList
             // 
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -443,25 +494,16 @@ namespace ChurchSched
             // cmbTime
             // 
             this.cmbTime.FormattingEnabled = true;
-            this.cmbTime.Location = new System.Drawing.Point(149, 247);
+            this.cmbTime.Location = new System.Drawing.Point(173, 247);
             this.cmbTime.Name = "cmbTime";
-            this.cmbTime.Size = new System.Drawing.Size(250, 29);
+            this.cmbTime.Size = new System.Drawing.Size(226, 29);
             this.cmbTime.TabIndex = 14;
-            // 
-            // grpbxAdditional
-            // 
-            this.grpbxAdditional.Location = new System.Drawing.Point(53, 373);
-            this.grpbxAdditional.Name = "grpbxAdditional";
-            this.grpbxAdditional.Size = new System.Drawing.Size(345, 309);
-            this.grpbxAdditional.TabIndex = 19;
-            this.grpbxAdditional.TabStop = false;
-            this.grpbxAdditional.Text = "Additional";
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(149, 188);
+            this.dtpDate.Location = new System.Drawing.Point(173, 188);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(250, 29);
+            this.dtpDate.Size = new System.Drawing.Size(226, 29);
             this.dtpDate.TabIndex = 12;
             // 
             // label8
@@ -694,15 +736,13 @@ namespace ChurchSched
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TabControl tbcon1;
         private System.Windows.Forms.TabPage tbReservation;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbEvents;
         private System.Windows.Forms.ComboBox cmbName;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnEditReserve;
         private System.Windows.Forms.Button btnConfirmReserve;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dgvList;
         private System.Windows.Forms.ComboBox cmbTime;
-        private System.Windows.Forms.GroupBox grpbxAdditional;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -727,5 +767,11 @@ namespace ChurchSched
         private System.Windows.Forms.RadioButton rdbtn;
         private System.Windows.Forms.RadioButton rdbtnCash;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtAttendee2;
+        private System.Windows.Forms.TextBox txtAttendee1;
+        private System.Windows.Forms.Label lblAttendee2;
+        private System.Windows.Forms.Label lblAttendee1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ListBox listBoxRequirements;
     }
 }

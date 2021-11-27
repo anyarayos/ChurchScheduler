@@ -86,7 +86,6 @@ C:\Users\USER\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3
 C:\Users\USER\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.pdb
 C:\Users\USER\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.genruntimeconfig.cache
 C:\Users\63927\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.AssemblyReference.cache
-C:\Users\63927\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmLogIn.resources
 C:\Users\63927\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.ForgotPassSendCode.resources
 C:\Users\63927\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmLobbyPanel.resources
 C:\Users\63927\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.Properties.Resources.resources
@@ -124,3 +123,5 @@ C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp
 C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmAdminLogin.resources
 C:\Users\USER\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmCancelationRemark.resources
 C:\Users\USER\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmAdminLogin.resources
+C:\Users\63927\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmCancelationRemark.resources
+C:\Users\63927\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmAdminLogin.resources
