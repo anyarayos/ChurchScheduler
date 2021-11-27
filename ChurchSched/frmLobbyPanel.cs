@@ -45,6 +45,14 @@ namespace ChurchSched
         {
             // when LobbyPanel form loads, update the data grid view from the UserInfo table
             // query to show data ("SELECT * FROM UserInfo")
+            SetConnection("Church.db");
+            sql_con.Open();
+            DB = new SQLiteDataAdapter("SELECT * FROM UserInfo", sql_con);
+            DB.Fill(DT);
+            dgvRequestees.DataSource = DT;
+            sql_con.Close();
+
+            tbcon1.TabPages.Remove(tbReservation);
 
             populateWEvents(cmbEvents);//Populates comboboxes wag tanggalin please lng
             populateWTime(cmbTime);
@@ -139,12 +147,19 @@ namespace ChurchSched
         {
             int index = e.RowIndex;
             selectedRow = dgvRequestees.Rows[index];
-            //txtRequestName.Text = selectedRow.Cells[].Value.ToString();
-            //txtContactNum = selectedRow.Cells[].Value.ToString();
-            //txtEmailAdd = selectedRow.Cells[].Value.ToString();
-            //txtAddress = selectedRow.Cells[].Value.ToString();
+            txtRequestName.Text = selectedRow.Cells[1].Value.ToString();
+            txtContactNum.Text = selectedRow.Cells[2].Value.ToString();
+            txtEmailAdd.Text = selectedRow.Cells[3].Value.ToString();
+            txtAddress.Text = selectedRow.Cells[4].Value.ToString();
         }
-
+        private void dgvRequestees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            tbcon1.TabPages.Remove(tbAllReserve);
+            tbcon1.TabPages.Remove(tbPastEvents);
+            tbcon1.TabPages.Add(tbReservation);
+            tbcon1.TabPages.Add(tbAllReserve);
+            tbcon1.TabPages.Add(tbPastEvents);
+        }
         private void textSearchRequestee_TextChanged(object sender, EventArgs e)
         {
             //con = new SqlConnection(cs);  

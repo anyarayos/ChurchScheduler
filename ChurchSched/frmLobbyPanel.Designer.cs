@@ -249,6 +249,7 @@ namespace ChurchSched
             this.dgvRequestees.Size = new System.Drawing.Size(562, 609);
             this.dgvRequestees.TabIndex = 39;
             this.dgvRequestees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRequestees_CellClick);
+            this.dgvRequestees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRequestees_CellDoubleClick);
             // 
             // label28
             // 
