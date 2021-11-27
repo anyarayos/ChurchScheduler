@@ -48,7 +48,16 @@ namespace ChurchSched
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Are you sure that you would cancel this reservation???");
+            DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                frmCancelationRemark cncl = new frmCancelationRemark();
+                cncl.ShowDialog();
+            }
+            else
+            {
+                 //  
+            }
         }
 
         private void btnConfirmRequestee_Click(object sender, EventArgs e)
