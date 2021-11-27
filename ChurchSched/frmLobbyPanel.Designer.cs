@@ -51,8 +51,8 @@ namespace ChurchSched
             this.label31 = new System.Windows.Forms.Label();
             this.tbcon1 = new System.Windows.Forms.TabControl();
             this.tbReservation = new System.Windows.Forms.TabPage();
+            this.listBoxRequirements = new System.Windows.Forms.ListBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.checkedListBoxRequirements = new System.Windows.Forms.CheckedListBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtIDNameReserve = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -320,8 +320,8 @@ namespace ChurchSched
             // 
             // tbReservation
             // 
+            this.tbReservation.Controls.Add(this.listBoxRequirements);
             this.tbReservation.Controls.Add(this.label14);
-            this.tbReservation.Controls.Add(this.checkedListBoxRequirements);
             this.tbReservation.Controls.Add(this.label12);
             this.tbReservation.Controls.Add(this.txtIDNameReserve);
             this.tbReservation.Controls.Add(this.pictureBox1);
@@ -354,6 +354,15 @@ namespace ChurchSched
             this.tbReservation.Text = "RESERVATION";
             this.tbReservation.UseVisualStyleBackColor = true;
             // 
+            // listBoxRequirements
+            // 
+            this.listBoxRequirements.FormattingEnabled = true;
+            this.listBoxRequirements.ItemHeight = 21;
+            this.listBoxRequirements.Location = new System.Drawing.Point(53, 550);
+            this.listBoxRequirements.Name = "listBoxRequirements";
+            this.listBoxRequirements.Size = new System.Drawing.Size(353, 193);
+            this.listBoxRequirements.TabIndex = 63;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -362,14 +371,6 @@ namespace ChurchSched
             this.label14.Size = new System.Drawing.Size(120, 23);
             this.label14.TabIndex = 62;
             this.label14.Text = "Requirements:";
-            // 
-            // checkedListBoxRequirements
-            // 
-            this.checkedListBoxRequirements.FormattingEnabled = true;
-            this.checkedListBoxRequirements.Location = new System.Drawing.Point(57, 551);
-            this.checkedListBoxRequirements.Name = "checkedListBoxRequirements";
-            this.checkedListBoxRequirements.Size = new System.Drawing.Size(343, 172);
-            this.checkedListBoxRequirements.TabIndex = 61;
             // 
             // label12
             // 
@@ -810,7 +811,7 @@ namespace ChurchSched
         private System.Windows.Forms.TextBox txtIDNameReserve;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.CheckedListBox checkedListBoxRequirements;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ListBox listBoxRequirements;
     }
 }

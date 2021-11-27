@@ -235,9 +235,9 @@ namespace ChurchSched
                 lblAttendee2.Text = "Bride:";
                 lblAttendee2.Visible = true;
                 txtAttendee2.Visible = true;
-                checkedListBoxRequirements.Items.Clear();
-                checkedListBoxRequirements.Items.AddRange(weddingReqs);
                 state = 1;
+                listBoxRequirements.Items.Clear();
+                listBoxRequirements.Items.AddRange(weddingReqs);
                 //Change dgv
             }
             else if(cmbEvents.SelectedItem.ToString() == "Baptism")
@@ -245,9 +245,9 @@ namespace ChurchSched
                 lblAttendee1.Text = "Candidate:";
                 lblAttendee2.Visible = false;
                 txtAttendee2.Visible = false;
-                checkedListBoxRequirements.Items.Clear();
-                checkedListBoxRequirements.Items.AddRange(baptismReqs);
                 state = 2;
+                listBoxRequirements.Items.Clear();
+                listBoxRequirements.Items.AddRange(baptismReqs);
                 //Change dgv
             }
             else if (cmbEvents.SelectedItem.ToString() == "Confirmation")
@@ -255,9 +255,9 @@ namespace ChurchSched
                 lblAttendee1.Text = "Confirmand:";
                 lblAttendee2.Visible = false;
                 txtAttendee2.Visible = false;
-                checkedListBoxRequirements.Items.Clear();
-                checkedListBoxRequirements.Items.AddRange(confirmationReqs);
                 state = 3;
+                listBoxRequirements.Items.Clear();
+                listBoxRequirements.Items.AddRange(confirmationReqs);
                 //Change dgv
             }
             else
@@ -265,84 +265,13 @@ namespace ChurchSched
                 lblAttendee1.Text = "Purpose:";
                 lblAttendee2.Visible = false;
                 txtAttendee2.Visible = false;
-                checkedListBoxRequirements.Items.Clear();
                 state = 4;
+                listBoxRequirements.Items.Clear();
                 //Change dgv
             }
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
-            //Get all the requirements that were checked
-            List<string> selectedRequirements= new List<string>();
-            foreach (string items in checkedListBoxRequirements.CheckedItems)
-            {
-                selectedRequirements.Add(items);
-            }
-            //Check which requirement is fulfilled
-            //ito ibabato mong variables sa query
-            bool marriageLicense = false, baptismalCertGroom = false, baptismalCertBride = false,
-                confirmationCertGroom = false, confirmationCertBride = false, birthCertGroom = false, birthCertBride = false,
-                cenomarGroom = false, cenomarBride = false, marrySeminar = false, canonInterview = false, marriageBanns = false, confession = false,
-                birthCertCandidate = false, marryCert = false, baptismalCert = false, seminarAttendace = false;
-            foreach (string requirement in selectedRequirements)
-            {
-                switch (requirement)
-                {
-                    case "Marriage License":
-                        marriageLicense = true;
-                        break;
-                    case "Baptismal certificate (Groom)":
-                        baptismalCertGroom = true;
-                        break;
-                    case "Baptismal certificate (Bride)":
-                        baptismalCertBride = true;
-                        break;
-                    case "Confirmation certificate (Groom)":
-                        confirmationCertGroom = true;
-                        break;
-                    case "Confirmation certificate (Bride)":
-                        confirmationCertBride = true;
-                        break;
-                    case "Birth certificate (Groom)":
-                        birthCertGroom = true;
-                        break;
-                    case "Birth certificate (Bride)":
-                        birthCertBride = true;
-                        break;
-                    case "CENOMAR (Groom)":
-                        cenomarGroom = true;
-                        break;
-                    case "CENOMAR (Bride)":
-                        cenomarBride = true;
-                        break;
-                    case "Marriage preparation Seminar":
-                        marrySeminar = true;
-                        break;
-                    case "Canonical interview":
-                        canonInterview = true;
-                        break;
-                    case "Marriage Banns":
-                        marriageBanns = true;
-                        break;
-                    case "Confession":
-                        confession = true;
-                        break;
-                    case "Birth certificate (Candidate)":
-                        birthCertCandidate = true;
-                        break;
-                    case "Marriage certificate (Parents)":
-                        marryCert = true;
-                        break;
-                    case "Baptismal certificate":
-                        baptismalCert = true;
-                        break;
-                    case "Seminar Attendance":
-                        seminarAttendace = true;
-                        break;
-                    default:
-                        break;
-                }
-            }
         }
     }
 }
