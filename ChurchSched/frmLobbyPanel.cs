@@ -77,7 +77,8 @@ namespace ChurchSched
         }
 
         private void ClearRequesteeTextBoxes()
-								{
+								// clear textboxes of requestee panel
+        {
             requesteeSelectedRowID = Convert.ToInt32(null);
             txtRequestName.Clear();
             txtContactNum.Clear();
