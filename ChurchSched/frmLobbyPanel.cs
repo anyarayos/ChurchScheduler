@@ -12,9 +12,7 @@ namespace ChurchSched
 {
     public partial class frmLobbyPanel : Form
     {
-        // variables
-        string userIDAndName = "";
-        
+        // SQLITE VARIABLES AND METHODS ================================================
 
         // sql variables and objects
         private SQLiteConnection sql_con;
@@ -32,7 +30,6 @@ namespace ChurchSched
         // execute query method
         private void ExecuteQuery(string txtQuery)
         {
-            SetConnection("Church.db");
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
             sql_cmd.CommandText = txtQuery;
@@ -40,7 +37,93 @@ namespace ChurchSched
             sql_con.Close();
         }
 
-        // RESERVATION PANEL ================================================
+        // REQUESTEE PANEL VARIABLES ================================================
+        DataGridViewRow requesteeSelectedRow;
+        int requesteeSelectedRowID;
+        string userIDAndName;
+
+        // REQUESTEE PANEL METHODS ================================================
+
+        private void dgvRequesteeLoadUserInfo()
+        // load UserInfo into requestee data grid view
+        {
+            DB = new SQLiteDataAdapter("SELECT * FROM UserInfo", sql_con);
+            DB.Fill(DT);
+            dgvRequestees.DataSource = DT;
+        }
+
+        private bool checkIfUserExists(string email, string contact)
+        // check if the user already exists
+        {
+            // sql connection with Church.db
+            SetConnection("Church.db");
+
+            // data table will have a row if query returns a record
+            DB = new SQLiteDataAdapter("SELECT id FROM UserInfo WHERE  email='" + email + "' OR contact='" + contact + "'", sql_con);
+            DT = new DataTable();
+            DB.Fill(DT);
+            
+            // if data table returns a record, user exists
+            return DT.Rows.Count == 1;
+        }
+
+        private void insertNewUserInfo(string name, string contact, string email, string address)
+								// insert new user info
+        {
+            string SQLiteQuery = "INSERT INTO UserInfo (name, contact, email, address) VALUES ('" + name + "', '" + contact + "', '" + email + "', '" + address + "');";
+            ExecuteQuery(SQLiteQuery);
+        }
+
+        private void updateUserInfo(int id, string name, string email, string contact, string address)
+        // update user info
+        {
+            string SQLiteQuery = "UPDATE UserInfo SET name='" + name + "', contact='" + contact + "', email='" + email + "', address='" + address + "' WHERE Id='" + id + "'";
+            ExecuteQuery(SQLiteQuery);
+        }
+
+        // REQUESTEE PANEL EVENTS ================================================
+
+        // confirm requestee button
+        private void btnConfirmRequestee_Click(object sender, EventArgs e)
+        {
+            // check if textboxes are filled
+            bool textBoxesFilled = !(txtRequestName.Text == "" || txtContactNum.Text == "" || txtEmailAdd.Text == "" || txtAddress.Text == "");
+
+            // insert new user info if text boxes are filled and no user duplication
+            if (textBoxesFilled && !checkIfUserExists(txtEmailAdd.Text, txtContactNum.Text))
+            {
+                // insert new user info
+                insertNewUserInfo(txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
+                // refresh requestee data grid view
+                dgvRequesteeLoadUserInfo();
+
+                MessageBox.Show("New requestee added.");
+            }
+            else if (textBoxesFilled && checkIfUserExists(txtEmailAdd.Text, txtContactNum.Text))
+            {
+                MessageBox.Show("Requestee already exists.");
+            }
+            else
+            {
+                MessageBox.Show("Incomplete submission, complete and try again.");
+            }
+        }
+
+        // edit requestee button
+        private void btnEditrequestee_Click(object sender, EventArgs e)
+        {
+            if (requesteeSelectedRowID > 0)
+            {
+                // update user info
+                updateUserInfo(requesteeSelectedRowID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
+                // refresh requestee data grid view
+                dgvRequesteeLoadUserInfo();
+
+                MessageBox.Show("User info successfully updated.");
+            }
+        }
+
+        // RESERVATION PANEL METHODS ================================================
 
         // populate combo box with events
         private void populateWEvents(ComboBox combobox)
@@ -67,6 +150,8 @@ namespace ChurchSched
             combobox.Items.AddRange(timeRange);
         }
 
+        // FORM METHODS ================================================
+
         public frmLobbyPanel()
         {
             InitializeComponent();
@@ -74,21 +159,25 @@ namespace ChurchSched
 
         private void frmLobbyPanel_Load(object sender, EventArgs e)
         {
-            // loads UserInfo into Requestees data grid view.
+            // establish connection to church database
             SetConnection("Church.db");
-            sql_con.Open();
-            DB = new SQLiteDataAdapter("SELECT * FROM UserInfo", sql_con);
-            DB.Fill(DT);
-            dgvRequestees.DataSource = DT;
-            sql_con.Close();
 
+            // REQUESTEE PANEL ================
+            // load UserInfo into requestee data grid view
+            dgvRequesteeLoadUserInfo();
+
+            // RESERVATION PANEL ================
             tbcon1.TabPages.Remove(tbReservation);
-
             populateWEvents(cmbEvents);//Populates comboboxes wag tanggalin please lng
             populateWTime(cmbTime);
             cmbEvents.SelectedIndex = 0;//Wag rin mga to
             cmbTime.SelectedIndex = 0;//
         }
+
+        // MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY ================================================
+        // MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY ================================================
+        // MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY ================================================
+        // MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY ================================================
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -104,91 +193,6 @@ namespace ChurchSched
             }
         }
 
-        private void btnConfirmRequestee_Click(object sender, EventArgs e)
-        {
-            //if(all fields !empty)
-            //	if(requestee !exists) //get username & email address then compare it
-            //		//get the inputted values and store in database
-            //	else
-            //		print requestee already exists
-            //else
-            //print there are incomplete fields in your submission.
-            //empty out the fields
-
-            // sql connection with Church.db
-             
-            //dataGridViewExistingRequestees.DataSource = dt;  //populate mo yung datagrid ng existing duh
-            //con.Close();
-
-            // check if fields are complete
-            bool fieldAreComplete = !(txtRequestName.Text == "" || txtContactNum.Text == "" || txtEmailAdd.Text == "" || txtAddress.Text == "");
-            if (fieldAreComplete)
-            {
-                // sql connection with Church.db
-                SetConnection("Church.db");
-
-                // data table will have a row if query returns a record
-                DB = new SQLiteDataAdapter("SELECT id FROM UserInfo WHERE name='" + txtRequestName.Text + "' OR email='" + txtEmailAdd.Text + "' OR contact='" + txtContactNum.Text + "'", sql_con);
-                
-                DT = new DataTable();
-                DB.Fill(DT);
-
-                // if data table returns a record, tell that the user exists
-                bool userExists = DT.Rows.Count == 1;
-                if (!userExists)
-                {
-                    // THIS IS THE QUERY USED TO INSERT VALUES INTO THE UserInfo TABLE
-                  
-                    string query = "INSERT INTO UserInfo (name, contact, email, address) VALUES ('" + txtRequestName.Text + "', '" + txtContactNum.Text + "', '" + txtEmailAdd.Text + "', '" + txtAddress.Text + "');";
-                    ExecuteQuery(query);
-                 
-                    MessageBox.Show("Success! New user created.");
-                }
-                else
-                {
-                    MessageBox.Show("User already exists!");
-                }
-                display();
-            }
-            else
-            {
-                MessageBox.Show("There are incomplete fields in your submission.");
-            }
-        }
-
-        private void btnEditrequestee_Click(object sender, EventArgs e)
-        {
-            // update query
-            try
-            {
-                bool userExists = DT.Rows.Count == 1;
-                if (!userExists)
-                {
-                    sql_con.Open();
-                    sql_cmd = new SQLiteCommand("UPDATE UserInfo SET name='" + txtRequestName.Text + "', contact='" + txtContactNum.Text + "', email='" + txtEmailAdd.Text + "', address='" + txtAddress + "' WHERE Id='" + selectedRow + "'", sql_con);
-                   
-                    sql_con.Close();
-
-                   
-
-                    MessageBox.Show("Success! New user created.");
-                }
-                else
-                {
-                    MessageBox.Show("User already exists!");
-                }
-                DB = new SQLiteDataAdapter("SELECT id FROM UserInfo WHERE name='" + txtRequestName.Text + "' OR email='" + txtEmailAdd.Text + "' OR contact='" + txtContactNum.Text + "'", sql_con);
-
-                DT = new DataTable();
-                DB.Fill(DT);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void btnCancelRequestee_Click(object sender, EventArgs e)
         {
             //delete highlighted 
@@ -196,7 +200,7 @@ namespace ChurchSched
             if (dialogResult == DialogResult.Yes)
             {
                 sql_con.Open();
-                sql_cmd = new SQLiteCommand("DELETE FROM UserInfo WHERE Id='"+selectedRow+"'", sql_con);
+                // sql_cmd = new SQLiteCommand("DELETE FROM UserInfo WHERE Id='"+selectedRow+"'", sql_con);
                 sql_cmd.ExecuteNonQuery();
                 sql_con.Close();
                 MessageBox.Show("Deleted");
@@ -209,6 +213,7 @@ namespace ChurchSched
             
         }
 
+        // clear requestee textboxes button
         private void btnClearRequestee_Click(object sender, EventArgs e)
         {
             txtRequestName.Clear();
@@ -216,24 +221,29 @@ namespace ChurchSched
             txtEmailAdd.Clear();
             txtAddress.Clear();
         }
-        DataGridViewRow selectedRow;
 
+        // requestees data grid view cell click event
         private void dgvRequestees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // data grid view row index
             int index = e.RowIndex;
-            selectedRow = dgvRequestees.Rows[index];
-            txtRequestName.Text = selectedRow.Cells[1].Value.ToString();
-            txtContactNum.Text = selectedRow.Cells[2].Value.ToString();
-            txtEmailAdd.Text = selectedRow.Cells[3].Value.ToString();
-            txtAddress.Text = selectedRow.Cells[4].Value.ToString();
+            requesteeSelectedRow = dgvRequestees.Rows[index];
 
-            userIDAndName = selectedRow.Cells[0].Value.ToString() + "_" + selectedRow.Cells[1].Value.ToString();
+            // set requestee selected row id
+            requesteeSelectedRowID = Convert.ToInt32(requesteeSelectedRow.Cells[0].Value);
 
+            // populate textboxes with selected row's values
+            txtRequestName.Text = requesteeSelectedRow.Cells[1].Value.ToString();
+            txtContactNum.Text = requesteeSelectedRow.Cells[2].Value.ToString();
+            txtEmailAdd.Text = requesteeSelectedRow.Cells[3].Value.ToString();
+            txtAddress.Text = requesteeSelectedRow.Cells[4].Value.ToString();
+
+            // selected user for reservation panel
+            userIDAndName = requesteeSelectedRowID.ToString() + "_" + requesteeSelectedRow.Cells[1].Value.ToString();
             txtIDNameReserve.Text = userIDAndName;
         }
         private void dgvRequestees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-           
             tbcon1.TabPages.Remove(tbReservation);
             tbcon1.TabPages.Remove(tbAllReserve);
             tbcon1.TabPages.Remove(tbPastEvents);
