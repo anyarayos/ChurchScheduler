@@ -153,7 +153,7 @@ namespace ChurchSched
 												this.btnDelRequestee.TabIndex = 57;
 												this.btnDelRequestee.Text = "Delete Requestee";
 												this.btnDelRequestee.UseVisualStyleBackColor = true;
-												this.btnDelRequestee.Click += new System.EventHandler(this.btnCancelRequestee_Click);
+												this.btnDelRequestee.Click += new System.EventHandler(this.btnDelRequestee_Click);
 												// 
 												// label9
 												// 

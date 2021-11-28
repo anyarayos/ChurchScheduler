@@ -37,6 +37,12 @@ namespace ChurchSched
             sql_con.Close();
         }
 
+        // ================================================
+        //
+        //      REQUESTEE PANEL ...
+        //
+        // ================================================
+
         // REQUESTEE PANEL VARIABLES ================================================
         DataGridViewRow requesteeSelectedRow;
         int requesteeSelectedRowID;
@@ -44,7 +50,7 @@ namespace ChurchSched
 
         // REQUESTEE PANEL METHODS ================================================
 
-        private void dgvRequesteeLoadUserInfo()
+        private void LoadUserInfoDgvRequestee()
         // load UserInfo into requestee data grid view
         {
             DB = new SQLiteDataAdapter("SELECT * FROM UserInfo", sql_con);
@@ -61,7 +67,25 @@ namespace ChurchSched
             dgvRequestees.Columns[4].Width = 400;
         }
 
-        private bool checkIfUserExists(string email, string contact)
+        private void PopulateSelectedRequestee()
+        // populate textboxes with requestee's data grid view's selected row's values
+        {
+            txtRequestName.Text = requesteeSelectedRow.Cells[1].Value.ToString();
+            txtContactNum.Text = requesteeSelectedRow.Cells[2].Value.ToString();
+            txtEmailAdd.Text = requesteeSelectedRow.Cells[3].Value.ToString();
+            txtAddress.Text = requesteeSelectedRow.Cells[4].Value.ToString();
+        }
+
+        private void ClearRequesteeTextBoxes()
+								{
+            requesteeSelectedRowID = Convert.ToInt32(null);
+            txtRequestName.Clear();
+            txtContactNum.Clear();
+            txtEmailAdd.Clear();
+            txtAddress.Clear();
+        }
+
+        private bool CheckIfUserExists(string email, string contact)
         // check if the user already exists
         {
             // sql connection with Church.db
@@ -76,14 +100,14 @@ namespace ChurchSched
             return DT.Rows.Count == 1;
         }
 
-        private void insertNewUserInfo(string name, string contact, string email, string address)
+        private void InsertNewUserInfo(string name, string contact, string email, string address)
 								// insert new user info
         {
             string SQLiteQuery = "INSERT INTO UserInfo (name, contact, email, address) VALUES ('" + name + "', '" + contact + "', '" + email + "', '" + address + "');";
             ExecuteQuery(SQLiteQuery);
         }
 
-        private void updateUserInfo(int id, string name, string contact, string email, string address)
+        private void UpdateUserInfo(int id, string name, string contact, string email, string address)
         // update user info
         {
             string SQLiteQuery = "UPDATE UserInfo SET name='" + name + "', contact='" + contact + "', email='" + email + "', address='" + address + "' WHERE Id='" + id + "'";
@@ -92,34 +116,54 @@ namespace ChurchSched
 
         // REQUESTEE PANEL EVENTS ================================================
 
-        // CONFIRM REQUESTEE BUTTON
+        private void dgvRequestees_CellClick(object sender, DataGridViewCellEventArgs e)
+        // REQUESTEES DATAGRIDVIEW CELL CLICK EVENT ================================================ WORKING
+        {
+            // data grid view row index
+            int index = e.RowIndex;
+            requesteeSelectedRow = dgvRequestees.Rows[index];
+
+            // set requestee selected row id
+            requesteeSelectedRowID = Convert.ToInt32(requesteeSelectedRow.Cells[0].Value);
+
+            // populate textboxes with requestee's data grid view's selected row's value
+            PopulateSelectedRequestee();
+
+            // selected user for reservation panel
+            userIDAndName = requesteeSelectedRowID.ToString() + "_" + requesteeSelectedRow.Cells[1].Value.ToString();
+            txtIDNameReserve.Text = userIDAndName;
+        }
+
         private void btnConfirmRequestee_Click(object sender, EventArgs e)
+        // CONFIRM REQUESTEE BUTTON ================================================ WORKING
         {
             // check if textboxes are filled
             bool textBoxesFilled = !(txtRequestName.Text == "" || txtContactNum.Text == "" || txtEmailAdd.Text == "" || txtAddress.Text == "");
 
             // insert new user info if text boxes are filled and no user duplication
-            if (textBoxesFilled && !checkIfUserExists(txtEmailAdd.Text, txtContactNum.Text))
+            if (textBoxesFilled && !CheckIfUserExists(txtEmailAdd.Text, txtContactNum.Text))
             {
                 // insert new user info
-                insertNewUserInfo(txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
+                InsertNewUserInfo(txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
                 // refresh requestee data grid view
-                dgvRequesteeLoadUserInfo();
+                LoadUserInfoDgvRequestee();
 
                 MessageBox.Show("New requestee added.");
             }
-            else if (textBoxesFilled && checkIfUserExists(txtEmailAdd.Text, txtContactNum.Text))
+            // filled but has user duplication
+            else if (textBoxesFilled && CheckIfUserExists(txtEmailAdd.Text, txtContactNum.Text))
             {
                 MessageBox.Show("Requestee already exists.");
             }
+            // text boxes incomplete
             else
             {
                 MessageBox.Show("Incomplete submission, complete and try again.");
             }
         }
 
-        // EDIT REQUESTEE BUTTON
         private void btnEditrequestee_Click(object sender, EventArgs e)
+        // EDIT REQUESTEE BUTTON ================================================ WORKING
         {
             if (requesteeSelectedRowID > 0)
             {
@@ -140,9 +184,13 @@ namespace ChurchSched
                 if(confirmEdit == DialogResult.Yes)
 																{
                     // update user info
-                    updateUserInfo(requesteeSelectedRowID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
+                    UpdateUserInfo(requesteeSelectedRowID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
                     // refresh requestee data grid view
-                    dgvRequesteeLoadUserInfo();
+                    LoadUserInfoDgvRequestee();
+
+                    // populate textboxes with requestee's data grid view's selected row's value
+                    // (update textboxes values with the new changes)
+                    PopulateSelectedRequestee();
 
                     MessageBox.Show("User info successfully updated.");
 																}
@@ -153,39 +201,72 @@ namespace ChurchSched
             }
         }
 
-        private void btnCancelRequestee_Click(object sender, EventArgs e)
+        private void btnDelRequestee_Click(object sender, EventArgs e)
+        // DELETE REQUESTEE BUTTON ================================================ WORKING
         {
-            //delete highlighted 
-            DialogResult dialogResult = MessageBox.Show("Are you sure that you would delete this Requestee ???", "Warning !!!", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (requesteeSelectedRowID > 0)
             {
-                sql_con.Open();
-                // sql_cmd = new SQLiteCommand("DELETE FROM UserInfo WHERE Id='"+selectedRow+"'", sql_con);
-                sql_cmd.ExecuteNonQuery();
-                sql_con.Close();
-                MessageBox.Show("Deleted");
-                display();
+                // populate textboxes with requestee's data grid view's selected row's value
+                // (incase changes were made after selecting row)
+                PopulateSelectedRequestee();
+
+                //delete highlighted 
+                DialogResult dialogResult = MessageBox.Show(
+                    // message box message
+                    "Are you sure to delete this Requestee ???\n" +
+                    "\nid: " + requesteeSelectedRowID +
+                    "\nname: " + requesteeSelectedRow.Cells[1].Value.ToString() +
+                    "\ncontact: " + requesteeSelectedRow.Cells[2].Value.ToString() +
+                    "\nemail: " + requesteeSelectedRow.Cells[3].Value.ToString() +
+                    "\naddress: " + requesteeSelectedRow.Cells[4].Value.ToString(),
+                    // message box title
+                    "Data Deletion Warning !!!",
+                    // message box buttons
+                    MessageBoxButtons.YesNo
+                );
+                if (dialogResult == DialogResult.Yes)
+                {
+                    ExecuteQuery("DELETE FROM UserInfo WHERE Id='" + requesteeSelectedRowID + "'");
+                    LoadUserInfoDgvRequestee();
+                    MessageBox.Show("Deleted");
+                }
             }
             else
             {
-                //  
+                MessageBox.Show("No user selected.");
             }
-
         }
 
-        // clear requestee textboxes button
         private void btnClearRequestee_Click(object sender, EventArgs e)
+        // CLEAR REQUESTEE BUTTON ================================================ WORKING
         {
-            txtRequestName.Clear();
-            txtContactNum.Clear();
-            txtEmailAdd.Clear();
-            txtAddress.Clear();
+            ClearRequesteeTextBoxes();
         }
+
+        private void textSearchRequestee_TextChanged(object sender, EventArgs e)
+        // SEARCH REQUESTEE TEXT BOX ================================================ WORK IN PROGRESS
+        {
+            //con = new SqlConnection(cs);  
+            //con.Open();  
+            //adapt = new SqlDataAdapter("select * from ---- where FirstName like '"+textSearchRequestee.Text+"%'", con);  
+            //dt = new DataTable();  
+            //adapt.Fill(dt);  
+            //dataGridViewExistingRequestees.DataSource = dt;  
+            //con.Close();
+        }
+
+        // ================================================
+        //
+        //      RESERVATION PANEL ...
+        //
+        // ================================================
+
+        // RESERVATION PANEL VARIABLES ================================================
 
         // RESERVATION PANEL METHODS ================================================
 
         // populate combo box with events
-        private void populateWEvents(ComboBox combobox)
+        private void PopulateComboBoxEvents(ComboBox combobox)
         {
             String[] events = { "Wedding", "Baptism", "Confirmation", "Mass" };
             foreach(string ev in events)
@@ -195,7 +276,7 @@ namespace ChurchSched
         }
 
         // populate combo box with time
-        private void populateWTime(ComboBox combobox)
+        private void PopulateComboBoxTime(ComboBox combobox)
         {
             List<String> timeIntervals = new List<String>();
             var item = DateTime.Today.AddHours(7);
@@ -209,106 +290,37 @@ namespace ChurchSched
             combobox.Items.AddRange(timeRange);
         }
 
-        // FORM METHODS ================================================
+        // RESERVATION PANEL EVENTS ================================================
 
-        public frmLobbyPanel()
-        {
-            InitializeComponent();
-        }
-
-        private void frmLobbyPanel_Load(object sender, EventArgs e)
-        {
-            // establish connection to church database
-            SetConnection("Church.db");
-
-            // REQUESTEE PANEL ================
-            // load UserInfo into requestee data grid view
-            dgvRequesteeLoadUserInfo();
-
-            // RESERVATION PANEL ================
-            tbcon1.TabPages.Remove(tbReservation);
-            populateWEvents(cmbEvents);//Populates comboboxes wag tanggalin please lng
-            populateWTime(cmbTime);
-            cmbEvents.SelectedIndex = 0;//Wag rin mga to
-            cmbTime.SelectedIndex = 0;//
-        }
-
-        // MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY ================================================
-        // MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY ================================================
-        // MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY ================================================
-        // MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY MESSY ================================================
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
-            {
-                frmCancelationRemark cncl = new frmCancelationRemark();
-                cncl.ShowDialog();
-            }
-            else
-            {
-                 //  
-            }
-        }
-
-        
-
-        // requestees data grid view cell click event
-        private void dgvRequestees_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // data grid view row index
-            int index = e.RowIndex;
-            requesteeSelectedRow = dgvRequestees.Rows[index];
-
-            // set requestee selected row id
-            requesteeSelectedRowID = Convert.ToInt32(requesteeSelectedRow.Cells[0].Value);
-
-            // populate textboxes with selected row's values
-            txtRequestName.Text = requesteeSelectedRow.Cells[1].Value.ToString();
-            txtContactNum.Text = requesteeSelectedRow.Cells[2].Value.ToString();
-            txtEmailAdd.Text = requesteeSelectedRow.Cells[3].Value.ToString();
-            txtAddress.Text = requesteeSelectedRow.Cells[4].Value.ToString();
-
-            // selected user for reservation panel
-            userIDAndName = requesteeSelectedRowID.ToString() + "_" + requesteeSelectedRow.Cells[1].Value.ToString();
-            txtIDNameReserve.Text = userIDAndName;
-        }
-        private void dgvRequestees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            tbcon1.TabPages.Remove(tbReservation);
-            tbcon1.TabPages.Remove(tbAllReserve);
-            tbcon1.TabPages.Remove(tbPastEvents);
-            tbcon1.TabPages.Add(tbReservation);
-            tbcon1.TabPages.Add(tbAllReserve);
-            tbcon1.TabPages.Add(tbPastEvents);
-           
-        }
-        private void textSearchRequestee_TextChanged(object sender, EventArgs e)
-        {
-            //con = new SqlConnection(cs);  
-            //con.Open();  
-            //adapt = new SqlDataAdapter("select * from ---- where FirstName like '"+textSearchRequestee.Text+"%'", con);  
-            //dt = new DataTable();  
-            //adapt.Fill(dt);  
-            //dataGridViewExistingRequestees.DataSource = dt;  
-            //con.Close();
-        }
-        
         int state = 0;//Gagamitin to sa submit kunyari state 1, gamitin mo yung query related sa wedding
-        private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)//Hide/Show Attendees according to event
+        //Hide/Show Attendees according to event
+        private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)
+        // EVENTS RESERVATION COMBO BOX CHANGED ================================================ WORK IN PROGRESS
         {
-            string[] weddingReqs = {"Marriage License",
-                "Baptismal certificate (Groom)","Baptismal certificate (Bride)",
-                "Confirmation certificate (Groom)","Confirmation certificate (Bride)",
-                "Birth certificate (Groom)", "Birth certificate (Bride)",
-                "CENOMAR (Groom)", "CENOMAR (Bride)",
+            string[] weddingReqs = {
+                "Marriage License",
+                "Baptismal certificate (Groom)",
+                "Baptismal certificate (Bride)",
+                "Confirmation certificate (Groom)",
+                "Confirmation certificate (Bride)",
+                "Birth certificate (Groom)",
+                "Birth certificate (Bride)",
+                "CENOMAR (Groom)",
+                "CENOMAR (Bride)",
                 "Marriage preparation Seminar",
-                "Canonical interview","Marriage Banns",
-                "Confession"};
-            string[] baptismReqs = {"Birth certificate (Candidate)", "Marriage certificate (Parents)" };
-            string[] confirmationReqs = { "Baptismal certificate","Seminar Attendance"};
-            if (cmbEvents.SelectedItem.ToString()=="Wedding")
+                "Canonical interview",
+                "Marriage Banns",
+                "Confession"
+            };
+            string[] baptismReqs = {
+                "Birth certificate (Candidate)",
+                "Marriage certificate (Parents)"
+            };
+            string[] confirmationReqs = {
+                "Baptismal certificate",
+                "Seminar Attendance"
+            };
+            if (cmbEvents.SelectedItem.ToString() == "Wedding")
             {
                 lblAttendee1.Text = "Groom:";
                 lblAttendee2.Text = "Bride:";
@@ -319,7 +331,7 @@ namespace ChurchSched
                 listBoxRequirements.Items.AddRange(weddingReqs);
                 //Change dgv
             }
-            else if(cmbEvents.SelectedItem.ToString() == "Baptism")
+            else if (cmbEvents.SelectedItem.ToString() == "Baptism")
             {
                 lblAttendee1.Text = "Candidate:";
                 lblAttendee2.Visible = false;
@@ -349,8 +361,96 @@ namespace ChurchSched
                 //Change dgv
             }
         }
+
         private void btnConfirmReserve_Click(object sender, EventArgs e)
+        // CONFIRM RESERVATION BUTTON ================================================ WORK IN PROGRESS
         {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        // CLEAR RESERVATION BUTTON ================================================ WORK IN PROGRESS
+        {
+            DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                frmCancelationRemark cncl = new frmCancelationRemark();
+                cncl.ShowDialog();
+            }
+            else
+            {
+                //  
+            }
+        }
+
+        // ================================================
+        //
+        //      UPCOMING EVENTS PANEL ...
+        //
+        // ================================================
+
+        // UPCOMING EVENTS PANEL VARIABLES ================================================
+
+        // UPCOMING EVENTS PANEL METHODS ================================================
+
+        // UPCOMING EVENTS PANEL EVENTS ================================================
+
+        // ================================================
+        //
+        //      PAST EVENTS PANEL ...
+        //
+        // ================================================
+
+        // PAST EVENTS PANEL VARIABLES ================================================
+
+        // PAST EVENTS PANEL METHODS ================================================
+
+        // PAST EVENTS PANEL EVENTS ================================================
+
+        // ================================================
+        //
+        //      LOBBY PANEL FORM ...
+        //
+        // ================================================
+
+        // FORM METHODS ================================================
+
+        public frmLobbyPanel()
+        {
+            InitializeComponent();
+        }
+
+        private void frmLobbyPanel_Load(object sender, EventArgs e)
+        // methods are used to load important default settings as the form starts
+        {
+            // establish connection to church database
+            SetConnection("Church.db");
+
+            // REQUESTEE PANEL ================
+            // load UserInfo into requestee data grid view
+            LoadUserInfoDgvRequestee();
+
+            // RESERVATION PANEL ================
+            // populate comboboxes with events and time
+            PopulateComboBoxEvents(cmbEvents);
+            PopulateComboBoxTime(cmbTime);
+            // default selected index into 0
+            cmbEvents.SelectedIndex = 0;
+            cmbTime.SelectedIndex = 0;
+
+            // LOPEZ, PERCIVAL IV: Pakiexplain para saan ito?
+            tbcon1.TabPages.Remove(tbReservation);
+        }
+
+        // LOPEZ, PERCIVAL IV: Pakiexplain para saan ito?
+        private void dgvRequestees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            tbcon1.TabPages.Remove(tbReservation);
+            tbcon1.TabPages.Remove(tbAllReserve);
+            tbcon1.TabPages.Remove(tbPastEvents);
+            tbcon1.TabPages.Add(tbReservation);
+            tbcon1.TabPages.Add(tbAllReserve);
+            tbcon1.TabPages.Add(tbPastEvents);
         }
     }
 }
