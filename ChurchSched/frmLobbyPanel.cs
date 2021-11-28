@@ -48,7 +48,9 @@ namespace ChurchSched
         // load UserInfo into requestee data grid view
         {
             DB = new SQLiteDataAdapter("SELECT * FROM UserInfo", sql_con);
+            DT = new DataTable();
             DB.Fill(DT);
+            dgvRequestees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRequestees.DataSource = DT;
         }
 
@@ -74,7 +76,7 @@ namespace ChurchSched
             ExecuteQuery(SQLiteQuery);
         }
 
-        private void updateUserInfo(int id, string name, string email, string contact, string address)
+        private void updateUserInfo(int id, string name, string contact, string email, string address)
         // update user info
         {
             string SQLiteQuery = "UPDATE UserInfo SET name='" + name + "', contact='" + contact + "', email='" + email + "', address='" + address + "' WHERE Id='" + id + "'";
