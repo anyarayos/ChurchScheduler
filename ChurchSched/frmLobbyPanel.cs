@@ -116,12 +116,30 @@ namespace ChurchSched
         {
             if (requesteeSelectedRowID > 0)
             {
-                // update user info
-                updateUserInfo(requesteeSelectedRowID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
-                // refresh requestee data grid view
-                dgvRequesteeLoadUserInfo();
+                // message box edit confirmation
+                DialogResult confirmEdit = MessageBox.Show(
+                    // message box message
+                    "Are you sure to edit user id: " + requesteeSelectedRowID + " with the following values?" +
+                    "\n" + txtRequestName.Text + ", " + txtContactNum.Text + ", " + txtEmailAdd.Text + ", " + txtAddress.Text,
+                    // message box title
+                    "Edit Confirmation",
+                    // message box buttons
+                    MessageBoxButtons.YesNo
+                );
+                // if edit confirmed
+                if(confirmEdit == DialogResult.Yes)
+																{
+                    // update user info
+                    updateUserInfo(requesteeSelectedRowID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
+                    // refresh requestee data grid view
+                    dgvRequesteeLoadUserInfo();
 
-                MessageBox.Show("User info successfully updated.");
+                    MessageBox.Show("User info successfully updated.");
+																}
+            }
+            else
+            {
+                MessageBox.Show("No user selected.");
             }
         }
 
