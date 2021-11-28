@@ -270,13 +270,11 @@ namespace ChurchSched
         }
         private void textSearchRequestee_TextChanged(object sender, EventArgs e)
         {
-            //con = new SqlConnection(cs);  
-            //con.Open();  
-            //adapt = new SqlDataAdapter("select * from ---- where FirstName like '"+textSearchRequestee.Text+"%'", con);  
-            //dt = new DataTable();  
-            //adapt.Fill(dt);  
-            //dataGridViewExistingRequestees.DataSource = dt;  
-            //con.Close();
+            DB = new SQLiteDataAdapter("select * from UserInfo where name like '" + textSearchRequestee.Text + "%'", sql_con);
+            DT = new DataTable();
+            DB.Fill(DT);
+            dgvRequestees.DataSource = DT;
+            sql_con.Close();
         }
 
         // RESERVATION PANEL ================================================
