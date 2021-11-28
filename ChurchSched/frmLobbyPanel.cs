@@ -14,6 +14,7 @@ namespace ChurchSched
     {
         // variables
         string userIDAndName = "";
+        
 
         // sql variables and objects
         private SQLiteConnection sql_con;
@@ -128,6 +129,7 @@ namespace ChurchSched
 
                 // data table will have a row if query returns a record
                 DB = new SQLiteDataAdapter("SELECT id FROM UserInfo WHERE name='" + txtRequestName.Text + "' OR email='" + txtEmailAdd.Text + "' OR contact='" + txtContactNum.Text + "'", sql_con);
+                
                 DT = new DataTable();
                 DB.Fill(DT);
 
@@ -136,16 +138,17 @@ namespace ChurchSched
                 if (!userExists)
                 {
                     // THIS IS THE QUERY USED TO INSERT VALUES INTO THE UserInfo TABLE
-                    /*
+                  
                     string query = "INSERT INTO UserInfo (name, contact, email, address) VALUES ('" + txtRequestName.Text + "', '" + txtContactNum.Text + "', '" + txtEmailAdd.Text + "', '" + txtAddress.Text + "');";
                     ExecuteQuery(query);
-                    */
+                 
                     MessageBox.Show("Success! New user created.");
                 }
                 else
                 {
                     MessageBox.Show("User already exists!");
                 }
+                display();
             }
             else
             {
@@ -155,7 +158,35 @@ namespace ChurchSched
 
         private void btnEditrequestee_Click(object sender, EventArgs e)
         {
-            //update existing data using whatever was changed in the field
+            // update query
+            try
+            {
+                bool userExists = DT.Rows.Count == 1;
+                if (!userExists)
+                {
+                    sql_con.Open();
+                    sql_cmd = new SQLiteCommand("UPDATE UserInfo SET name='" + txtRequestName.Text + "', contact='" + txtContactNum.Text + "', email='" + txtEmailAdd.Text + "', address='" + txtAddress + "' WHERE Id='" + selectedRow + "'", sql_con);
+                   
+                    sql_con.Close();
+
+                   
+
+                    MessageBox.Show("Success! New user created.");
+                }
+                else
+                {
+                    MessageBox.Show("User already exists!");
+                }
+                DB = new SQLiteDataAdapter("SELECT id FROM UserInfo WHERE name='" + txtRequestName.Text + "' OR email='" + txtEmailAdd.Text + "' OR contact='" + txtContactNum.Text + "'", sql_con);
+
+                DT = new DataTable();
+                DB.Fill(DT);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnCancelRequestee_Click(object sender, EventArgs e)
@@ -164,7 +195,12 @@ namespace ChurchSched
             DialogResult dialogResult = MessageBox.Show("Are you sure that you would delete this Requestee ???", "Warning !!!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                //
+                sql_con.Open();
+                sql_cmd = new SQLiteCommand("DELETE FROM UserInfo WHERE Id='"+selectedRow+"'", sql_con);
+                sql_cmd.ExecuteNonQuery();
+                sql_con.Close();
+                MessageBox.Show("Deleted");
+                display();
             }
             else
             {
@@ -197,6 +233,7 @@ namespace ChurchSched
         }
         private void dgvRequestees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+           
             tbcon1.TabPages.Remove(tbReservation);
             tbcon1.TabPages.Remove(tbAllReserve);
             tbcon1.TabPages.Remove(tbPastEvents);
@@ -272,6 +309,21 @@ namespace ChurchSched
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            display();
+        }
+
+        public void display() {
+            DT = new DataTable();
+            sql_con.Open();
+            DB = new SQLiteDataAdapter("SELECT * FROM UserInfo", sql_con);
+            DB.Fill(DT);
+            dgvRequestees.DataSource = DT;
+            sql_con.Close();
+
         }
     }
 }
