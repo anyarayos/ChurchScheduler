@@ -49,7 +49,7 @@ namespace ChurchSched
 												this.label29 = new System.Windows.Forms.Label();
 												this.label30 = new System.Windows.Forms.Label();
 												this.label31 = new System.Windows.Forms.Label();
-												this.tbcon1 = new System.Windows.Forms.TabControl();
+												this.tabControl = new System.Windows.Forms.TabControl();
 												this.tbReservation = new System.Windows.Forms.TabPage();
 												this.listBoxRequirements = new System.Windows.Forms.ListBox();
 												this.label14 = new System.Windows.Forms.Label();
@@ -91,7 +91,7 @@ namespace ChurchSched
 												this.tbRequestee.SuspendLayout();
 												((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 												((System.ComponentModel.ISupportInitialize)(this.dgvRequestees)).BeginInit();
-												this.tbcon1.SuspendLayout();
+												this.tabControl.SuspendLayout();
 												this.tbReservation.SuspendLayout();
 												((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 												((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
@@ -273,7 +273,7 @@ namespace ChurchSched
 												this.dgvRequestees.Size = new System.Drawing.Size(492, 457);
 												this.dgvRequestees.TabIndex = 39;
 												this.dgvRequestees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRequestees_CellClick);
-												this.dgvRequestees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRequestees_CellDoubleClick);
+												//this.dgvRequestees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRequestees_CellDoubleClick);
 												// 
 												// label28
 												// 
@@ -317,17 +317,17 @@ namespace ChurchSched
 												// 
 												// tbcon1
 												// 
-												this.tbcon1.Controls.Add(this.tbRequestee);
-												this.tbcon1.Controls.Add(this.tbReservation);
-												this.tbcon1.Controls.Add(this.tbAllReserve);
-												this.tbcon1.Controls.Add(this.tbPastEvents);
-												this.tbcon1.Dock = System.Windows.Forms.DockStyle.Fill;
-												this.tbcon1.Location = new System.Drawing.Point(0, 0);
-												this.tbcon1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-												this.tbcon1.Name = "tbcon1";
-												this.tbcon1.SelectedIndex = 0;
-												this.tbcon1.Size = new System.Drawing.Size(958, 661);
-												this.tbcon1.TabIndex = 0;
+												this.tabControl.Controls.Add(this.tbRequestee);
+												this.tabControl.Controls.Add(this.tbReservation);
+												this.tabControl.Controls.Add(this.tbAllReserve);
+												this.tabControl.Controls.Add(this.tbPastEvents);
+												this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+												this.tabControl.Location = new System.Drawing.Point(0, 0);
+												this.tabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+												this.tabControl.Name = "tbcon1";
+												this.tabControl.SelectedIndex = 0;
+												this.tabControl.Size = new System.Drawing.Size(958, 661);
+												this.tabControl.TabIndex = 0;
 												// 
 												// tbReservation
 												// 
@@ -745,7 +745,7 @@ namespace ChurchSched
 												this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 												this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 												this.ClientSize = new System.Drawing.Size(958, 661);
-												this.Controls.Add(this.tbcon1);
+												this.Controls.Add(this.tabControl);
 												this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 												this.Name = "frmLobbyPanel";
 												this.Text = "Lobby Panel";
@@ -754,7 +754,7 @@ namespace ChurchSched
 												this.tbRequestee.PerformLayout();
 												((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
 												((System.ComponentModel.ISupportInitialize)(this.dgvRequestees)).EndInit();
-												this.tbcon1.ResumeLayout(false);
+												this.tabControl.ResumeLayout(false);
 												this.tbReservation.ResumeLayout(false);
 												this.tbReservation.PerformLayout();
 												((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -789,7 +789,7 @@ namespace ChurchSched
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TabControl tbcon1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tbReservation;
         private System.Windows.Forms.ComboBox cmbEvents;
         private System.Windows.Forms.Button btnCancel;

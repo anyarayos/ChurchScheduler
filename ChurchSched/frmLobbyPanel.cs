@@ -147,6 +147,16 @@ namespace ChurchSched
 
         private void dgvRequestees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // show the reservation tab on first selection
+												if (userIDAndName == null)
+            {
+                tabControl.TabPages.Remove(tbAllReserve);
+                tabControl.TabPages.Remove(tbPastEvents);
+                tabControl.TabPages.Add(tbReservation);
+                tabControl.TabPages.Add(tbAllReserve);
+                tabControl.TabPages.Add(tbPastEvents);
+            }
+
             // data grid view row index
             int index = e.RowIndex;
             requesteeSelectedRow = dgvRequestees.Rows[index];
@@ -445,6 +455,8 @@ namespace ChurchSched
             SetConnection("Church.db");
 
             // REQUESTEE PANEL ================
+            // hide reservation tab
+            tabControl.TabPages.Remove(tbReservation);
             // load UserInfo into requestee data grid view
             LoadUserInfoDgvRequestee();
 
@@ -455,22 +467,6 @@ namespace ChurchSched
             // default selected index into 0
             cmbEvents.SelectedIndex = 0;
             cmbTime.SelectedIndex = 0;
-
-            /* LOPEZ, PERCIVAL IV: Nireremove ung tab ng Reservation, idelete ito pag sure di kailangan
-            tbcon1.TabPages.Remove(tbReservation);
-             */
         }
-
-        /* LOPEZ, PERCIVAL IV: Cinomment ko lng to incase may nag wowork pala dito.
-        private void dgvRequestees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            tbcon1.TabPages.Remove(tbReservation);
-            tbcon1.TabPages.Remove(tbAllReserve);
-            tbcon1.TabPages.Remove(tbPastEvents);
-            tbcon1.TabPages.Add(tbReservation);
-            tbcon1.TabPages.Add(tbAllReserve);
-            tbcon1.TabPages.Add(tbPastEvents);
-        }
-         */
     }
 }
