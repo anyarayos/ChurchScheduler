@@ -48,16 +48,24 @@ namespace ChurchSched
         int requesteeSelectedRowID;
         string userIDAndName;
 
-        // REQUESTEE PANEL METHODS ================================================
+        /* REQUESTEE PANEL METHODS ================================================
+        
+        LoadUserInfoDgvRequestee()
+        - loads UserInfo data into dgvRequestee
+
+        PopulateSelectedRequestee()
+        - populate textboxes with requestee's data grid view's selected row's values
+
+        */
 
         private void LoadUserInfoDgvRequestee()
-        // load UserInfo into requestee data grid view
         {
+            // UserInfo data table
             DB = new SQLiteDataAdapter("SELECT * FROM UserInfo", sql_con);
             DT = new DataTable();
             DB.Fill(DT);
-            //dgvRequestees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRequestees.DataSource = DT;
+            
             // id column width
             dgvRequestees.Columns[0].Width = 50;
 												// name and email column width
@@ -68,7 +76,6 @@ namespace ChurchSched
         }
 
         private void PopulateSelectedRequestee()
-        // populate textboxes with requestee's data grid view's selected row's values
         {
             txtRequestName.Text = requesteeSelectedRow.Cells[1].Value.ToString();
             txtContactNum.Text = requesteeSelectedRow.Cells[2].Value.ToString();
@@ -188,10 +195,6 @@ namespace ChurchSched
                     UpdateUserInfo(requesteeSelectedRowID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
                     // refresh requestee data grid view
                     LoadUserInfoDgvRequestee();
-
-                    // populate textboxes with requestee's data grid view's selected row's value
-                    // (update textboxes values with the new changes)
-                    PopulateSelectedRequestee();
 
                     MessageBox.Show("User info successfully updated.");
 																}
