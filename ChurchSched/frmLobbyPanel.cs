@@ -37,26 +37,48 @@ namespace ChurchSched
             sql_con.Close();
         }
 
-        // ================================================
-        //
-        //      REQUESTEE PANEL ...
-        //
-        // ================================================
+        // REQUESTEE PANEL ================================================
 
-        // REQUESTEE PANEL VARIABLES ================================================
+        /* REQUESTEE PANEL VARIABLES ================================================
+        
+        requesteeSelectedRow
+        - the selected row from the requestee data grid view
+
+        requesteeSelectedRowID
+        - holds the user id of the selected requestee from the data grid view
+
+        userIDAndName
+        - holds the user id and name used for the reservation panel
+        - Ex:(1_Mark L. Bargamento)
+
+         */
+        
         DataGridViewRow requesteeSelectedRow;
         int requesteeSelectedRowID;
         string userIDAndName;
 
         /* REQUESTEE PANEL METHODS ================================================
-        
+
         LoadUserInfoDgvRequestee()
         - loads UserInfo data into dgvRequestee
 
         PopulateSelectedRequestee()
         - populate textboxes with requestee's data grid view's selected row's values
 
-        */
+        ClearRequesteeTextBoxes()
+        - clears textboxes of requestee panel
+
+        CheckIfUserExists(email, contact)
+        - check if the user already exists
+        - returns true or false
+
+        InsertNewUserInfo(name, contact, email, address)
+        - inserts new user info
+
+        UpdateUserInfo(id, name, contact, email, address)
+        - updates user info
+
+         */
 
         private void LoadUserInfoDgvRequestee()
         {
@@ -74,7 +96,6 @@ namespace ChurchSched
             // address column width
             dgvRequestees.Columns[4].Width = 400;
         }
-
         private void PopulateSelectedRequestee()
         {
             txtRequestName.Text = requesteeSelectedRow.Cells[1].Value.ToString();
@@ -82,9 +103,7 @@ namespace ChurchSched
             txtEmailAdd.Text = requesteeSelectedRow.Cells[3].Value.ToString();
             txtAddress.Text = requesteeSelectedRow.Cells[4].Value.ToString();
         }
-
         private void ClearRequesteeTextBoxes()
-								// clear textboxes of requestee panel
         {
             requesteeSelectedRowID = Convert.ToInt32(null);
             txtRequestName.Clear();
@@ -92,13 +111,8 @@ namespace ChurchSched
             txtEmailAdd.Clear();
             txtAddress.Clear();
         }
-
         private bool CheckIfUserExists(string email, string contact)
-        // check if the user already exists
         {
-            // sql connection with Church.db
-            SetConnection("Church.db");
-
             // data table will have a row if query returns a record
             DB = new SQLiteDataAdapter("SELECT id FROM UserInfo WHERE  email='" + email + "' OR contact='" + contact + "'", sql_con);
             DT = new DataTable();
@@ -107,25 +121,31 @@ namespace ChurchSched
             // if data table returns a record, user exists
             return DT.Rows.Count == 1;
         }
-
         private void InsertNewUserInfo(string name, string contact, string email, string address)
-								// insert new user info
         {
             string SQLiteQuery = "INSERT INTO UserInfo (name, contact, email, address) VALUES ('" + name + "', '" + contact + "', '" + email + "', '" + address + "');";
             ExecuteQuery(SQLiteQuery);
         }
-
         private void UpdateUserInfo(int id, string name, string contact, string email, string address)
-        // update user info
         {
             string SQLiteQuery = "UPDATE UserInfo SET name='" + name + "', contact='" + contact + "', email='" + email + "', address='" + address + "' WHERE Id='" + id + "'";
             ExecuteQuery(SQLiteQuery);
         }
 
-        // REQUESTEE PANEL EVENTS ================================================
+        /* REQUESTEE PANEL EVENTS ================================================
+
+        DataGridView Requestees = DONE
+
+        Button Confirm Requestee = DONE
+        Button Edit Requestee = DONE
+        Button Delete Requestee = DONE
+        Button Clear Requestee = DONE
+
+        TextBox Search Requestee = WIP
+
+         */
 
         private void dgvRequestees_CellClick(object sender, DataGridViewCellEventArgs e)
-        // REQUESTEES DATAGRIDVIEW CELL CLICK EVENT ================================================ WORKING
         {
             // data grid view row index
             int index = e.RowIndex;
@@ -141,9 +161,7 @@ namespace ChurchSched
             userIDAndName = requesteeSelectedRowID.ToString() + "_" + requesteeSelectedRow.Cells[1].Value.ToString();
             txtIDNameReserve.Text = userIDAndName;
         }
-
         private void btnConfirmRequestee_Click(object sender, EventArgs e)
-        // CONFIRM REQUESTEE BUTTON ================================================ WORKING
         {
             // check if textboxes are filled
             bool textBoxesFilled = !(txtRequestName.Text == "" || txtContactNum.Text == "" || txtEmailAdd.Text == "" || txtAddress.Text == "");
@@ -169,9 +187,7 @@ namespace ChurchSched
                 MessageBox.Show("Incomplete submission, complete and try again.");
             }
         }
-
         private void btnEditrequestee_Click(object sender, EventArgs e)
-        // EDIT REQUESTEE BUTTON ================================================ WORKING
         {
             if (requesteeSelectedRowID > 0)
             {
@@ -204,9 +220,7 @@ namespace ChurchSched
                 MessageBox.Show("No user selected.");
             }
         }
-
         private void btnDelRequestee_Click(object sender, EventArgs e)
-        // DELETE REQUESTEE BUTTON ================================================ WORKING
         {
             if (requesteeSelectedRowID > 0)
             {
@@ -240,15 +254,11 @@ namespace ChurchSched
                 MessageBox.Show("No user selected.");
             }
         }
-
         private void btnClearRequestee_Click(object sender, EventArgs e)
-        // CLEAR REQUESTEE BUTTON ================================================ WORKING
         {
             ClearRequesteeTextBoxes();
         }
-
         private void textSearchRequestee_TextChanged(object sender, EventArgs e)
-        // SEARCH REQUESTEE TEXT BOX ================================================ WORK IN PROGRESS
         {
             //con = new SqlConnection(cs);  
             //con.Open();  
@@ -259,17 +269,31 @@ namespace ChurchSched
             //con.Close();
         }
 
-        // ================================================
-        //
-        //      RESERVATION PANEL ...
-        //
-        // ================================================
+        // RESERVATION PANEL ================================================
 
-        // RESERVATION PANEL VARIABLES ================================================
+        /* RESERVATION PANEL VARIABLES ================================================
 
-        // RESERVATION PANEL METHODS ================================================
+        currentEventSelected
+        - 0 = None
+        - 1 = Wedding
+        - 2 = Baptism
+        - 3 = Confirmation
+        - 4 = Mass
 
-        // populate combo box with events
+         */
+
+        int currentEventSelected = 0;
+
+        /* RESERVATION PANEL METHODS ================================================
+        
+        PopulateComboBoxEvents(combobox)
+        - populates the combobox with the type of event
+
+        PopulateComboBoxTime(combobox)
+        - populate combo box with time
+
+         */
+
         private void PopulateComboBoxEvents(ComboBox combobox)
         {
             String[] events = { "Wedding", "Baptism", "Confirmation", "Mass" };
@@ -278,8 +302,6 @@ namespace ChurchSched
                 combobox.Items.Add(ev);
             }
         }
-
-        // populate combo box with time
         private void PopulateComboBoxTime(ComboBox combobox)
         {
             List<String> timeIntervals = new List<String>();
@@ -294,12 +316,16 @@ namespace ChurchSched
             combobox.Items.AddRange(timeRange);
         }
 
-        // RESERVATION PANEL EVENTS ================================================
+        /* RESERVATION PANEL EVENTS ================================================
+        
+        ComboBox Events = WIP
 
-        int state = 0;//Gagamitin to sa submit kunyari state 1, gamitin mo yung query related sa wedding
-        //Hide/Show Attendees according to event
+        Button Confirm Reservation = WIP
+        Button Cancel Reservation = WIP
+
+         */
+
         private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)
-        // EVENTS RESERVATION COMBO BOX CHANGED ================================================ WORK IN PROGRESS
         {
             string[] weddingReqs = {
                 "Marriage License",
@@ -330,7 +356,7 @@ namespace ChurchSched
                 lblAttendee2.Text = "Bride:";
                 lblAttendee2.Visible = true;
                 txtAttendee2.Visible = true;
-                state = 1;
+                currentEventSelected = 1;
                 listBoxRequirements.Items.Clear();
                 listBoxRequirements.Items.AddRange(weddingReqs);
                 //Change dgv
@@ -340,7 +366,7 @@ namespace ChurchSched
                 lblAttendee1.Text = "Candidate:";
                 lblAttendee2.Visible = false;
                 txtAttendee2.Visible = false;
-                state = 2;
+                currentEventSelected = 2;
                 listBoxRequirements.Items.Clear();
                 listBoxRequirements.Items.AddRange(baptismReqs);
                 //Change dgv
@@ -350,7 +376,7 @@ namespace ChurchSched
                 lblAttendee1.Text = "Confirmand:";
                 lblAttendee2.Visible = false;
                 txtAttendee2.Visible = false;
-                state = 3;
+                currentEventSelected = 3;
                 listBoxRequirements.Items.Clear();
                 listBoxRequirements.Items.AddRange(confirmationReqs);
                 //Change dgv
@@ -360,20 +386,18 @@ namespace ChurchSched
                 lblAttendee1.Text = "Purpose:";
                 lblAttendee2.Visible = false;
                 txtAttendee2.Visible = false;
-                state = 4;
+                currentEventSelected = 4;
                 listBoxRequirements.Items.Clear();
                 //Change dgv
             }
         }
-
         private void btnConfirmReserve_Click(object sender, EventArgs e)
-        // CONFIRM RESERVATION BUTTON ================================================ WORK IN PROGRESS
         {
-
+            /* Lopez, Percival IV: Experiment ko lng ito para malaman kung anong values kukunin ni sqlite
+            MessageBox.Show(dtpDate.Value.ToString());
+             */
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
-        // CLEAR RESERVATION BUTTON ================================================ WORK IN PROGRESS
         {
             DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
@@ -387,45 +411,35 @@ namespace ChurchSched
             }
         }
 
-        // ================================================
-        //
-        //      UPCOMING EVENTS PANEL ...
-        //
-        // ================================================
+        // UPCOMING EVENTS PANEL ================================================
 
-        // UPCOMING EVENTS PANEL VARIABLES ================================================
+        /* UPCOMING EVENTS PANEL VARIABLES ================================================
+         */
 
-        // UPCOMING EVENTS PANEL METHODS ================================================
+        /* UPCOMING EVENTS PANEL METHODS ================================================
+         */
 
-        // UPCOMING EVENTS PANEL EVENTS ================================================
+        /* UPCOMING EVENTS PANEL EVENTS ================================================
+         */
 
-        // ================================================
-        //
-        //      PAST EVENTS PANEL ...
-        //
-        // ================================================
+        // PAST EVENTS PANEL ================================================
 
-        // PAST EVENTS PANEL VARIABLES ================================================
+        /* PAST EVENTS PANEL VARIABLES ================================================
+         */
 
-        // PAST EVENTS PANEL METHODS ================================================
+        /* PAST EVENTS PANEL METHODS ================================================
+         */
 
-        // PAST EVENTS PANEL EVENTS ================================================
+        /* PAST EVENTS PANEL EVENTS ================================================
+         */
 
-        // ================================================
-        //
-        //      LOBBY PANEL FORM ...
-        //
-        // ================================================
-
-        // FORM METHODS ================================================
+        // LOBBY PANEL FORM METHODS ================================================
 
         public frmLobbyPanel()
         {
             InitializeComponent();
         }
-
         private void frmLobbyPanel_Load(object sender, EventArgs e)
-        // methods are used to load important default settings as the form starts
         {
             // establish connection to church database
             SetConnection("Church.db");
@@ -442,11 +456,12 @@ namespace ChurchSched
             cmbEvents.SelectedIndex = 0;
             cmbTime.SelectedIndex = 0;
 
-            // LOPEZ, PERCIVAL IV: Pakiexplain para saan ito?
+            /* LOPEZ, PERCIVAL IV: Nireremove ung tab ng Reservation, idelete ito pag sure di kailangan
             tbcon1.TabPages.Remove(tbReservation);
+             */
         }
 
-        // LOPEZ, PERCIVAL IV: Pakiexplain para saan ito?
+        /* LOPEZ, PERCIVAL IV: Cinomment ko lng to incase may nag wowork pala dito.
         private void dgvRequestees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             tbcon1.TabPages.Remove(tbReservation);
@@ -456,5 +471,6 @@ namespace ChurchSched
             tbcon1.TabPages.Add(tbAllReserve);
             tbcon1.TabPages.Add(tbPastEvents);
         }
+         */
     }
 }

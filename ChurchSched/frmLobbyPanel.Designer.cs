@@ -554,6 +554,8 @@ namespace ChurchSched
 												// 
 												// dtpDate
 												// 
+												this.dtpDate.CustomFormat = "yyyy\'/\'MM\'/\'dd";
+												this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 												this.dtpDate.Location = new System.Drawing.Point(151, 141);
 												this.dtpDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 												this.dtpDate.Name = "dtpDate";
