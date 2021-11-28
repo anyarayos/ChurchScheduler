@@ -92,7 +92,7 @@ namespace ChurchSched
 
         // REQUESTEE PANEL EVENTS ================================================
 
-        // confirm requestee button
+        // CONFIRM REQUESTEE BUTTON
         private void btnConfirmRequestee_Click(object sender, EventArgs e)
         {
             // check if textboxes are filled
@@ -118,7 +118,7 @@ namespace ChurchSched
             }
         }
 
-        // edit requestee button
+        // EDIT REQUESTEE BUTTON
         private void btnEditrequestee_Click(object sender, EventArgs e)
         {
             if (requesteeSelectedRowID > 0)
@@ -151,6 +151,35 @@ namespace ChurchSched
             {
                 MessageBox.Show("No user selected.");
             }
+        }
+
+        private void btnCancelRequestee_Click(object sender, EventArgs e)
+        {
+            //delete highlighted 
+            DialogResult dialogResult = MessageBox.Show("Are you sure that you would delete this Requestee ???", "Warning !!!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                sql_con.Open();
+                // sql_cmd = new SQLiteCommand("DELETE FROM UserInfo WHERE Id='"+selectedRow+"'", sql_con);
+                sql_cmd.ExecuteNonQuery();
+                sql_con.Close();
+                MessageBox.Show("Deleted");
+                display();
+            }
+            else
+            {
+                //  
+            }
+
+        }
+
+        // clear requestee textboxes button
+        private void btnClearRequestee_Click(object sender, EventArgs e)
+        {
+            txtRequestName.Clear();
+            txtContactNum.Clear();
+            txtEmailAdd.Clear();
+            txtAddress.Clear();
         }
 
         // RESERVATION PANEL METHODS ================================================
@@ -223,34 +252,7 @@ namespace ChurchSched
             }
         }
 
-        private void btnCancelRequestee_Click(object sender, EventArgs e)
-        {
-            //delete highlighted 
-            DialogResult dialogResult = MessageBox.Show("Are you sure that you would delete this Requestee ???", "Warning !!!", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                sql_con.Open();
-                // sql_cmd = new SQLiteCommand("DELETE FROM UserInfo WHERE Id='"+selectedRow+"'", sql_con);
-                sql_cmd.ExecuteNonQuery();
-                sql_con.Close();
-                MessageBox.Show("Deleted");
-                display();
-            }
-            else
-            {
-                //  
-            }
-            
-        }
-
-        // clear requestee textboxes button
-        private void btnClearRequestee_Click(object sender, EventArgs e)
-        {
-            txtRequestName.Clear();
-            txtContactNum.Clear();
-            txtEmailAdd.Clear();
-            txtAddress.Clear();
-        }
+        
 
         // requestees data grid view cell click event
         private void dgvRequestees_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -349,21 +351,6 @@ namespace ChurchSched
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            display();
-        }
-
-        public void display() {
-            DT = new DataTable();
-            sql_con.Open();
-            DB = new SQLiteDataAdapter("SELECT * FROM UserInfo", sql_con);
-            DB.Fill(DT);
-            dgvRequestees.DataSource = DT;
-            sql_con.Close();
-
         }
     }
 }
