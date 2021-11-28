@@ -50,8 +50,15 @@ namespace ChurchSched
             DB = new SQLiteDataAdapter("SELECT * FROM UserInfo", sql_con);
             DT = new DataTable();
             DB.Fill(DT);
-            dgvRequestees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dgvRequestees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRequestees.DataSource = DT;
+            // id column width
+            dgvRequestees.Columns[0].Width = 50;
+												// name and email column width
+            dgvRequestees.Columns[1].Width = 150;
+            dgvRequestees.Columns[3].Width = 150;
+            // address column width
+            dgvRequestees.Columns[4].Width = 400;
         }
 
         private bool checkIfUserExists(string email, string contact)
@@ -119,8 +126,11 @@ namespace ChurchSched
                 // message box edit confirmation
                 DialogResult confirmEdit = MessageBox.Show(
                     // message box message
-                    "Are you sure to edit user id: " + requesteeSelectedRowID + " with the following values?" +
-                    "\n" + txtRequestName.Text + ", " + txtContactNum.Text + ", " + txtEmailAdd.Text + ", " + txtAddress.Text,
+                    "Are you sure to edit user id: " + requesteeSelectedRowID + " with the following values?\n" +
+                    "\nname: " + txtRequestName.Text +
+                    "\ncontact: " + txtContactNum.Text +
+                    "\nemail: " + txtEmailAdd.Text +
+                    "\naddress: " + txtAddress.Text,
                     // message box title
                     "Edit Confirmation",
                     // message box buttons
