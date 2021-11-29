@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj": {}
+    "C:\\Users\\Magalona\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj": {}
   },
   "projects": {
-    "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj": {
+    "C:\\Users\\Magalona\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
+        "projectUniqueName": "C:\\Users\\Magalona\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
         "projectName": "ChurchSched",
-        "projectPath": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
-        "packagesPath": "C:\\Users\\jblolz8\\.nuget\\packages\\",
-        "outputPath": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\obj\\",
+        "projectPath": "C:\\Users\\Magalona\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
+        "packagesPath": "C:\\Users\\Magalona\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Magalona\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jblolz8\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Magalona\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,12 +55,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.19, 3.1.19]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
