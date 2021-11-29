@@ -276,7 +276,6 @@ namespace ChurchSched
             DT = new DataTable();
             DB.Fill(DT);
             dgvRequestees.DataSource = DT;
-            sql_con.Close();
         }
 
         // RESERVATION PANEL ================================================
@@ -290,43 +289,15 @@ namespace ChurchSched
         - 3 = Confirmation
         - 4 = Mass
 
+        weddingRequirements
+        baptismRequirements
+        confirmationRequirements
+        - for requirements list view
+
          */
 
         int currentEventSelected = 0;
-
-        /* RESERVATION PANEL METHODS ================================================
-        
-        PopulateComboBoxTime(combobox)
-        - populate combo box with time
-
-         */
- 
-        private void PopulateComboBoxTime(ComboBox combobox)
-        {
-            List<String> timeIntervals = new List<String>();
-            var item = DateTime.Today.AddHours(7);
-            while (item <= DateTime.Today.AddHours(15))
-            {
-                string format = item.ToString("hh:mm tt") + " - " + item.AddMinutes(120).ToString("hh:mm tt");
-                timeIntervals.Add(format);
-                item = item.AddMinutes(60);
-            }
-            Object[] timeRange = timeIntervals.Cast<object>().ToArray();
-            combobox.Items.AddRange(timeRange);
-        }
-
-        /* RESERVATION PANEL EVENTS ================================================
-        
-        ComboBox Events = WIP
-
-        Button Confirm Reservation = WIP
-        Button Cancel Reservation = WIP
-
-         */
-
-        private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string[] weddingReqs = {
+        string[] weddingRequirements = {
                 "Marriage License",
                 "Baptismal certificate (Groom)",
                 "Baptismal certificate (Bride)",
@@ -341,60 +312,94 @@ namespace ChurchSched
                 "Marriage Banns",
                 "Confession"
             };
-            string[] baptismReqs = {
+        string[] baptismRequirements = {
                 "Birth certificate (Candidate)",
                 "Marriage certificate (Parents)"
             };
-            string[] confirmationReqs = {
+        string[] confirmationRequirements = {
                 "Baptismal certificate (Confirmand)",
                 "Seminar Attendance (Confirmand)"
             };
-            if (cmbEvents.SelectedItem.ToString() == "Wedding")
+
+        /* RESERVATION PANEL METHODS ================================================
+        
+        PopulateComboBoxTime(combobox)
+        - populate combo box with time
+
+         */
+
+        private void PopulateComboBoxTime(ComboBox combobox)
+        {
+            List<String> timeIntervals = new List<String>();
+            var item = DateTime.Today.AddHours(7);
+            while (item <= DateTime.Today.AddHours(15))
             {
-                lblAttendee1.Text = "Groom:";
-                lblAttendee2.Text = "Bride:";
-                lblAttendee2.Visible = true;
-                txtAttendee2.Visible = true;
-                currentEventSelected = 1;
-                listBoxRequirements.Items.Clear();
-                listBoxRequirements.Items.AddRange(weddingReqs);
-                //Change dgv
+                string format = item.ToString("hh:mm tt") + " - " + item.AddMinutes(120).ToString("hh:mm tt");
+                timeIntervals.Add(format);
+                item = item.AddMinutes(60);
             }
-            else if (cmbEvents.SelectedItem.ToString() == "Baptism")
+            Object[] timeRange = timeIntervals.Cast<object>().ToArray();
+            combobox.Items.AddRange(timeRange);
+        }
+
+        private void LoadPrice()
+        {
+            DB = new SQLiteDataAdapter("SELECT price FROM Prices WHERE price_id='" + currentEventSelected + "'", sql_con);
+            DT = new DataTable();
+            DB.Fill(DT);
+            txtAmountToBePaid.Text = DT.Rows[0][0].ToString();
+        }
+
+        /* RESERVATION PANEL EVENTS ================================================
+        
+        ComboBox Events = WIP
+
+        Button Confirm Reservation = WIP
+        Button Cancel Reservation = WIP
+
+         */
+
+        private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbEvents.SelectedItem.ToString())
             {
-                lblAttendee1.Text = "Candidate:";
-                lblAttendee2.Visible = false;
-                txtAttendee2.Visible = false;
-                currentEventSelected = 2;
-                listBoxRequirements.Items.Clear();
-                listBoxRequirements.Items.AddRange(baptismReqs);
-                //Change dgv
+                case "Wedding":
+                    lblAttendee1.Text = "Groom:";
+                    lblAttendee2.Text = "Bride:";
+                    lblAttendee2.Visible = true;
+                    txtAttendee2.Visible = true;
+                    currentEventSelected = 1;
+                    listBoxRequirements.Items.Clear();
+                    listBoxRequirements.Items.AddRange(weddingRequirements);
+                    break;
+                case "Baptism":
+                    lblAttendee1.Text = "Candidate:";
+                    lblAttendee2.Visible = false;
+                    txtAttendee2.Visible = false;
+                    currentEventSelected = 2;
+                    listBoxRequirements.Items.Clear();
+                    listBoxRequirements.Items.AddRange(baptismRequirements);
+                    break;
+                case "Confirmation":
+                    lblAttendee1.Text = "Confirmand:";
+                    lblAttendee2.Visible = false;
+                    txtAttendee2.Visible = false;
+                    currentEventSelected = 3;
+                    listBoxRequirements.Items.Clear();
+                    listBoxRequirements.Items.AddRange(confirmationRequirements);
+                    break;
+                case "Mass":
+                    lblAttendee1.Text = "Purpose:";
+                    lblAttendee2.Visible = false;
+                    txtAttendee2.Visible = false;
+                    currentEventSelected = 4;
+                    listBoxRequirements.Items.Clear();
+                    break;
             }
-            else if (cmbEvents.SelectedItem.ToString() == "Confirmation")
-            {
-                lblAttendee1.Text = "Confirmand:";
-                lblAttendee2.Visible = false;
-                txtAttendee2.Visible = false;
-                currentEventSelected = 3;
-                listBoxRequirements.Items.Clear();
-                listBoxRequirements.Items.AddRange(confirmationReqs);
-                //Change dgv
-            }
-            else
-            {
-                lblAttendee1.Text = "Purpose:";
-                lblAttendee2.Visible = false;
-                txtAttendee2.Visible = false;
-                currentEventSelected = 4;
-                listBoxRequirements.Items.Clear();
-                //Change dgv
-            }
+            LoadPrice();
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
-            /* Lopez, Percival IV: Experiment ko lng ito para malaman kung anong values kukunin ni sqlite
-            MessageBox.Show(dtpDate.Value.ToString());
-             */
             MessageBox.Show("IMPORTANT! \n \n \n \nMake sure to make full Payment 2 two (2) months before the reserve date. \n \nOtherwise, the reservation sill be forfeited", "Your Reservation is Successful!");
         }
         private void btnCancel_Click(object sender, EventArgs e)
@@ -436,13 +441,16 @@ namespace ChurchSched
         // LOBBY PANEL FORM METHODS ================================================
 
         private int adminID;//instance variable na to ng frmLobby eto 
+
         public frmLobbyPanel()
         {
             InitializeComponent();
         }
         public frmLobbyPanel(int adminID)//call this on frmAdminLogin
         {
-            InitializeComponent();//wag tanggalin kasi magtotopak lahat gago subukan mo
+            InitializeComponent();
+            //wag tanggalin kasi magtotopak lahat gago subukan mo
+            // tangina mo paano pag tinanggal ko kasi trip ko lng bumagsak tayo haha
             this.adminID = adminID;
         }
         private void frmLobbyPanel_Load(object sender, EventArgs e)
