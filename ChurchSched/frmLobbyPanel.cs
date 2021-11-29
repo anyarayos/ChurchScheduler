@@ -460,12 +460,14 @@ namespace ChurchSched
 
         private void btnViewPast_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("");
+            frmViewDetails view = new frmViewDetails();
+            view.ShowDialog();
         }
 
         private void btnViewUpcoming_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("");
+            frmViewDetails view = new frmViewDetails();
+            view.ShowDialog();
         }
     }
 }
