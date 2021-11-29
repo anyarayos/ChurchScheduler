@@ -401,6 +401,10 @@ namespace ChurchSched
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Cash",
+            "G-Cash",
+            "Down Payment"});
             this.comboBox1.Location = new System.Drawing.Point(98, 426);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(199, 25);
