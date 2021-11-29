@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Linq;
+using System.Globalization;
 
 namespace ChurchSched
 {
@@ -485,7 +486,27 @@ namespace ChurchSched
         Button Cancel Reservation = WIP
 
          */
+        private void btnConfirmReserve_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("IMPORTANT! \n \n \n \nMake sure to make full Payment 2 two (2) months before the reserve date. \n \nOtherwise, the reservation sill be forfeited", "Your Reservation is Successful!");
+        }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                frmCancelationRemark cncl = new frmCancelationRemark();
+                cncl.ShowDialog();
+            }
+            else
+            {
+                //  
+            }
+        }
+        private void btnEditReserve_Click(object sender, EventArgs e)
+        {
 
+        }
         private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cmbEvents.SelectedItem.ToString())
@@ -526,23 +547,7 @@ namespace ChurchSched
             LoadPrice();
             LoadReservationsDgvReservations();
         }
-        private void btnConfirmReserve_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("IMPORTANT! \n \n \n \nMake sure to make full Payment 2 two (2) months before the reserve date. \n \nOtherwise, the reservation sill be forfeited", "Your Reservation is Successful!");
-        }
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
-            {
-                frmCancelationRemark cncl = new frmCancelationRemark();
-                cncl.ShowDialog();
-            }
-            else
-            {
-                //  
-            }
-        }
+
 
         // UPCOMING EVENTS PANEL ================================================
 
@@ -612,6 +617,38 @@ namespace ChurchSched
         {
             frmViewDetails view = new frmViewDetails();
             view.ShowDialog();
+        }
+        DataGridViewRow reservattionSelectedRow;
+        private void dgvReservations_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // data grid view row index
+            int index = e.RowIndex;
+            reservattionSelectedRow = dgvReservations.Rows[index];
+
+            // populate textboxes with requestee's data grid view's selected row's value
+            PopulateSelectedReservation();
+        }
+        private void PopulateSelectedReservation()
+        {
+            //txtRequestName.Text = requesteeSelectedRow.Cells[1].Value.ToString();
+            //txtContactNum.Text = requesteeSelectedRow.Cells[2].Value.ToString();
+            //txtEmailAdd.Text = requesteeSelectedRow.Cells[3].Value.ToString();
+            //txtAddress.Text = requesteeSelectedRow.Cells[4].Value.ToString();
+            cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[3].Value.ToString());
+            dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[1].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
+            cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
+            txtAttendee1.Text = reservattionSelectedRow.Cells[4].Value.ToString();//Pakiayos yung position ni Groom sa database dapat mas nauuna siya kesa kay bride thanks
+            if (currentEventSelected==1)
+            {
+                //txtAttendee2.Text.Cells[5].Value.ToString();//Fix the position of Bride tulad ng sabi ko para gumana to
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[7].Value.ToString());
+                txtPaymentAmount.Text = reservattionSelectedRow.Cells[8].Value.ToString();
+            }
+            else
+            {
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[6].Value.ToString());
+                txtPaymentAmount.Text = reservattionSelectedRow.Cells[7].Value.ToString();
+            }
         }
     }
 }
