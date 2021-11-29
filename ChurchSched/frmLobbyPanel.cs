@@ -171,6 +171,10 @@ namespace ChurchSched
             // selected user for reservation panel
             userIDAndName = selectedUserID.ToString() + "_" + requesteeSelectedRow.Cells[1].Value.ToString();
             txtIDNameReserve.Text = userIDAndName;
+
+            // load reservations data table on dgv reservations for convenience
+            LoadReservationsDgvReservations();
+
         }
         private void btnConfirmRequestee_Click(object sender, EventArgs e)
         {
@@ -297,7 +301,6 @@ namespace ChurchSched
 
          */
 
-        int userID;
         int currentEventSelected = 1;
         string[] weddingRequirements = {
                 "Marriage License",
@@ -415,22 +418,25 @@ namespace ChurchSched
             DB.Fill(DT);
             dgvReservations.DataSource = DT;
         }
-        private void InsertNewReservation()
+        private int CheckModeOfPayment()
 								{
-            // check mode of payment
-            int modeOfPaymentID = 1;
             switch (cmbPaymentMode.SelectedItem.ToString())
             {
                 case "Gcash/Paypal":
-                    modeOfPaymentID = 1;
-                    break;
+                    return 1;
                 case "Debit/Credit Card":
-                    modeOfPaymentID = 2;
-                    break;
+                    return 2;
                 case "Cash Payment":
-                    modeOfPaymentID = 3;
-                    break;
+                    return 3;
+                default:
+                    return 0;
             }
+        }
+        // 
+        private void InsertNewReservation()
+								{
+            // check mode of payment
+            
 
             string SQLiteQuery;
             switch (cmbEvents.SelectedItem.ToString())
@@ -438,14 +444,14 @@ namespace ChurchSched
                 case "Wedding":
                     // reservation
                     SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
-                    "VALUES(" + adminID + ", " + selectedUserID + ", 'Wedding', '" + dtpDate.Value.ToString() + "', '" + cmbTime.SelectedItem.ToString() + "', 0);";
+                    "VALUES(" + currentAdminID + ", " + selectedUserID + ", 'Wedding', '" + dtpDate.Value.ToString() + "', '" + cmbTime.SelectedItem.ToString() + "', 0);";
                     ExecuteQuery(SQLiteQuery);
                     // find the reservation id
                     DB = new SQLiteDataAdapter(
                         "SELECT reservation_id " +
                         "FROM Reservations " +
                         "WHERE " +
-                        "admin_id=" + adminID + " AND " +
+                        "admin_id=" + currentAdminID + " AND " +
                         "user_id=" + selectedUserID + " AND " +
                         "type = 'Wedding' AND " +
                         "date='" + dtpDate.Value.ToString() + "' AND " +
@@ -637,7 +643,7 @@ namespace ChurchSched
 
         // LOBBY PANEL FORM METHODS ================================================
 
-        private int adminID;//instance variable na to ng frmLobby eto 
+        private int currentAdminID;//instance variable na to ng frmLobby eto 
 
         public frmLobbyPanel()
         {
@@ -648,7 +654,7 @@ namespace ChurchSched
             InitializeComponent();
             //wag tanggalin kasi magtotopak lahat gago subukan mo
             // tangina mo paano pag tinanggal ko kasi trip ko lng bumagsak tayo haha
-            this.adminID = adminID;
+            this.currentAdminID = adminID;
         }
         private void frmLobbyPanel_Load(object sender, EventArgs e)
         {
