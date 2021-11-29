@@ -54,7 +54,7 @@ namespace ChurchSched
          */
         
         DataGridViewRow requesteeSelectedRow;
-        int requesteeSelectedRowID;
+        int selectedUserID;
         string userIDAndName;
 
         /* REQUESTEE PANEL METHODS ================================================
@@ -105,7 +105,7 @@ namespace ChurchSched
         }
         private void ClearRequesteeTextBoxes()
         {
-            requesteeSelectedRowID = Convert.ToInt32(null);
+            selectedUserID = Convert.ToInt32(null);
             txtRequestName.Clear();
             txtContactNum.Clear();
             txtEmailAdd.Clear();
@@ -162,13 +162,13 @@ namespace ChurchSched
             requesteeSelectedRow = dgvRequestees.Rows[index];
 
             // set requestee selected row id
-            requesteeSelectedRowID = Convert.ToInt32(requesteeSelectedRow.Cells[0].Value);
+            selectedUserID = Convert.ToInt32(requesteeSelectedRow.Cells[0].Value);
 
             // populate textboxes with requestee's data grid view's selected row's value
             PopulateSelectedRequestee();
 
             // selected user for reservation panel
-            userIDAndName = requesteeSelectedRowID.ToString() + "_" + requesteeSelectedRow.Cells[1].Value.ToString();
+            userIDAndName = selectedUserID.ToString() + "_" + requesteeSelectedRow.Cells[1].Value.ToString();
             txtIDNameReserve.Text = userIDAndName;
         }
         private void btnConfirmRequestee_Click(object sender, EventArgs e)
@@ -199,12 +199,12 @@ namespace ChurchSched
         }
         private void btnEditrequestee_Click(object sender, EventArgs e)
         {
-            if (requesteeSelectedRowID > 0)
+            if (selectedUserID > 0)
             {
                 // message box edit confirmation
                 DialogResult confirmEdit = MessageBox.Show(
                     // message box message
-                    "Are you sure to edit user id: " + requesteeSelectedRowID + " with the following values?\n" +
+                    "Are you sure to edit user id: " + selectedUserID + " with the following values?\n" +
                     "\nname: " + txtRequestName.Text +
                     "\ncontact: " + txtContactNum.Text +
                     "\nemail: " + txtEmailAdd.Text +
@@ -218,7 +218,7 @@ namespace ChurchSched
                 if(confirmEdit == DialogResult.Yes)
 																{
                     // update user info
-                    UpdateUserInfo(requesteeSelectedRowID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
+                    UpdateUserInfo(selectedUserID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
                     // refresh requestee data grid view
                     LoadUserInfoDgvRequestee();
 
@@ -232,7 +232,7 @@ namespace ChurchSched
         }
         private void btnDelRequestee_Click(object sender, EventArgs e)
         {
-            if (requesteeSelectedRowID > 0)
+            if (selectedUserID > 0)
             {
                 // populate textboxes with requestee's data grid view's selected row's value
                 // (incase changes were made after selecting row)
@@ -242,7 +242,7 @@ namespace ChurchSched
                 DialogResult dialogResult = MessageBox.Show(
                     // message box message
                     "Are you sure to delete this Requestee ???\n" +
-                    "\nid: " + requesteeSelectedRowID +
+                    "\nid: " + selectedUserID +
                     "\nname: " + requesteeSelectedRow.Cells[1].Value.ToString() +
                     "\ncontact: " + requesteeSelectedRow.Cells[2].Value.ToString() +
                     "\nemail: " + requesteeSelectedRow.Cells[3].Value.ToString() +
@@ -254,7 +254,7 @@ namespace ChurchSched
                 );
                 if (dialogResult == DialogResult.Yes)
                 {
-                    ExecuteQuery("DELETE FROM UserInfo WHERE Id='" + requesteeSelectedRowID + "'");
+                    ExecuteQuery("DELETE FROM UserInfo WHERE Id='" + selectedUserID + "'");
                     LoadUserInfoDgvRequestee();
                     MessageBox.Show("Deleted");
                 }
@@ -296,7 +296,8 @@ namespace ChurchSched
 
          */
 
-        int currentEventSelected = 0;
+        int userID;
+        int currentEventSelected = 1;
         string[] weddingRequirements = {
                 "Marriage License",
                 "Baptismal certificate (Groom)",
@@ -350,6 +351,64 @@ namespace ChurchSched
             txtAmountToBePaid.Text = DT.Rows[0][0].ToString();
         }
 
+        private void LoadReservationsDgvReservations()
+								{
+            switch (cmbEvents.SelectedItem.ToString())
+            {
+                case "Wedding":
+                    DB = new SQLiteDataAdapter(
+                        "SELECT reservation_id, date, time, type, bride, groom, is_cancelled, mode_of_payment_id, balance"  +
+                        "FROM Reservations " +
+                        "INNER JOIN Wedding " +
+                        "ON Reservations.reservation_id = Wedding.id " +
+                        "INNER JOIN Payments " +
+                        "ON Reservations.reservation_id = Payments.reservation_id " +
+                        "WHERE Reservations.user_id =" + selectedUserID + ";"
+                        , sql_con
+                    );
+                    break;
+                case "Baptism":
+                    DB = new SQLiteDataAdapter(
+                        "SELECT reservation_id, date, time, type, candidate, is_cancelled, mode_of_payment_id, balance " +
+                        "FROM Reservations " +
+                        "INNER JOIN Baptization " +
+                        "ON Reservations.reservation_id = Baptization.id " +
+                        "INNER JOIN Payments " +
+                        "ON Reservations.reservation_id = Payments.reservation_id " +
+                        "WHERE Reservations.user_id =" + selectedUserID + ";"
+                        , sql_con
+                    );
+                    break;
+                case "Confirmation":
+                    DB = new SQLiteDataAdapter(
+                        "SELECT reservation_id, date, time, type, confirmand, is_cancelled, mode_of_payment_id, balance " +
+                        "FROM Reservations " +
+                        "INNER JOIN Confirmation " +
+                        "ON Reservations.reservation_id = Confirmation.id " +
+                        "INNER JOIN Payments " +
+                        "ON Reservations.reservation_id = Payments.reservation_id " +
+                        "WHERE Reservations.user_id =" + selectedUserID + ";"
+                        , sql_con
+                    );
+                    break;
+                case "Mass":
+                    DB = new SQLiteDataAdapter(
+                        "SELECT reservation_id, date, time, type, purpose, is_cancelled, mode_of_payment_id, balance " +
+                        "FROM Reservations " +
+                        "INNER JOIN Mass " +
+                        "ON Reservations.reservation_id = Mass.id " +
+                        "INNER JOIN Payments " +
+                        "ON Reservations.reservation_id = Payments.reservation_id" +
+                        "WHERE Reservations.user_id =" + selectedUserID + ";"
+                        , sql_con
+                    );
+                    break;
+            }
+            DT = new DataTable();
+            DB.Fill(DT);
+            dgvReservations.DataSource = DT;
+        }
+
         /* RESERVATION PANEL EVENTS ================================================
         
         ComboBox Events = WIP
@@ -397,6 +456,7 @@ namespace ChurchSched
                     break;
             }
             LoadPrice();
+            LoadReservationsDgvReservations();
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
