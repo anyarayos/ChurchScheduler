@@ -404,6 +404,7 @@ namespace ChurchSched
             /* Lopez, Percival IV: Experiment ko lng ito para malaman kung anong values kukunin ni sqlite
             MessageBox.Show(dtpDate.Value.ToString());
              */
+            MessageBox.Show("IMPORTANT! \n \n \n \nMake sure to make full Payment 2 two (2) months before the reserve date. \n \nOtherwise, the reservation sill be forfeited", "Your Reservation is Successful!");
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -465,6 +466,16 @@ namespace ChurchSched
             // default selected index into 0
             cmbEvents.SelectedIndex = 0;
             cmbTime.SelectedIndex = 0;
+        }
+
+        private void btnViewPast_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("");
+        }
+
+        private void btnViewUpcoming_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("");
         }
     }
 }
