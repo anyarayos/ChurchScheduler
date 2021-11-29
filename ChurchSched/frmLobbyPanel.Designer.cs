@@ -52,7 +52,7 @@ namespace ChurchSched
 												this.tabControl = new System.Windows.Forms.TabControl();
 												this.tbReservation = new System.Windows.Forms.TabPage();
 												this.label17 = new System.Windows.Forms.Label();
-												this.txtPaymentAmnt = new System.Windows.Forms.TextBox();
+												this.txtPaymentAmount = new System.Windows.Forms.TextBox();
 												this.label15 = new System.Windows.Forms.Label();
 												this.cmbPaymentMode = new System.Windows.Forms.ComboBox();
 												this.txtAmountToBePaid = new System.Windows.Forms.TextBox();
@@ -336,7 +336,7 @@ namespace ChurchSched
 												// tbReservation
 												// 
 												this.tbReservation.Controls.Add(this.label17);
-												this.tbReservation.Controls.Add(this.txtPaymentAmnt);
+												this.tbReservation.Controls.Add(this.txtPaymentAmount);
 												this.tbReservation.Controls.Add(this.label15);
 												this.tbReservation.Controls.Add(this.cmbPaymentMode);
 												this.tbReservation.Controls.Add(this.txtAmountToBePaid);
@@ -381,13 +381,13 @@ namespace ChurchSched
 												this.label17.TabIndex = 69;
 												this.label17.Text = "Payment Amount:";
 												// 
-												// txtPaymentAmnt
+												// txtPaymentAmount
 												// 
-												this.txtPaymentAmnt.Location = new System.Drawing.Point(98, 483);
-												this.txtPaymentAmnt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-												this.txtPaymentAmnt.Name = "txtPaymentAmnt";
-												this.txtPaymentAmnt.Size = new System.Drawing.Size(199, 25);
-												this.txtPaymentAmnt.TabIndex = 68;
+												this.txtPaymentAmount.Location = new System.Drawing.Point(98, 483);
+												this.txtPaymentAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+												this.txtPaymentAmount.Name = "txtPaymentAmount";
+												this.txtPaymentAmount.Size = new System.Drawing.Size(199, 25);
+												this.txtPaymentAmount.TabIndex = 68;
 												// 
 												// label15
 												// 
@@ -880,7 +880,7 @@ namespace ChurchSched
         private System.Windows.Forms.TextBox txtAmountToBePaid;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txtPaymentAmnt;
+        private System.Windows.Forms.TextBox txtPaymentAmount;
         private System.Windows.Forms.Button btnViewUpcoming;
         private System.Windows.Forms.Button btnViewPast;
     }

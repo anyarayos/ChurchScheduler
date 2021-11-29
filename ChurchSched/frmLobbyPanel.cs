@@ -342,7 +342,6 @@ namespace ChurchSched
             Object[] timeRange = timeIntervals.Cast<object>().ToArray();
             combobox.Items.AddRange(timeRange);
         }
-
         private void LoadPrice()
         {
             DB = new SQLiteDataAdapter("SELECT price FROM Prices WHERE price_id='" + currentEventSelected + "'", sql_con);
@@ -350,55 +349,62 @@ namespace ChurchSched
             DB.Fill(DT);
             txtAmountToBePaid.Text = DT.Rows[0][0].ToString();
         }
-
         private void LoadReservationsDgvReservations()
 								{
             switch (cmbEvents.SelectedItem.ToString())
             {
                 case "Wedding":
                     DB = new SQLiteDataAdapter(
-                        "SELECT reservation_id, date, time, type, bride, groom, is_cancelled, mode_of_payment_id, balance"  +
+                        "SELECT Reservations.reservation_id, date, time, type, bride, groom, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Wedding " +
                         "ON Reservations.reservation_id = Wedding.id " +
                         "INNER JOIN Payments " +
                         "ON Reservations.reservation_id = Payments.reservation_id " +
+                        "INNER JOIN ModeOfPayments " +
+                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
                         "WHERE Reservations.user_id =" + selectedUserID + ";"
                         , sql_con
                     );
                     break;
                 case "Baptism":
                     DB = new SQLiteDataAdapter(
-                        "SELECT reservation_id, date, time, type, candidate, is_cancelled, mode_of_payment_id, balance " +
+                        "SELECT Reservations.reservation_id, date, time, type, candidate, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Baptization " +
                         "ON Reservations.reservation_id = Baptization.id " +
                         "INNER JOIN Payments " +
                         "ON Reservations.reservation_id = Payments.reservation_id " +
+                        "INNER JOIN ModeOfPayments " +
+                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
                         "WHERE Reservations.user_id =" + selectedUserID + ";"
                         , sql_con
                     );
                     break;
                 case "Confirmation":
                     DB = new SQLiteDataAdapter(
-                        "SELECT reservation_id, date, time, type, confirmand, is_cancelled, mode_of_payment_id, balance " +
+                        "SELECT Reservations.reservation_id, date, time, type, confirmand, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Confirmation " +
                         "ON Reservations.reservation_id = Confirmation.id " +
                         "INNER JOIN Payments " +
                         "ON Reservations.reservation_id = Payments.reservation_id " +
+                        "INNER JOIN ModeOfPayments " +
+                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
                         "WHERE Reservations.user_id =" + selectedUserID + ";"
                         , sql_con
                     );
                     break;
                 case "Mass":
                     DB = new SQLiteDataAdapter(
-                        "SELECT reservation_id, date, time, type, purpose, is_cancelled, mode_of_payment_id, balance " +
+                        "SELECT Reservations.reservation_id, date, time, type, purpose, is_cancelled, mode_of_payment_id, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Mass " +
                         "ON Reservations.reservation_id = Mass.id " +
                         "INNER JOIN Payments " +
                         "ON Reservations.reservation_id = Payments.reservation_id" +
+                        "INNER JOIN ModeOfPayments " +
+                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
                         "WHERE Reservations.user_id =" + selectedUserID + ";"
                         , sql_con
                     );
@@ -407,6 +413,68 @@ namespace ChurchSched
             DT = new DataTable();
             DB.Fill(DT);
             dgvReservations.DataSource = DT;
+        }
+        private void InsertNewReservation()
+								{
+            // check mode of payment
+            int modeOfPaymentID = 1;
+            switch (cmbPaymentMode.SelectedItem.ToString())
+            {
+                case "Gcash/Paypal":
+                    modeOfPaymentID = 1;
+                    break;
+                case "Debit/Credit Card":
+                    modeOfPaymentID = 2;
+                    break;
+                case "Cash Payment":
+                    modeOfPaymentID = 3;
+                    break;
+            }
+
+            string SQLiteQuery;
+            switch (cmbEvents.SelectedItem.ToString())
+            {
+                case "Wedding":
+                    // reservation
+                    SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
+                    "VALUES(" + adminID + ", " + selectedUserID + ", 'Wedding', '" + dtpDate.Value.ToString() + "', '" + cmbTime.SelectedItem.ToString() + "', 0);";
+                    ExecuteQuery(SQLiteQuery);
+                    // find the reservation id
+                    DB = new SQLiteDataAdapter(
+                        "SELECT reservation_id " +
+                        "FROM Reservations " +
+                        "WHERE " +
+                        "admin_id=" + adminID + " AND " +
+                        "user_id=" + selectedUserID + " AND " +
+                        "type = 'Wedding' AND " +
+                        "date='" + dtpDate.Value.ToString() + "' AND " +
+                        "time='" + cmbTime.SelectedItem.ToString() + "' AND " +
+                        "is_cancelled = 0;"
+                        , sql_con
+                    );
+                    DT = new DataTable();
+                    DB.Fill(DT);
+                    int reservationID = Convert.ToInt32(DT.Rows[0][0]);
+                    // event
+                    SQLiteQuery = "INSERT INTO Wedding(id, bride, groom) " +
+                    "VALUES(" + reservationID + ", '" + txtAttendee1.Text + "', '" + txtAttendee2.Text + "');";
+                    ExecuteQuery(SQLiteQuery);
+                    // payment
+                    SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
+                    "VALUES(" + reservationID + ", 1, " + modeOfPaymentID + ", " + Convert.ToDouble(txtPaymentAmount.Text) + ");";
+                    ExecuteQuery(SQLiteQuery);
+                    break;
+                case "Baptism":
+                    
+                    break;
+                case "Confirmation":
+                    
+                    break;
+                case "Mass":
+                    
+                    break;
+            }
+            
         }
 
         /* RESERVATION PANEL EVENTS ================================================
