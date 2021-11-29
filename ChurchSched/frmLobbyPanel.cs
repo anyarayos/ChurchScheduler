@@ -398,12 +398,12 @@ namespace ChurchSched
                     break;
                 case "Mass":
                     DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, purpose, is_cancelled, mode_of_payment_id, balance " +
+                        "SELECT Reservations.reservation_id, date, time, type, purpose, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Mass " +
                         "ON Reservations.reservation_id = Mass.id " +
                         "INNER JOIN Payments " +
-                        "ON Reservations.reservation_id = Payments.reservation_id" +
+                        "ON Reservations.reservation_id = Payments.reservation_id " +
                         "INNER JOIN ModeOfPayments " +
                         "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
                         "WHERE Reservations.user_id =" + selectedUserID + ";"
