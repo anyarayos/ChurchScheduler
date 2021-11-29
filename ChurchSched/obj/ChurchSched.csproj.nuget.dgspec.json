@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tlzfo\\Desktop\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj": {}
+    "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tlzfo\\Desktop\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj": {
+    "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tlzfo\\Desktop\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
+        "projectUniqueName": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
         "projectName": "ChurchSched",
-        "projectPath": "C:\\Users\\tlzfo\\Desktop\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
-        "packagesPath": "C:\\Users\\tlzfo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tlzfo\\Desktop\\GitHub\\ChurchScheduler\\ChurchSched\\obj\\",
+        "projectPath": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
+        "packagesPath": "C:\\Users\\jblolz8\\.nuget\\packages\\",
+        "outputPath": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tlzfo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\jblolz8\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,6 +55,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.19, 3.1.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
