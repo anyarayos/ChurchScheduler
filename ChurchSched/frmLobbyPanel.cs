@@ -272,7 +272,7 @@ namespace ChurchSched
         }
         private void textSearchRequestee_TextChanged(object sender, EventArgs e)
         {
-            DB = new SQLiteDataAdapter("select * from UserInfo where name like '" + textSearchRequestee.Text + "%'", sql_con);
+            DB = new SQLiteDataAdapter("SELECT * FROM UserInfo WHERE name LIKE '%" + textSearchRequestee.Text + "%' OR contact LIKE '%" + textSearchRequestee.Text + "%' OR email LIKE '%" + textSearchRequestee.Text + "%'", sql_con);
             DT = new DataTable();
             DB.Fill(DT);
             dgvRequestees.DataSource = DT;
@@ -435,9 +435,15 @@ namespace ChurchSched
 
         // LOBBY PANEL FORM METHODS ================================================
 
+        private int adminID;//instance variable na to ng frmLobby eto 
         public frmLobbyPanel()
         {
             InitializeComponent();
+        }
+        public frmLobbyPanel(int adminID)//call this on frmAdminLogin
+        {
+            InitializeComponent();//wag tanggalin kasi magtotopak lahat gago subukan mo
+            this.adminID = adminID;
         }
         private void frmLobbyPanel_Load(object sender, EventArgs e)
         {

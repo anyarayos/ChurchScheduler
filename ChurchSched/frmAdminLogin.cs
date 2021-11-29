@@ -48,8 +48,8 @@ namespace ChurchSched
 
 																this.DialogResult = DialogResult.Yes;
 																this.Hide();
-																frmLobbyPanel lobby = new frmLobbyPanel();
-																lobby.ShowDialog();
+																frmLobbyPanel lobby = new frmLobbyPanel();//palitan mo na into frmLobbyPanel(int adminID) shempre iquery mo kung ano yung ID 
+				lobby.ShowDialog();
 												}
 												else
 												{

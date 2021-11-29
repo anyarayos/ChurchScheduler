@@ -162,3 +162,4 @@ C:\Users\jcofe\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp
 C:\Users\jcofe\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.genruntimeconfig.cache
 C:\Programming Files\Repository\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmCancelationRemark.resources
 C:\Users\jcofe\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmViewDetails.resources
+C:\Users\63927\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmViewDetails.resources
