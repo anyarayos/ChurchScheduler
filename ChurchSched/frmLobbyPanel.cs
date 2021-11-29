@@ -432,43 +432,47 @@ namespace ChurchSched
                     return 0;
             }
         }
-        // 
-        private void InsertNewReservation()
+        // USE THIS METHOD IF YOU WANT TO INSERT NEW RESERVATION
+        // txt.Attendee2.Text WILL STILL RECIEVED BUT WONT BE USED IF THE EVENT ISNT RELATING TO WEDDING
+        // InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(),Convert.ToDouble(txtPaymentAmount.Text));
+        private void InsertNewReservation(int adminID, int userID, string massEvent, string date, string time, string attendee1, string attendee2, int modeOfPaymentID, int paymentAmount)
 								{
-            // check mode of payment
-            
-
             string SQLiteQuery;
-            switch (cmbEvents.SelectedItem.ToString())
+            switch (massEvent)
             {
                 case "Wedding":
-                    // reservation
+                    // insert reservation query
                     SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
-                    "VALUES(" + currentAdminID + ", " + selectedUserID + ", 'Wedding', '" + dtpDate.Value.ToString() + "', '" + cmbTime.SelectedItem.ToString() + "', 0);";
+                    "VALUES(" + adminID + ", " + userID + ", '" + massEvent + "', '" + date + "', '" + time + "', 0);";
                     ExecuteQuery(SQLiteQuery);
-                    // find the reservation id
+                    
+                    // find the inserted reservation id
                     DB = new SQLiteDataAdapter(
                         "SELECT reservation_id " +
                         "FROM Reservations " +
                         "WHERE " +
-                        "admin_id=" + currentAdminID + " AND " +
-                        "user_id=" + selectedUserID + " AND " +
+                        "admin_id=" + adminID + " AND " +
+                        "user_id=" + userID + " AND " +
                         "type = 'Wedding' AND " +
-                        "date='" + dtpDate.Value.ToString() + "' AND " +
-                        "time='" + cmbTime.SelectedItem.ToString() + "' AND " +
+                        "date='" + date + "' AND " +
+                        "time='" + time + "' AND " +
                         "is_cancelled = 0;"
                         , sql_con
                     );
                     DT = new DataTable();
                     DB.Fill(DT);
+                    
+                    // holds the reservation id of previous query
                     int reservationID = Convert.ToInt32(DT.Rows[0][0]);
-                    // event
+
+                    // insert event query relating to reservation
                     SQLiteQuery = "INSERT INTO Wedding(id, bride, groom) " +
-                    "VALUES(" + reservationID + ", '" + txtAttendee1.Text + "', '" + txtAttendee2.Text + "');";
+                    "VALUES(" + reservationID + ", '" + attendee1 + "', '" + attendee2 + "');";
                     ExecuteQuery(SQLiteQuery);
-                    // payment
+                    
+                    // insert payment query for the reservation
                     SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
-                    "VALUES(" + reservationID + ", 1, " + modeOfPaymentID + ", " + Convert.ToDouble(txtPaymentAmount.Text) + ");";
+                    "VALUES(" + reservationID + ", 1, " + modeOfPaymentID + ", " + paymentAmount + ");";
                     ExecuteQuery(SQLiteQuery);
                     break;
                 case "Baptism":
