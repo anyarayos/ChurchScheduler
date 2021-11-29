@@ -294,22 +294,11 @@ namespace ChurchSched
 
         /* RESERVATION PANEL METHODS ================================================
         
-        PopulateComboBoxEvents(combobox)
-        - populates the combobox with the type of event
-
         PopulateComboBoxTime(combobox)
         - populate combo box with time
 
          */
-
-        private void PopulateComboBoxEvents(ComboBox combobox)
-        {
-            String[] events = { "Wedding", "Baptism", "Confirmation", "Mass" };
-            foreach(string ev in events)
-            {
-                combobox.Items.Add(ev);
-            }
-        }
+ 
         private void PopulateComboBoxTime(ComboBox combobox)
         {
             List<String> timeIntervals = new List<String>();
@@ -355,8 +344,8 @@ namespace ChurchSched
                 "Marriage certificate (Parents)"
             };
             string[] confirmationReqs = {
-                "Baptismal certificate",
-                "Seminar Attendance"
+                "Baptismal certificate (Confirmand)",
+                "Seminar Attendance (Confirmand)"
             };
             if (cmbEvents.SelectedItem.ToString() == "Wedding")
             {
@@ -460,12 +449,13 @@ namespace ChurchSched
             LoadUserInfoDgvRequestee();
 
             // RESERVATION PANEL ================
-            // populate comboboxes with events and time
-            PopulateComboBoxEvents(cmbEvents);
+            // populate comboboxes with time
             PopulateComboBoxTime(cmbTime);
             // default selected index into 0
             cmbEvents.SelectedIndex = 0;
             cmbTime.SelectedIndex = 0;
+            cmbPaymentMode.SelectedIndex = 0;
+            
         }
 
         private void btnViewPast_Click(object sender, EventArgs e)
