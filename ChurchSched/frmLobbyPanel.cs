@@ -481,7 +481,6 @@ namespace ChurchSched
         /* RESERVATION PANEL EVENTS ================================================
         
         ComboBox Events = WIP
-
         Button Confirm Reservation = WIP
         Button Cancel Reservation = WIP
 
@@ -489,9 +488,41 @@ namespace ChurchSched
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
             MessageBox.Show("IMPORTANT! \n \n \n \nMake sure to make full Payment 2 two (2) months before the reserve date. \n \nOtherwise, the reservation sill be forfeited", "Your Reservation is Successful!");
+            //==SUBMIT LOGIC==
+            //Check if the fields are filled
+            //bool textBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");\\For Wedding
+            //bool textBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");\\The Rest
+
+            //if(currentEventSelected==1)\\Wedding lang may additional na 1 textbox kasi
+            //{
+            //Insert new reservation if all fields are filled AND (HAS NO SAME RESERVATION DATE AND TIME)
+            //if(textBoxesFilledEvent1){}
+
+            //HAS THE SAME RESERVATION DATE AND TIME
+            //else if(){PRINT There is already an existing reservation to your preferred date and time.\n Please select another date and time.}
+
+            //IF INCOMPLETE FIELDS
+            //else(){PRINT Incomplete submission, complete and try again.}
+            //}
+            //else
+            //{
+            //Insert new reservation if all fields are filled AND (HAS NO SAME RESERVATION DATE AND TIME)
+            //if(textBoxesFilledEvent2){}
+
+            //HAS THE SAME RESERVATION DATE AND TIME
+            //else if(){PRINT There is already an existing reservation to your preferred date and time.\n Please select another date and time.}
+
+            //IF INCOMPLETE FIELDS
+            //else(){PRINT Incomplete submission, complete and try again.}
+            //}
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            //==CANCEL LOGIC==
+            //Check if there's a reservation selected
+            //Populate textboxes of the reservation's data grid view's selected row value
+
+            //Prompt a dialog box if the user really wants to cancel
             DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
@@ -502,10 +533,43 @@ namespace ChurchSched
             {
                 //  
             }
+            //if yes make isCancelled to true 
+
+            //If no reservation selected PRINT No reservation selected.
+
         }
         private void btnEditReserve_Click(object sender, EventArgs e)
         {
+            //==EDIT LOGIC==
+            //int selectedReservationID;
+            //selectedReservationID = Convert.ToInt32(reservattion.SelectedRow.Cells[0].Value);
 
+            //if(user selected something from the dgv){
+            //DialogResult confirmEdit = MessageBox.Show(
+            // message box message
+            //"Are you sure you want to edit "+ selectedReservationID + " with the following values?\n" +
+            //"\nEvent: " + cmbEvents.SelectedItem.ToString() +
+            //"\nDate: " + dtpDate.Value.ToString() +
+            //"\nTime: " + cmbTime.SelectedItem.ToString() +
+            //"\nAttendee 1: " + txtAttendee1.Text;
+            //"\nAttendee 2: " + txtAttendee2.Text;
+            //"\nMode of Payment: " + cmbPaymentMode.SelectedItem.ToString();
+            //"\nPayment Amount: " + txtPaymentAmount.Text,
+            // message box title
+            //"Edit Confirmation",
+            // message box buttons
+            //MessageBoxButtons.YesNo
+            //);
+            //if(confirmEdit == DialogResult.Yes)
+            //														{
+            // update event reservations                   
+            // refresh reservations data grid view
+            //MessageBox.Show("Reservations successfully updated.");
+            //													}
+            //}
+            //else{
+            //PRINT "No user selected."
+            //}
         }
         private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -630,10 +694,6 @@ namespace ChurchSched
         }
         private void PopulateSelectedReservation()
         {
-            //txtRequestName.Text = requesteeSelectedRow.Cells[1].Value.ToString();
-            //txtContactNum.Text = requesteeSelectedRow.Cells[2].Value.ToString();
-            //txtEmailAdd.Text = requesteeSelectedRow.Cells[3].Value.ToString();
-            //txtAddress.Text = requesteeSelectedRow.Cells[4].Value.ToString();
             cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[3].Value.ToString());
             dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[1].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
             cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
