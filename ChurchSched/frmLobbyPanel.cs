@@ -148,7 +148,7 @@ namespace ChurchSched
         private void dgvRequestees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // show the reservation tab on first selection
-												if (userIDAndName == null)
+            if (tabControl.TabPages.Contains(tbReservation) == false)
             {
                 tabControl.TabPages.Remove(tbAllReserve);
                 tabControl.TabPages.Remove(tbPastEvents);
@@ -267,6 +267,8 @@ namespace ChurchSched
         private void btnClearRequestee_Click(object sender, EventArgs e)
         {
             ClearRequesteeTextBoxes();
+            dgvRequestees.ClearSelection();
+            tabControl.TabPages.Remove(tbReservation);
         }
         private void textSearchRequestee_TextChanged(object sender, EventArgs e)
         {
