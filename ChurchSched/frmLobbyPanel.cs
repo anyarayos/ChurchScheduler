@@ -222,13 +222,19 @@ namespace ChurchSched
                 // if edit confirmed
                 if(confirmEdit == DialogResult.Yes)
 																{
+                    //if textboxes are all filled and (email address or contact number doesn't match existing)
                     // update user info
                     UpdateUserInfo(selectedUserID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
                     // refresh requestee data grid view
                     LoadUserInfoDgvRequestee();
-
                     MessageBox.Show("User info successfully updated.");
-																}
+
+                    //else if textboxes are all filled and (email address or contact number matches existing)
+                    //Show "A requestee with the same email address or contact number already exists!"
+
+                    //else
+                    //Show "Incomplete submission, complete and try again."
+                }
             }
             else
             {
