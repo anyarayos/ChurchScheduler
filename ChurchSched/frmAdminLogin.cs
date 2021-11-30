@@ -47,9 +47,9 @@ namespace ChurchSched
 																int adminID = Convert.ToInt32(DT.Rows[0][0]);
 
 																this.DialogResult = DialogResult.Yes;
-																this.Hide();
 																frmLobbyPanel lobby = new frmLobbyPanel(adminID);
 																lobby.ShowDialog();
+																this.Dispose();
 												}
 												else
 												{

@@ -147,18 +147,25 @@ namespace ChurchSched
                 tabControl.TabPages.Add(tbAllReserve);
                 tabControl.TabPages.Add(tbPastEvents);
             }
-            // data grid view row index
-            int index = e.RowIndex;
-            requesteeSelectedRow = dgvRequestees.Rows[index];
-            // set requestee selected row id
-            selectedUserID = Convert.ToInt32(requesteeSelectedRow.Cells[0].Value);
-            // populate textboxes with requestee's data grid view's selected row's value
-            PopulateSelectedRequestee();
-            // selected user for reservation panel
-            userIDAndName = selectedUserID.ToString() + "_" + requesteeSelectedRow.Cells[1].Value.ToString();
-            txtIDNameReserve.Text = userIDAndName;
-            // load reservations data table on dgv reservations for convenience
-            LoadReservationsDgvReservations();
+            try 
+            {
+                // data grid view row index
+                int index = e.RowIndex;
+                requesteeSelectedRow = dgvRequestees.Rows[index];
+                // set requestee selected row id
+                selectedUserID = Convert.ToInt32(requesteeSelectedRow.Cells[0].Value);
+                // populate textboxes with requestee's data grid view's selected row's value
+                PopulateSelectedRequestee();
+                // selected user for reservation panel
+                userIDAndName = selectedUserID.ToString() + "_" + requesteeSelectedRow.Cells[1].Value.ToString();
+                txtIDNameReserve.Text = userIDAndName;
+                // load reservations data table on dgv reservations for convenience
+                LoadReservationsDgvReservations();
+            }
+            catch
+            {
+
+            }
         }
         private void btnConfirmRequestee_Click(object sender, EventArgs e)
         {
@@ -673,13 +680,20 @@ namespace ChurchSched
         private void dgvReservations_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // data grid view row index
-            int index = e.RowIndex;
-            reservationSelectedRow = dgvReservations.Rows[index];
-            // populate textboxes with requestee's data grid view's selected row's value
-            PopulateSelectedReservation();
-            
-            // holds the reservation id of previous query
-            selectedReservationID = Convert.ToInt32(reservationSelectedRow.Cells[0].Value);
+            try
+            {
+                int index = e.RowIndex;
+                reservationSelectedRow = dgvReservations.Rows[index];
+                // populate textboxes with requestee's data grid view's selected row's value
+                PopulateSelectedReservation();
+
+                // holds the reservation id of previous query
+                selectedReservationID = Convert.ToInt32(reservationSelectedRow.Cells[0].Value);
+            }
+            catch
+            {
+
+            }
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
@@ -846,7 +860,7 @@ namespace ChurchSched
             );
             DT = new DataTable();
             DB.Fill(DT);
-            dgvAllSched.DataSource = DT;
+            dgvUpcomingEvent.DataSource = DT;
         }
 
         /* UPCOMING EVENTS PANEL EVENTS ================================================
@@ -904,6 +918,8 @@ namespace ChurchSched
         }
         private void frmLobbyPanel_Load(object sender, EventArgs e)
         {
+            dgvUpcomingEvent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPastEvents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             // establish connection to church database
             SetConnection("Church.db");
             // REQUESTEE PANEL ================
@@ -933,5 +949,7 @@ namespace ChurchSched
             frmViewDetails view = new frmViewDetails();
             view.ShowDialog();
         }
+
+
     }
 }

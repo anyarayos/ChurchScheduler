@@ -58,7 +58,7 @@ namespace ChurchSched
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(107, 55);
+            this.label1.Location = new System.Drawing.Point(100, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 21);
             this.label1.TabIndex = 2;
@@ -68,7 +68,7 @@ namespace ChurchSched
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(107, 115);
+            this.label2.Location = new System.Drawing.Point(100, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 21);
             this.label2.TabIndex = 3;
@@ -79,11 +79,11 @@ namespace ChurchSched
             this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLogIn.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnLogIn.Location = new System.Drawing.Point(107, 177);
+            this.btnLogIn.Location = new System.Drawing.Point(100, 177);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(87, 42);
             this.btnLogIn.TabIndex = 4;
-            this.btnLogIn.Text = "Log-In";
+            this.btnLogIn.Text = "&Log-In";
             this.btnLogIn.UseVisualStyleBackColor = true;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
@@ -92,7 +92,7 @@ namespace ChurchSched
             this.lblForgot.AutoSize = true;
             this.lblForgot.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblForgot.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.lblForgot.Location = new System.Drawing.Point(101, 234);
+            this.lblForgot.Location = new System.Drawing.Point(92, 235);
             this.lblForgot.Name = "lblForgot";
             this.lblForgot.Size = new System.Drawing.Size(100, 15);
             this.lblForgot.TabIndex = 5;
