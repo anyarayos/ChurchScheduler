@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace ChurchSched
 {
-    class EllipseTool
+    class EllipseTool : Component
     {
         private Control hostControl;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -47,5 +47,7 @@ namespace ChurchSched
                     _cntrl.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, _cntrl.Width, _cntrl.Height, _CornerRadius, _CornerRadius));
             }
         }
+
+
     }
 }

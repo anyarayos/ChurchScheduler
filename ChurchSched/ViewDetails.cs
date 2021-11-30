@@ -14,5 +14,10 @@ namespace ChurchSched
         {
             InitializeComponent();
         }
+
+        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

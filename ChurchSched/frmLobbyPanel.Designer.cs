@@ -269,6 +269,7 @@ namespace ChurchSched
             // dgvRequestees
             // 
             this.dgvRequestees.AllowUserToAddRows = false;
+            this.dgvRequestees.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvRequestees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRequestees.Location = new System.Drawing.Point(407, 51);
             this.dgvRequestees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

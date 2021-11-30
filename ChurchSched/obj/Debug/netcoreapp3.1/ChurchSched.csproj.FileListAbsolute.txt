@@ -221,7 +221,6 @@ C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcore
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SQLite.Interop.dll
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.AssemblyReference.cache
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmCancelationRemark.resources
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.ForgotPassSendCode.resources
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmAdminLogin.resources
@@ -238,3 +237,4 @@ C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcore
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.dll
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.pdb
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.genruntimeconfig.cache
+C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.AssemblyReference.cache
