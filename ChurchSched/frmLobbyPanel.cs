@@ -310,28 +310,28 @@ namespace ChurchSched
         int currentEventSelected = 1;
         int selectedReservationID = 0;
         string[] weddingRequirements = {
-                "Marriage License",
-                "Baptismal certificate (Groom)",
-                "Baptismal certificate (Bride)",
-                "Confirmation certificate (Groom)",
-                "Confirmation certificate (Bride)",
-                "Birth certificate (Groom)",
-                "Birth certificate (Bride)",
-                "CENOMAR (Groom)",
-                "CENOMAR (Bride)",
-                "Marriage preparation Seminar",
-                "Canonical interview",
-                "Marriage Banns",
-                "Confession"
-            };
+            "Marriage License",
+            "Baptismal certificate (Groom)",
+            "Baptismal certificate (Bride)",
+            "Confirmation certificate (Groom)",
+            "Confirmation certificate (Bride)",
+            "Birth certificate (Groom)",
+            "Birth certificate (Bride)",
+            "CENOMAR (Groom)",
+            "CENOMAR (Bride)",
+            "Marriage preparation Seminar",
+            "Canonical interview",
+            "Marriage Banns",
+            "Confession"
+        };
         string[] baptismRequirements = {
-                "Birth certificate (Candidate)",
-                "Marriage certificate (Parents)"
-            };
+            "Birth certificate (Candidate)",
+            "Marriage certificate (Parents)"
+        };
         string[] confirmationRequirements = {
-                "Baptismal certificate (Confirmand)",
-                "Seminar Attendance (Confirmand)"
-            };
+            "Baptismal certificate (Confirmand)",
+            "Seminar Attendance (Confirmand)"
+        };
 
         /* RESERVATION PANEL METHODS ================================================
         
@@ -345,12 +345,12 @@ namespace ChurchSched
             cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
             dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[0].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
             cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[1].Value.ToString());
+            // first text box
             txtAttendee1.Text = reservattionSelectedRow.Cells[4].Value.ToString();
-            //Pakiayos yung position ni Groom sa database dapat mas nauuna siya kesa kay bride thanks
-            //Paano pag ayaw ko kasi ladies first
+            // if has second text box then move index further
             if (currentEventSelected == 1)
             {
-                txtAttendee2.Text = reservattionSelectedRow.Cells[5].Value.ToString();//Fix the position of Bride tulad ng sabi ko para gumana to
+                txtAttendee2.Text = reservattionSelectedRow.Cells[5].Value.ToString();
                 //Ayaw //bahalakajan
                 cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[6].Value.ToString());
                 txtPaymentAmount.Text = reservattionSelectedRow.Cells[7].Value.ToString();
@@ -473,7 +473,7 @@ namespace ChurchSched
                     reservationID = Convert.ToInt32(DT.Rows[0][0]);
 
                     // insert event query relating to reservation
-                    SQLiteQuery = "INSERT INTO Wedding(id, bride, groom) " +
+                    SQLiteQuery = "INSERT INTO Wedding(id, groom, bride) " +
                     "VALUES(" + reservationID + ", '" + attendee1 + "', '" + attendee2 + "');";
                     ExecuteQuery(SQLiteQuery);
 
@@ -505,7 +505,7 @@ namespace ChurchSched
                     ExecuteQuery(SQLiteQuery);
                     
                     // update event query
-                    SQLiteQuery = "UPDATE Wedding SET bride='" + attendee1 + "', groom='" + attendee2 + "' WHERE id='" + reservationID + "'";
+                    SQLiteQuery = "UPDATE Wedding SET groom='" + attendee1 + "', bride='" + attendee2 + "' WHERE id='" + reservationID + "'";
                     ExecuteQuery(SQLiteQuery);
                     
                     // update payment query
@@ -577,16 +577,16 @@ namespace ChurchSched
                         "FROM Reservations " +
                         "WHERE " +
                         "user_id=" + selectedUserID + " AND " +
-                        "type = '" + cmbEvents.SelectedIndex + "' AND " +
-                        "date='" + dtpDate.Value.ToString() + "' AND " +
-                        "time='" + cmbTime.SelectedIndex.ToString() + "';"
+                        "type = '" + cmbEvents.SelectedItem.ToString() + "' AND " +
+                        "date='" + dtpDate.Value.ToString("yyyy/MM/dd") + "' AND " +
+                        "time='" + cmbTime.SelectedItem.ToString() + "';"
                         , sql_con
                     );
             DT = new DataTable();
             DB.Fill(DT);
 
             // holds the reservation id of previous query
-            //selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
+            selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
@@ -645,25 +645,15 @@ namespace ChurchSched
             // for the rest
             bool reservationTextBoxesFilledEvent2 = !(txtAttendee1.Text == "" || txtPaymentAmount.Text == "");
 
-            // check if there is no date or time conflict
-            if (!CheckDateOrTimeConflict(dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString()))
+            
+            if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
             {
-                if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
-                {
-                    MessageBox.Show("Edit Success");
-                    // UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
-                }
-                else
-                {
-                    MessageBox.Show("Submission Incomplete, check and try again.");
-                }
+                MessageBox.Show("Edit Success");
+                UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
             }
             else
             {
-                MessageBox.Show(
-                    "There is already an existing reservation to your preferred date and time.\n" +
-                    "Please select another date and time."
-                );
+                MessageBox.Show("Submission Incomplete, check and try again.");
             }
             //==EDIT LOGIC==
             /*
