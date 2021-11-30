@@ -76,7 +76,7 @@ namespace ChurchSched
             this.lblDetailPaidAmount = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblDetailRevatorEmail = new System.Windows.Forms.Label();
+            this.lblDetailReservatorEmail = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label24 = new System.Windows.Forms.Label();
             this.lblDetailReservatorName = new System.Windows.Forms.Label();
@@ -96,28 +96,29 @@ namespace ChurchSched
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.65389F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.78204F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.70498F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.70115F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.72773F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.72773F));
             this.tableLayoutPanel1.Controls.Add(this.lblDetailAdminID, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblDetailUserAdmin, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblDetailsAdminName, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(22, 66);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(25, 59);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(914, 33);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1045, 57);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblDetailAdminID
             // 
             this.lblDetailAdminID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailAdminID.AutoSize = true;
-            this.lblDetailAdminID.Location = new System.Drawing.Point(780, 13);
+            this.lblDetailAdminID.Location = new System.Drawing.Point(889, 28);
             this.lblDetailAdminID.Name = "lblDetailAdminID";
-            this.lblDetailAdminID.Size = new System.Drawing.Size(57, 15);
+            this.lblDetailAdminID.Size = new System.Drawing.Size(72, 20);
             this.lblDetailAdminID.TabIndex = 9;
             this.lblDetailAdminID.Text = "Admin ID";
             // 
@@ -125,9 +126,9 @@ namespace ChurchSched
             // 
             this.lblDetailUserAdmin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailUserAdmin.AutoSize = true;
-            this.lblDetailUserAdmin.Location = new System.Drawing.Point(571, 13);
+            this.lblDetailUserAdmin.Location = new System.Drawing.Point(649, 28);
             this.lblDetailUserAdmin.Name = "lblDetailUserAdmin";
-            this.lblDetailUserAdmin.Size = new System.Drawing.Size(60, 15);
+            this.lblDetailUserAdmin.Size = new System.Drawing.Size(75, 20);
             this.lblDetailUserAdmin.TabIndex = 8;
             this.lblDetailUserAdmin.Text = "Username";
             // 
@@ -136,9 +137,9 @@ namespace ChurchSched
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(76, 13);
+            this.label1.Location = new System.Drawing.Point(80, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 14);
+            this.label1.Size = new System.Drawing.Size(171, 18);
             this.label1.TabIndex = 5;
             this.label1.Text = "Reservation Administrator";
             // 
@@ -146,9 +147,9 @@ namespace ChurchSched
             // 
             this.lblDetailsAdminName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailsAdminName.AutoSize = true;
-            this.lblDetailsAdminName.Location = new System.Drawing.Point(374, 13);
+            this.lblDetailsAdminName.Location = new System.Drawing.Point(425, 28);
             this.lblDetailsAdminName.Name = "lblDetailsAdminName";
-            this.lblDetailsAdminName.Size = new System.Drawing.Size(39, 15);
+            this.lblDetailsAdminName.Size = new System.Drawing.Size(49, 20);
             this.lblDetailsAdminName.TabIndex = 7;
             this.lblDetailsAdminName.Text = "Name";
             // 
@@ -159,15 +160,15 @@ namespace ChurchSched
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.6886F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.3114F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
@@ -175,14 +176,15 @@ namespace ChurchSched
             this.tableLayoutPanel2.Controls.Add(this.lblDetailEventType, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblDetailDate, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblDetailTime, 1, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(22, 128);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(25, 171);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(914, 90);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1045, 120);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // label4
@@ -190,9 +192,9 @@ namespace ChurchSched
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(129, 40);
+            this.label4.Location = new System.Drawing.Point(147, 53);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 14);
+            this.label4.Size = new System.Drawing.Size(37, 18);
             this.label4.TabIndex = 8;
             this.label4.Text = "Date";
             // 
@@ -201,9 +203,9 @@ namespace ChurchSched
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(129, 71);
+            this.label5.Location = new System.Drawing.Point(146, 94);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 14);
+            this.label5.Size = new System.Drawing.Size(39, 18);
             this.label5.TabIndex = 9;
             this.label5.Text = "Time";
             // 
@@ -212,9 +214,9 @@ namespace ChurchSched
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(93, 9);
+            this.label3.Location = new System.Drawing.Point(102, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 14);
+            this.label3.Size = new System.Drawing.Size(128, 18);
             this.label3.TabIndex = 7;
             this.label3.Text = "Type of reservation";
             // 
@@ -223,19 +225,20 @@ namespace ChurchSched
             this.txtDateEvent.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDateEvent.BackColor = System.Drawing.SystemColors.Window;
             this.txtDateEvent.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDateEvent.Location = new System.Drawing.Point(27, 97);
+            this.txtDateEvent.Location = new System.Drawing.Point(31, 128);
+            this.txtDateEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDateEvent.Name = "txtDateEvent";
             this.txtDateEvent.ReadOnly = true;
-            this.txtDateEvent.Size = new System.Drawing.Size(236, 16);
+            this.txtDateEvent.Size = new System.Drawing.Size(270, 20);
             this.txtDateEvent.TabIndex = 11;
             // 
             // lblDetailEventType
             // 
             this.lblDetailEventType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailEventType.AutoSize = true;
-            this.lblDetailEventType.Location = new System.Drawing.Point(583, 8);
+            this.lblDetailEventType.Location = new System.Drawing.Point(665, 11);
             this.lblDetailEventType.Name = "lblDetailEventType";
-            this.lblDetailEventType.Size = new System.Drawing.Size(36, 15);
+            this.lblDetailEventType.Size = new System.Drawing.Size(45, 20);
             this.lblDetailEventType.TabIndex = 13;
             this.lblDetailEventType.Text = "Event";
             // 
@@ -243,9 +246,9 @@ namespace ChurchSched
             // 
             this.lblDetailDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailDate.AutoSize = true;
-            this.lblDetailDate.Location = new System.Drawing.Point(586, 39);
+            this.lblDetailDate.Location = new System.Drawing.Point(667, 52);
             this.lblDetailDate.Name = "lblDetailDate";
-            this.lblDetailDate.Size = new System.Drawing.Size(31, 15);
+            this.lblDetailDate.Size = new System.Drawing.Size(41, 20);
             this.lblDetailDate.TabIndex = 14;
             this.lblDetailDate.Text = "Date";
             // 
@@ -253,9 +256,9 @@ namespace ChurchSched
             // 
             this.lblDetailTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailTime.AutoSize = true;
-            this.lblDetailTime.Location = new System.Drawing.Point(585, 70);
+            this.lblDetailTime.Location = new System.Drawing.Point(667, 93);
             this.lblDetailTime.Name = "lblDetailTime";
-            this.lblDetailTime.Size = new System.Drawing.Size(33, 15);
+            this.lblDetailTime.Size = new System.Drawing.Size(42, 20);
             this.lblDetailTime.TabIndex = 15;
             this.lblDetailTime.Text = "Time";
             // 
@@ -268,20 +271,21 @@ namespace ChurchSched
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.45564F));
             this.tableLayoutPanel7.Controls.Add(this.lblDetailBalance, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label16, 0, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(22, 428);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(25, 577);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(914, 34);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1045, 64);
             this.tableLayoutPanel7.TabIndex = 12;
             // 
             // lblDetailBalance
             // 
             this.lblDetailBalance.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailBalance.AutoSize = true;
-            this.lblDetailBalance.Location = new System.Drawing.Point(547, 15);
+            this.lblDetailBalance.Location = new System.Drawing.Point(619, 31);
             this.lblDetailBalance.Name = "lblDetailBalance";
-            this.lblDetailBalance.Size = new System.Drawing.Size(108, 15);
+            this.lblDetailBalance.Size = new System.Drawing.Size(136, 20);
             this.lblDetailBalance.TabIndex = 15;
             this.lblDetailBalance.Text = "Remaining Balance";
             // 
@@ -290,9 +294,9 @@ namespace ChurchSched
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(121, 15);
+            this.label16.Location = new System.Drawing.Point(137, 32);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(46, 14);
+            this.label16.Size = new System.Drawing.Size(56, 18);
             this.label16.TabIndex = 0;
             this.label16.Text = "Balance";
             // 
@@ -309,23 +313,26 @@ namespace ChurchSched
             this.tableLayoutPanel6.Controls.Add(this.rbtnGcashPaypal, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.rbtnDebitCredit, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.label15, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(22, 369);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(25, 486);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(914, 34);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1045, 58);
             this.tableLayoutPanel6.TabIndex = 11;
             this.tableLayoutPanel6.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel6_Paint);
             // 
             // rbtnCash
             // 
             this.rbtnCash.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rbtnCash.AutoCheck = false;
             this.rbtnCash.AutoSize = true;
             this.rbtnCash.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbtnCash.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtnCash.Location = new System.Drawing.Point(785, 4);
+            this.rbtnCash.Location = new System.Drawing.Point(896, 5);
+            this.rbtnCash.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbtnCash.Name = "rbtnCash";
-            this.rbtnCash.Size = new System.Drawing.Size(48, 18);
+            this.rbtnCash.Size = new System.Drawing.Size(58, 22);
             this.rbtnCash.TabIndex = 15;
             this.rbtnCash.TabStop = true;
             this.rbtnCash.Text = "Cash";
@@ -334,12 +341,14 @@ namespace ChurchSched
             // rbtnGcashPaypal
             // 
             this.rbtnGcashPaypal.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rbtnGcashPaypal.AutoCheck = false;
             this.rbtnGcashPaypal.AutoSize = true;
             this.rbtnGcashPaypal.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbtnGcashPaypal.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtnGcashPaypal.Location = new System.Drawing.Point(346, 4);
+            this.rbtnGcashPaypal.Location = new System.Drawing.Point(392, 5);
+            this.rbtnGcashPaypal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbtnGcashPaypal.Name = "rbtnGcashPaypal";
-            this.rbtnGcashPaypal.Size = new System.Drawing.Size(93, 18);
+            this.rbtnGcashPaypal.Size = new System.Drawing.Size(113, 22);
             this.rbtnGcashPaypal.TabIndex = 13;
             this.rbtnGcashPaypal.TabStop = true;
             this.rbtnGcashPaypal.Text = "Gcash/Paypal";
@@ -348,12 +357,14 @@ namespace ChurchSched
             // rbtnDebitCredit
             // 
             this.rbtnDebitCredit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rbtnDebitCredit.AutoCheck = false;
             this.rbtnDebitCredit.AutoSize = true;
             this.rbtnDebitCredit.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbtnDebitCredit.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtnDebitCredit.Location = new System.Drawing.Point(545, 4);
+            this.rbtnDebitCredit.Location = new System.Drawing.Point(617, 5);
+            this.rbtnDebitCredit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbtnDebitCredit.Name = "rbtnDebitCredit";
-            this.rbtnDebitCredit.Size = new System.Drawing.Size(111, 18);
+            this.rbtnDebitCredit.Size = new System.Drawing.Size(138, 22);
             this.rbtnDebitCredit.TabIndex = 14;
             this.rbtnDebitCredit.TabStop = true;
             this.rbtnDebitCredit.Text = "Debit/Credit Card";
@@ -364,9 +375,9 @@ namespace ChurchSched
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(97, 16);
+            this.label15.Location = new System.Drawing.Point(105, 33);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(95, 14);
+            this.label15.Size = new System.Drawing.Size(119, 18);
             this.label15.TabIndex = 7;
             this.label15.Text = "Mode of Payment";
             // 
@@ -375,9 +386,9 @@ namespace ChurchSched
             this.tableLayoutPanel5.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 624F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 736F));
             this.tableLayoutPanel5.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.label10, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.label11, 0, 2);
@@ -387,13 +398,14 @@ namespace ChurchSched
             this.tableLayoutPanel5.Controls.Add(this.lblDetailCandidate, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.lblDetailConfirmand, 2, 1);
             this.tableLayoutPanel5.Controls.Add(this.lblDetailPurpose, 2, 2);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(22, 277);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(25, 369);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(914, 93);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1045, 124);
             this.tableLayoutPanel5.TabIndex = 9;
             // 
             // label9
@@ -401,9 +413,9 @@ namespace ChurchSched
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(35, 9);
+            this.label9.Location = new System.Drawing.Point(37, 12);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 14);
+            this.label9.Size = new System.Drawing.Size(78, 18);
             this.label9.TabIndex = 2;
             this.label9.Text = "Baptization";
             // 
@@ -412,9 +424,9 @@ namespace ChurchSched
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(31, 40);
+            this.label10.Location = new System.Drawing.Point(31, 53);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 14);
+            this.label10.Size = new System.Drawing.Size(89, 18);
             this.label10.TabIndex = 3;
             this.label10.Text = "Confirmation";
             // 
@@ -423,9 +435,9 @@ namespace ChurchSched
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(50, 71);
+            this.label11.Location = new System.Drawing.Point(56, 94);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(33, 14);
+            this.label11.Size = new System.Drawing.Size(40, 18);
             this.label11.TabIndex = 4;
             this.label11.Text = "Mass";
             // 
@@ -434,9 +446,9 @@ namespace ChurchSched
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(182, 9);
+            this.label12.Location = new System.Drawing.Point(194, 12);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(56, 14);
+            this.label12.Size = new System.Drawing.Size(71, 18);
             this.label12.TabIndex = 5;
             this.label12.Text = "Candidate";
             // 
@@ -445,9 +457,9 @@ namespace ChurchSched
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(178, 40);
+            this.label13.Location = new System.Drawing.Point(189, 53);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 14);
+            this.label13.Size = new System.Drawing.Size(80, 18);
             this.label13.TabIndex = 6;
             this.label13.Text = "Confirmand";
             // 
@@ -456,9 +468,9 @@ namespace ChurchSched
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(187, 71);
+            this.label14.Location = new System.Drawing.Point(200, 94);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 14);
+            this.label14.Size = new System.Drawing.Size(59, 18);
             this.label14.TabIndex = 7;
             this.label14.Text = "Purpose";
             // 
@@ -466,9 +478,9 @@ namespace ChurchSched
             // 
             this.lblDetailCandidate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailCandidate.AutoSize = true;
-            this.lblDetailCandidate.Location = new System.Drawing.Point(549, 8);
+            this.lblDetailCandidate.Location = new System.Drawing.Point(611, 11);
             this.lblDetailCandidate.Name = "lblDetailCandidate";
-            this.lblDetailCandidate.Size = new System.Drawing.Size(104, 15);
+            this.lblDetailCandidate.Size = new System.Drawing.Size(130, 20);
             this.lblDetailCandidate.TabIndex = 15;
             this.lblDetailCandidate.Text = "Candidate\'s Name";
             // 
@@ -476,9 +488,9 @@ namespace ChurchSched
             // 
             this.lblDetailConfirmand.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailConfirmand.AutoSize = true;
-            this.lblDetailConfirmand.Location = new System.Drawing.Point(544, 39);
+            this.lblDetailConfirmand.Location = new System.Drawing.Point(606, 52);
             this.lblDetailConfirmand.Name = "lblDetailConfirmand";
-            this.lblDetailConfirmand.Size = new System.Drawing.Size(114, 15);
+            this.lblDetailConfirmand.Size = new System.Drawing.Size(140, 20);
             this.lblDetailConfirmand.TabIndex = 16;
             this.lblDetailConfirmand.Text = "Confirmand\'s Name";
             // 
@@ -486,9 +498,9 @@ namespace ChurchSched
             // 
             this.lblDetailPurpose.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailPurpose.AutoSize = true;
-            this.lblDetailPurpose.Location = new System.Drawing.Point(576, 70);
+            this.lblDetailPurpose.Location = new System.Drawing.Point(645, 93);
             this.lblDetailPurpose.Name = "lblDetailPurpose";
-            this.lblDetailPurpose.Size = new System.Drawing.Size(50, 15);
+            this.lblDetailPurpose.Size = new System.Drawing.Size(62, 20);
             this.lblDetailPurpose.TabIndex = 17;
             this.lblDetailPurpose.Text = "Purpose";
             // 
@@ -503,13 +515,14 @@ namespace ChurchSched
             this.tableLayoutPanel3.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.lblDetailGroom, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.lblDetailBride, 1, 1);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(151, 217);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(172, 289);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(785, 61);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(898, 81);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // label6
@@ -517,9 +530,9 @@ namespace ChurchSched
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(60, 9);
+            this.label6.Location = new System.Drawing.Point(66, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 14);
+            this.label6.Size = new System.Drawing.Size(51, 18);
             this.label6.TabIndex = 5;
             this.label6.Text = "Groom";
             // 
@@ -528,9 +541,9 @@ namespace ChurchSched
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(64, 40);
+            this.label8.Location = new System.Drawing.Point(71, 53);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 14);
+            this.label8.Size = new System.Drawing.Size(41, 18);
             this.label8.TabIndex = 6;
             this.label8.Text = "Bride";
             // 
@@ -538,9 +551,9 @@ namespace ChurchSched
             // 
             this.lblDetailGroom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailGroom.AutoSize = true;
-            this.lblDetailGroom.Location = new System.Drawing.Point(429, 8);
+            this.lblDetailGroom.Location = new System.Drawing.Point(486, 11);
             this.lblDetailGroom.Name = "lblDetailGroom";
-            this.lblDetailGroom.Size = new System.Drawing.Size(87, 15);
+            this.lblDetailGroom.Size = new System.Drawing.Size(108, 20);
             this.lblDetailGroom.TabIndex = 15;
             this.lblDetailGroom.Text = "Groom\'s Name";
             // 
@@ -548,9 +561,9 @@ namespace ChurchSched
             // 
             this.lblDetailBride.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailBride.AutoSize = true;
-            this.lblDetailBride.Location = new System.Drawing.Point(434, 39);
+            this.lblDetailBride.Location = new System.Drawing.Point(492, 52);
             this.lblDetailBride.Name = "lblDetailBride";
-            this.lblDetailBride.Size = new System.Drawing.Size(77, 15);
+            this.lblDetailBride.Size = new System.Drawing.Size(97, 20);
             this.lblDetailBride.TabIndex = 16;
             this.lblDetailBride.Text = "Bride\'s Name";
             // 
@@ -559,13 +572,14 @@ namespace ChurchSched
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
             this.tableLayoutPanel4.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(22, 217);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(25, 289);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(123, 61);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(153, 81);
             this.tableLayoutPanel4.TabIndex = 8;
             // 
             // label7
@@ -573,9 +587,9 @@ namespace ChurchSched
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(48, 23);
+            this.label7.Location = new System.Drawing.Point(64, 31);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 14);
+            this.label7.Size = new System.Drawing.Size(64, 18);
             this.label7.TabIndex = 1;
             this.label7.Text = "Wedding";
             // 
@@ -593,12 +607,13 @@ namespace ChurchSched
             this.tableLayoutPanel8.Controls.Add(this.rbtnFull, 2, 0);
             this.tableLayoutPanel8.Controls.Add(this.rbtnPartial, 3, 0);
             this.tableLayoutPanel8.Controls.Add(this.lblDetailPaidAmount, 1, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(22, 402);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(25, 543);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(914, 28);
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1045, 37);
             this.tableLayoutPanel8.TabIndex = 13;
             // 
             // label18
@@ -606,9 +621,9 @@ namespace ChurchSched
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(109, 9);
+            this.label18.Location = new System.Drawing.Point(121, 12);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(70, 14);
+            this.label18.Size = new System.Drawing.Size(88, 18);
             this.label18.TabIndex = 0;
             this.label18.Text = "Paid Amount";
             // 
@@ -617,9 +632,9 @@ namespace ChurchSched
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(121, 40);
+            this.label19.Location = new System.Drawing.Point(137, 53);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(46, 14);
+            this.label19.Size = new System.Drawing.Size(56, 18);
             this.label19.TabIndex = 1;
             this.label19.Text = "Balance";
             // 
@@ -629,9 +644,10 @@ namespace ChurchSched
             this.rbtnFull.AutoSize = true;
             this.rbtnFull.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbtnFull.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtnFull.Location = new System.Drawing.Point(631, 7);
+            this.rbtnFull.Location = new System.Drawing.Point(720, 10);
+            this.rbtnFull.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbtnFull.Name = "rbtnFull";
-            this.rbtnFull.Size = new System.Drawing.Size(90, 18);
+            this.rbtnFull.Size = new System.Drawing.Size(110, 22);
             this.rbtnFull.TabIndex = 16;
             this.rbtnFull.TabStop = true;
             this.rbtnFull.Text = "Full Payment";
@@ -643,9 +659,10 @@ namespace ChurchSched
             this.rbtnPartial.AutoSize = true;
             this.rbtnPartial.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbtnPartial.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtnPartial.Location = new System.Drawing.Point(782, 7);
+            this.rbtnPartial.Location = new System.Drawing.Point(891, 10);
+            this.rbtnPartial.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbtnPartial.Name = "rbtnPartial";
-            this.rbtnPartial.Size = new System.Drawing.Size(104, 18);
+            this.rbtnPartial.Size = new System.Drawing.Size(127, 22);
             this.rbtnPartial.TabIndex = 17;
             this.rbtnPartial.TabStop = true;
             this.rbtnPartial.Text = "Partial Payment";
@@ -655,9 +672,9 @@ namespace ChurchSched
             // 
             this.lblDetailPaidAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailPaidAmount.AutoSize = true;
-            this.lblDetailPaidAmount.Location = new System.Drawing.Point(405, 8);
+            this.lblDetailPaidAmount.Location = new System.Drawing.Point(461, 11);
             this.lblDetailPaidAmount.Name = "lblDetailPaidAmount";
-            this.lblDetailPaidAmount.Size = new System.Drawing.Size(77, 15);
+            this.lblDetailPaidAmount.Size = new System.Drawing.Size(94, 20);
             this.lblDetailPaidAmount.TabIndex = 18;
             this.lblDetailPaidAmount.Text = "Paid Amount";
             // 
@@ -666,9 +683,9 @@ namespace ChurchSched
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(367, 9);
+            this.label17.Location = new System.Drawing.Point(419, 12);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(207, 29);
+            this.label17.Size = new System.Drawing.Size(258, 37);
             this.label17.TabIndex = 14;
             this.label17.Text = "Reservation Details";
             // 
@@ -678,40 +695,42 @@ namespace ChurchSched
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.LightBlue;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(780, 479);
+            this.button1.Location = new System.Drawing.Point(891, 656);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 30);
+            this.button1.Size = new System.Drawing.Size(147, 40);
             this.button1.TabIndex = 15;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // lblDetailRevatorEmail
+            // lblDetailReservatorEmail
             // 
-            this.lblDetailRevatorEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDetailRevatorEmail.AutoSize = true;
-            this.lblDetailRevatorEmail.Location = new System.Drawing.Point(730, 13);
-            this.lblDetailRevatorEmail.Name = "lblDetailRevatorEmail";
-            this.lblDetailRevatorEmail.Size = new System.Drawing.Size(41, 15);
-            this.lblDetailRevatorEmail.TabIndex = 12;
-            this.lblDetailRevatorEmail.Text = "E-mail";
+            this.lblDetailReservatorEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDetailReservatorEmail.AutoSize = true;
+            this.lblDetailReservatorEmail.Location = new System.Drawing.Point(809, 29);
+            this.lblDetailReservatorEmail.Name = "lblDetailReservatorEmail";
+            this.lblDetailReservatorEmail.Size = new System.Drawing.Size(52, 20);
+            this.lblDetailReservatorEmail.TabIndex = 12;
+            this.lblDetailReservatorEmail.Text = "E-mail";
             // 
             // tableLayoutPanel9
             // 
             this.tableLayoutPanel9.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel9.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel9.ColumnCount = 3;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.23339F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.76661F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.79107F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.20893F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 417F));
             this.tableLayoutPanel9.Controls.Add(this.label24, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.lblDetailReservatorName, 1, 0);
-            this.tableLayoutPanel9.Controls.Add(this.lblDetailRevatorEmail, 2, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(22, 94);
+            this.tableLayoutPanel9.Controls.Add(this.lblDetailReservatorEmail, 2, 0);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(25, 114);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(914, 34);
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1045, 59);
             this.tableLayoutPanel9.TabIndex = 16;
             // 
             // label24
@@ -719,30 +738,31 @@ namespace ChurchSched
             this.label24.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(76, 14);
+            this.label24.Location = new System.Drawing.Point(100, 30);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(137, 14);
+            this.label24.Size = new System.Drawing.Size(131, 18);
             this.label24.TabIndex = 5;
-            this.label24.Text = "Reservation Administrator";
+            this.label24.Text = "Name of Reservator";
             // 
             // lblDetailReservatorName
             // 
             this.lblDetailReservatorName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailReservatorName.AutoSize = true;
-            this.lblDetailReservatorName.Location = new System.Drawing.Point(419, 13);
+            this.lblDetailReservatorName.Location = new System.Drawing.Point(453, 29);
             this.lblDetailReservatorName.Name = "lblDetailReservatorName";
-            this.lblDetailReservatorName.Size = new System.Drawing.Size(39, 15);
+            this.lblDetailReservatorName.Size = new System.Drawing.Size(49, 20);
             this.lblDetailReservatorName.TabIndex = 7;
             this.lblDetailReservatorName.Text = "Name";
             // 
             // frmViewDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(958, 537);
+            this.ClientSize = new System.Drawing.Size(1095, 716);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel9);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label17);
@@ -753,12 +773,13 @@ namespace ChurchSched
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmViewDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reservation Details";
+            this.Load += new System.EventHandler(this.frmViewDetails_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -830,7 +851,7 @@ namespace ChurchSched
         private System.Windows.Forms.Label lblDetailGroom;
         private System.Windows.Forms.Label lblDetailBride;
         private System.Windows.Forms.Label lblDetailPaidAmount;
-        private System.Windows.Forms.Label lblDetailRevatorEmail;
+        private System.Windows.Forms.Label lblDetailReservatorEmail;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label lblDetailReservatorName;

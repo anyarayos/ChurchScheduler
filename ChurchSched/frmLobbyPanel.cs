@@ -939,17 +939,55 @@ namespace ChurchSched
             // PAST EVENTS PANEL ================
             LoadPastEventsOnDGV();
         }
+        DataGridViewRow selectedEventRow;
+        string row_date, row_time;
         private void btnViewPast_Click(object sender, EventArgs e)
         {
-            frmViewDetails view = new frmViewDetails();
+            //SELECT reservation_id FROM Reservations WHERE date = row_date AND time = row_time;
+            int reservationID= 2;//Put the return value of the query in this variable
+
+            frmViewDetails view = new frmViewDetails(currentAdminID, reservationID);
             view.ShowDialog();
         }
         private void btnViewUpcoming_Click(object sender, EventArgs e)
         {
-            frmViewDetails view = new frmViewDetails();
+            //SELECT reservation_id FROM Reservations WHERE date = row_date AND time = row_time;
+            int reservationID = 1;//Put the return value of the query in this variable
+
+            frmViewDetails view = new frmViewDetails(currentAdminID, reservationID);
             view.ShowDialog();
         }
+        
+        private void dgvPastEvents_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            selectedEventRow = dgvPastEvents.Rows[index];
+            row_date = selectedEventRow.Cells[0].Value.ToString();
+            row_time = selectedEventRow.Cells[1].Value.ToString();
+        }
 
+        private void txtSearchUpcoming_TextChanged(object sender, EventArgs e)
+        {
+            //sql_con = new SQLiteConnection("Data Source=" + "Church.db" + "; Version=3; New=False; Compress=True;");
+            //sql_con.Open();
+            //DB = new SQLiteDataAdapter("select * from Reservations where type like '" + txtSearchUpcoming.Text + "%'", sql_con);
+            //DT = new DataTable();
+            //DB.Fill(DT);
+            //dgvUpcomingEvent.DataSource = DT;
+            //sql_con.Close();
+        }
 
+        private void txtSearchPast_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvUpcomingEvent_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            selectedEventRow = dgvUpcomingEvent.Rows[index];
+            row_date = selectedEventRow.Cells[0].Value.ToString();
+            row_time = selectedEventRow.Cells[1].Value.ToString();
+        }
     }
 }
