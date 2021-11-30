@@ -308,7 +308,7 @@ namespace ChurchSched
          */
 
         int currentEventSelected = 1;
-        int currentReservationID = 0;
+        int selectedReservationID = 0;
         string[] weddingRequirements = {
                 "Marriage License",
                 "Baptismal certificate (Groom)",
@@ -340,6 +340,27 @@ namespace ChurchSched
 
          */
 
+        private void PopulateSelectedReservation()
+        {
+            cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[3].Value.ToString());
+            dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[1].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
+            cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
+            txtAttendee1.Text = reservattionSelectedRow.Cells[4].Value.ToString();
+            //Pakiayos yung position ni Groom sa database dapat mas nauuna siya kesa kay bride thanks
+            //Paano pag ayaw ko kasi ladies first
+            if (currentEventSelected == 1)
+            {
+                //txtAttendee2.Text.Cells[5].Value.ToString();//Fix the position of Bride tulad ng sabi ko para gumana to
+                //Ayaw
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[7].Value.ToString());
+                txtPaymentAmount.Text = reservattionSelectedRow.Cells[8].Value.ToString();
+            }
+            else
+            {
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[6].Value.ToString());
+                txtPaymentAmount.Text = reservattionSelectedRow.Cells[7].Value.ToString();
+            }
+        }
         private void PopulateComboBoxTime(ComboBox combobox)
         {
             List<String> timeIntervals = new List<String>();
@@ -439,11 +460,21 @@ namespace ChurchSched
             DB.Fill(DT);
             dgvReservations.DataSource = DT;
         }
-        
+        private bool CheckDateOrTimeConflict(string date, string time)
+        {
+            // data table will have a row if query returns a record
+            DB = new SQLiteDataAdapter("SELECT reservation_id FROM Reservations WHERE date='" + date + "' OR time='" + time + "';", sql_con);
+            DT = new DataTable();
+            DB.Fill(DT);
+
+            // if data table returns a record, user exists
+            return DT.Rows.Count == 1;
+        }
+
         // USE THIS METHOD IF YOU WANT TO INSERT NEW RESERVATION
         // txt.Attendee2.Text WILL STILL RECIEVED BUT WONT BE USED IF THE EVENT ISNT RELATING TO WEDDING
         // InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(),Convert.ToDouble(txtPaymentAmount.Text));
-        private void InsertNewReservation(int adminID, int userID, string massEvent, string date, string time, string attendee1, string attendee2, int modeOfPaymentID, int paymentAmount)
+        private void InsertNewReservation(int adminID, int userID, string massEvent, string date, string time, string attendee1, string attendee2, int modeOfPaymentID, double paymentAmount)
 								{
             string SQLiteQuery;
             int reservationID;
@@ -590,8 +621,8 @@ namespace ChurchSched
             
         }
 
-        //
-        private void UpdateReservation(int reservationID, int adminID, int userID, string massEvent, string date, string time, string attendee1, string attendee2, int modeOfPaymentID, int paymentAmount)
+        // UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(),Convert.ToDouble(txtPaymentAmount.Text));
+        private void UpdateReservation(int reservationID, int adminID, int userID, string massEvent, string date, string time, string attendee1, string attendee2, int modeOfPaymentID, double paymentAmount)
 								{
             string SQLiteQuery;
             switch (massEvent)
@@ -659,36 +690,59 @@ namespace ChurchSched
         Button Cancel Reservation = WIP
 
          */
+
+        private void dgvReservations_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // data grid view row index
+            int index = e.RowIndex;
+            reservattionSelectedRow = dgvReservations.Rows[index];
+
+            // populate textboxes with requestee's data grid view's selected row's value
+            PopulateSelectedReservation();
+
+            DB = new SQLiteDataAdapter(
+                        "SELECT reservation_id " +
+                        "FROM Reservations " +
+                        "WHERE " +
+                        "user_id=" + selectedUserID + " AND " +
+                        "type = '" + cmbEvents.SelectedIndex + "' AND " +
+                        "date='" + dtpDate.Value.ToString() + "' AND " +
+                        "time='" + cmbTime.SelectedIndex.ToString() + "';"
+                        , sql_con
+                    );
+            DT = new DataTable();
+            DB.Fill(DT);
+
+            // holds the reservation id of previous query
+            selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
+        }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("IMPORTANT! \n \n \n \nMake sure to make full Payment 2 two (2) months before the reserve date. \n \nOtherwise, the reservation sill be forfeited", "Your Reservation is Successful!");
-            //==SUBMIT LOGIC==
-            //Check if the fields are filled
-            //bool textBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");\\For Wedding
-            //bool textBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");\\The Rest
+            // for wedding
+            bool reservationTextBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");
+            // for the rest
+            bool reservationTextBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");
 
-            //if(currentEventSelected==1)\\Wedding lang may additional na 1 textbox kasi
-            //{
-            //Insert new reservation if all fields are filled AND (HAS NO SAME RESERVATION DATE AND TIME)
-            //if(textBoxesFilledEvent1){}
-
-            //HAS THE SAME RESERVATION DATE AND TIME
-            //else if(){PRINT There is already an existing reservation to your preferred date and time.\n Please select another date and time.}
-
-            //IF INCOMPLETE FIELDS
-            //else(){PRINT Incomplete submission, complete and try again.}
-            //}
-            //else
-            //{
-            //Insert new reservation if all fields are filled AND (HAS NO SAME RESERVATION DATE AND TIME)
-            //if(textBoxesFilledEvent2){}
-
-            //HAS THE SAME RESERVATION DATE AND TIME
-            //else if(){PRINT There is already an existing reservation to your preferred date and time.\n Please select another date and time.}
-
-            //IF INCOMPLETE FIELDS
-            //else(){PRINT Incomplete submission, complete and try again.}
-            //}
+            // check if there is no date or time conflict
+												if (!CheckDateOrTimeConflict(dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString()))
+												{
+																if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
+																{
+                    InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
+																}
+																else
+																{
+                    MessageBox.Show("Submission Incomplete, check and try again.");
+                }
+												}
+												else
+												{
+                MessageBox.Show(
+                    "There is already an existing reservation to your preferred date and time.\n" +
+                    "Please select another date and time."
+                );
+            }
+            LoadReservationsDgvReservations();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -837,7 +891,7 @@ namespace ChurchSched
             LoadPrice();
             LoadReservationsDgvReservations();
         }
-
+        DataGridViewRow reservattionSelectedRow;
 
         // UPCOMING EVENTS PANEL ================================================
 
@@ -907,37 +961,6 @@ namespace ChurchSched
         {
             frmViewDetails view = new frmViewDetails();
             view.ShowDialog();
-        }
-        DataGridViewRow reservattionSelectedRow;
-        private void dgvReservations_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // data grid view row index
-            int index = e.RowIndex;
-            reservattionSelectedRow = dgvReservations.Rows[index];
-
-            // populate textboxes with requestee's data grid view's selected row's value
-            PopulateSelectedReservation();
-        }
-        private void PopulateSelectedReservation()
-        {
-            cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[3].Value.ToString());
-            dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[1].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
-            cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
-            txtAttendee1.Text = reservattionSelectedRow.Cells[4].Value.ToString();
-            //Pakiayos yung position ni Groom sa database dapat mas nauuna siya kesa kay bride thanks
-            //Paano pag ayaw ko kasi ladies first
-            if (currentEventSelected==1)
-            {
-                //txtAttendee2.Text.Cells[5].Value.ToString();//Fix the position of Bride tulad ng sabi ko para gumana to
-                //Ayaw
-                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[7].Value.ToString());
-                txtPaymentAmount.Text = reservattionSelectedRow.Cells[8].Value.ToString();
-            }
-            else
-            {
-                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[6].Value.ToString());
-                txtPaymentAmount.Text = reservattionSelectedRow.Cells[7].Value.ToString();
-            }
         }
     }
 }
