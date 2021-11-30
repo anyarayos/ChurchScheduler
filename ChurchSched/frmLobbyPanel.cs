@@ -437,6 +437,16 @@ namespace ChurchSched
             // if data table returns a record, user exists
             return DT.Rows.Count == 1;
         }
+        private bool CheckDateOrTimeConflictEdit(string date, string time, int reservationID)
+        {
+            // data table will have a row if query returns a record
+            DB = new SQLiteDataAdapter("SELECT reservation_id FROM Reservations WHERE date='" + date + "' AND time='" + time + "' AND NOT reservation_id='" + reservationID + "';", sql_con);
+            DT = new DataTable();
+            DB.Fill(DT);
+
+            // if data table returns a record, user exists
+            return DT.Rows.Count == 1;
+        }
 
         // USE THIS METHOD IF YOU WANT TO INSERT NEW RESERVATION
         // txt.Attendee2.Text WILL STILL RECIEVED BUT WONT BE USED IF THE EVENT ISNT RELATING TO WEDDING
@@ -644,17 +654,25 @@ namespace ChurchSched
             bool reservationTextBoxesFilledEvent1 = !(txtAttendee1.Text == "" || txtAttendee2.Text == "" || txtPaymentAmount.Text == "");
             // for the rest
             bool reservationTextBoxesFilledEvent2 = !(txtAttendee1.Text == "" || txtPaymentAmount.Text == "");
-
-            
-            if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
-            {
-                MessageBox.Show("Edit Success");
-                UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
+            if (!CheckDateOrTimeConflictEdit(dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), selectedReservationID)){
+                if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
+                {
+                    MessageBox.Show("Edit Success");
+                    UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
+                }
+                else
+                {
+                    MessageBox.Show("Submission Incomplete, check and try again.");
+                }
             }
             else
             {
-                MessageBox.Show("Submission Incomplete, check and try again.");
+                MessageBox.Show(
+                    "There is already an existing reservation to your preferred date and time.\n" +
+                    "Please select another date and time."
+                );
             }
+
             //==EDIT LOGIC==
             /*
             if (selectedUserID > 0)
