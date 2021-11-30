@@ -36,18 +36,20 @@ namespace ChurchSched
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogIn = new System.Windows.Forms.Button();
             this.lblForgot = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(170, 69);
+            this.txtUserName.Location = new System.Drawing.Point(27, 106);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(209, 23);
             this.txtUserName.TabIndex = 0;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(170, 129);
+            this.txtPassword.Location = new System.Drawing.Point(27, 166);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(209, 23);
             this.txtPassword.TabIndex = 1;
@@ -57,7 +59,7 @@ namespace ChurchSched
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(170, 45);
+            this.label1.Location = new System.Drawing.Point(84, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 21);
             this.label1.TabIndex = 2;
@@ -67,7 +69,7 @@ namespace ChurchSched
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(170, 105);
+            this.label2.Location = new System.Drawing.Point(84, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 21);
             this.label2.TabIndex = 3;
@@ -77,7 +79,7 @@ namespace ChurchSched
             // 
             this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogIn.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnLogIn.Location = new System.Drawing.Point(230, 167);
+            this.btnLogIn.Location = new System.Drawing.Point(80, 204);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(100, 42);
             this.btnLogIn.TabIndex = 4;
@@ -90,20 +92,32 @@ namespace ChurchSched
             this.lblForgot.AutoSize = true;
             this.lblForgot.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblForgot.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.lblForgot.Location = new System.Drawing.Point(230, 222);
+            this.lblForgot.Location = new System.Drawing.Point(80, 259);
             this.lblForgot.Name = "lblForgot";
             this.lblForgot.Size = new System.Drawing.Size(100, 15);
             this.lblForgot.TabIndex = 5;
             this.lblForgot.Text = "Forgot Password?";
             this.lblForgot.Click += new System.EventHandler(this.lblForgot_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(279, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(321, 348);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmAdminLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(400, 246);
+            this.ClientSize = new System.Drawing.Size(612, 372);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblForgot);
             this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.label2);
@@ -114,6 +128,7 @@ namespace ChurchSched
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Log In";
             this.Load += new System.EventHandler(this.frmLogIn_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,6 +142,7 @@ namespace ChurchSched
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Label lblForgot;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
