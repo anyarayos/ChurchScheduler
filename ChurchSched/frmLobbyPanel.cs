@@ -463,7 +463,7 @@ namespace ChurchSched
         private bool CheckDateOrTimeConflict(string date, string time)
         {
             // data table will have a row if query returns a record
-            DB = new SQLiteDataAdapter("SELECT reservation_id FROM Reservations WHERE date='" + date + "' OR time='" + time + "';", sql_con);
+            DB = new SQLiteDataAdapter("SELECT reservation_id FROM Reservations WHERE date='" + date + "' AND time='" + time + "';", sql_con);
             DT = new DataTable();
             DB.Fill(DT);
 
