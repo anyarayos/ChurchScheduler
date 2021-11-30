@@ -1,3 +1,7 @@
 is_global = true
 build_property.RootNamespace = ChurchSched
+<<<<<<< Updated upstream
 build_property.ProjectDir = C:\Users\63927\Documents\GitHub\ChurchScheduler\ChurchSched\
+=======
+build_property.ProjectDir = C:\Users\USER\Documents\GitHub\ChurchScheduler\ChurchSched\
+>>>>>>> Stashed changes
