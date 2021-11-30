@@ -718,47 +718,31 @@ namespace ChurchSched
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("IMPORTANT! \n \n \n \nMake sure to make full Payment 2 two (2) months before the reserve date. \n \nOtherwise, the reservation sill be forfeited", "Your Reservation is Successful!");
-            //==SUBMIT LOGIC==
-            //Check if the fields are filled
-            
-            //For Wedding
+            // for wedding
             bool reservationTextBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");
-            //The Rest
+            // for the rest
             bool reservationTextBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");
 
             // check if there is no date or time conflict
 												if (!CheckDateOrTimeConflict(dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString()))
 												{
-																if (currentEventSelected == 1 && reservationTextBoxesFilledEvent1)
+																if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
 																{
                     InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
+																}
+																else
+																{
+                    MessageBox.Show("Submission Incomplete, check and try again.");
                 }
 												}
 												else
 												{
-                //PRINT There is already an existing reservation to your preferred date and time.\n Please select another date and time.
                 MessageBox.Show(
                     "There is already an existing reservation to your preferred date and time.\n" +
                     "Please select another date and time."
                 );
             }
-            //Wedding lang may additional na 1 textbox kasi
-            
-                //IF INCOMPLETE FIELDS
-                //else(){PRINT Incomplete submission, complete and try again.}
-            //}
-            //else
-            //{
-            //Insert new reservation if all fields are filled AND (HAS NO SAME RESERVATION DATE AND TIME)
-            //if(textBoxesFilledEvent2){}
-
-            //HAS THE SAME RESERVATION DATE AND TIME
-            //else if(){PRINT There is already an existing reservation to your preferred date and time.\n Please select another date and time.}
-
-            //IF INCOMPLETE FIELDS
-            //else(){PRINT Incomplete submission, complete and try again.}
-            //}
+            LoadReservationsDgvReservations();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
