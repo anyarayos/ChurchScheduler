@@ -406,7 +406,7 @@ namespace ChurchSched
             {
                 case "Wedding":
                     DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, admin_id, date, time, type, groom, bride, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
+                        "SELECT date, time, type, groom, bride, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Wedding " +
                         "ON Reservations.reservation_id = Wedding.id " +
