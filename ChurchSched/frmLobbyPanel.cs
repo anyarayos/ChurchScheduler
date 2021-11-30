@@ -407,6 +407,7 @@ namespace ChurchSched
                     SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
                     "VALUES(" + adminID + ", " + userID + ", '" + massEvent + "', '" + date + "', '" + time + "', 0);";
                     ExecuteQuery(SQLiteQuery);
+                    
                     // find the inserted reservation id
                     DB = new SQLiteDataAdapter(
                         "SELECT reservation_id " +
@@ -422,22 +423,126 @@ namespace ChurchSched
                     );
                     DT = new DataTable();
                     DB.Fill(DT);
+                    
                     // holds the reservation id of previous query
                     reservationID = Convert.ToInt32(DT.Rows[0][0]);
+                    
                     // insert event query relating to reservation
                     SQLiteQuery = "INSERT INTO Wedding(id, groom, bride) " +
                     "VALUES(" + reservationID + ", '" + attendee1 + "', '" + attendee2 + "');";
                     ExecuteQuery(SQLiteQuery);
+                    
                     // insert payment query for the reservation
                     SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
                     "VALUES(" + reservationID + ", 1, " + modeOfPaymentID + ", " + paymentAmount + ");";
                     ExecuteQuery(SQLiteQuery);
                     break;
+                
                 case "Baptism":
+                    // insert reservation query
+                    SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
+                    "VALUES(" + adminID + ", " + userID + ", '" + massEvent + "', '" + date + "', '" + time + "', 0);";
+                    ExecuteQuery(SQLiteQuery);
+
+                    // find the inserted reservation id
+                    DB = new SQLiteDataAdapter(
+                        "SELECT reservation_id " +
+                        "FROM Reservations " +
+                        "WHERE " +
+                        "admin_id=" + adminID + " AND " +
+                        "user_id=" + userID + " AND " +
+                        "type = '" + massEvent + "' AND " +
+                        "date='" + date + "' AND " +
+                        "time='" + time + "' AND " +
+                        "is_cancelled = 0;"
+                        , sql_con
+                    );
+                    DT = new DataTable();
+                    DB.Fill(DT);
+
+                    // holds the reservation id of previous query
+                    reservationID = Convert.ToInt32(DT.Rows[0][0]);
+
+                    // insert event query relating to reservation
+                    SQLiteQuery = "INSERT INTO Baptism(id, candidate) " +
+                    "VALUES(" + reservationID + ", '" + attendee1 + "');";
+                    ExecuteQuery(SQLiteQuery);
+
+                    // insert payment query for the reservation
+                    SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
+                    "VALUES(" + reservationID + ", 2, " + modeOfPaymentID + ", " + paymentAmount + ");";
+                    ExecuteQuery(SQLiteQuery);
                     break;
+                
                 case "Confirmation":
+                    // insert reservation query
+                    SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
+                    "VALUES(" + adminID + ", " + userID + ", '" + massEvent + "', '" + date + "', '" + time + "', 0);";
+                    ExecuteQuery(SQLiteQuery);
+
+                    // find the inserted reservation id
+                    DB = new SQLiteDataAdapter(
+                        "SELECT reservation_id " +
+                        "FROM Reservations " +
+                        "WHERE " +
+                        "admin_id=" + adminID + " AND " +
+                        "user_id=" + userID + " AND " +
+                        "type = '" + massEvent + "' AND " +
+                        "date='" + date + "' AND " +
+                        "time='" + time + "' AND " +
+                        "is_cancelled = 0;"
+                        , sql_con
+                    );
+                    DT = new DataTable();
+                    DB.Fill(DT);
+
+                    // holds the reservation id of previous query
+                    reservationID = Convert.ToInt32(DT.Rows[0][0]);
+
+                    // insert event query relating to reservation
+                    SQLiteQuery = "INSERT INTO Confirmation(id, confirmand) " +
+                    "VALUES(" + reservationID + ", '" + attendee1 + "');";
+                    ExecuteQuery(SQLiteQuery);
+
+                    // insert payment query for the reservation
+                    SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
+                    "VALUES(" + reservationID + ", 3, " + modeOfPaymentID + ", " + paymentAmount + ");";
+                    ExecuteQuery(SQLiteQuery);
                     break;
                 case "Mass":
+                    // insert reservation query
+                    SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
+                    "VALUES(" + adminID + ", " + userID + ", '" + massEvent + "', '" + date + "', '" + time + "', 0);";
+                    ExecuteQuery(SQLiteQuery);
+
+                    // find the inserted reservation id
+                    DB = new SQLiteDataAdapter(
+                        "SELECT reservation_id " +
+                        "FROM Reservations " +
+                        "WHERE " +
+                        "admin_id=" + adminID + " AND " +
+                        "user_id=" + userID + " AND " +
+                        "type = '" + massEvent + "' AND " +
+                        "date='" + date + "' AND " +
+                        "time='" + time + "' AND " +
+                        "is_cancelled = 0;"
+                        , sql_con
+                    );
+                    DT = new DataTable();
+                    DB.Fill(DT);
+
+                    // holds the reservation id of previous query
+                    reservationID = Convert.ToInt32(DT.Rows[0][0]);
+
+                    // insert event query relating to reservation
+                    SQLiteQuery = "INSERT INTO Mass(id, purpose) " +
+                    "VALUES(" + reservationID + ", '" + attendee1 + "');";
+                    ExecuteQuery(SQLiteQuery);
+
+                    // insert payment query for the reservation
+                    SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
+                    "VALUES(" + reservationID + ", 4, " + modeOfPaymentID + ", " + paymentAmount + ");";
+                    ExecuteQuery(SQLiteQuery);
                     break;
             }
         }
