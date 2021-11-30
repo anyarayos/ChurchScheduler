@@ -623,6 +623,12 @@ namespace ChurchSched
                     );
             DT = new DataTable();
             DB.Fill(DT);
+
+            MessageBox.Show("user_id=" + selectedUserID + " AND " +
+                        "type = '" + cmbEvents.SelectedItem.ToString() + "' AND " +
+                        "date='" + dtpDate.Value.ToString("yyyy/MM/dd") + "' AND " +
+                        "time='" + cmbTime.SelectedItem.ToString() + "';");
+
             // holds the reservation id of previous query
             selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
         }
@@ -659,8 +665,8 @@ namespace ChurchSched
             DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                frmCancelationRemark cncl = new frmCancelationRemark();
-                cncl.ShowDialog();
+                //frmCancelationRemark cncl = new frmCancelationRemark();
+                //cncl.ShowDialog();
             }
             else
             {
