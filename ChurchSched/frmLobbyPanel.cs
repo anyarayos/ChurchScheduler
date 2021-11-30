@@ -342,23 +342,23 @@ namespace ChurchSched
 
         private void PopulateSelectedReservation()
         {
-            cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[3].Value.ToString());
-            dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[1].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
-            cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
+            cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
+            dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[0].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
+            cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[1].Value.ToString());
             txtAttendee1.Text = reservattionSelectedRow.Cells[4].Value.ToString();
             //Pakiayos yung position ni Groom sa database dapat mas nauuna siya kesa kay bride thanks
             //Paano pag ayaw ko kasi ladies first
             if (currentEventSelected == 1)
             {
-                //txtAttendee2.Text.Cells[5].Value.ToString();//Fix the position of Bride tulad ng sabi ko para gumana to
-                //Ayaw
-                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[7].Value.ToString());
-                txtPaymentAmount.Text = reservattionSelectedRow.Cells[8].Value.ToString();
+                txtAttendee2.Text = reservattionSelectedRow.Cells[5].Value.ToString();//Fix the position of Bride tulad ng sabi ko para gumana to
+                //Ayaw //bahalakajan
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[6].Value.ToString());
+                txtPaymentAmount.Text = reservattionSelectedRow.Cells[7].Value.ToString();
             }
             else
             {
-                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[6].Value.ToString());
-                txtPaymentAmount.Text = reservattionSelectedRow.Cells[7].Value.ToString();
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[5].Value.ToString());
+                txtPaymentAmount.Text = reservattionSelectedRow.Cells[6].Value.ToString();
             }
         }
         private void PopulateComboBoxTime(ComboBox combobox)
@@ -401,7 +401,7 @@ namespace ChurchSched
             {
                 case "Wedding":
                     DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, bride, groom, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
+                        "SELECT date, time, type, is_cancelled, groom, bride, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Wedding " +
                         "ON Reservations.reservation_id = Wedding.id " +
@@ -714,7 +714,7 @@ namespace ChurchSched
             DB.Fill(DT);
 
             // holds the reservation id of previous query
-            selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
+            //selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
