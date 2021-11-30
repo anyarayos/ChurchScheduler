@@ -13,17 +13,20 @@ namespace ChurchSched
     public partial class frmLobbyPanel : Form
     {
         // SQLITE VARIABLES AND METHODS ================================================
+        
         // sql variables and objects
         private SQLiteConnection sql_con;
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter DB;
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
+        
         // set connection method
         private void SetConnection(string database)
         {
             sql_con = new SQLiteConnection("Data Source=" + database + "; Version=3; New=False; Compress=True;");
         }
+        
         // execute query method
         private void ExecuteQuery(string txtQuery)
         {
@@ -33,7 +36,9 @@ namespace ChurchSched
             sql_cmd.ExecuteNonQuery();
             sql_con.Close();
         }
+
         // REQUESTEE PANEL ================================================
+
         /* REQUESTEE PANEL VARIABLES ================================================
         requesteeSelectedRow
         - the selected row from the requestee data grid view
@@ -43,9 +48,11 @@ namespace ChurchSched
         - holds the user id and name used for the reservation panel
         - Ex:(1_Mark L. Bargamento)
          */
+        
         DataGridViewRow requesteeSelectedRow;
         int selectedUserID;
         string userIDAndName;
+        
         /* REQUESTEE PANEL METHODS ================================================
         LoadUserInfoDgvRequestee()
         - loads UserInfo data into dgvRequestee
@@ -61,6 +68,7 @@ namespace ChurchSched
         UpdateUserInfo(id, name, contact, email, address)
         - updates user info
          */
+
         private void LoadUserInfoDgvRequestee()
         {
             // UserInfo data table
@@ -119,6 +127,7 @@ namespace ChurchSched
             string SQLiteQuery = "UPDATE UserInfo SET name='" + name + "', contact='" + contact + "', email='" + email + "', address='" + address + "' WHERE Id='" + id + "'";
             ExecuteQuery(SQLiteQuery);
         }
+
         /* REQUESTEE PANEL EVENTS ================================================
         DataGridView Requestees = DONE
         Button Confirm Requestee = DONE
@@ -162,6 +171,7 @@ namespace ChurchSched
                 InsertNewUserInfo(txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
                 // refresh requestee data grid view
                 LoadUserInfoDgvRequestee();
+                LoadUpcomingEventsOnDGV();
                 MessageBox.Show("New requestee added.");
             }
             // filled but has user duplication
@@ -200,6 +210,7 @@ namespace ChurchSched
 																				{
                         UpdateUserInfo(selectedUserID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
                         LoadUserInfoDgvRequestee();
+                        LoadUpcomingEventsOnDGV();
                         MessageBox.Show("User info successfully updated.");
                     }
                     else if (textBoxesFilled && CheckIfUserExistsEdit(txtEmailAdd.Text, txtContactNum.Text, selectedUserID))
@@ -242,6 +253,7 @@ namespace ChurchSched
                 {
                     ExecuteQuery("DELETE FROM UserInfo WHERE Id='" + selectedUserID + "'");
                     LoadUserInfoDgvRequestee();
+                    LoadUpcomingEventsOnDGV();
                     MessageBox.Show("Deleted");
                 }
             }
@@ -263,7 +275,9 @@ namespace ChurchSched
             DB.Fill(DT);
             dgvRequestees.DataSource = DT;
         }
+        
         // RESERVATION PANEL ================================================
+
         /* RESERVATION PANEL VARIABLES ================================================
         currentEventSelected
         - 0 = None
@@ -276,6 +290,7 @@ namespace ChurchSched
         confirmationRequirements
         - for requirements list view
          */
+
         int currentEventSelected = 1;
         int selectedReservationID = 0;
         string[] weddingRequirements = {
@@ -301,10 +316,13 @@ namespace ChurchSched
             "Baptismal certificate (Confirmand)",
             "Seminar Attendance (Confirmand)"
         };
+        DataGridViewRow reservationSelectedRow;
+
         /* RESERVATION PANEL METHODS ================================================
         PopulateComboBoxTime(combobox)
         - populate combo box with time
          */
+
         private void PopulateSelectedReservation()
         {
             cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservationSelectedRow.Cells[3].Value.ToString());
@@ -443,9 +461,6 @@ namespace ChurchSched
             // if data table returns a record, user exists
             return DT.Rows.Count == 1;
         }
-        // USE THIS METHOD IF YOU WANT TO INSERT NEW RESERVATION
-        // txt.Attendee2.Text WILL STILL RECIEVED BUT WONT BE USED IF THE EVENT ISNT RELATING TO WEDDING
-        // InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(),Convert.ToDouble(txtPaymentAmount.Text));
         private void InsertNewReservation(int adminID, int userID, string massEvent, string date, string time, string attendee1, string attendee2, int modeOfPaymentID, double paymentAmount)
         {
             string SQLiteQuery;
@@ -597,7 +612,6 @@ namespace ChurchSched
                     break;
             }
         }
-        // UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(),Convert.ToDouble(txtPaymentAmount.Text));
         private void UpdateReservation(int reservationID, int adminID, int userID, string massEvent, string date, string time, string attendee1, string attendee2, int modeOfPaymentID, double paymentAmount)
         {
             string SQLiteQuery;
@@ -649,11 +663,13 @@ namespace ChurchSched
                     break;
             }
         }
+        
         /* RESERVATION PANEL EVENTS ================================================
         ComboBox Events = WIP
         Button Confirm Reservation = WIP
         Button Cancel Reservation = WIP
          */
+
         private void dgvReservations_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // data grid view row index
@@ -691,6 +707,7 @@ namespace ChurchSched
                 );
             }
             LoadReservationsDgvReservations();
+            LoadUpcomingEventsOnDGV();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -747,72 +764,9 @@ namespace ChurchSched
                                                     "\nPayment Amount: " + txtPaymentAmount.Text, "Edit Confirmation",
                                                                                                                                 MessageBoxButtons.YesNo);
                                                                 DialogResult confirmEdit = dialogResult;
-                                                                if (confirmEdit == DialogResult.Yes)
-                                                                {
-                                                                                //bool textBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");\\For Wedding
-                                                                                //bool textBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");\\The Rest
-                                                                                // outermost IF checks the event type selected, then the next if will check kung puno textboxes na needed according to the event
-                                                                                //if(currentEventSelected==1) Check kung wedding type sinelect
-                                                                                //if(textBoxesFilledEvent1) txtattendee1 and txtattendee2 and txtpayment ichcheck
-                                                                                //if(date & time doesn't match any record)
-                                                                                //UPDATE
-                                                                                //
-                                                                                //else
-                                                                                //Print There is a reservation for the selected date and time. Please choose another.
-                                                                                //else
-                                                                                // Print Some of the fields are incomplete.
-                                                                                //else Kung hindi si Wedding type sinelect
-                                                                                //if(textBoxesFilledEvent2) txtattendee1 and txtpayment ichcheck
-                                                                                ///if(date & time doesn't match any record)
-                                                                                ///UPDATE
-                                                                                /////else
-                                                                                //Print There is a reservation for the selected date and time. Please choose another.
-                                                                                //else
-                                                                                // Print Some of the fields are incomplete.
-                                                                                //
-                                                                                //}
-                                                                }
-                                                }
-            */
+                                      */                  
             LoadReservationsDgvReservations();
-            //bool textBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");\\For Wedding
-            //bool textBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");\\The Rest
-            //if(user selected something from the dgv){
-            //DialogResult confirmEdit = MessageBox.Show(
-            // message box message
-            //"Are you sure you want to edit " + selectedReservationID + " with the following values?\n" +
-            //"\nEvent: " + cmbEvents.SelectedItem.ToString() +
-            //"\nDate: " + dtpDate.Value.ToString() +
-            //"\nTime: " + cmbTime.SelectedItem.ToString() +
-            //"\nAttendee 1: " + txtAttendee1.Text;
-            //"\nAttendee 2: " + txtAttendee2.Text;
-            //"\nMode of Payment: " + cmbPaymentMode.SelectedItem.ToString();
-            //"\nPayment Amount: " + txtPaymentAmount.Text,
-            // message box title
-            //"Edit Confirmation",
-            // message box buttons
-            //MessageBoxButtons.YesNo
-            //);
-            //if(confirmEdit == DialogResult.Yes)
-            //                                                      {
-            // CHECK MUNA IF ALL TEXTBOXES ARE FILLED
-            //if(currentEventSelected==1)\\ May additional na isang textbox kasi si Wedding
-            //if(textBoxesFilledEvent1){
-            //  if(date & time doesn't match any record){
-            //  UPDATE}
-            //}
-            //else
-            //if(textBoxesFilledEvent2{
-            ////  if(date & time doesn't match any record){
-            //  UPDATE}
-            //}               
-            // refresh reservations data grid view
-            //MessageBox.Show("Reservations successfully updated.");
-            //                                                  }
-            //}
-            //else{
-            //PRINT "No user selected."
-            //}
+            LoadUpcomingEventsOnDGV();
         }
         private void cmbEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -854,14 +808,47 @@ namespace ChurchSched
             LoadPrice();
             LoadReservationsDgvReservations();
         }
-        DataGridViewRow reservationSelectedRow;
+        
         // UPCOMING EVENTS PANEL ================================================
+        
         /* UPCOMING EVENTS PANEL VARIABLES ================================================
          */
+
         string currentDateToday = DateTime.Today.ToString("yyyy/MM/dd");
         
         /* UPCOMING EVENTS PANEL METHODS ================================================
          */
+
+        private void LoadUpcomingEventsOnDGV()
+								{
+            DB = new SQLiteDataAdapter(
+                "SELECT date, time, type, name AS requested_by, ModeOfPayments.mode_of_payment, price, balance " +
+                "FROM Reservations " +
+                "LEFT JOIN Wedding " +
+                "ON Reservations.reservation_id = Wedding.id " +
+                "LEFT JOIN Baptism " +
+                "ON Reservations.reservation_id = Baptism.id " +
+                "LEFT JOIN Confirmation " +
+                "ON Reservations.reservation_id = Confirmation.id " +
+                "LEFT JOIN Mass " +
+                "ON Reservations.reservation_id = Mass.id " +
+                "LEFT JOIN Payments " +
+                "ON Reservations.reservation_id = Payments.reservation_id " +
+                "LEFT JOIN ModeOfPayments " +
+                "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
+                "LEFT JOIN Prices " +
+                "ON Prices.price_id = ModeOfPayments.mode_of_payment_id " +
+                "LEFT JOIN UserInfo " +
+                "ON Reservations.user_id = UserInfo.id " +
+                "WHERE substr(date, 1, 10) >= '" + currentDateToday + "' " +
+                "ORDER BY date, time;"
+                , sql_con
+            );
+            DT = new DataTable();
+            DB.Fill(DT);
+            dgvAllSched.DataSource = DT;
+        }
+
         /* UPCOMING EVENTS PANEL EVENTS ================================================
          */
         // PAST EVENTS PANEL ================================================
@@ -869,6 +856,37 @@ namespace ChurchSched
          */
         /* PAST EVENTS PANEL METHODS ================================================
          */
+
+        private void LoadPastEventsOnDGV()
+        {
+            DB = new SQLiteDataAdapter(
+                "SELECT date, time, type, name AS requested_by, ModeOfPayments.mode_of_payment, price, balance " +
+                "FROM Reservations " +
+                "LEFT JOIN Wedding " +
+                "ON Reservations.reservation_id = Wedding.id " +
+                "LEFT JOIN Baptism " +
+                "ON Reservations.reservation_id = Baptism.id " +
+                "LEFT JOIN Confirmation " +
+                "ON Reservations.reservation_id = Confirmation.id " +
+                "LEFT JOIN Mass " +
+                "ON Reservations.reservation_id = Mass.id " +
+                "LEFT JOIN Payments " +
+                "ON Reservations.reservation_id = Payments.reservation_id " +
+                "LEFT JOIN ModeOfPayments " +
+                "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
+                "LEFT JOIN Prices " +
+                "ON Prices.price_id = ModeOfPayments.mode_of_payment_id " +
+                "LEFT JOIN UserInfo " +
+                "ON Reservations.user_id = UserInfo.id " +
+                "WHERE substr(date, 1, 10) < '" + currentDateToday + "' " +
+                "ORDER BY date, time;"
+                , sql_con
+            );
+            DT = new DataTable();
+            DB.Fill(DT);
+            dgvPastEvents.DataSource = DT;
+        }
+
         /* PAST EVENTS PANEL EVENTS ================================================
          */
         // LOBBY PANEL FORM METHODS ================================================
@@ -900,6 +918,10 @@ namespace ChurchSched
             cmbEvents.SelectedIndex = 0;
             cmbTime.SelectedIndex = 0;
             cmbPaymentMode.SelectedIndex = 0;
+            // UPCOMING EVENTS PANEL ================
+            LoadUpcomingEventsOnDGV();
+            // PAST EVENTS PANEL ================
+            LoadPastEventsOnDGV();
         }
         private void btnViewPast_Click(object sender, EventArgs e)
         {
