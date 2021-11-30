@@ -342,23 +342,28 @@ namespace ChurchSched
 
         private void PopulateSelectedReservation()
         {
-            cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[3].Value.ToString());
-            dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[1].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
-            cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
-            txtAttendee1.Text = reservattionSelectedRow.Cells[4].Value.ToString();
+
+            //cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[4].Value.ToString());
+
+            dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[2].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
+            
+            cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[3].Value.ToString());
+            txtAttendee1.Text = reservattionSelectedRow.Cells[5].Value.ToString();
             //Pakiayos yung position ni Groom sa database dapat mas nauuna siya kesa kay bride thanks
             //Paano pag ayaw ko kasi ladies first
+            //D:< grrr
             if (currentEventSelected == 1)
             {
-                //txtAttendee2.Text.Cells[5].Value.ToString();//Fix the position of Bride tulad ng sabi ko para gumana to
+                txtAttendee2.Text = reservattionSelectedRow.Cells[6].Value.ToString();//Fix the position of Bride tulad ng sabi ko para gumana to
                 //Ayaw
-                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[7].Value.ToString());
-                txtPaymentAmount.Text = reservattionSelectedRow.Cells[8].Value.ToString();
+                //tajakan kita jan e
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[8].Value.ToString());
+                txtPaymentAmount.Text = reservattionSelectedRow.Cells[9].Value.ToString();
             }
             else
             {
-                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[6].Value.ToString());
-                txtPaymentAmount.Text = reservattionSelectedRow.Cells[7].Value.ToString();
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[7].Value.ToString());
+                txtPaymentAmount.Text = reservattionSelectedRow.Cells[8].Value.ToString();
             }
         }
         private void PopulateComboBoxTime(ComboBox combobox)
@@ -401,59 +406,26 @@ namespace ChurchSched
             {
                 case "Wedding":
                     DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, bride, groom, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
+                        "SELECT Reservations.reservation_id, admin_id, date, time, type, groom, bride, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Wedding " +
                         "ON Reservations.reservation_id = Wedding.id " +
-                        "INNER JOIN Payments " +
+                        "LEFT JOIN Payments " +
                         "ON Reservations.reservation_id = Payments.reservation_id " +
-                        "INNER JOIN ModeOfPayments " +
+                        "LEFT JOIN ModeOfPayments " +
                         "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
                         "WHERE Reservations.user_id =" + selectedUserID + ";"
                         , sql_con
                     );
                     break;
                 case "Baptism":
-                    DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, candidate, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
-                        "FROM Reservations " +
-                        "INNER JOIN Baptism " +
-                        "ON Reservations.reservation_id = Baptism.id " +
-                        "INNER JOIN Payments " +
-                        "ON Reservations.reservation_id = Payments.reservation_id " +
-                        "INNER JOIN ModeOfPayments " +
-                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
-                        "WHERE Reservations.user_id =" + selectedUserID + ";"
-                        , sql_con
-                    );
+                    
                     break;
                 case "Confirmation":
-                    DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, confirmand, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
-                        "FROM Reservations " +
-                        "INNER JOIN Confirmation " +
-                        "ON Reservations.reservation_id = Confirmation.id " +
-                        "INNER JOIN Payments " +
-                        "ON Reservations.reservation_id = Payments.reservation_id " +
-                        "INNER JOIN ModeOfPayments " +
-                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
-                        "WHERE Reservations.user_id =" + selectedUserID + ";"
-                        , sql_con
-                    );
+                    
                     break;
                 case "Mass":
-                    DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, purpose, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
-                        "FROM Reservations " +
-                        "INNER JOIN Mass " +
-                        "ON Reservations.reservation_id = Mass.id " +
-                        "INNER JOIN Payments " +
-                        "ON Reservations.reservation_id = Payments.reservation_id " +
-                        "INNER JOIN ModeOfPayments " +
-                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
-                        "WHERE Reservations.user_id =" + selectedUserID + ";"
-                        , sql_con
-                    );
+                    
                     break;
             }
             DT = new DataTable();
@@ -468,7 +440,7 @@ namespace ChurchSched
             DB.Fill(DT);
 
             // if data table returns a record, user exists
-            return DT.Rows.Count == 1;
+            return DT.Rows.Count > 0;
         }
 
         // USE THIS METHOD IF YOU WANT TO INSERT NEW RESERVATION
@@ -714,7 +686,7 @@ namespace ChurchSched
             DB.Fill(DT);
 
             // holds the reservation id of previous query
-            selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
+            //selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
@@ -724,7 +696,7 @@ namespace ChurchSched
             bool reservationTextBoxesFilledEvent2 = !(txtAttendee1.Text == "" || txtPaymentAmount.Text == "");
 
             // check if there is no date or time conflict
-            if (!CheckDateOrTimeConflict(dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString()))
+            if (!CheckDateOrTimeConflict(dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString()))
             {
                 if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
                 {
@@ -949,6 +921,9 @@ namespace ChurchSched
             cmbEvents.SelectedIndex = 0;
             cmbTime.SelectedIndex = 0;
             cmbPaymentMode.SelectedIndex = 0;
+
+            dgvRequestees.ClearSelection();
+            dgvReservations.ClearSelection();
             
         }
 
