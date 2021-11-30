@@ -728,7 +728,7 @@ namespace ChurchSched
             this.tbPastEvents.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tbPastEvents.Location = new System.Drawing.Point(4, 24);
             this.tbPastEvents.Name = "tbPastEvents";
-            this.tbPastEvents.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tbPastEvents.Padding = new System.Windows.Forms.Padding(3);
             this.tbPastEvents.Size = new System.Drawing.Size(950, 633);
             this.tbPastEvents.TabIndex = 4;
             this.tbPastEvents.Text = "PAST EVENTS";
@@ -799,6 +799,7 @@ namespace ChurchSched
             this.Controls.Add(this.tabControl);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmLobbyPanel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lobby Panel";
             this.Load += new System.EventHandler(this.frmLobbyPanel_Load);
             this.tbRequestee.ResumeLayout(false);

@@ -375,8 +375,8 @@ namespace ChurchSched
                     DB = new SQLiteDataAdapter(
                         "SELECT Reservations.reservation_id, date, time, type, candidate, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
-                        "INNER JOIN Baptization " +
-                        "ON Reservations.reservation_id = Baptization.id " +
+                        "INNER JOIN Baptism " +
+                        "ON Reservations.reservation_id = Baptism.id " +
                         "INNER JOIN Payments " +
                         "ON Reservations.reservation_id = Payments.reservation_id " +
                         "INNER JOIN ModeOfPayments " +
@@ -551,13 +551,29 @@ namespace ChurchSched
         private void btnEditReserve_Click(object sender, EventArgs e)
         {
             //==EDIT LOGIC==
-            //int selectedReservationID;
-            //selectedReservationID = Convert.ToInt32(reservattion.SelectedRow.Cells[0].Value);
+            
+            if ( selectedUserID > 0) {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to edit " + selectedUserID + " with the following values?\n" +
+            "\nEvent: " + cmbEvents.SelectedItem.ToString() +
+            "\nDate: " + dtpDate.Value.ToString() +
+            "\nTime: " + cmbTime.SelectedItem.ToString() +
+            "\nAttendee 1: " + txtAttendee1.Text +
+             "\nAttendee 2: " + txtAttendee2.Text +
+             "\nMode of Payment: " + cmbPaymentMode.SelectedItem.ToString() +
+             "\nPayment Amount: " + txtPaymentAmount.Text, "Edit Confirmation",
+                                MessageBoxButtons.YesNo);
+                DialogResult confirmEdit = dialogResult;
+                if (confirmEdit == DialogResult.Yes) {
+                    
+                       // Update query
+                }
+            }
+            LoadReservationsDgvReservations();
 
             //if(user selected something from the dgv){
             //DialogResult confirmEdit = MessageBox.Show(
             // message box message
-            //"Are you sure you want to edit "+ selectedReservationID + " with the following values?\n" +
+            //"Are you sure you want to edit " + selectedReservationID + " with the following values?\n" +
             //"\nEvent: " + cmbEvents.SelectedItem.ToString() +
             //"\nDate: " + dtpDate.Value.ToString() +
             //"\nTime: " + cmbTime.SelectedItem.ToString() +
