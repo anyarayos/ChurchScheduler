@@ -593,14 +593,14 @@ namespace ChurchSched
                     // update reservation query
                     SQLiteQuery = "UPDATE Reservations SET admin_id='" + adminID + "', date='" + date + "', time='" + time + "' WHERE reservation_id='" + reservationID + "'";
                     ExecuteQuery(SQLiteQuery);
+                    
                     // update event query
                     SQLiteQuery = "UPDATE Wedding SET bride='" + attendee1 + "', groom='" + attendee2 + "' WHERE id='" + reservationID + "'";
                     ExecuteQuery(SQLiteQuery);
+                    
                     // update payment query
-
-                    // insert payment query for the reservation
-                    SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
-                    "VALUES(" + reservationID + ", 1, " + modeOfPaymentID + ", " + paymentAmount + ");";
+                    SQLiteQuery = "UPDATE Payments SET mode_of_payment_id='" + modeOfPaymentID + "', balance='" + paymentAmount + "' WHERE reservation='" + reservationID + "'";
+                    ExecuteQuery(SQLiteQuery);
                     break;
 
                 case "Baptism":
