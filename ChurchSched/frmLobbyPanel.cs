@@ -100,6 +100,15 @@ namespace ChurchSched
             // if data table returns a record, user exists
             return DT.Rows.Count == 1;
         }
+        private bool CheckIfUserExistsEdit(string email, string contact, int userID)
+        {
+            // data table will have a row if query returns a record
+            DB = new SQLiteDataAdapter("SELECT id FROM UserInfo WHERE  email='" + email + "' OR contact='" + contact + "' AND NOT id='" + userID + "'; ", sql_con);
+            DT = new DataTable();
+            DB.Fill(DT);
+            // if data table returns a record, user exists
+            return DT.Rows.Count == 1;
+        }
         private void InsertNewUserInfo(string name, string contact, string email, string address)
         {
             string SQLiteQuery = "INSERT INTO UserInfo (name, contact, email, address) VALUES ('" + name + "', '" + contact + "', '" + email + "', '" + address + "');";
@@ -168,6 +177,7 @@ namespace ChurchSched
         }
         private void btnEditrequestee_Click(object sender, EventArgs e)
         {
+            bool textBoxesFilled = !(txtRequestName.Text == "" || txtContactNum.Text == "" || txtEmailAdd.Text == "" || txtAddress.Text == "");
             if (selectedUserID > 0)
             {
                 // message box edit confirmation
@@ -186,16 +196,20 @@ namespace ChurchSched
                 // if edit confirmed
                 if (confirmEdit == DialogResult.Yes)
                 {
-                    //if textboxes are all filled ANDD (email address or contact number doesn't match existing)
-                    // update user info
-                    UpdateUserInfo(selectedUserID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
-                    // refresh requestee data grid view
-                    LoadUserInfoDgvRequestee();
-                    MessageBox.Show("User info successfully updated.");
-                    //else if textboxes are all filled ANDD (email address or contact number matches existing)
-                    //Show "A requestee with the same email address or contact number already exists!"
-                    //else
-                    //Show "Incomplete submission, complete and try again."
+                    if (textBoxesFilled && !CheckIfUserExistsEdit(txtEmailAdd.Text, txtContactNum.Text, selectedUserID))
+																				{
+                        UpdateUserInfo(selectedUserID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
+                        LoadUserInfoDgvRequestee();
+                        MessageBox.Show("User info successfully updated.");
+                    }
+                    else if (textBoxesFilled && CheckIfUserExistsEdit(txtEmailAdd.Text, txtContactNum.Text, selectedUserID))
+                    {
+                        MessageBox.Show("Requestee already exists.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incomplete submission, complete and try again.");
+                    }
                 }
             }
             else
@@ -293,23 +307,23 @@ namespace ChurchSched
          */
         private void PopulateSelectedReservation()
         {
-            cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
-            dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[0].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
-            cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[1].Value.ToString());
+            cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservationSelectedRow.Cells[3].Value.ToString());
+            dtpDate.Value = DateTime.ParseExact(reservationSelectedRow.Cells[1].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
+            cmbTime.SelectedIndex = cmbTime.FindStringExact(reservationSelectedRow.Cells[2].Value.ToString());
             // first text box
-            txtAttendee1.Text = reservattionSelectedRow.Cells[4].Value.ToString();
+            txtAttendee1.Text = reservationSelectedRow.Cells[5].Value.ToString();
             // if has second text box then move index further
             if (currentEventSelected == 1)
             {
-                txtAttendee2.Text = reservattionSelectedRow.Cells[5].Value.ToString();
+                txtAttendee2.Text = reservationSelectedRow.Cells[6].Value.ToString();
                 //Ayaw //bahalakajan
-                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[6].Value.ToString());
-                txtPaymentAmount.Text = reservattionSelectedRow.Cells[7].Value.ToString();
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservationSelectedRow.Cells[7].Value.ToString());
+                txtPaymentAmount.Text = reservationSelectedRow.Cells[8].Value.ToString();
             }
             else
             {
-                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[5].Value.ToString());
-                txtPaymentAmount.Text = reservattionSelectedRow.Cells[6].Value.ToString();
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservationSelectedRow.Cells[6].Value.ToString());
+                txtPaymentAmount.Text = reservationSelectedRow.Cells[7].Value.ToString();
             }
         }
         private void PopulateComboBoxTime(ComboBox combobox)
@@ -352,7 +366,7 @@ namespace ChurchSched
             {
                 case "Wedding":
                     DB = new SQLiteDataAdapter(
-                        "SELECT date, time, type, is_cancelled, groom, bride, ModeOfPayments.mode_of_payment, balance " +
+                        "SELECT Reservations.reservation_id, date, time, type, is_cancelled, groom, bride, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Wedding " +
                         "ON Reservations.reservation_id = Wedding.id " +
@@ -365,10 +379,46 @@ namespace ChurchSched
                     );
                     break;
                 case "Baptism":
+                    DB = new SQLiteDataAdapter(
+                        "SELECT Reservations.reservation_id, date, time, type, is_cancelled, candidate, ModeOfPayments.mode_of_payment, balance " +
+                        "FROM Reservations " +
+                        "INNER JOIN Baptism " +
+                        "ON Reservations.reservation_id = Baptism.id " +
+                        "LEFT JOIN Payments " +
+                        "ON Reservations.reservation_id = Payments.reservation_id " +
+                        "LEFT JOIN ModeOfPayments " +
+                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
+                        "WHERE Reservations.user_id =" + selectedUserID + ";"
+                        , sql_con
+                    );
                     break;
                 case "Confirmation":
+                    DB = new SQLiteDataAdapter(
+                        "SELECT Reservations.reservation_id, date, time, type, is_cancelled, confirmand, ModeOfPayments.mode_of_payment, balance " +
+                        "FROM Reservations " +
+                        "INNER JOIN Confirmation " +
+                        "ON Reservations.reservation_id = Confirmation.id " +
+                        "LEFT JOIN Payments " +
+                        "ON Reservations.reservation_id = Payments.reservation_id " +
+                        "LEFT JOIN ModeOfPayments " +
+                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
+                        "WHERE Reservations.user_id =" + selectedUserID + ";"
+                        , sql_con
+                    );
                     break;
                 case "Mass":
+                    DB = new SQLiteDataAdapter(
+                        "SELECT Reservations.reservation_id, date, time, type, is_cancelled, purpose, ModeOfPayments.mode_of_payment, balance " +
+                        "FROM Reservations " +
+                        "INNER JOIN Mass " +
+                        "ON Reservations.reservation_id = Mass.id " +
+                        "LEFT JOIN Payments " +
+                        "ON Reservations.reservation_id = Payments.reservation_id " +
+                        "LEFT JOIN ModeOfPayments " +
+                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
+                        "WHERE Reservations.user_id =" + selectedUserID + ";"
+                        , sql_con
+                    );
                     break;
             }
             DT = new DataTable();
@@ -591,7 +641,7 @@ namespace ChurchSched
                     SQLiteQuery = "UPDATE Reservations SET admin_id='" + adminID + "', date='" + date + "', time='" + time + "' WHERE reservation_id='" + reservationID + "'";
                     ExecuteQuery(SQLiteQuery);
                     // update event query
-                    SQLiteQuery = "UPDATE Confirmation SET purpose='" + attendee1 + "' WHERE id='" + reservationID + "'";
+                    SQLiteQuery = "UPDATE Mass SET purpose='" + attendee1 + "' WHERE id='" + reservationID + "'";
                     ExecuteQuery(SQLiteQuery);
                     // update payment query
                     SQLiteQuery = "UPDATE Payments SET mode_of_payment_id='" + modeOfPaymentID + "', balance='" + paymentAmount + "' WHERE reservation_id='" + reservationID + "'";
@@ -608,29 +658,12 @@ namespace ChurchSched
         {
             // data grid view row index
             int index = e.RowIndex;
-            reservattionSelectedRow = dgvReservations.Rows[index];
+            reservationSelectedRow = dgvReservations.Rows[index];
             // populate textboxes with requestee's data grid view's selected row's value
             PopulateSelectedReservation();
-            DB = new SQLiteDataAdapter(
-                        "SELECT reservation_id " +
-                        "FROM Reservations " +
-                        "WHERE " +
-                        "user_id=" + selectedUserID + " AND " +
-                        "type = '" + cmbEvents.SelectedItem.ToString() + "' AND " +
-                        "date='" + dtpDate.Value.ToString("yyyy/MM/dd") + "' AND " +
-                        "time='" + cmbTime.SelectedItem.ToString() + "';"
-                        , sql_con
-                    );
-            DT = new DataTable();
-            DB.Fill(DT);
-
-            MessageBox.Show("user_id=" + selectedUserID + " AND " +
-                        "type = '" + cmbEvents.SelectedItem.ToString() + "' AND " +
-                        "date='" + dtpDate.Value.ToString("yyyy/MM/dd") + "' AND " +
-                        "time='" + cmbTime.SelectedItem.ToString() + "';");
-
+            
             // holds the reservation id of previous query
-            selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
+            selectedReservationID = Convert.ToInt32(reservationSelectedRow.Cells[0].Value);
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
@@ -821,7 +854,7 @@ namespace ChurchSched
             LoadPrice();
             LoadReservationsDgvReservations();
         }
-        DataGridViewRow reservattionSelectedRow;
+        DataGridViewRow reservationSelectedRow;
         // UPCOMING EVENTS PANEL ================================================
         /* UPCOMING EVENTS PANEL VARIABLES ================================================
          */
