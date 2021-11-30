@@ -342,9 +342,11 @@ namespace ChurchSched
 
         private void PopulateSelectedReservation()
         {
+            // MAY SIRA DITO SORRY PO KUNG SINO MAN NAG WOWORK ON
+            /*
             cmbEvents.SelectedIndex = cmbEvents.FindStringExact(reservattionSelectedRow.Cells[3].Value.ToString());
             dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[1].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
-            cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
+            // cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[2].Value.ToString());
             txtAttendee1.Text = reservattionSelectedRow.Cells[4].Value.ToString();
             //Pakiayos yung position ni Groom sa database dapat mas nauuna siya kesa kay bride thanks
             //Paano pag ayaw ko kasi ladies first
@@ -360,6 +362,7 @@ namespace ChurchSched
                 cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[6].Value.ToString());
                 txtPaymentAmount.Text = reservattionSelectedRow.Cells[7].Value.ToString();
             }
+            */
         }
         private void PopulateComboBoxTime(ComboBox combobox)
         {
@@ -401,7 +404,7 @@ namespace ChurchSched
             {
                 case "Wedding":
                     DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, bride, groom, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
+                        "SELECT Reservations.reservation_id, admin_id, date, time, type, groom, bride, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Wedding " +
                         "ON Reservations.reservation_id = Wedding.id " +
@@ -415,7 +418,7 @@ namespace ChurchSched
                     break;
                 case "Baptism":
                     DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, candidate, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
+                        "SELECT Reservations.reservation_id, admin_id, date, time, type, candidate, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Baptism " +
                         "ON Reservations.reservation_id = Baptism.id " +
@@ -429,7 +432,7 @@ namespace ChurchSched
                     break;
                 case "Confirmation":
                     DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, confirmand, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
+                        "SELECT Reservations.reservation_id, admin_id, date, time, type, confirmand, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Confirmation " +
                         "ON Reservations.reservation_id = Confirmation.id " +
@@ -443,7 +446,7 @@ namespace ChurchSched
                     break;
                 case "Mass":
                     DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, purpose, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
+                        "SELECT Reservations.reservation_id, admin_id, date, time, type, purpose, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
                         "FROM Reservations " +
                         "INNER JOIN Mass " +
                         "ON Reservations.reservation_id = Mass.id " +
@@ -468,7 +471,7 @@ namespace ChurchSched
             DB.Fill(DT);
 
             // if data table returns a record, user exists
-            return DT.Rows.Count == 1;
+            return DT.Rows.Count > 0;
         }
 
         // USE THIS METHOD IF YOU WANT TO INSERT NEW RESERVATION
