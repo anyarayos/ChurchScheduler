@@ -858,6 +858,8 @@ namespace ChurchSched
         // UPCOMING EVENTS PANEL ================================================
         /* UPCOMING EVENTS PANEL VARIABLES ================================================
          */
+        string currentDateToday = DateTime.Today.ToString("yyyy/MM/dd");
+        
         /* UPCOMING EVENTS PANEL METHODS ================================================
          */
         /* UPCOMING EVENTS PANEL EVENTS ================================================
