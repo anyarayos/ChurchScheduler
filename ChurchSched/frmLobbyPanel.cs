@@ -509,6 +509,7 @@ namespace ChurchSched
                     "VALUES(" + reservationID + ", 3, " + modeOfPaymentID + ", " + paymentAmount + ");";
                     ExecuteQuery(SQLiteQuery);
                     break;
+
                 case "Mass":
                     // insert reservation query
                     SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
@@ -654,10 +655,7 @@ namespace ChurchSched
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //==CANCEL LOGIC==
-            //Check if there's a reservation selected
-            //Populate textboxes of the reservation's data grid view's selected row value
-            //Prompt a dialog box if the user really wants to cancel
+            
             DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
