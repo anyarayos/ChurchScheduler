@@ -222,14 +222,14 @@ namespace ChurchSched
                 // if edit confirmed
                 if(confirmEdit == DialogResult.Yes)
 																{
-                    //if textboxes are all filled and (email address or contact number doesn't match existing)
+                    //if textboxes are all filled ANDD (email address or contact number doesn't match existing)
                     // update user info
                     UpdateUserInfo(selectedUserID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
                     // refresh requestee data grid view
                     LoadUserInfoDgvRequestee();
                     MessageBox.Show("User info successfully updated.");
 
-                    //else if textboxes are all filled and (email address or contact number matches existing)
+                    //else if textboxes are all filled ANDD (email address or contact number matches existing)
                     //Show "A requestee with the same email address or contact number already exists!"
 
                     //else
@@ -728,11 +728,37 @@ namespace ChurchSched
                                 MessageBoxButtons.YesNo);
                 DialogResult confirmEdit = dialogResult;
                 if (confirmEdit == DialogResult.Yes) {
-                    
-                       // Update query
+                    //bool textBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");\\For Wedding
+                    //bool textBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");\\The Rest
+
+                    // outermost IF checks the event type selected, then the next if will check kung puno textboxes na needed according to the event
+
+                    //if(currentEventSelected==1) Check kung wedding type sinelect
+                        //if(textBoxesFilledEvent1) txtattendee1 and txtattendee2 and txtpayment ichcheck
+                            //if(date & time doesn't match any record)
+                                 //UPDATE
+                                 //
+                            //else
+                             //Print There is a reservation for the selected date and time. Please choose another.
+                        //else
+                        // Print Some of the fields are incomplete.
+                   
+                    //else Kung hindi si Wedding type sinelect
+                        //if(textBoxesFilledEvent2) txtattendee1 and txtpayment ichcheck
+                            ///if(date & time doesn't match any record)
+                                ///UPDATE
+                            /////else
+                                //Print There is a reservation for the selected date and time. Please choose another.
+                        //else
+                        // Print Some of the fields are incomplete.
+                    //
+                    //}
                 }
             }
             LoadReservationsDgvReservations();
+
+            //bool textBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");\\For Wedding
+            //bool textBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");\\The Rest
 
             //if(user selected something from the dgv){
             //DialogResult confirmEdit = MessageBox.Show(
@@ -752,7 +778,17 @@ namespace ChurchSched
             //);
             //if(confirmEdit == DialogResult.Yes)
             //														{
-            // update event reservations                   
+                // CHECK MUNA IF ALL TEXTBOXES ARE FILLED
+                //if(currentEventSelected==1)\\ May additional na isang textbox kasi si Wedding
+                    //if(textBoxesFilledEvent1){
+                    //  if(date & time doesn't match any record){
+                        //  UPDATE}
+                    //}
+                //else
+                    //if(textBoxesFilledEvent2{
+                    ////  if(date & time doesn't match any record){
+                        //  UPDATE}
+                    //}               
             // refresh reservations data grid view
             //MessageBox.Show("Reservations successfully updated.");
             //													}
