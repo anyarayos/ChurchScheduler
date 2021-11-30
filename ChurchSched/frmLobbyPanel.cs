@@ -348,20 +348,22 @@ namespace ChurchSched
             dtpDate.Value = DateTime.ParseExact(reservattionSelectedRow.Cells[2].Value.ToString(), "yyyy'/'MM'/'dd", CultureInfo.InvariantCulture);
             
             cmbTime.SelectedIndex = cmbTime.FindStringExact(reservattionSelectedRow.Cells[3].Value.ToString());
-            txtAttendee1.Text = reservattionSelectedRow.Cells[4].Value.ToString();
+            txtAttendee1.Text = reservattionSelectedRow.Cells[5].Value.ToString();
             //Pakiayos yung position ni Groom sa database dapat mas nauuna siya kesa kay bride thanks
             //Paano pag ayaw ko kasi ladies first
+            //D:< grrr
             if (currentEventSelected == 1)
             {
-                //txtAttendee2.Text.Cells[5].Value.ToString();//Fix the position of Bride tulad ng sabi ko para gumana to
+                txtAttendee2.Text = reservattionSelectedRow.Cells[6].Value.ToString();//Fix the position of Bride tulad ng sabi ko para gumana to
                 //Ayaw
-                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[7].Value.ToString());
-                txtPaymentAmount.Text = reservattionSelectedRow.Cells[8].Value.ToString();
+                //tajakan kita jan e
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[8].Value.ToString());
+                txtPaymentAmount.Text = reservattionSelectedRow.Cells[9].Value.ToString();
             }
             else
             {
-                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[6].Value.ToString());
-                txtPaymentAmount.Text = reservattionSelectedRow.Cells[7].Value.ToString();
+                cmbPaymentMode.SelectedIndex = cmbPaymentMode.FindStringExact(reservattionSelectedRow.Cells[7].Value.ToString());
+                txtPaymentAmount.Text = reservattionSelectedRow.Cells[8].Value.ToString();
             }
         }
         private void PopulateComboBoxTime(ComboBox combobox)
@@ -684,7 +686,7 @@ namespace ChurchSched
             DB.Fill(DT);
 
             // holds the reservation id of previous query
-            selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
+            //selectedReservationID = Convert.ToInt32(DT.Rows[0][0]);
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
@@ -919,6 +921,9 @@ namespace ChurchSched
             cmbEvents.SelectedIndex = 0;
             cmbTime.SelectedIndex = 0;
             cmbPaymentMode.SelectedIndex = 0;
+
+            dgvRequestees.ClearSelection();
+            dgvReservations.ClearSelection();
             
         }
 
