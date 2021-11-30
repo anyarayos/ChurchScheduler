@@ -405,55 +405,22 @@ namespace ChurchSched
                         "FROM Reservations " +
                         "INNER JOIN Wedding " +
                         "ON Reservations.reservation_id = Wedding.id " +
-                        "INNER JOIN Payments " +
+                        "LEFT JOIN Payments " +
                         "ON Reservations.reservation_id = Payments.reservation_id " +
-                        "INNER JOIN ModeOfPayments " +
+                        "LEFT JOIN ModeOfPayments " +
                         "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
                         "WHERE Reservations.user_id =" + selectedUserID + ";"
                         , sql_con
                     );
                     break;
                 case "Baptism":
-                    DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, candidate, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
-                        "FROM Reservations " +
-                        "INNER JOIN Baptism " +
-                        "ON Reservations.reservation_id = Baptism.id " +
-                        "INNER JOIN Payments " +
-                        "ON Reservations.reservation_id = Payments.reservation_id " +
-                        "INNER JOIN ModeOfPayments " +
-                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
-                        "WHERE Reservations.user_id =" + selectedUserID + ";"
-                        , sql_con
-                    );
+                    
                     break;
                 case "Confirmation":
-                    DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, confirmand, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
-                        "FROM Reservations " +
-                        "INNER JOIN Confirmation " +
-                        "ON Reservations.reservation_id = Confirmation.id " +
-                        "INNER JOIN Payments " +
-                        "ON Reservations.reservation_id = Payments.reservation_id " +
-                        "INNER JOIN ModeOfPayments " +
-                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
-                        "WHERE Reservations.user_id =" + selectedUserID + ";"
-                        , sql_con
-                    );
+                    
                     break;
                 case "Mass":
-                    DB = new SQLiteDataAdapter(
-                        "SELECT Reservations.reservation_id, date, time, type, purpose, is_cancelled, ModeOfPayments.mode_of_payment, balance " +
-                        "FROM Reservations " +
-                        "INNER JOIN Mass " +
-                        "ON Reservations.reservation_id = Mass.id " +
-                        "INNER JOIN Payments " +
-                        "ON Reservations.reservation_id = Payments.reservation_id " +
-                        "INNER JOIN ModeOfPayments " +
-                        "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
-                        "WHERE Reservations.user_id =" + selectedUserID + ";"
-                        , sql_con
-                    );
+                    
                     break;
             }
             DT = new DataTable();
@@ -463,7 +430,7 @@ namespace ChurchSched
         private bool CheckDateOrTimeConflict(string date, string time)
         {
             // data table will have a row if query returns a record
-            DB = new SQLiteDataAdapter("SELECT reservation_id FROM Reservations WHERE date='" + date + "' OR time='" + time + "';", sql_con);
+            DB = new SQLiteDataAdapter("SELECT reservation_id FROM Reservations WHERE date='" + date + "' AND time='" + time + "';", sql_con);
             DT = new DataTable();
             DB.Fill(DT);
 
@@ -473,7 +440,7 @@ namespace ChurchSched
 
         // USE THIS METHOD IF YOU WANT TO INSERT NEW RESERVATION
         // txt.Attendee2.Text WILL STILL RECIEVED BUT WONT BE USED IF THE EVENT ISNT RELATING TO WEDDING
-        // InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(),Convert.ToDouble(txtPaymentAmount.Text));
+        // InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(),Convert.ToDouble(txtPaymentAmount.Text));
         private void InsertNewReservation(int adminID, int userID, string massEvent, string date, string time, string attendee1, string attendee2, int modeOfPaymentID, double paymentAmount)
 								{
             string SQLiteQuery;
@@ -513,115 +480,20 @@ namespace ChurchSched
                     // insert payment query for the reservation
                     SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
                     "VALUES(" + reservationID + ", 1, " + modeOfPaymentID + ", " + paymentAmount + ");";
+                    ExecuteQuery(SQLiteQuery);
                     break;
                 
                 case "Baptism":
-                    // insert reservation query
-                    SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
-                    "VALUES(" + adminID + ", " + userID + ", '" + massEvent + "', '" + date + "', '" + time + "', 0);";
-                    ExecuteQuery(SQLiteQuery);
-
-                    // find the inserted reservation id
-                    DB = new SQLiteDataAdapter(
-                        "SELECT reservation_id " +
-                        "FROM Reservations " +
-                        "WHERE " +
-                        "admin_id=" + adminID + " AND " +
-                        "user_id=" + userID + " AND " +
-                        "type = '" + massEvent + "' AND " +
-                        "date='" + date + "' AND " +
-                        "time='" + time + "' AND " +
-                        "is_cancelled = 0;"
-                        , sql_con
-                    );
-                    DT = new DataTable();
-                    DB.Fill(DT);
-
-                    // holds the reservation id of previous query
-                    reservationID = Convert.ToInt32(DT.Rows[0][0]);
-
-                    // insert event query relating to reservation
-                    SQLiteQuery = "INSERT INTO Baptism(id, candidate) " +
-                    "VALUES(" + reservationID + ", '" + attendee1 + "');";
-                    ExecuteQuery(SQLiteQuery);
-
-                    // insert payment query for the reservation
-                    SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
-                    "VALUES(" + reservationID + ", 2, " + modeOfPaymentID + ", " + paymentAmount + ");";
                     break;
                 case "Confirmation":
-                    // insert reservation query
-                    SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
-                    "VALUES(" + adminID + ", " + userID + ", '" + massEvent + "', '" + date + "', '" + time + "', 0);";
-                    ExecuteQuery(SQLiteQuery);
-
-                    // find the inserted reservation id
-                    DB = new SQLiteDataAdapter(
-                        "SELECT reservation_id " +
-                        "FROM Reservations " +
-                        "WHERE " +
-                        "admin_id=" + adminID + " AND " +
-                        "user_id=" + userID + " AND " +
-                        "type = '" + massEvent + "' AND " +
-                        "date='" + date + "' AND " +
-                        "time='" + time + "' AND " +
-                        "is_cancelled = 0;"
-                        , sql_con
-                    );
-                    DT = new DataTable();
-                    DB.Fill(DT);
-
-                    // holds the reservation id of previous query
-                    reservationID = Convert.ToInt32(DT.Rows[0][0]);
-
-                    // insert event query relating to reservation
-                    SQLiteQuery = "INSERT INTO Confirmation(id, confirmand) " +
-                    "VALUES(" + reservationID + ", '" + attendee1 + "');";
-                    ExecuteQuery(SQLiteQuery);
-
-                    // insert payment query for the reservation
-                    SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
-                    "VALUES(" + reservationID + ", 3, " + modeOfPaymentID + ", " + paymentAmount + ");";
                     break;
                 case "Mass":
-                    // insert reservation query
-                    SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
-                    "VALUES(" + adminID + ", " + userID + ", '" + massEvent + "', '" + date + "', '" + time + "', 0);";
-                    ExecuteQuery(SQLiteQuery);
-
-                    // find the inserted reservation id
-                    DB = new SQLiteDataAdapter(
-                        "SELECT reservation_id " +
-                        "FROM Reservations " +
-                        "WHERE " +
-                        "admin_id=" + adminID + " AND " +
-                        "user_id=" + userID + " AND " +
-                        "type = '" + massEvent + "' AND " +
-                        "date='" + date + "' AND " +
-                        "time='" + time + "' AND " +
-                        "is_cancelled = 0;"
-                        , sql_con
-                    );
-                    DT = new DataTable();
-                    DB.Fill(DT);
-
-                    // holds the reservation id of previous query
-                    reservationID = Convert.ToInt32(DT.Rows[0][0]);
-
-                    // insert event query relating to reservation
-                    SQLiteQuery = "INSERT INTO Mass(id, purpose) " +
-                    "VALUES(" + reservationID + ", '" + attendee1 + "');";
-                    ExecuteQuery(SQLiteQuery);
-
-                    // insert payment query for the reservation
-                    SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
-                    "VALUES(" + reservationID + ", 4, " + modeOfPaymentID + ", " + paymentAmount + ");";
                     break;
             }
             
         }
 
-        // UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(),Convert.ToDouble(txtPaymentAmount.Text));
+        // UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(),Convert.ToDouble(txtPaymentAmount.Text));
         private void UpdateReservation(int reservationID, int adminID, int userID, string massEvent, string date, string time, string attendee1, string attendee2, int modeOfPaymentID, double paymentAmount)
 								{
             string SQLiteQuery;
@@ -724,11 +596,11 @@ namespace ChurchSched
             bool reservationTextBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");
 
             // check if there is no date or time conflict
-												if (!CheckDateOrTimeConflict(dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString()))
+												if (!CheckDateOrTimeConflict(dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString()))
 												{
 																if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
 																{
-                    InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
+                    InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
 																}
 																else
 																{
@@ -767,48 +639,76 @@ namespace ChurchSched
 
         }
         private void btnEditReserve_Click(object sender, EventArgs e)
-        {
-            //==EDIT LOGIC==
-            
-            if ( selectedUserID > 0) {
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to edit " + selectedUserID + " with the following values?\n" +
-            "\nEvent: " + cmbEvents.SelectedItem.ToString() +
-            "\nDate: " + dtpDate.Value.ToString() +
-            "\nTime: " + cmbTime.SelectedItem.ToString() +
-            "\nAttendee 1: " + txtAttendee1.Text +
-             "\nAttendee 2: " + txtAttendee2.Text +
-             "\nMode of Payment: " + cmbPaymentMode.SelectedItem.ToString() +
-             "\nPayment Amount: " + txtPaymentAmount.Text, "Edit Confirmation",
-                                MessageBoxButtons.YesNo);
-                DialogResult confirmEdit = dialogResult;
-                if (confirmEdit == DialogResult.Yes) {
-                    //bool textBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");\\For Wedding
-                    //bool textBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");\\The Rest
+								{
+            // for wedding
+            bool reservationTextBoxesFilledEvent1 = !(txtAttendee1.Text == "" || txtAttendee2.Text == "" || txtPaymentAmount.Text == "");
+            // for the rest
+            bool reservationTextBoxesFilledEvent2 = !(txtAttendee1.Text == "" || txtPaymentAmount.Text == "");
 
-                    // outermost IF checks the event type selected, then the next if will check kung puno textboxes na needed according to the event
-
-                    //if(currentEventSelected==1) Check kung wedding type sinelect
-                        //if(textBoxesFilledEvent1) txtattendee1 and txtattendee2 and txtpayment ichcheck
-                            //if(date & time doesn't match any record)
-                                 //UPDATE
-                                 //
-                            //else
-                             //Print There is a reservation for the selected date and time. Please choose another.
-                        //else
-                        // Print Some of the fields are incomplete.
-                   
-                    //else Kung hindi si Wedding type sinelect
-                        //if(textBoxesFilledEvent2) txtattendee1 and txtpayment ichcheck
-                            ///if(date & time doesn't match any record)
-                                ///UPDATE
-                            /////else
-                                //Print There is a reservation for the selected date and time. Please choose another.
-                        //else
-                        // Print Some of the fields are incomplete.
-                    //
-                    //}
+            // check if there is no date or time conflict
+            if (!CheckDateOrTimeConflict(dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString()))
+            {
+                if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
+                {
+                    MessageBox.Show("Edit Success");
+                    // UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
+                }
+                else
+                {
+                    MessageBox.Show("Submission Incomplete, check and try again.");
                 }
             }
+            else
+            {
+                MessageBox.Show(
+                    "There is already an existing reservation to your preferred date and time.\n" +
+                    "Please select another date and time."
+                );
+            }
+            //==EDIT LOGIC==
+            /*
+            if (selectedUserID > 0)
+												{
+																DialogResult dialogResult = MessageBox.Show("Are you sure you want to edit " + selectedUserID + " with the following values?\n" +
+												"\nEvent: " + cmbEvents.SelectedItem.ToString() +
+												"\nDate: " + dtpDate.Value.ToString() +
+												"\nTime: " + cmbTime.SelectedItem.ToString() +
+												"\nAttendee 1: " + txtAttendee1.Text +
+													"\nAttendee 2: " + txtAttendee2.Text +
+													"\nMode of Payment: " + cmbPaymentMode.SelectedItem.ToString() +
+													"\nPayment Amount: " + txtPaymentAmount.Text, "Edit Confirmation",
+																																MessageBoxButtons.YesNo);
+																DialogResult confirmEdit = dialogResult;
+																if (confirmEdit == DialogResult.Yes)
+																{
+																				//bool textBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");\\For Wedding
+																				//bool textBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");\\The Rest
+
+																				// outermost IF checks the event type selected, then the next if will check kung puno textboxes na needed according to the event
+
+																				//if(currentEventSelected==1) Check kung wedding type sinelect
+																				//if(textBoxesFilledEvent1) txtattendee1 and txtattendee2 and txtpayment ichcheck
+																				//if(date & time doesn't match any record)
+																				//UPDATE
+																				//
+																				//else
+																				//Print There is a reservation for the selected date and time. Please choose another.
+																				//else
+																				// Print Some of the fields are incomplete.
+
+																				//else Kung hindi si Wedding type sinelect
+																				//if(textBoxesFilledEvent2) txtattendee1 and txtpayment ichcheck
+																				///if(date & time doesn't match any record)
+																				///UPDATE
+																				/////else
+																				//Print There is a reservation for the selected date and time. Please choose another.
+																				//else
+																				// Print Some of the fields are incomplete.
+																				//
+																				//}
+																}
+												}
+            */
             LoadReservationsDgvReservations();
 
             //bool textBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");\\For Wedding
