@@ -580,7 +580,7 @@ namespace ChurchSched
                         "type = '" + cmbEvents.SelectedItem.ToString() + "' AND " +
                         "date='" + dtpDate.Value.ToString("yyyy/MM/dd") + "' AND " +
                         "time='" + cmbTime.SelectedItem.ToString() + "';"
-                        , sql_con
+                        ,sql_con
                     );
             DT = new DataTable();
             DB.Fill(DT);
