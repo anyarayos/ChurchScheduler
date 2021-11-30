@@ -719,24 +719,24 @@ namespace ChurchSched
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
             // for wedding
-            bool reservationTextBoxesFilledEvent1 =!(txtAttendee1.Text==""||txtAttendee2.Text==""||txtPaymentAmount.Text=="");
+            bool reservationTextBoxesFilledEvent1 = !(txtAttendee1.Text == "" || txtAttendee2.Text == "" || txtPaymentAmount.Text == "");
             // for the rest
-            bool reservationTextBoxesFilledEvent2 =!(txtAttendee1.Text==""||txtPaymentAmount.Text=="");
+            bool reservationTextBoxesFilledEvent2 = !(txtAttendee1.Text == "" || txtPaymentAmount.Text == "");
 
             // check if there is no date or time conflict
-												if (!CheckDateOrTimeConflict(dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString()))
-												{
-																if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
-																{
-                    InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
-																}
-																else
-																{
+            if (!CheckDateOrTimeConflict(dtpDate.Value.ToString(), cmbTime.SelectedItem.ToString()))
+            {
+                if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
+                {
+                    InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
+                }
+                else
+                {
                     MessageBox.Show("Submission Incomplete, check and try again.");
                 }
-												}
-												else
-												{
+            }
+            else
+            {
                 MessageBox.Show(
                     "There is already an existing reservation to your preferred date and time.\n" +
                     "Please select another date and time."
@@ -744,6 +744,7 @@ namespace ChurchSched
             }
             LoadReservationsDgvReservations();
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             //==CANCEL LOGIC==
