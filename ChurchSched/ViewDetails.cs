@@ -20,17 +20,18 @@ namespace ChurchSched
 
         private void readReservationData()
         {
-            string sql_admin =  "SELECT username FROM Accounts WHERE id = " + adminID.ToString();
-            //Note: Find a way to query the attendee(s), paymentMode, paymentAmount, paymentBalance
+            string sql_admin = "SELECT username FROM Accounts WHERE id = " + adminID.ToString();
+            //Note: Find a way to query the paymentMode, paymentAmount, paymentBalance
             string sql_reservation = "SELECT UserInfo.name, UserInfo.email, Reservations.type, Reservations.date, Reservations.time, " +
-                "Wedding.groom, Wedding.bride, Baptism.candidate, Confirmation.confirmand, Mass.purpose " +
+                "Wedding.groom, Wedding.bride, Baptism.candidate, Confirmation.confirmand, Mass.purpose, Payments.mode_of_payment_id, Payments.balance " +
                 "FROM Reservations INNER JOIN UserInfo ON Reservations.user_id = UserInfo.id " +
                 "LEFT JOIN Wedding ON Reservations.reservation_id = Wedding.id " +
                 "LEFT JOIN Baptism ON Reservations.reservation_id = Baptism.id " +
                 "LEFT JOIN Confirmation ON Reservations.reservation_id = Confirmation.id " +
                 "LEFT JOIN Mass ON Reservations.reservation_id = Mass.id " +
+                "LEFT JOIN Payments ON Reservations.reservation_id = Payments.reservation_id " +
                 "WHERE Reservations.reservation_id = " + reservationID.ToString();
-            
+
             using (SQLiteConnection sql_con = new SQLiteConnection("Data Source=Church.db; Version=3; New=False; Compress=True;"))
             {
                 sql_con.Open();
@@ -58,6 +59,8 @@ namespace ChurchSched
                         candidate = reader[7] as string;
                         confirmand = reader[8] as string;
                         purpose = reader[9] as string;
+                        paymentMode = reader[10] as string;
+                        paymentAmount = reader[11] as string;
                         break;
                     }
                 }
@@ -133,22 +136,29 @@ namespace ChurchSched
                 lblDetailPurpose.Visible = true;
             }
 
-            //Sets the payment amounts
-            //lblDetailPaidAmount.Text = paymentAmount;
-            //lblDetailBalance.Text = paymentBalance;
+            MessageBox.Show("CHECK PAYMENT PANG DEBUG KO TO "+ paymentAmount+" "+paymentMode);
 
-            //Check which payment mode
-            //if (paymentMode== "Gcash/Paypal")
-            //{
-            //    rbtnGcashPaypal.Checked = true;
-            //}else if (paymentMode == "Debit/Credit Cardl")
-            //{
-            //    rbtnDebitCredit.Checked = true;
-            //}
-            //else
-            //{
-            //    rbtnCash.Checked = true;
-            //}
+            //Sets the payment amounts
+            lblDetailPaidAmount.Text = paymentAmount;
+            lblDetailBalance.Text = paymentBalance;
+
+            rbtnGcashPaypal.Checked = false;
+            rbtnGcashPaypal.Checked = false;
+            rbtnGcashPaypal.Checked = false;
+
+           //Check which payment mode
+            if (paymentMode == "1")
+            {
+                rbtnGcashPaypal.Checked = true;
+            }
+            else if (paymentMode == "2")
+            {
+                rbtnDebitCredit.Checked = true;
+            }
+            else
+            {
+                rbtnCash.Checked = true;
+            }
         }
     }
 }

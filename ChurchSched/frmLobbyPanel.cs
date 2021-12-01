@@ -944,7 +944,7 @@ namespace ChurchSched
         private void btnViewPast_Click(object sender, EventArgs e)
         {
             //SELECT reservation_id FROM Reservations WHERE date = row_date AND time = row_time;
-            int reservationID= 2;//Put the return value of the query in this variable
+            int reservationID= 1;//Put the return value of the query in this variable
 
             frmViewDetails view = new frmViewDetails(currentAdminID, reservationID);
             view.ShowDialog();
