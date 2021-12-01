@@ -736,13 +736,7 @@ namespace ChurchSched
             bool reservationTextBoxesFilledEvent2 = !(txtAttendee1.Text == "" || txtPaymentAmount.Text == "");
 
             bool hasReservationID = selectedReservationID > 0;
-            MessageBox.Show(
-"selectedReservationID: " + selectedPastReservationID +
-"Date: " + dtpDate.Value.ToString("yyyy/MM/dd") +
-"Time: " + cmbTime.SelectedItem.ToString() +
-"CheckDateOrTimeConflict: " +
-(!CheckDateOrTimeConflict(dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString())).ToString()
-);
+            
             if (hasReservationID)
             {
                 // check if there is no date or time conflict
