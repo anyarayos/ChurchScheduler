@@ -22,8 +22,13 @@ namespace ChurchSched
         {
             string sql_admin =  "SELECT username FROM Accounts WHERE id = " + adminID.ToString();
             //Note: Find a way to query the attendee(s), paymentMode, paymentAmount, paymentBalance
-            string sql_reservation = "SELECT UserInfo.name, UserInfo.email, Reservations.type, Reservations.date, Reservations.time " +
+            string sql_reservation = "SELECT UserInfo.name, UserInfo.email, Reservations.type, Reservations.date, Reservations.time, " +
+                "Wedding.groom, Wedding.bride, Baptism.candidate, Confirmation.confirmand, Mass.purpose " +
                 "FROM Reservations INNER JOIN UserInfo ON Reservations.user_id = UserInfo.id " +
+                "LEFT JOIN Wedding ON Reservations.reservation_id = Wedding.id " +
+                "LEFT JOIN Baptism ON Reservations.reservation_id = Baptism.id " +
+                "LEFT JOIN Confirmation ON Reservations.reservation_id = Confirmation.id " +
+                "LEFT JOIN Mass ON Reservations.reservation_id = Mass.id " +
                 "WHERE Reservations.reservation_id = " + reservationID.ToString();
             
             using (SQLiteConnection sql_con = new SQLiteConnection("Data Source=Church.db; Version=3; New=False; Compress=True;"))
@@ -48,6 +53,11 @@ namespace ChurchSched
                         reservationType = reader[2] as string;
                         reservationDate = reader[3] as string;
                         reservationTime = reader[4] as string;
+                        groom = reader[5] as string;
+                        bride = reader[6] as string;
+                        candidate = reader[7] as string;
+                        confirmand = reader[8] as string;
+                        purpose = reader[9] as string;
                         break;
                     }
                 }
@@ -89,7 +99,7 @@ namespace ChurchSched
         private void frmViewDetails_Load(object sender, EventArgs e)
         {
             readReservationData();
-            //hideAttendeeLabels();
+            hideAttendeeLabels();
             lblDetailUserAdmin.Text = username;
             lblDetailAdminID.Text = adminID.ToString();
 
@@ -100,28 +110,28 @@ namespace ChurchSched
             lblDetailTime.Text = reservationTime;
 
             //Sets the attendee(s)
-            //if (reservationType=="Wedding")
-            //{
-            //    lblDetailGroom.Text = groom;
-            //    lblDetailBride.Text = bride;
-            //    lblDetailGroom.Visible = true;
-            //    lblDetailBride.Visible = true;
-            //}
-            //else if (reservationType == "Baptism")
-            //{
-            //    lblDetailCandidate.Text = candidate;
-            //    lblDetailCandidate.Visible = true;
-            //}
-            //else if (reservationType == "Confirmation")
-            //{
-            //    lblDetailConfirmand.Text = confirmand;
-            //    lblDetailConfirmand.Visible = true;
-            //}
-            //else
-            //{
-            //    lblDetailPurpose.Text = purpose;
-            //    lblDetailPurpose.Visible = true;
-            //}
+            if (reservationType == "Wedding")
+            {
+                lblDetailGroom.Text = groom;
+                lblDetailBride.Text = bride;
+                lblDetailGroom.Visible = true;
+                lblDetailBride.Visible = true;
+            }
+            else if (reservationType == "Baptism")
+            {
+                lblDetailCandidate.Text = candidate;
+                lblDetailCandidate.Visible = true;
+            }
+            else if (reservationType == "Confirmation")
+            {
+                lblDetailConfirmand.Text = confirmand;
+                lblDetailConfirmand.Visible = true;
+            }
+            else
+            {
+                lblDetailPurpose.Text = purpose;
+                lblDetailPurpose.Visible = true;
+            }
 
             //Sets the payment amounts
             //lblDetailPaidAmount.Text = paymentAmount;
