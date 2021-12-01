@@ -7,6 +7,9 @@
     <Compile Update="Customs\CustomButtons.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Customs\CustomTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="EllipseTool.cs">
       <SubType>Component</SubType>
     </Compile>

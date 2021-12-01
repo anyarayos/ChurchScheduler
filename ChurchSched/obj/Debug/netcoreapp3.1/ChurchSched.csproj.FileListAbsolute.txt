@@ -239,3 +239,4 @@ C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcore
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.genruntimeconfig.cache
 C:\Users\Magalona\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.csproj.AssemblyReference.cache
 C:\Users\USER\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.frmViewDetails.resources
+C:\Users\USER\Documents\GitHub\ChurchScheduler\ChurchSched\obj\Debug\netcoreapp3.1\ChurchSched.Customs.CustomTextBox.resources
