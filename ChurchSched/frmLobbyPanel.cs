@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Linq;
 using System.Globalization;
+using System.Collections;
+
 namespace ChurchSched
 {
     public partial class frmLobbyPanel : Form
@@ -442,12 +444,12 @@ namespace ChurchSched
         }
         private void PopulateComboBoxTime(ComboBox combobox)
         {
-            List<String> timeIntervals = new List<String>();
+            ArrayList timeIntervals = new ArrayList();
             var item = DateTime.Today.AddHours(7);
             while (item <= DateTime.Today.AddHours(15))
             {
                 string format = item.ToString("hh:mm tt") + " - " + item.AddMinutes(120).ToString("hh:mm tt");
-                timeIntervals.Add(format);
+                timeIntervals.Add(format.ToUpper());
                 item = item.AddMinutes(60);
             }
             Object[] timeRange = timeIntervals.Cast<object>().ToArray();
@@ -713,14 +715,18 @@ namespace ChurchSched
 
         private void dgvReservations_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // data grid view row index
-            int index = e.RowIndex;
-            reservationSelectedRow = dgvReservations.Rows[index];
-            // populate textboxes with requestee's data grid view's selected row's value
-            PopulateSelectedReservation();
+            try
+            {
+                // data grid view row index
+                int index = e.RowIndex;
+                reservationSelectedRow = dgvReservations.Rows[index];
+                // populate textboxes with requestee's data grid view's selected row's value
+                PopulateSelectedReservation();
 
-            // holds the reservation id of previous query
-            selectedReservationID = Convert.ToInt32(reservationSelectedRow.Cells[0].Value);
+                // holds the reservation id of previous query
+                selectedReservationID = Convert.ToInt32(reservationSelectedRow.Cells[0].Value);
+            }
+            catch { }
         }
         private void btnConfirmReserve_Click(object sender, EventArgs e)
         {
@@ -730,6 +736,13 @@ namespace ChurchSched
             bool reservationTextBoxesFilledEvent2 = !(txtAttendee1.Text == "" || txtPaymentAmount.Text == "");
 
             bool hasReservationID = selectedReservationID > 0;
+            MessageBox.Show(
+"selectedReservationID: " + selectedPastReservationID +
+"Date: " + dtpDate.Value.ToString("yyyy/MM/dd") +
+"Time: " + cmbTime.SelectedItem.ToString() +
+"CheckDateOrTimeConflict: " +
+(!CheckDateOrTimeConflict(dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString())).ToString()
+);
             if (hasReservationID)
             {
                 // check if there is no date or time conflict
@@ -922,9 +935,13 @@ namespace ChurchSched
 
         private void dgvUpcomingEvent_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
-            selectedUpcomingEventRow = dgvUpcomingEvent.Rows[index];
-            selectedUpcomingReservationID = Convert.ToInt32(selectedUpcomingEventRow.Cells[0].Value);
+            try
+            {
+                int index = e.RowIndex;
+                selectedUpcomingEventRow = dgvUpcomingEvent.Rows[index];
+                selectedUpcomingReservationID = Convert.ToInt32(selectedUpcomingEventRow.Cells[0].Value);
+            }
+            catch { }
         }
         private void btnViewUpcoming_Click(object sender, EventArgs e)
         {
@@ -964,7 +981,6 @@ namespace ChurchSched
                     "ON Prices.price_id = ModeOfPayments.mode_of_payment_id " +
                     "LEFT JOIN UserInfo " +
                     "ON Reservations.user_id = UserInfo.id " +
-
                     // condition
                     "WHERE (time LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
                     "type LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
@@ -974,7 +990,6 @@ namespace ChurchSched
                     "price LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
                     "balance LIKE '%" + txtSearchUpcoming.Text + "%')" +
                     "AND substr(date, 1, 10) >= '" + currentDateToday + "' " +
-
                     // order by date and time
                     "ORDER BY date, time;",
                     sql_con
@@ -1035,9 +1050,13 @@ namespace ChurchSched
 
         private void dgvPastEvents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
-            selectedPastEventRow = dgvPastEvents.Rows[index];
-            selectedPastReservationID = Convert.ToInt32(selectedPastEventRow.Cells[0].Value);
+            try
+            {
+                int index = e.RowIndex;
+                selectedPastEventRow = dgvPastEvents.Rows[index];
+                selectedPastReservationID = Convert.ToInt32(selectedPastEventRow.Cells[0].Value);
+            }
+            catch { }
         }
         private void btnViewPast_Click(object sender, EventArgs e)
         {
@@ -1079,13 +1098,13 @@ namespace ChurchSched
                     "ON Reservations.user_id = UserInfo.id " +
 
                     // condition
-                    "WHERE (time LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
-                    "type LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
-                    "date LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
-                    "name LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
-                    "ModeOfPayments.mode_of_payment LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
-                    "price LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
-                    "balance LIKE '%" + txtSearchUpcoming.Text + "%')" +
+                    "WHERE (time LIKE '%" + txtSearchPast.Text + "%' OR " +
+                    "type LIKE '%" + txtSearchPast.Text + "%' OR " +
+                    "date LIKE '%" + txtSearchPast.Text + "%' OR " +
+                    "name LIKE '%" + txtSearchPast.Text + "%' OR " +
+                    "ModeOfPayments.mode_of_payment LIKE '%" + txtSearchPast.Text + "%' OR " +
+                    "price LIKE '%" + txtSearchPast.Text + "%' OR " +
+                    "balance LIKE '%" + txtSearchPast.Text + "%')" +
                     "AND substr(date, 1, 10) < '" + currentDateToday + "' " +
 
                     // order by date and time
