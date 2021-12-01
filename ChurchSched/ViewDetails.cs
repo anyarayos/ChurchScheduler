@@ -17,6 +17,21 @@ namespace ChurchSched
         string reservationType,reservationDate,reservationTime;
         string groom, bride, candidate, confirmand, purpose;
 
+        private void tableLayoutPanel9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblDetailReservatorEmail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();

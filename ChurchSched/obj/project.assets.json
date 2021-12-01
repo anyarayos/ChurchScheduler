@@ -1157,25 +1157,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< Updated upstream
-    "C:\\Users\\jblolz8\\.nuget\\packages\\": {}
-=======
     "C:\\Users\\USER\\.nuget\\packages\\": {}
->>>>>>> Stashed changes
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< Updated upstream
-      "projectUniqueName": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
-      "projectName": "ChurchSched",
-      "projectPath": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
-      "packagesPath": "C:\\Users\\jblolz8\\.nuget\\packages\\",
-      "outputPath": "C:\\Programming Files\\Repository\\ChurchScheduler\\ChurchSched\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\jblolz8\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
       "projectUniqueName": "C:\\Users\\USER\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
       "projectName": "ChurchSched",
       "projectPath": "C:\\Users\\USER\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\ChurchSched.csproj",
@@ -1184,7 +1170,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> Stashed changes
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1225,12 +1210,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.19, 3.1.19]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -1242,5 +1221,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\USER\\Documents\\GitHub\\ChurchScheduler\\ChurchSched\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
