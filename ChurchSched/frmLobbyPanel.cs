@@ -13,20 +13,20 @@ namespace ChurchSched
     public partial class frmLobbyPanel : Form
     {
         // SQLITE VARIABLES AND METHODS ================================================
-        
+
         // sql variables and objects
         private SQLiteConnection sql_con;
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter DB;
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
-        
+
         // set connection method
         private void SetConnection(string database)
         {
             sql_con = new SQLiteConnection("Data Source=" + database + "; Version=3; New=False; Compress=True;");
         }
-        
+
         // execute query method
         private void ExecuteQuery(string txtQuery)
         {
@@ -48,11 +48,11 @@ namespace ChurchSched
         - holds the user id and name used for the reservation panel
         - Ex:(1_Mark L. Bargamento)
          */
-        
+
         DataGridViewRow requesteeSelectedRow;
         int selectedUserID;
         string userIDAndName;
-        
+
         /* REQUESTEE PANEL METHODS ================================================
         LoadUserInfoDgvRequestee()
         - loads UserInfo data into dgvRequestee
@@ -147,7 +147,7 @@ namespace ChurchSched
                 tabControl.TabPages.Add(tbAllReserve);
                 tabControl.TabPages.Add(tbPastEvents);
             }
-            try 
+            try
             {
                 // data grid view row index
                 int index = e.RowIndex;
@@ -214,7 +214,7 @@ namespace ChurchSched
                 if (confirmEdit == DialogResult.Yes)
                 {
                     if (textBoxesFilled && !CheckIfUserExistsEdit(txtEmailAdd.Text, txtContactNum.Text, selectedUserID))
-																				{
+                    {
                         UpdateUserInfo(selectedUserID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
                         LoadUserInfoDgvRequestee();
                         LoadUpcomingEventsOnDGV();
@@ -282,7 +282,7 @@ namespace ChurchSched
             DB.Fill(DT);
             dgvRequestees.DataSource = DT;
         }
-        
+
         // RESERVATION PANEL ================================================
 
         /* RESERVATION PANEL VARIABLES ================================================
@@ -479,7 +479,7 @@ namespace ChurchSched
                     SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
                     "VALUES(" + adminID + ", " + userID + ", '" + massEvent + "', '" + date + "', '" + time + "', 0);";
                     ExecuteQuery(SQLiteQuery);
-                    
+
                     // find the inserted reservation id
                     DB = new SQLiteDataAdapter(
                         "SELECT reservation_id " +
@@ -495,21 +495,21 @@ namespace ChurchSched
                     );
                     DT = new DataTable();
                     DB.Fill(DT);
-                    
+
                     // holds the reservation id of previous query
                     reservationID = Convert.ToInt32(DT.Rows[0][0]);
-                    
+
                     // insert event query relating to reservation
                     SQLiteQuery = "INSERT INTO Wedding(id, groom, bride) " +
                     "VALUES(" + reservationID + ", '" + attendee1 + "', '" + attendee2 + "');";
                     ExecuteQuery(SQLiteQuery);
-                    
+
                     // insert payment query for the reservation
                     SQLiteQuery = "INSERT INTO Payments(reservation_id, price_id, mode_of_payment_id, balance) " +
                     "VALUES(" + reservationID + ", 1, " + modeOfPaymentID + ", " + paymentAmount + ");";
                     ExecuteQuery(SQLiteQuery);
                     break;
-                
+
                 case "Baptism":
                     // insert reservation query
                     SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
@@ -545,7 +545,7 @@ namespace ChurchSched
                     "VALUES(" + reservationID + ", 2, " + modeOfPaymentID + ", " + paymentAmount + ");";
                     ExecuteQuery(SQLiteQuery);
                     break;
-                
+
                 case "Confirmation":
                     // insert reservation query
                     SQLiteQuery = "INSERT INTO Reservations(admin_id, user_id, type, date, time, is_cancelled) " +
@@ -670,7 +670,7 @@ namespace ChurchSched
                     break;
             }
         }
-        
+
         /* RESERVATION PANEL EVENTS ================================================
         ComboBox Events = WIP
         Button Confirm Reservation = WIP
@@ -725,7 +725,7 @@ namespace ChurchSched
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            
+
             DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
@@ -778,7 +778,7 @@ namespace ChurchSched
                                                     "\nPayment Amount: " + txtPaymentAmount.Text, "Edit Confirmation",
                                                                                                                                 MessageBoxButtons.YesNo);
                                                                 DialogResult confirmEdit = dialogResult;
-                                      */                  
+                                      */
             LoadReservationsDgvReservations();
             LoadUpcomingEventsOnDGV();
         }
@@ -822,21 +822,21 @@ namespace ChurchSched
             LoadPrice();
             LoadReservationsDgvReservations();
         }
-        
+
         // UPCOMING EVENTS PANEL ================================================
-        
+
         /* UPCOMING EVENTS PANEL VARIABLES ================================================
          */
 
         string currentDateToday = DateTime.Today.ToString("yyyy/MM/dd");
-        
+
         /* UPCOMING EVENTS PANEL METHODS ================================================
          */
 
         private void LoadUpcomingEventsOnDGV()
-								{
+        {
             DB = new SQLiteDataAdapter(
-                "SELECT date, time, type, name AS requested_by, ModeOfPayments.mode_of_payment, price, balance " +
+                "SELECT Reservations.reservation_id, date, time, type, name AS requested_by, ModeOfPayments.mode_of_payment, price, balance " +
                 "FROM Reservations " +
                 "LEFT JOIN Wedding " +
                 "ON Reservations.reservation_id = Wedding.id " +
@@ -874,7 +874,7 @@ namespace ChurchSched
         private void LoadPastEventsOnDGV()
         {
             DB = new SQLiteDataAdapter(
-                "SELECT date, time, type, name AS requested_by, ModeOfPayments.mode_of_payment, price, balance " +
+                "SELECT Reservations.reservation_id, date, type, name AS requested_by, ModeOfPayments.mode_of_payment, price, balance " +
                 "FROM Reservations " +
                 "LEFT JOIN Wedding " +
                 "ON Reservations.reservation_id = Wedding.id " +
@@ -941,36 +941,51 @@ namespace ChurchSched
         }
         DataGridViewRow selectedEventRow;
         string row_date, row_time;
-        private void btnViewPast_Click(object sender, EventArgs e)
-        {
-            //SELECT reservation_id FROM Reservations WHERE date = row_date AND time = row_time;
-            int reservationID= 1;//Put the return value of the query in this variable
-
-            frmViewDetails view = new frmViewDetails(reservationID);
-            view.ShowDialog();
-        }
+        int selectedUpcomingReservationID;
+        int selectedPastReservationID;
+        
         private void btnViewUpcoming_Click(object sender, EventArgs e)
         {
-            //SELECT reservation_id FROM Reservations WHERE date = row_date AND time = row_time;
-            int reservationID = 1;//Put the return value of the query in this variable
-
-            frmViewDetails view = new frmViewDetails(reservationID);
-            view.ShowDialog();
+            bool hasID = selectedUpcomingReservationID > 0;
+												if (hasID)
+												{
+                frmViewDetails viewDetails = new frmViewDetails(selectedUpcomingReservationID);
+                viewDetails.ShowDialog();
+												}
+												else
+												{
+                MessageBox.Show("No reservation selected.");
+												}
         }
-        
+        private void btnViewPast_Click(object sender, EventArgs e)
+        {
+            bool hasID = selectedPastReservationID > 0;
+            if (hasID)
+            {
+                frmViewDetails viewDetails = new frmViewDetails(selectedPastReservationID);
+                viewDetails.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No reservation selected.");
+            }
+            
+        }
         private void dgvPastEvents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
             selectedEventRow = dgvPastEvents.Rows[index];
-            row_date = selectedEventRow.Cells[0].Value.ToString();
-            row_time = selectedEventRow.Cells[1].Value.ToString();
+            selectedUpcomingReservationID = Convert.ToInt32(selectedEventRow.Cells[0].Value);
+            row_date = selectedEventRow.Cells[1].Value.ToString();
+            row_time = selectedEventRow.Cells[2].Value.ToString();
         }
         private void dgvUpcomingEvent_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
             selectedEventRow = dgvUpcomingEvent.Rows[index];
-            row_date = selectedEventRow.Cells[0].Value.ToString();
-            row_time = selectedEventRow.Cells[1].Value.ToString();
+            selectedPastReservationID = Convert.ToInt32(selectedEventRow.Cells[0].Value);
+            row_date = selectedEventRow.Cells[1].Value.ToString();
+            row_time = selectedEventRow.Cells[2].Value.ToString();
         }
 
         private void txtSearchUpcoming_TextChanged(object sender, EventArgs e)
@@ -978,13 +993,13 @@ namespace ChurchSched
             // hindi na ito kailangan, kasi meron nang sql connection sa database pag ka start ng form na ito.
             //sql_con = new SQLiteConnection("Data Source=" + "Church.db" + "; Version=3; New=False; Compress=True;");
             //sql_con.Open();
-            
+
             bool searchBarEmpty = txtSearchUpcoming.Text == "";
             if (!searchBarEmpty)
-												{
+            {
                 DB = new SQLiteDataAdapter(
                     // selected columns
-                    "SELECT date, time, type, name AS requested_by, ModeOfPayments.mode_of_payment, price, balance " +
+                    "SELECT Reservations.reservation_id, date, time, type, name AS requested_by, ModeOfPayments.mode_of_payment, price, balance " +
                     "FROM Reservations " +
                     "LEFT JOIN Wedding " +
                     "ON Reservations.reservation_id = Wedding.id " +
@@ -1021,12 +1036,12 @@ namespace ChurchSched
                 DB.Fill(DT);
                 dgvUpcomingEvent.DataSource = DT;
             }
-												else
-												{
+            else
+            {
                 LoadUpcomingEventsOnDGV();
-												}
-            
-            
+            }
+
+
             //pakisalpakan to tulad sa dgv nila but with wildcards 
             //DB = new SQLiteDataAdapter("select * from Reservations where type like '" + txtSearchUpcoming.Text + "%'", sql_con);
             //DT = new DataTable();
@@ -1037,6 +1052,55 @@ namespace ChurchSched
 
         private void txtSearchPast_TextChanged(object sender, EventArgs e)
         {
+            bool searchBarEmpty = txtSearchPast.Text == "";
+            if (!searchBarEmpty)
+            {
+                DB = new SQLiteDataAdapter(
+                    // selected columns
+                    "SELECT Reservations.reservation_id, date, time, type, name AS requested_by, ModeOfPayments.mode_of_payment, price, balance " +
+                    "FROM Reservations " +
+                    "LEFT JOIN Wedding " +
+                    "ON Reservations.reservation_id = Wedding.id " +
+                    "LEFT JOIN Baptism " +
+                    "ON Reservations.reservation_id = Baptism.id " +
+                    "LEFT JOIN Confirmation " +
+                    "ON Reservations.reservation_id = Confirmation.id " +
+                    "LEFT JOIN Mass " +
+                    "ON Reservations.reservation_id = Mass.id " +
+                    "LEFT JOIN Payments " +
+                    "ON Reservations.reservation_id = Payments.reservation_id " +
+                    "LEFT JOIN ModeOfPayments " +
+                    "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
+                    "LEFT JOIN Prices " +
+                    "ON Prices.price_id = ModeOfPayments.mode_of_payment_id " +
+                    "LEFT JOIN UserInfo " +
+                    "ON Reservations.user_id = UserInfo.id " +
+
+                    // condition
+                    "WHERE (time LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "type LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "date LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "name LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "ModeOfPayments.mode_of_payment LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "price LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "balance LIKE '%" + txtSearchUpcoming.Text + "%')" +
+                    "AND substr(date, 1, 10) < '" + currentDateToday + "' " +
+
+                    // order by date and time
+                    "ORDER BY date, time;",
+                    sql_con
+                );
+                DT = new DataTable();
+                DB.Fill(DT);
+                dgvPastEvents.DataSource = DT;
+            }
+            else
+            {
+                LoadPastEventsOnDGV();
+            }
+
+
+
             //sql_con = new SQLiteConnection("Data Source=" + "Church.db" + "; Version=3; New=False; Compress=True;");
             //sql_con.Open();
             //pakisalpakan to tulad sa dgv nila but with wildcards
