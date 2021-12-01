@@ -32,7 +32,12 @@ namespace ChurchSched
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+								private void frmViewDetails_FormClosed(object sender, FormClosedEventArgs e)
+								{
+            this.Dispose();
+								}
+
+								private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }

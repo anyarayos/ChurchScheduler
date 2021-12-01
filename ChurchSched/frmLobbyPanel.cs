@@ -939,11 +939,10 @@ namespace ChurchSched
             // PAST EVENTS PANEL ================
             LoadPastEventsOnDGV();
         }
-        DataGridViewRow selectedEventRow;
-        string row_date, row_time;
+        DataGridViewRow selectedUpcomingEventRow;
         int selectedUpcomingReservationID;
         int selectedPastReservationID;
-        
+        DataGridViewRow selectedPastEventRow;
         private void btnViewUpcoming_Click(object sender, EventArgs e)
         {
             bool hasID = selectedUpcomingReservationID > 0;
@@ -969,31 +968,22 @@ namespace ChurchSched
             {
                 MessageBox.Show("No reservation selected.");
             }
-            
         }
-        private void dgvPastEvents_CellClick(object sender, DataGridViewCellEventArgs e)
+								private void dgvPastEvents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            selectedEventRow = dgvPastEvents.Rows[index];
-            selectedUpcomingReservationID = Convert.ToInt32(selectedEventRow.Cells[0].Value);
-            row_date = selectedEventRow.Cells[1].Value.ToString();
-            row_time = selectedEventRow.Cells[2].Value.ToString();
+            selectedPastEventRow = dgvPastEvents.Rows[index];
+            selectedPastReservationID = Convert.ToInt32(selectedPastEventRow.Cells[0].Value);
         }
         private void dgvUpcomingEvent_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            selectedEventRow = dgvUpcomingEvent.Rows[index];
-            selectedPastReservationID = Convert.ToInt32(selectedEventRow.Cells[0].Value);
-            row_date = selectedEventRow.Cells[1].Value.ToString();
-            row_time = selectedEventRow.Cells[2].Value.ToString();
+            selectedUpcomingEventRow = dgvUpcomingEvent.Rows[index];
+            selectedUpcomingReservationID = Convert.ToInt32(selectedUpcomingEventRow.Cells[0].Value);
         }
 
         private void txtSearchUpcoming_TextChanged(object sender, EventArgs e)
         {
-            // hindi na ito kailangan, kasi meron nang sql connection sa database pag ka start ng form na ito.
-            //sql_con = new SQLiteConnection("Data Source=" + "Church.db" + "; Version=3; New=False; Compress=True;");
-            //sql_con.Open();
-
             bool searchBarEmpty = txtSearchUpcoming.Text == "";
             if (!searchBarEmpty)
             {
@@ -1040,14 +1030,6 @@ namespace ChurchSched
             {
                 LoadUpcomingEventsOnDGV();
             }
-
-
-            //pakisalpakan to tulad sa dgv nila but with wildcards 
-            //DB = new SQLiteDataAdapter("select * from Reservations where type like '" + txtSearchUpcoming.Text + "%'", sql_con);
-            //DT = new DataTable();
-            //DB.Fill(DT);
-            //dgvUpcomingEvent.DataSource = DT;
-            //sql_con.Close();
         }
 
         private void txtSearchPast_TextChanged(object sender, EventArgs e)
@@ -1098,17 +1080,6 @@ namespace ChurchSched
             {
                 LoadPastEventsOnDGV();
             }
-
-
-
-            //sql_con = new SQLiteConnection("Data Source=" + "Church.db" + "; Version=3; New=False; Compress=True;");
-            //sql_con.Open();
-            //pakisalpakan to tulad sa dgv nila but with wildcards
-            //DB = new SQLiteDataAdapter("select * from Reservations where type like '" + txtSearchUpcoming.Text + "%'", sql_con);
-            //DT = new DataTable();
-            //DB.Fill(DT);
-            //dgvPastEvents.DataSource = DT;
-            //sql_con.Close();
         }
     }
 }
