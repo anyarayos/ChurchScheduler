@@ -78,7 +78,7 @@ namespace ChurchSched
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lblDetailBalance = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.btnViewDetailOkay = new System.Windows.Forms.Button();
+            this.btnViewConfirm = new ChurchSched.Custom.CustomButtons();
             this.tblpEventsTimeDate.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -695,21 +695,25 @@ namespace ChurchSched
             this.label16.TabIndex = 19;
             this.label16.Text = "Balance";
             // 
-            // btnViewDetailOkay
+            // btnViewConfirm
             // 
-            this.btnViewDetailOkay.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnViewDetailOkay.FlatAppearance.BorderSize = 3;
-            this.btnViewDetailOkay.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Khaki;
-            this.btnViewDetailOkay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gold;
-            this.btnViewDetailOkay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewDetailOkay.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnViewDetailOkay.Location = new System.Drawing.Point(413, 470);
-            this.btnViewDetailOkay.Name = "btnViewDetailOkay";
-            this.btnViewDetailOkay.Size = new System.Drawing.Size(115, 49);
-            this.btnViewDetailOkay.TabIndex = 18;
-            this.btnViewDetailOkay.Text = "&Okay";
-            this.btnViewDetailOkay.UseVisualStyleBackColor = true;
-            this.btnViewDetailOkay.Click += new System.EventHandler(this.btnViewDetailOkay_Click);
+            this.btnViewConfirm.BackColor = System.Drawing.Color.White;
+            this.btnViewConfirm.BackgroundColor = System.Drawing.Color.White;
+            this.btnViewConfirm.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnViewConfirm.BorderRadius = 20;
+            this.btnViewConfirm.BorderSize = 5;
+            this.btnViewConfirm.FlatAppearance.BorderSize = 0;
+            this.btnViewConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnViewConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnViewConfirm.ForeColor = System.Drawing.Color.Black;
+            this.btnViewConfirm.Location = new System.Drawing.Point(396, 470);
+            this.btnViewConfirm.Name = "btnViewConfirm";
+            this.btnViewConfirm.Size = new System.Drawing.Size(150, 49);
+            this.btnViewConfirm.TabIndex = 19;
+            this.btnViewConfirm.Text = "&Confirm";
+            this.btnViewConfirm.TextColor = System.Drawing.Color.Black;
+            this.btnViewConfirm.UseVisualStyleBackColor = false;
+            this.btnViewConfirm.Click += new System.EventHandler(this.btnViewConfirm_Click);
             // 
             // frmViewDetails
             // 
@@ -719,6 +723,7 @@ namespace ChurchSched
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(958, 537);
+            this.Controls.Add(this.btnViewConfirm);
             this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -728,7 +733,6 @@ namespace ChurchSched
             this.Controls.Add(this.tblpAdminInfo);
             this.Controls.Add(this.tableLayoutPanel5);
             this.Controls.Add(this.tableLayoutPanel3);
-            this.Controls.Add(this.btnViewDetailOkay);
             this.Controls.Add(this.tblpEventsTimeDate);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -811,6 +815,6 @@ namespace ChurchSched
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label lblDetailBalance;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button btnViewDetailOkay;
+        private Custom.CustomButtons btnViewConfirm;
     }
 }

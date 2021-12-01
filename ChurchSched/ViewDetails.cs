@@ -37,7 +37,7 @@ namespace ChurchSched
             this.Dispose();
 								}
 
-        private void btnViewDetailOkay_Click(object sender, EventArgs e)
+        private void btnViewConfirm_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
