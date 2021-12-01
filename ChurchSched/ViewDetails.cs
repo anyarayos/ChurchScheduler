@@ -16,6 +16,12 @@ namespace ChurchSched
         string requesteeName,requesteeEmail;
         string reservationType,reservationDate,reservationTime;
         string groom, bride, candidate, confirmand, purpose;
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
         int paymentMode,paymentAmount, paymentBalance;
 
         private void readReservationData()
