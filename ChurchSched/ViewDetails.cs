@@ -37,10 +37,12 @@ namespace ChurchSched
             this.Dispose();
 								}
 
-								private void button2_Click(object sender, EventArgs e)
+        private void btnViewDetailOkay_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
+
+
 
         int paymentMode,paymentAmount, paymentBalance;
 

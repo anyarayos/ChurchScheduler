@@ -105,7 +105,7 @@ namespace ChurchSched
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(296, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(284, 303);
+            this.pictureBox1.Size = new System.Drawing.Size(284, 261);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -116,7 +116,7 @@ namespace ChurchSched
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(592, 327);
+            this.ClientSize = new System.Drawing.Size(592, 285);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblForgot);
             this.Controls.Add(this.btnLogIn);
