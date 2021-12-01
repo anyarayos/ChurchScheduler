@@ -183,7 +183,7 @@ namespace ChurchSched
             }
 
             //Check if fully paid
-            if (paymentAmount>=paymentBalance)//temporary muna si >= habang wala pang checker
+            if (paymentAmount==paymentBalance)//temporary muna si >= habang wala pang checker
             {
                 rbtnFull.Checked = true;
             }
