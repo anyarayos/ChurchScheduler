@@ -946,7 +946,7 @@ namespace ChurchSched
             //SELECT reservation_id FROM Reservations WHERE date = row_date AND time = row_time;
             int reservationID= 1;//Put the return value of the query in this variable
 
-            frmViewDetails view = new frmViewDetails(currentAdminID, reservationID);
+            frmViewDetails view = new frmViewDetails(reservationID);
             view.ShowDialog();
         }
         private void btnViewUpcoming_Click(object sender, EventArgs e)
@@ -954,7 +954,7 @@ namespace ChurchSched
             //SELECT reservation_id FROM Reservations WHERE date = row_date AND time = row_time;
             int reservationID = 1;//Put the return value of the query in this variable
 
-            frmViewDetails view = new frmViewDetails(currentAdminID, reservationID);
+            frmViewDetails view = new frmViewDetails(reservationID);
             view.ShowDialog();
         }
         
@@ -965,11 +965,19 @@ namespace ChurchSched
             row_date = selectedEventRow.Cells[0].Value.ToString();
             row_time = selectedEventRow.Cells[1].Value.ToString();
         }
+        private void dgvUpcomingEvent_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            selectedEventRow = dgvUpcomingEvent.Rows[index];
+            row_date = selectedEventRow.Cells[0].Value.ToString();
+            row_time = selectedEventRow.Cells[1].Value.ToString();
+        }
 
         private void txtSearchUpcoming_TextChanged(object sender, EventArgs e)
         {
             //sql_con = new SQLiteConnection("Data Source=" + "Church.db" + "; Version=3; New=False; Compress=True;");
             //sql_con.Open();
+            //pakisalpakan to tulad sa dgv nila but with wildcards 
             //DB = new SQLiteDataAdapter("select * from Reservations where type like '" + txtSearchUpcoming.Text + "%'", sql_con);
             //DT = new DataTable();
             //DB.Fill(DT);
@@ -979,15 +987,14 @@ namespace ChurchSched
 
         private void txtSearchPast_TextChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void dgvUpcomingEvent_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = e.RowIndex;
-            selectedEventRow = dgvUpcomingEvent.Rows[index];
-            row_date = selectedEventRow.Cells[0].Value.ToString();
-            row_time = selectedEventRow.Cells[1].Value.ToString();
+            //sql_con = new SQLiteConnection("Data Source=" + "Church.db" + "; Version=3; New=False; Compress=True;");
+            //sql_con.Open();
+            //pakisalpakan to tulad sa dgv nila but with wildcards
+            //DB = new SQLiteDataAdapter("select * from Reservations where type like '" + txtSearchUpcoming.Text + "%'", sql_con);
+            //DT = new DataTable();
+            //DB.Fill(DT);
+            //dgvPastEvents.DataSource = DT;
+            //sql_con.Close();
         }
     }
 }

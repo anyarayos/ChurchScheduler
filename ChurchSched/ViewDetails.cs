@@ -16,20 +16,21 @@ namespace ChurchSched
         string requesteeName,requesteeEmail;
         string reservationType,reservationDate,reservationTime;
         string groom, bride, candidate, confirmand, purpose;
-        string paymentMode, paymentAmount, paymentBalance;
+        int paymentMode,paymentAmount, paymentBalance;
 
         private void readReservationData()
         {
-            string sql_admin = "SELECT username FROM Accounts WHERE id = " + adminID.ToString();
+            string sql_admin = "SELECT Reservations.admin_id, Accounts.username FROM Reservations INNER JOIN Accounts ON Reservations.admin_id = Accounts.id WHERE id = " + reservationID.ToString();
             //Note: Find a way to query the paymentMode, paymentAmount, paymentBalance
             string sql_reservation = "SELECT UserInfo.name, UserInfo.email, Reservations.type, Reservations.date, Reservations.time, " +
-                "Wedding.groom, Wedding.bride, Baptism.candidate, Confirmation.confirmand, Mass.purpose, Payments.mode_of_payment_id, Payments.balance " +
+                "Wedding.groom, Wedding.bride, Baptism.candidate, Confirmation.confirmand, Mass.purpose, Payments.mode_of_payment_id, Payments.balance, Prices.price " +
                 "FROM Reservations INNER JOIN UserInfo ON Reservations.user_id = UserInfo.id " +
                 "LEFT JOIN Wedding ON Reservations.reservation_id = Wedding.id " +
                 "LEFT JOIN Baptism ON Reservations.reservation_id = Baptism.id " +
                 "LEFT JOIN Confirmation ON Reservations.reservation_id = Confirmation.id " +
                 "LEFT JOIN Mass ON Reservations.reservation_id = Mass.id " +
                 "LEFT JOIN Payments ON Reservations.reservation_id = Payments.reservation_id " +
+                "LEFT JOIN Prices ON Prices.price_id = Payments.mode_of_payment_id " +
                 "WHERE Reservations.reservation_id = " + reservationID.ToString();
 
             using (SQLiteConnection sql_con = new SQLiteConnection("Data Source=Church.db; Version=3; New=False; Compress=True;"))
@@ -40,7 +41,8 @@ namespace ChurchSched
                     SQLiteDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        username = reader[0] as string;
+                        adminID = Convert.ToInt32(reader[0]);
+                        username = reader[1] as string;
                         break;
                     }
                 }
@@ -59,8 +61,9 @@ namespace ChurchSched
                         candidate = reader[7] as string;
                         confirmand = reader[8] as string;
                         purpose = reader[9] as string;
-                        paymentMode = reader[10] as string;
-                        paymentAmount = reader[11] as string;
+                        paymentMode = Convert.ToInt32(reader[10]);
+                        paymentAmount = Convert.ToInt32(reader[11]);
+                        paymentBalance = Convert.ToInt32(reader[12]);
                         break;
                     }
                 }
@@ -73,10 +76,9 @@ namespace ChurchSched
             InitializeComponent();
         }
 
-        public frmViewDetails(int adminID, int reservationID)
+        public frmViewDetails(int reservationID)
         {
             InitializeComponent();
-            this.adminID = adminID;
             this.reservationID = reservationID;
 
         }
@@ -136,28 +138,32 @@ namespace ChurchSched
                 lblDetailPurpose.Visible = true;
             }
 
-            MessageBox.Show("CHECK PAYMENT PANG DEBUG KO TO "+ paymentAmount+" "+paymentMode);
-
             //Sets the payment amounts
-            lblDetailPaidAmount.Text = paymentAmount;
-            lblDetailBalance.Text = paymentBalance;
-
-            rbtnGcashPaypal.Checked = false;
-            rbtnGcashPaypal.Checked = false;
-            rbtnGcashPaypal.Checked = false;
+            lblDetailPaidAmount.Text = paymentAmount.ToString();
+            lblDetailBalance.Text = paymentBalance.ToString();
 
            //Check which payment mode
-            if (paymentMode == "1")
+            if (paymentMode == 1)
             {
                 rbtnGcashPaypal.Checked = true;
             }
-            else if (paymentMode == "2")
+            else if (paymentMode == 2)
             {
                 rbtnDebitCredit.Checked = true;
             }
             else
             {
                 rbtnCash.Checked = true;
+            }
+
+            //Check if fully paid
+            if (paymentAmount>=paymentBalance)//temporary muna si >= habang wala pang checker
+            {
+                rbtnFull.Checked = true;
+            }
+            else
+            {
+                rbtnPartial.Checked = true;
             }
         }
     }
