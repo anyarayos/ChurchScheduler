@@ -20,7 +20,7 @@ namespace ChurchSched
 
         private void readReservationData()
         {
-            string sql_admin = "SELECT Reservations.admin_id, Accounts.username FROM Reservations INNER JOIN Accounts ON Reservations.admin_id = Accounts.id WHERE id = " + reservationID.ToString();
+            string sql_admin = "SELECT Reservations.admin_id, Accounts.username FROM Reservations INNER JOIN Accounts ON Reservations.admin_id = Accounts.id WHERE Reservations.reservation_id = " + reservationID.ToString();
             //Note: Find a way to query the paymentMode, paymentAmount, paymentBalance
             string sql_reservation = "SELECT UserInfo.name, UserInfo.email, Reservations.type, Reservations.date, Reservations.time, " +
                 "Wedding.groom, Wedding.bride, Baptism.candidate, Confirmation.confirmand, Mass.purpose, Payments.mode_of_payment_id, Payments.balance, Prices.price " +

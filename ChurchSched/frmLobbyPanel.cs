@@ -975,8 +975,58 @@ namespace ChurchSched
 
         private void txtSearchUpcoming_TextChanged(object sender, EventArgs e)
         {
+            // hindi na ito kailangan, kasi meron nang sql connection sa database pag ka start ng form na ito.
             //sql_con = new SQLiteConnection("Data Source=" + "Church.db" + "; Version=3; New=False; Compress=True;");
             //sql_con.Open();
+            
+            bool searchBarEmpty = txtSearchUpcoming.Text == "";
+            if (!searchBarEmpty)
+												{
+                DB = new SQLiteDataAdapter(
+                    // selected columns
+                    "SELECT date, time, type, name AS requested_by, ModeOfPayments.mode_of_payment, price, balance " +
+                    "FROM Reservations " +
+                    "LEFT JOIN Wedding " +
+                    "ON Reservations.reservation_id = Wedding.id " +
+                    "LEFT JOIN Baptism " +
+                    "ON Reservations.reservation_id = Baptism.id " +
+                    "LEFT JOIN Confirmation " +
+                    "ON Reservations.reservation_id = Confirmation.id " +
+                    "LEFT JOIN Mass " +
+                    "ON Reservations.reservation_id = Mass.id " +
+                    "LEFT JOIN Payments " +
+                    "ON Reservations.reservation_id = Payments.reservation_id " +
+                    "LEFT JOIN ModeOfPayments " +
+                    "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
+                    "LEFT JOIN Prices " +
+                    "ON Prices.price_id = ModeOfPayments.mode_of_payment_id " +
+                    "LEFT JOIN UserInfo " +
+                    "ON Reservations.user_id = UserInfo.id " +
+
+                    // condition
+                    "WHERE (time LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "type LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "date LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "name LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "ModeOfPayments.mode_of_payment LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "price LIKE '%" + txtSearchUpcoming.Text + "%' OR " +
+                    "balance LIKE '%" + txtSearchUpcoming.Text + "%')" +
+                    "AND substr(date, 1, 10) >= '" + currentDateToday + "' " +
+
+                    // order by date and time
+                    "ORDER BY date, time;",
+                    sql_con
+                );
+                DT = new DataTable();
+                DB.Fill(DT);
+                dgvUpcomingEvent.DataSource = DT;
+            }
+												else
+												{
+                LoadUpcomingEventsOnDGV();
+												}
+            
+            
             //pakisalpakan to tulad sa dgv nila but with wildcards 
             //DB = new SQLiteDataAdapter("select * from Reservations where type like '" + txtSearchUpcoming.Text + "%'", sql_con);
             //DT = new DataTable();
