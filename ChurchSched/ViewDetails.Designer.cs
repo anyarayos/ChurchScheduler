@@ -716,9 +716,9 @@ namespace ChurchSched
             // 
             this.btnViewConfirm.BackColor = System.Drawing.Color.White;
             this.btnViewConfirm.BackgroundColor = System.Drawing.Color.White;
-            this.btnViewConfirm.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnViewConfirm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
             this.btnViewConfirm.BorderRadius = 20;
-            this.btnViewConfirm.BorderSize = 5;
+            this.btnViewConfirm.BorderSize = 2;
             this.btnViewConfirm.FlatAppearance.BorderSize = 0;
             this.btnViewConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnViewConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
