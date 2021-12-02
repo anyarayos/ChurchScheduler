@@ -36,9 +36,9 @@ namespace ChurchSched.Customs
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(7, 7);
+            this.textBox1.Location = new System.Drawing.Point(8, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(236, 18);
+            this.textBox1.Size = new System.Drawing.Size(244, 18);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
@@ -51,8 +51,8 @@ namespace ChurchSched.Customs
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "CustomTextBox";
-            this.Padding = new System.Windows.Forms.Padding(7);
-            this.Size = new System.Drawing.Size(250, 30);
+            this.Padding = new System.Windows.Forms.Padding(8, 5, 8, 5);
+            this.Size = new System.Drawing.Size(260, 24);
             this.ResumeLayout(false);
             this.PerformLayout();
 
