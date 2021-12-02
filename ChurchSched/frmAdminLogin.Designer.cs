@@ -33,9 +33,9 @@ namespace ChurchSched
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnLogIn = new System.Windows.Forms.Button();
             this.lblForgot = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnLogIn = new ChurchSched.Custom.CustomButtons();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,19 +74,6 @@ namespace ChurchSched
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
             // 
-            // btnLogIn
-            // 
-            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLogIn.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnLogIn.Location = new System.Drawing.Point(100, 177);
-            this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(87, 42);
-            this.btnLogIn.TabIndex = 4;
-            this.btnLogIn.Text = "&Log-In";
-            this.btnLogIn.UseVisualStyleBackColor = true;
-            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
-            // 
             // lblForgot
             // 
             this.lblForgot.AutoSize = true;
@@ -110,6 +97,27 @@ namespace ChurchSched
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
+            // btnLogIn
+            // 
+            this.btnLogIn.BackColor = System.Drawing.Color.White;
+            this.btnLogIn.BackgroundColor = System.Drawing.Color.White;
+            this.btnLogIn.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnLogIn.BorderRadius = 20;
+            this.btnLogIn.BorderSize = 5;
+            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogIn.FlatAppearance.BorderSize = 0;
+            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLogIn.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLogIn.ForeColor = System.Drawing.Color.Black;
+            this.btnLogIn.Location = new System.Drawing.Point(68, 179);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(150, 53);
+            this.btnLogIn.TabIndex = 7;
+            this.btnLogIn.Text = "&Log-In";
+            this.btnLogIn.TextColor = System.Drawing.Color.Black;
+            this.btnLogIn.UseVisualStyleBackColor = false;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
+            // 
             // frmAdminLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -117,9 +125,9 @@ namespace ChurchSched
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(592, 285);
+            this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblForgot);
-            this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPassword);
@@ -140,9 +148,9 @@ namespace ChurchSched
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Label lblForgot;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Custom.CustomButtons btnLogIn;
     }
 }
 

@@ -204,8 +204,9 @@ namespace ChurchSched
             LoadReservationsDgvReservations();
             LoadUpcomingEventsOnDGV();
             LoadPastEventsOnDGV();
+
         }
-        private void btnEditrequestee_Click(object sender, EventArgs e)
+        private void btnEditRequestee_Click(object sender, EventArgs e)
         {
             bool textBoxesFilled = !(txtRequestName.Text == "" || txtContactNum.Text == "" || txtEmailAdd.Text == "" || txtAddress.Text == "");
             if (selectedUserID > 0)
@@ -250,6 +251,8 @@ namespace ChurchSched
             LoadUpcomingEventsOnDGV();
             LoadPastEventsOnDGV();
         }
+
+
         private void btnDelRequestee_Click(object sender, EventArgs e)
         {
             if (selectedUserID > 0)
@@ -736,7 +739,7 @@ namespace ChurchSched
             bool reservationTextBoxesFilledEvent2 = !(txtAttendee1.Text == "" || txtPaymentAmount.Text == "");
 
             bool hasReservationID = selectedReservationID > 0;
-            
+
             if (hasReservationID)
             {
                 // check if there is no date or time conflict
@@ -744,12 +747,12 @@ namespace ChurchSched
                 {
                     if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
                     {
-																				    if (CheckEnoughPaymentAmount(Convert.ToInt32(txtAmountToBePaid.Text), Convert.ToInt32(txtPaymentAmount.Text)))
-																				    {
+                        if (CheckEnoughPaymentAmount(Convert.ToInt32(txtAmountToBePaid.Text), Convert.ToInt32(txtPaymentAmount.Text)))
+                        {
                             InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
-																				    }
-																				    else
-																				    {
+                        }
+                        else
+                        {
                             MessageBox.Show("Payment is insufficient or too much, check and try again..");
                         }
                     }
@@ -775,9 +778,9 @@ namespace ChurchSched
             LoadUpcomingEventsOnDGV();
             LoadPastEventsOnDGV();
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
             DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
@@ -793,6 +796,7 @@ namespace ChurchSched
             LoadUpcomingEventsOnDGV();
             LoadPastEventsOnDGV();
         }
+
         private void btnEditReserve_Click(object sender, EventArgs e)
         {
             // for wedding
@@ -830,8 +834,8 @@ namespace ChurchSched
                     );
                 }
             }
-												else
-												{
+            else
+            {
                 MessageBox.Show("No reservation selected.");
             }
             LoadUserInfoDgvRequestee();
@@ -937,7 +941,8 @@ namespace ChurchSched
             }
             catch { }
         }
-        private void btnViewUpcoming_Click(object sender, EventArgs e)
+
+        private void btnViewUpComing_Click(object sender, EventArgs e)
         {
             bool hasID = selectedUpcomingReservationID > 0;
             if (hasID)
@@ -1052,6 +1057,7 @@ namespace ChurchSched
             }
             catch { }
         }
+
         private void btnViewPast_Click(object sender, EventArgs e)
         {
             bool hasID = selectedPastReservationID > 0;
@@ -1065,6 +1071,7 @@ namespace ChurchSched
                 MessageBox.Show("No reservation selected.");
             }
         }
+
         private void txtSearchPast_TextChanged(object sender, EventArgs e)
         {
             bool searchBarEmpty = txtSearchPast.Text == "";
@@ -1151,5 +1158,7 @@ namespace ChurchSched
             // PAST EVENTS PANEL ================
             LoadPastEventsOnDGV();
         }
+
+
     }
 }

@@ -32,42 +32,42 @@ namespace ChurchSched
 								// login button
 								private void btnLogIn_Click(object sender, EventArgs e)
 								{
-												// sql connection with Church.db
-												SetConnection("Church.db");
+									// sql connection with Church.db
+									SetConnection("Church.db");
 
-												// data table will have a row if query returns a record
-												DB = new SQLiteDataAdapter("SELECT id FROM Accounts WHERE username='" + txtUserName.Text + "' AND password='" + txtPassword.Text + "'", sql_con);
-												DT = new DataTable();
-												DB.Fill(DT);
+									// data table will have a row if query returns a record
+									DB = new SQLiteDataAdapter("SELECT id FROM Accounts WHERE username='" + txtUserName.Text + "' AND password='" + txtPassword.Text + "'", sql_con);
+									DT = new DataTable();
+									DB.Fill(DT);
 
-												// if data table has returned a record then proceed to login
-												if (DT.Rows.Count == 1)
-												{
-																// adminID IS THE VARIABLE TO HOLD THE ID OF WHICH ADMIN THAT LOGGED IN, FIGURE OUT HOW TO PASS INTO LOBBY PANEL
-																int adminID = Convert.ToInt32(DT.Rows[0][0]);
+									// if data table has returned a record then proceed to login
+									if (DT.Rows.Count == 1)
+									{
+											// adminID IS THE VARIABLE TO HOLD THE ID OF WHICH ADMIN THAT LOGGED IN, FIGURE OUT HOW TO PASS INTO LOBBY PANEL
+											int adminID = Convert.ToInt32(DT.Rows[0][0]);
 
-																this.DialogResult = DialogResult.Yes;
-																frmLobbyPanel lobby = new frmLobbyPanel(adminID);
-																lobby.ShowDialog();
-																this.Dispose();
-												}
-												else
-												{
-												// loginAttempt if else
-												loginAttempt--;
-												if(loginAttempt == 0)
-																{
-																MessageBox.Show("No more attempts left.\nApplication will now exit.");
-																this.DialogResult = DialogResult.No;
-														    	this.Dispose();
-																}
-												else
-												{
-																txtUserName.Text = "";
-																txtPassword.Text = "";
-																MessageBox.Show("Incorrect Username or Password.\nPlease try again.\nAttempts left: " + loginAttempt);
-																}
-												}
+											this.DialogResult = DialogResult.Yes;
+											frmLobbyPanel lobby = new frmLobbyPanel(adminID);
+											lobby.ShowDialog();
+											this.Dispose();
+									}
+									else
+									{
+										// loginAttempt if else
+										loginAttempt--;
+										if (loginAttempt == 0)
+											{
+												MessageBox.Show("No more attempts left.\nApplication will now exit.");
+												this.DialogResult = DialogResult.No;
+												this.Dispose();
+											}
+										else
+											{
+												txtUserName.Text = "";
+												txtPassword.Text = "";
+												MessageBox.Show("Incorrect Username or Password.\nPlease try again.\nAttempts left: " + loginAttempt);
+											}
+									}
 								}
 
 								public frmAdminLogin()
@@ -86,5 +86,8 @@ namespace ChurchSched
 												this.Hide();
 												fpsc.Show();
 								}
-				}
+
+        
+	
+    }
 }

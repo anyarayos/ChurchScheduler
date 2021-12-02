@@ -117,10 +117,10 @@ namespace ChurchSched
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(99, 37);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(97, 36);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 14);
+            this.label4.Size = new System.Drawing.Size(35, 16);
             this.label4.TabIndex = 8;
             this.label4.Text = "Date";
             // 
@@ -128,10 +128,10 @@ namespace ChurchSched
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(98, 67);
+            this.label5.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(95, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 14);
+            this.label5.Size = new System.Drawing.Size(38, 16);
             this.label5.TabIndex = 9;
             this.label5.Text = "Time";
             // 
@@ -139,10 +139,10 @@ namespace ChurchSched
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(63, 8);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(51, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 14);
+            this.label3.Size = new System.Drawing.Size(127, 16);
             this.label3.TabIndex = 7;
             this.label3.Text = "Type of reservation";
             // 
@@ -150,9 +150,10 @@ namespace ChurchSched
             // 
             this.lblDetailEventType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailEventType.AutoSize = true;
-            this.lblDetailEventType.Location = new System.Drawing.Point(553, 7);
+            this.lblDetailEventType.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailEventType.Location = new System.Drawing.Point(549, 6);
             this.lblDetailEventType.Name = "lblDetailEventType";
-            this.lblDetailEventType.Size = new System.Drawing.Size(36, 15);
+            this.lblDetailEventType.Size = new System.Drawing.Size(44, 17);
             this.lblDetailEventType.TabIndex = 13;
             this.lblDetailEventType.Text = "Event";
             // 
@@ -160,9 +161,10 @@ namespace ChurchSched
             // 
             this.lblDetailDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailDate.AutoSize = true;
-            this.lblDetailDate.Location = new System.Drawing.Point(555, 36);
+            this.lblDetailDate.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailDate.Location = new System.Drawing.Point(551, 35);
             this.lblDetailDate.Name = "lblDetailDate";
-            this.lblDetailDate.Size = new System.Drawing.Size(31, 15);
+            this.lblDetailDate.Size = new System.Drawing.Size(39, 17);
             this.lblDetailDate.TabIndex = 14;
             this.lblDetailDate.Text = "Date";
             // 
@@ -170,9 +172,10 @@ namespace ChurchSched
             // 
             this.lblDetailTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailTime.AutoSize = true;
-            this.lblDetailTime.Location = new System.Drawing.Point(554, 66);
+            this.lblDetailTime.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailTime.Location = new System.Drawing.Point(551, 65);
             this.lblDetailTime.Name = "lblDetailTime";
-            this.lblDetailTime.Size = new System.Drawing.Size(33, 15);
+            this.lblDetailTime.Size = new System.Drawing.Size(40, 17);
             this.lblDetailTime.TabIndex = 15;
             this.lblDetailTime.Text = "Time";
             // 
@@ -206,10 +209,10 @@ namespace ChurchSched
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(35, 8);
+            this.label9.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(28, 7);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 14);
+            this.label9.Size = new System.Drawing.Size(77, 16);
             this.label9.TabIndex = 2;
             this.label9.Text = "Baptization";
             // 
@@ -217,10 +220,10 @@ namespace ChurchSched
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(31, 37);
+            this.label10.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(21, 36);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 14);
+            this.label10.Size = new System.Drawing.Size(90, 16);
             this.label10.TabIndex = 3;
             this.label10.Text = "Confirmation";
             // 
@@ -228,10 +231,10 @@ namespace ChurchSched
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(50, 67);
+            this.label11.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(47, 66);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(33, 14);
+            this.label11.Size = new System.Drawing.Size(38, 16);
             this.label11.TabIndex = 4;
             this.label11.Text = "Mass";
             // 
@@ -239,10 +242,10 @@ namespace ChurchSched
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(152, 8);
+            this.label12.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(145, 7);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(56, 14);
+            this.label12.Size = new System.Drawing.Size(70, 16);
             this.label12.TabIndex = 5;
             this.label12.Text = "Candidate";
             // 
@@ -250,10 +253,10 @@ namespace ChurchSched
             // 
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(148, 37);
+            this.label13.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(139, 36);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 14);
+            this.label13.Size = new System.Drawing.Size(81, 16);
             this.label13.TabIndex = 6;
             this.label13.Text = "Confirmand";
             // 
@@ -261,10 +264,10 @@ namespace ChurchSched
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(157, 67);
+            this.label14.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(151, 66);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 14);
+            this.label14.Size = new System.Drawing.Size(57, 16);
             this.label14.TabIndex = 7;
             this.label14.Text = "Purpose";
             // 
@@ -272,9 +275,10 @@ namespace ChurchSched
             // 
             this.lblDetailCandidate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailCandidate.AutoSize = true;
-            this.lblDetailCandidate.Location = new System.Drawing.Point(518, 7);
+            this.lblDetailCandidate.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailCandidate.Location = new System.Drawing.Point(505, 6);
             this.lblDetailCandidate.Name = "lblDetailCandidate";
-            this.lblDetailCandidate.Size = new System.Drawing.Size(104, 15);
+            this.lblDetailCandidate.Size = new System.Drawing.Size(131, 17);
             this.lblDetailCandidate.TabIndex = 15;
             this.lblDetailCandidate.Text = "Candidate\'s Name";
             // 
@@ -282,9 +286,10 @@ namespace ChurchSched
             // 
             this.lblDetailConfirmand.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailConfirmand.AutoSize = true;
-            this.lblDetailConfirmand.Location = new System.Drawing.Point(513, 36);
+            this.lblDetailConfirmand.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailConfirmand.Location = new System.Drawing.Point(500, 35);
             this.lblDetailConfirmand.Name = "lblDetailConfirmand";
-            this.lblDetailConfirmand.Size = new System.Drawing.Size(114, 15);
+            this.lblDetailConfirmand.Size = new System.Drawing.Size(141, 17);
             this.lblDetailConfirmand.TabIndex = 16;
             this.lblDetailConfirmand.Text = "Confirmand\'s Name";
             // 
@@ -292,9 +297,10 @@ namespace ChurchSched
             // 
             this.lblDetailPurpose.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailPurpose.AutoSize = true;
-            this.lblDetailPurpose.Location = new System.Drawing.Point(545, 66);
+            this.lblDetailPurpose.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailPurpose.Location = new System.Drawing.Point(539, 65);
             this.lblDetailPurpose.Name = "lblDetailPurpose";
-            this.lblDetailPurpose.Size = new System.Drawing.Size(50, 15);
+            this.lblDetailPurpose.Size = new System.Drawing.Size(63, 17);
             this.lblDetailPurpose.TabIndex = 17;
             this.lblDetailPurpose.Text = "Purpose";
             // 
@@ -321,10 +327,10 @@ namespace ChurchSched
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(27, 8);
+            this.label6.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(23, 7);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 14);
+            this.label6.Size = new System.Drawing.Size(49, 16);
             this.label6.TabIndex = 5;
             this.label6.Text = "Groom";
             // 
@@ -332,10 +338,10 @@ namespace ChurchSched
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(31, 37);
+            this.label8.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(28, 36);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 14);
+            this.label8.Size = new System.Drawing.Size(39, 16);
             this.label8.TabIndex = 6;
             this.label8.Text = "Bride";
             // 
@@ -343,9 +349,10 @@ namespace ChurchSched
             // 
             this.lblDetailGroom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailGroom.AutoSize = true;
-            this.lblDetailGroom.Location = new System.Drawing.Point(394, 7);
+            this.lblDetailGroom.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailGroom.Location = new System.Drawing.Point(383, 6);
             this.lblDetailGroom.Name = "lblDetailGroom";
-            this.lblDetailGroom.Size = new System.Drawing.Size(87, 15);
+            this.lblDetailGroom.Size = new System.Drawing.Size(109, 17);
             this.lblDetailGroom.TabIndex = 15;
             this.lblDetailGroom.Text = "Groom\'s Name";
             // 
@@ -353,9 +360,10 @@ namespace ChurchSched
             // 
             this.lblDetailBride.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailBride.AutoSize = true;
-            this.lblDetailBride.Location = new System.Drawing.Point(399, 37);
+            this.lblDetailBride.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailBride.Location = new System.Drawing.Point(389, 36);
             this.lblDetailBride.Name = "lblDetailBride";
-            this.lblDetailBride.Size = new System.Drawing.Size(77, 15);
+            this.lblDetailBride.Size = new System.Drawing.Size(98, 17);
             this.lblDetailBride.TabIndex = 16;
             this.lblDetailBride.Text = "Bride\'s Name";
             // 
@@ -385,10 +393,10 @@ namespace ChurchSched
             // 
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(79, 9);
+            this.label18.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(70, 8);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(70, 14);
+            this.label18.Size = new System.Drawing.Size(88, 16);
             this.label18.TabIndex = 0;
             this.label18.Text = "Paid Amount";
             // 
@@ -409,10 +417,10 @@ namespace ChurchSched
             this.rbtnFull.AutoCheck = false;
             this.rbtnFull.AutoSize = true;
             this.rbtnFull.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbtnFull.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtnFull.Location = new System.Drawing.Point(631, 7);
+            this.rbtnFull.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rbtnFull.Location = new System.Drawing.Point(623, 6);
             this.rbtnFull.Name = "rbtnFull";
-            this.rbtnFull.Size = new System.Drawing.Size(90, 18);
+            this.rbtnFull.Size = new System.Drawing.Size(106, 20);
             this.rbtnFull.TabIndex = 16;
             this.rbtnFull.TabStop = true;
             this.rbtnFull.Text = "Full Payment";
@@ -424,10 +432,10 @@ namespace ChurchSched
             this.rbtnPartial.AutoCheck = false;
             this.rbtnPartial.AutoSize = true;
             this.rbtnPartial.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbtnPartial.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtnPartial.Location = new System.Drawing.Point(782, 7);
+            this.rbtnPartial.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rbtnPartial.Location = new System.Drawing.Point(772, 6);
             this.rbtnPartial.Name = "rbtnPartial";
-            this.rbtnPartial.Size = new System.Drawing.Size(104, 18);
+            this.rbtnPartial.Size = new System.Drawing.Size(123, 20);
             this.rbtnPartial.TabIndex = 17;
             this.rbtnPartial.TabStop = true;
             this.rbtnPartial.Text = "Partial Payment";
@@ -437,9 +445,10 @@ namespace ChurchSched
             // 
             this.lblDetailPaidAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailPaidAmount.AutoSize = true;
-            this.lblDetailPaidAmount.Location = new System.Drawing.Point(374, 8);
+            this.lblDetailPaidAmount.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailPaidAmount.Location = new System.Drawing.Point(366, 7);
             this.lblDetailPaidAmount.Name = "lblDetailPaidAmount";
-            this.lblDetailPaidAmount.Size = new System.Drawing.Size(77, 15);
+            this.lblDetailPaidAmount.Size = new System.Drawing.Size(93, 17);
             this.lblDetailPaidAmount.TabIndex = 18;
             this.lblDetailPaidAmount.Text = "Paid Amount";
             // 
@@ -477,9 +486,10 @@ namespace ChurchSched
             // 
             this.lblDetailAdminID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailAdminID.AutoSize = true;
-            this.lblDetailAdminID.Location = new System.Drawing.Point(542, 7);
+            this.lblDetailAdminID.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailAdminID.Location = new System.Drawing.Point(536, 6);
             this.lblDetailAdminID.Name = "lblDetailAdminID";
-            this.lblDetailAdminID.Size = new System.Drawing.Size(57, 15);
+            this.lblDetailAdminID.Size = new System.Drawing.Size(69, 17);
             this.lblDetailAdminID.TabIndex = 13;
             this.lblDetailAdminID.Text = "Admin ID";
             // 
@@ -487,9 +497,10 @@ namespace ChurchSched
             // 
             this.lblDetailUserAdmin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailUserAdmin.AutoSize = true;
-            this.lblDetailUserAdmin.Location = new System.Drawing.Point(769, 7);
+            this.lblDetailUserAdmin.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailUserAdmin.Location = new System.Drawing.Point(761, 6);
             this.lblDetailUserAdmin.Name = "lblDetailUserAdmin";
-            this.lblDetailUserAdmin.Size = new System.Drawing.Size(60, 15);
+            this.lblDetailUserAdmin.Size = new System.Drawing.Size(75, 17);
             this.lblDetailUserAdmin.TabIndex = 12;
             this.lblDetailUserAdmin.Text = "Username";
             // 
@@ -497,10 +508,10 @@ namespace ChurchSched
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(46, 8);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(30, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 14);
+            this.label1.Size = new System.Drawing.Size(169, 16);
             this.label1.TabIndex = 10;
             this.label1.Text = "Reservation Administrator";
             // 
@@ -508,9 +519,10 @@ namespace ChurchSched
             // 
             this.lblDetailsAdminName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailsAdminName.AutoSize = true;
-            this.lblDetailsAdminName.Location = new System.Drawing.Point(323, 7);
+            this.lblDetailsAdminName.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailsAdminName.Location = new System.Drawing.Point(319, 6);
             this.lblDetailsAdminName.Name = "lblDetailsAdminName";
-            this.lblDetailsAdminName.Size = new System.Drawing.Size(39, 15);
+            this.lblDetailsAdminName.Size = new System.Drawing.Size(47, 17);
             this.lblDetailsAdminName.TabIndex = 11;
             this.lblDetailsAdminName.Text = "Name";
             // 
@@ -535,10 +547,10 @@ namespace ChurchSched
             // 
             this.label24.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(61, 8);
+            this.label24.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label24.Location = new System.Drawing.Point(50, 7);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(107, 14);
+            this.label24.Size = new System.Drawing.Size(129, 16);
             this.label24.TabIndex = 13;
             this.label24.Text = "Name of Reservator";
             // 
@@ -546,9 +558,10 @@ namespace ChurchSched
             // 
             this.lblDetailReservatorName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailReservatorName.AutoSize = true;
-            this.lblDetailReservatorName.Location = new System.Drawing.Point(380, 7);
+            this.lblDetailReservatorName.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailReservatorName.Location = new System.Drawing.Point(376, 6);
             this.lblDetailReservatorName.Name = "lblDetailReservatorName";
-            this.lblDetailReservatorName.Size = new System.Drawing.Size(39, 15);
+            this.lblDetailReservatorName.Size = new System.Drawing.Size(47, 17);
             this.lblDetailReservatorName.TabIndex = 14;
             this.lblDetailReservatorName.Text = "Name";
             // 
@@ -556,9 +569,10 @@ namespace ChurchSched
             // 
             this.lblDetailReservatorEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailReservatorEmail.AutoSize = true;
-            this.lblDetailReservatorEmail.Location = new System.Drawing.Point(721, 7);
+            this.lblDetailReservatorEmail.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailReservatorEmail.Location = new System.Drawing.Point(717, 6);
             this.lblDetailReservatorEmail.Name = "lblDetailReservatorEmail";
-            this.lblDetailReservatorEmail.Size = new System.Drawing.Size(41, 15);
+            this.lblDetailReservatorEmail.Size = new System.Drawing.Size(50, 17);
             this.lblDetailReservatorEmail.TabIndex = 15;
             this.lblDetailReservatorEmail.Text = "E-mail";
             // 
@@ -579,9 +593,10 @@ namespace ChurchSched
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(39, 22);
+            this.label15.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(35, 22);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(55, 15);
+            this.label15.Size = new System.Drawing.Size(62, 16);
             this.label15.TabIndex = 0;
             this.label15.Text = "Wedding";
             // 
@@ -610,10 +625,10 @@ namespace ChurchSched
             this.rbtnCash.AutoCheck = false;
             this.rbtnCash.AutoSize = true;
             this.rbtnCash.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbtnCash.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtnCash.Location = new System.Drawing.Point(775, 4);
+            this.rbtnCash.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rbtnCash.Location = new System.Drawing.Point(771, 4);
             this.rbtnCash.Name = "rbtnCash";
-            this.rbtnCash.Size = new System.Drawing.Size(48, 18);
+            this.rbtnCash.Size = new System.Drawing.Size(55, 20);
             this.rbtnCash.TabIndex = 20;
             this.rbtnCash.TabStop = true;
             this.rbtnCash.Text = "Cash";
@@ -623,9 +638,10 @@ namespace ChurchSched
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(63, 7);
+            this.label7.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(56, 7);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 15);
+            this.label7.Size = new System.Drawing.Size(117, 16);
             this.label7.TabIndex = 0;
             this.label7.Text = "Mode of payment";
             // 
@@ -635,10 +651,10 @@ namespace ChurchSched
             this.rbtnDebitCredit.AutoCheck = false;
             this.rbtnDebitCredit.AutoSize = true;
             this.rbtnDebitCredit.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbtnDebitCredit.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtnDebitCredit.Location = new System.Drawing.Point(515, 4);
+            this.rbtnDebitCredit.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rbtnDebitCredit.Location = new System.Drawing.Point(503, 4);
             this.rbtnDebitCredit.Name = "rbtnDebitCredit";
-            this.rbtnDebitCredit.Size = new System.Drawing.Size(111, 18);
+            this.rbtnDebitCredit.Size = new System.Drawing.Size(135, 20);
             this.rbtnDebitCredit.TabIndex = 19;
             this.rbtnDebitCredit.TabStop = true;
             this.rbtnDebitCredit.Text = "Debit/Credit Card";
@@ -650,10 +666,10 @@ namespace ChurchSched
             this.rbtnGcashPaypal.AutoCheck = false;
             this.rbtnGcashPaypal.AutoSize = true;
             this.rbtnGcashPaypal.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbtnGcashPaypal.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtnGcashPaypal.Location = new System.Drawing.Point(296, 4);
+            this.rbtnGcashPaypal.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rbtnGcashPaypal.Location = new System.Drawing.Point(288, 4);
             this.rbtnGcashPaypal.Name = "rbtnGcashPaypal";
-            this.rbtnGcashPaypal.Size = new System.Drawing.Size(93, 18);
+            this.rbtnGcashPaypal.Size = new System.Drawing.Size(109, 20);
             this.rbtnGcashPaypal.TabIndex = 18;
             this.rbtnGcashPaypal.TabStop = true;
             this.rbtnGcashPaypal.Text = "Gcash/Paypal";
@@ -678,9 +694,10 @@ namespace ChurchSched
             // 
             this.lblDetailBalance.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailBalance.AutoSize = true;
-            this.lblDetailBalance.Location = new System.Drawing.Point(517, 7);
+            this.lblDetailBalance.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailBalance.Location = new System.Drawing.Point(504, 6);
             this.lblDetailBalance.Name = "lblDetailBalance";
-            this.lblDetailBalance.Size = new System.Drawing.Size(108, 15);
+            this.lblDetailBalance.Size = new System.Drawing.Size(134, 17);
             this.lblDetailBalance.TabIndex = 20;
             this.lblDetailBalance.Text = "Remaining Balance";
             // 
@@ -688,10 +705,10 @@ namespace ChurchSched
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(91, 8);
+            this.label16.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(87, 7);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(46, 14);
+            this.label16.Size = new System.Drawing.Size(55, 16);
             this.label16.TabIndex = 19;
             this.label16.Text = "Balance";
             // 
