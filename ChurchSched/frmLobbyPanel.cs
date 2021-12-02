@@ -9,6 +9,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Globalization;
 using System.Collections;
+using System.Runtime.InteropServices;//Very Important, Copy this
 
 namespace ChurchSched
 {
@@ -1125,7 +1126,19 @@ namespace ChurchSched
         // LOBBY PANEL FORM ================================================
 
         private int currentAdminID;
-        
+
+        //Copy Everything From here
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // width of ellipse
+            int nHeightEllipse // height of ellipse
+        );//To Here
+
         public frmLobbyPanel()
         {
             InitializeComponent();
@@ -1134,6 +1147,8 @@ namespace ChurchSched
         {
             InitializeComponent();
             this.currentAdminID = adminID;
+            this.FormBorderStyle = FormBorderStyle.None;//Rounded
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));//Rounded
         }
         private void frmLobbyPanel_Load(object sender, EventArgs e)
         {
@@ -1159,6 +1174,89 @@ namespace ChurchSched
             LoadPastEventsOnDGV();
         }
 
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
 
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                Region = new Region(new Rectangle(0, 0, Width, Height));
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //Instance Variables Needed To Move Form
+        //Copy everything from here
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        //Wag gagalawin utang na loob
+        private void mouseDownEvent()
+        {
+            ReleaseCapture();
+            SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+        }
+
+        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+             mouseDownEvent();
+        }
+
+        private void tbRequestee_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDownEvent();
+        }
+
+        private void tbReservation_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDownEvent();
+        }
+
+        private void tbAllReserve_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDownEvent();
+        }
+
+        private void tbPastEvents_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDownEvent();
+        }
+
+        private void dgvRequestees_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvRequestees.ClearSelection();
+        }
+
+        private void dgvReservations_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvReservations.ClearSelection();
+        }
+
+        private void dgvUpcomingEvent_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvUpcomingEvent.ClearSelection();
+        }
+
+        private void dgvPastEvents_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvPastEvents.ClearSelection();
+        }
     }
 }

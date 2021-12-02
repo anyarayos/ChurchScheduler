@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Runtime.InteropServices;//Very Important, Wag tanggalin mawawasak yung curve ng form
 
 namespace ChurchSched
 {
@@ -69,11 +70,23 @@ namespace ChurchSched
 											}
 									}
 								}
-
+								//Para maging round yung edges
+								[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+								private static extern IntPtr CreateRoundRectRgn
+								(
+									int nLeftRect,     // x-coordinate of upper-left corner
+									int nTopRect,      // y-coordinate of upper-left corner
+									int nRightRect,    // x-coordinate of lower-right corner
+									int nBottomRect,   // y-coordinate of lower-right corner
+									int nWidthEllipse, // width of ellipse
+									int nHeightEllipse // height of ellipse
+								);//To Here
 								public frmAdminLogin()
 								{
 												InitializeComponent();
-								}
+												this.FormBorderStyle = FormBorderStyle.None;//Rounded
+												Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));//Rounded
+		}
 
 								private void frmLogIn_Load(object sender, EventArgs e)
 								{
@@ -87,7 +100,53 @@ namespace ChurchSched
 												fpsc.Show();
 								}
 
-        
-	
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+			this.WindowState = FormWindowState.Minimized;
+		}
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+			if (this.WindowState == FormWindowState.Normal)
+			{
+				this.WindowState = FormWindowState.Maximized;
+				Region = new Region(new Rectangle(0, 0, Width, Height));
+			}
+			else
+			{
+				this.WindowState = FormWindowState.Normal;
+				Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+			}
+		}
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+			this.Close();
+		}
+		//Instance Variables Needed To Move Form
+		//Copy everything from here
+		public const int WM_NCLBUTTONDOWN = 0xA1;
+		public const int HT_CAPTION = 0x2;
+
+		[System.Runtime.InteropServices.DllImport("user32.dll")]
+		public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+		[System.Runtime.InteropServices.DllImport("user32.dll")]
+		public static extern bool ReleaseCapture();
+		//Wag gagalawin utang na loob
+		private void mouseDownEvent()
+		{
+			ReleaseCapture();
+			SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+		}
+
+        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+			mouseDownEvent();
+        }
+
+        private void frmAdminLogin_MouseDown(object sender, MouseEventArgs e)
+        {
+			mouseDownEvent();
+		}
     }
 }
