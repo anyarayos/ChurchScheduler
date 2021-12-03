@@ -767,40 +767,31 @@ namespace ChurchSched
             // for the rest
             bool reservationTextBoxesFilledEvent2 = !(txtAttendee1.Text == "" || txtPaymentAmount.Text == "");
 
-            bool hasReservationID = selectedReservationID > 0;
-
-            if (hasReservationID)
+            // check if there is no date or time conflict
+            if (!CheckDateOrTimeConflict(dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString()))
             {
-                // check if there is no date or time conflict
-                if (!CheckDateOrTimeConflict(dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString()))
+                if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
                 {
-                    if (reservationTextBoxesFilledEvent1 || reservationTextBoxesFilledEvent2)
+                    if (CheckEnoughPaymentAmount(Convert.ToInt32(txtAmountToBePaid.Text), Convert.ToInt32(txtPaymentAmount.Text)))
                     {
-                        if (CheckEnoughPaymentAmount(Convert.ToInt32(txtAmountToBePaid.Text), Convert.ToInt32(txtPaymentAmount.Text)))
-                        {
-                            InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
-                        }
-                        else
-                        {
-                            MessageBox.Show("Payment is insufficient or too much, check and try again..");
-                        }
+                        InsertNewReservation(currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
                     }
                     else
                     {
-                        MessageBox.Show("Submission Incomplete, check and try again.");
+                        MessageBox.Show("Payment is insufficient or too much, check and try again..");
                     }
                 }
                 else
                 {
-                    MessageBox.Show(
-                        "There is already an existing reservation to your preferred date and time.\n" +
-                        "Please select another date and time."
-                    );
+                    MessageBox.Show("Submission Incomplete, check and try again.");
                 }
             }
             else
             {
-                MessageBox.Show("No reservation selected.");
+                MessageBox.Show(
+                    "There is already an existing reservation to your preferred date and time.\n" +
+                    "Please select another date and time."
+                );
             }
             LoadUserInfoDgvRequestee();
             LoadReservationsDgvReservations();
