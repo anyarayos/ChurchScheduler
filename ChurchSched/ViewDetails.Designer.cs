@@ -81,6 +81,7 @@ namespace ChurchSched
 												this.btnViewConfirm = new ChurchSched.Custom.CustomButtons();
 												this.panelTitleBar = new System.Windows.Forms.Panel();
 												this.lblLogin = new System.Windows.Forms.Label();
+												this.pictureBox4 = new System.Windows.Forms.PictureBox();
 												this.tblpEventsTimeDate.SuspendLayout();
 												this.tableLayoutPanel5.SuspendLayout();
 												this.tableLayoutPanel3.SuspendLayout();
@@ -91,6 +92,7 @@ namespace ChurchSched
 												this.tableLayoutPanel2.SuspendLayout();
 												this.tableLayoutPanel4.SuspendLayout();
 												this.panelTitleBar.SuspendLayout();
+												((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 												this.SuspendLayout();
 												// 
 												// tblpEventsTimeDate
@@ -187,9 +189,9 @@ namespace ChurchSched
 												this.tableLayoutPanel5.BackColor = System.Drawing.Color.Transparent;
 												this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
 												this.tableLayoutPanel5.ColumnCount = 3;
-												this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.45783F));
-												this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.40526F));
-												this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.13691F));
+												this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.48534F));
+												this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.40191F));
+												this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.11275F));
 												this.tableLayoutPanel5.Controls.Add(this.label9, 0, 0);
 												this.tableLayoutPanel5.Controls.Add(this.label10, 0, 1);
 												this.tableLayoutPanel5.Controls.Add(this.label11, 0, 2);
@@ -312,18 +314,18 @@ namespace ChurchSched
 												this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
 												this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
 												this.tableLayoutPanel3.ColumnCount = 2;
-												this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.17949F));
-												this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.82051F));
+												this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.9952F));
+												this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.0048F));
 												this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
 												this.tableLayoutPanel3.Controls.Add(this.label8, 0, 1);
 												this.tableLayoutPanel3.Controls.Add(this.lblDetailGroom, 1, 0);
 												this.tableLayoutPanel3.Controls.Add(this.lblDetailBride, 1, 1);
-												this.tableLayoutPanel3.Location = new System.Drawing.Point(155, 202);
+												this.tableLayoutPanel3.Location = new System.Drawing.Point(154, 202);
 												this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 												this.tableLayoutPanel3.RowCount = 2;
 												this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 												this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-												this.tableLayoutPanel3.Size = new System.Drawing.Size(781, 60);
+												this.tableLayoutPanel3.Size = new System.Drawing.Size(782, 60);
 												this.tableLayoutPanel3.TabIndex = 10;
 												// 
 												// label6
@@ -353,7 +355,7 @@ namespace ChurchSched
 												this.lblDetailGroom.Anchor = System.Windows.Forms.AnchorStyles.None;
 												this.lblDetailGroom.AutoSize = true;
 												this.lblDetailGroom.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-												this.lblDetailGroom.Location = new System.Drawing.Point(383, 6);
+												this.lblDetailGroom.Location = new System.Drawing.Point(384, 6);
 												this.lblDetailGroom.Name = "lblDetailGroom";
 												this.lblDetailGroom.Size = new System.Drawing.Size(109, 17);
 												this.lblDetailGroom.TabIndex = 15;
@@ -375,10 +377,10 @@ namespace ChurchSched
 												this.tableLayoutPanel8.BackColor = System.Drawing.Color.Transparent;
 												this.tableLayoutPanel8.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
 												this.tableLayoutPanel8.ColumnCount = 4;
-												this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.86309F));
-												this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.63527F));
-												this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.06526F));
-												this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.06526F));
+												this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.991F));
+												this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.76746F));
+												this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.12077F));
+												this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.12077F));
 												this.tableLayoutPanel8.Controls.Add(this.label18, 0, 0);
 												this.tableLayoutPanel8.Controls.Add(this.label19, 0, 1);
 												this.tableLayoutPanel8.Controls.Add(this.rbtnFull, 2, 0);
@@ -421,7 +423,7 @@ namespace ChurchSched
 												this.rbtnFull.AutoSize = true;
 												this.rbtnFull.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
 												this.rbtnFull.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-												this.rbtnFull.Location = new System.Drawing.Point(624, 6);
+												this.rbtnFull.Location = new System.Drawing.Point(625, 6);
 												this.rbtnFull.Name = "rbtnFull";
 												this.rbtnFull.Size = new System.Drawing.Size(105, 20);
 												this.rbtnFull.TabIndex = 16;
@@ -449,7 +451,7 @@ namespace ChurchSched
 												this.lblDetailPaidAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
 												this.lblDetailPaidAmount.AutoSize = true;
 												this.lblDetailPaidAmount.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-												this.lblDetailPaidAmount.Location = new System.Drawing.Point(366, 7);
+												this.lblDetailPaidAmount.Location = new System.Drawing.Point(367, 7);
 												this.lblDetailPaidAmount.Name = "lblDetailPaidAmount";
 												this.lblDetailPaidAmount.Size = new System.Drawing.Size(93, 17);
 												this.lblDetailPaidAmount.TabIndex = 18;
@@ -607,8 +609,8 @@ namespace ChurchSched
 												// 
 												this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
 												this.tableLayoutPanel2.ColumnCount = 4;
-												this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.97262F));
-												this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.97262F));
+												this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+												this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 												this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 												this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 												this.tableLayoutPanel2.Controls.Add(this.rbtnCash, 3, 0);
@@ -759,15 +761,27 @@ namespace ChurchSched
 												this.lblLogin.TabIndex = 4;
 												this.lblLogin.Text = "Details";
 												// 
+												// pictureBox4
+												// 
+												this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+												this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+												this.pictureBox4.Location = new System.Drawing.Point(24, 449);
+												this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+												this.pictureBox4.Name = "pictureBox4";
+												this.pictureBox4.Size = new System.Drawing.Size(326, 77);
+												this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+												this.pictureBox4.TabIndex = 42;
+												this.pictureBox4.TabStop = false;
+												// 
 												// frmViewDetails
 												// 
 												this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 												this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 												this.BackColor = System.Drawing.Color.White;
-												this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 												this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 												this.ClientSize = new System.Drawing.Size(958, 537);
 												this.ControlBox = false;
+												this.Controls.Add(this.pictureBox4);
 												this.Controls.Add(this.panelTitleBar);
 												this.Controls.Add(this.btnViewConfirm);
 												this.Controls.Add(this.tableLayoutPanel4);
@@ -808,6 +822,7 @@ namespace ChurchSched
 												this.tableLayoutPanel4.PerformLayout();
 												this.panelTitleBar.ResumeLayout(false);
 												this.panelTitleBar.PerformLayout();
+												((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
 												this.ResumeLayout(false);
 												this.PerformLayout();
 
@@ -867,5 +882,6 @@ namespace ChurchSched
         private Custom.CustomButtons btnViewConfirm;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Label lblLogin;
-    }
+								private System.Windows.Forms.PictureBox pictureBox4;
+				}
 }
