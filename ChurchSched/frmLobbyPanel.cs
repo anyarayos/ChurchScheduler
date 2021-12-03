@@ -1173,6 +1173,38 @@ namespace ChurchSched
             // PAST EVENTS PANEL ================
             LoadPastEventsOnDGV();
         }
+        //log out button in requestee tab
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Are you sure you want to Logout ???", "Warning !!!", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                frmAdminLogin a = new frmAdminLogin();
+                this.Dispose();
+                a.ShowDialog();
+
+            }
+            else
+            {
+                //  
+            }
+        }
+        //log out button in reservation tab
+        private void btnLogOut1_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Are you sure you want to Logout ???", "Warning !!!", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                frmAdminLogin a = new frmAdminLogin();
+                this.Dispose();
+                a.ShowDialog();
+
+            }
+            else
+            {
+                //  
+            }
+        }
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
@@ -1258,5 +1290,7 @@ namespace ChurchSched
         {
             dgvPastEvents.ClearSelection();
         }
+
+        
     }
 }

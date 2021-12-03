@@ -31,6 +31,7 @@ namespace ChurchSched
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLobbyPanel));
             this.tbRequestee = new System.Windows.Forms.TabPage();
+            this.btnLogOut = new ChurchSched.Custom.CustomButtons();
             this.btnDelRequestee = new ChurchSched.Custom.CustomButtons();
             this.btnClearRequestee = new ChurchSched.Custom.CustomButtons();
             this.btnEditRequestee = new ChurchSched.Custom.CustomButtons();
@@ -51,6 +52,7 @@ namespace ChurchSched
             this.label31 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tbReservation = new System.Windows.Forms.TabPage();
+            this.btnLogOut1 = new ChurchSched.Custom.CustomButtons();
             this.btnConfirmReserve = new ChurchSched.Custom.CustomButtons();
             this.btnEditReserve = new ChurchSched.Custom.CustomButtons();
             this.btnCancel = new ChurchSched.Custom.CustomButtons();
@@ -119,6 +121,7 @@ namespace ChurchSched
             // tbRequestee
             // 
             this.tbRequestee.BackColor = System.Drawing.SystemColors.Window;
+            this.tbRequestee.Controls.Add(this.btnLogOut);
             this.tbRequestee.Controls.Add(this.btnDelRequestee);
             this.tbRequestee.Controls.Add(this.btnClearRequestee);
             this.tbRequestee.Controls.Add(this.btnEditRequestee);
@@ -147,6 +150,26 @@ namespace ChurchSched
             this.tbRequestee.Text = "REQUESTEE";
             this.tbRequestee.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbRequestee_MouseDown);
             // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BackColor = System.Drawing.Color.White;
+            this.btnLogOut.BackgroundColor = System.Drawing.Color.White;
+            this.btnLogOut.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
+            this.btnLogOut.BorderRadius = 20;
+            this.btnLogOut.BorderSize = 2;
+            this.btnLogOut.FlatAppearance.BorderSize = 0;
+            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLogOut.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLogOut.ForeColor = System.Drawing.Color.Black;
+            this.btnLogOut.Location = new System.Drawing.Point(839, 5);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(105, 40);
+            this.btnLogOut.TabIndex = 66;
+            this.btnLogOut.Text = "Log &Out";
+            this.btnLogOut.TextColor = System.Drawing.Color.Black;
+            this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // btnDelRequestee
             // 
             this.btnDelRequestee.BackColor = System.Drawing.Color.White;
@@ -157,6 +180,7 @@ namespace ChurchSched
             this.btnDelRequestee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelRequestee.FlatAppearance.BorderSize = 0;
             this.btnDelRequestee.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelRequestee.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDelRequestee.ForeColor = System.Drawing.Color.Black;
             this.btnDelRequestee.Location = new System.Drawing.Point(211, 346);
             this.btnDelRequestee.Name = "btnDelRequestee";
@@ -176,6 +200,7 @@ namespace ChurchSched
             this.btnClearRequestee.BorderSize = 2;
             this.btnClearRequestee.FlatAppearance.BorderSize = 0;
             this.btnClearRequestee.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClearRequestee.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClearRequestee.ForeColor = System.Drawing.Color.Black;
             this.btnClearRequestee.Location = new System.Drawing.Point(37, 346);
             this.btnClearRequestee.Name = "btnClearRequestee";
@@ -196,6 +221,7 @@ namespace ChurchSched
             this.btnEditRequestee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditRequestee.FlatAppearance.BorderSize = 0;
             this.btnEditRequestee.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEditRequestee.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnEditRequestee.ForeColor = System.Drawing.Color.Black;
             this.btnEditRequestee.Location = new System.Drawing.Point(211, 278);
             this.btnEditRequestee.Name = "btnEditRequestee";
@@ -215,6 +241,7 @@ namespace ChurchSched
             this.btnConfirmRequestee.BorderSize = 2;
             this.btnConfirmRequestee.FlatAppearance.BorderSize = 0;
             this.btnConfirmRequestee.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnConfirmRequestee.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnConfirmRequestee.ForeColor = System.Drawing.Color.Black;
             this.btnConfirmRequestee.Location = new System.Drawing.Point(37, 278);
             this.btnConfirmRequestee.Name = "btnConfirmRequestee";
@@ -384,6 +411,7 @@ namespace ChurchSched
             // tbReservation
             // 
             this.tbReservation.BackColor = System.Drawing.SystemColors.Window;
+            this.tbReservation.Controls.Add(this.btnLogOut1);
             this.tbReservation.Controls.Add(this.btnConfirmReserve);
             this.tbReservation.Controls.Add(this.btnEditReserve);
             this.tbReservation.Controls.Add(this.btnCancel);
@@ -420,6 +448,26 @@ namespace ChurchSched
             this.tbReservation.TabIndex = 2;
             this.tbReservation.Text = "RESERVATION";
             this.tbReservation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbReservation_MouseDown);
+            // 
+            // btnLogOut1
+            // 
+            this.btnLogOut1.BackColor = System.Drawing.Color.White;
+            this.btnLogOut1.BackgroundColor = System.Drawing.Color.White;
+            this.btnLogOut1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
+            this.btnLogOut1.BorderRadius = 20;
+            this.btnLogOut1.BorderSize = 2;
+            this.btnLogOut1.FlatAppearance.BorderSize = 0;
+            this.btnLogOut1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLogOut1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLogOut1.ForeColor = System.Drawing.Color.Black;
+            this.btnLogOut1.Location = new System.Drawing.Point(839, 5);
+            this.btnLogOut1.Name = "btnLogOut1";
+            this.btnLogOut1.Size = new System.Drawing.Size(105, 40);
+            this.btnLogOut1.TabIndex = 73;
+            this.btnLogOut1.Text = "Log &Out";
+            this.btnLogOut1.TextColor = System.Drawing.Color.Black;
+            this.btnLogOut1.UseVisualStyleBackColor = false;
+            this.btnLogOut1.Click += new System.EventHandler(this.btnLogOut1_Click);
             // 
             // btnConfirmReserve
             // 
@@ -832,7 +880,7 @@ namespace ChurchSched
             this.tbPastEvents.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tbPastEvents.Location = new System.Drawing.Point(4, 27);
             this.tbPastEvents.Name = "tbPastEvents";
-            this.tbPastEvents.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tbPastEvents.Padding = new System.Windows.Forms.Padding(3);
             this.tbPastEvents.Size = new System.Drawing.Size(961, 624);
             this.tbPastEvents.TabIndex = 4;
             this.tbPastEvents.Text = "PAST EVENTS";
@@ -958,6 +1006,7 @@ namespace ChurchSched
             this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
             this.btnMaximize.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMaximize.BackgroundImage")));
             this.btnMaximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMaximize.Enabled = false;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
             this.btnMaximize.Location = new System.Drawing.Point(147, 4);
@@ -1099,5 +1148,7 @@ namespace ChurchSched
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel panel1;
+        private Custom.CustomButtons btnLogOut;
+        private Custom.CustomButtons btnLogOut1;
     }
 }
