@@ -494,7 +494,7 @@ namespace ChurchSched
             {
                 string format = item.ToString("hh:mm tt") + " - " + item.AddMinutes(120).ToString("hh:mm tt");
                 timeIntervals.Add(format.ToUpper());
-                item = item.AddMinutes(60);
+                item = item.AddMinutes(120);
             }
             Object[] timeRange = timeIntervals.Cast<object>().ToArray();
             combobox.Items.AddRange(timeRange);
