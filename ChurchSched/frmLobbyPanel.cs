@@ -231,21 +231,21 @@ namespace ChurchSched
                     if (textBoxesFilled && !CheckIfUserExistsEdit(txtEmailAdd.Text, txtContactNum.Text, selectedUserID))
                     {
                         UpdateUserInfo(selectedUserID, txtRequestName.Text, txtContactNum.Text, txtEmailAdd.Text, txtAddress.Text);
-                        MessageBox.Show("User info successfully updated.");
+                        MessageBox.Show("Requestee's information successfully updated.");
                     }
                     else if (textBoxesFilled && CheckIfUserExistsEdit(txtEmailAdd.Text, txtContactNum.Text, selectedUserID))
                     {
-                        MessageBox.Show("Requestee already exists.");
+                        MessageBox.Show("Requestee already existed.");
                     }
                     else
                     {
-                        MessageBox.Show("Incomplete submission, complete and try again.");
+                        MessageBox.Show("Incomplete Submission. \nPlease fill out all fields and try again.");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("No user selected.");
+                MessageBox.Show("No Requestee selected.");
             }
             LoadUserInfoDgvRequestee();
             LoadReservationsDgvReservations();
@@ -782,7 +782,7 @@ namespace ChurchSched
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation ???", "Warning !!!", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation?", "Warning !!!", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
                 //frmCancelationRemark cncl = new frmCancelationRemark();
@@ -1227,7 +1227,19 @@ namespace ChurchSched
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult dialog = MessageBox.Show("Are you sure you want to Logout?", "Notice", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                frmAdminLogin adm = new frmAdminLogin();
+                this.Dispose();
+                adm.ShowDialog();
+                
+            }
+            else
+            {
+                //  
+            }
+            
         }
 
         //Instance Variables Needed To Move Form
