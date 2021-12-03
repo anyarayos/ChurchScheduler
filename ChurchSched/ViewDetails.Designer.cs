@@ -81,7 +81,6 @@ namespace ChurchSched
             this.btnViewConfirm = new ChurchSched.Custom.CustomButtons();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.lblLogin = new System.Windows.Forms.Label();
-            this.panelBtnWrapper = new System.Windows.Forms.Panel();
             this.tblpEventsTimeDate.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -741,15 +740,13 @@ namespace ChurchSched
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
             this.panelTitleBar.Controls.Add(this.lblLogin);
-            this.panelTitleBar.Controls.Add(this.panelBtnWrapper);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
             this.panelTitleBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelTitleBar.Name = "panelTitleBar";
             this.panelTitleBar.Size = new System.Drawing.Size(958, 36);
             this.panelTitleBar.TabIndex = 20;
-            this.panelTitleBar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTitleBar_Paint);
-            this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
+            this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown_1);
             // 
             // lblLogin
             // 
@@ -761,15 +758,6 @@ namespace ChurchSched
             this.lblLogin.Size = new System.Drawing.Size(73, 22);
             this.lblLogin.TabIndex = 4;
             this.lblLogin.Text = "Details";
-            // 
-            // panelBtnWrapper
-            // 
-            this.panelBtnWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBtnWrapper.Location = new System.Drawing.Point(0, 0);
-            this.panelBtnWrapper.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelBtnWrapper.Name = "panelBtnWrapper";
-            this.panelBtnWrapper.Size = new System.Drawing.Size(958, 29);
-            this.panelBtnWrapper.TabIndex = 3;
             // 
             // frmViewDetails
             // 
@@ -879,6 +867,5 @@ namespace ChurchSched
         private Custom.CustomButtons btnViewConfirm;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Label lblLogin;
-        private System.Windows.Forms.Panel panelBtnWrapper;
     }
 }

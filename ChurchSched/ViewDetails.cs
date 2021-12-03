@@ -59,13 +59,16 @@ namespace ChurchSched
 
         int paymentMode,paymentAmount, paymentBalance;
 
-        private void panelTitleBar_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
         public const int WM_NCLBUTTONDOWN = 0xA1;
 
         private void frmViewDetails_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+        }
+
+        private void panelTitleBar_MouseDown_1(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);

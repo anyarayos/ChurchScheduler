@@ -258,6 +258,7 @@ namespace ChurchSched
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(468, 545);
             this.label4.Name = "label4";
@@ -813,6 +814,7 @@ namespace ChurchSched
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(417, 542);
             this.label5.Name = "label5";
@@ -902,6 +904,7 @@ namespace ChurchSched
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Location = new System.Drawing.Point(417, 542);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 17);
