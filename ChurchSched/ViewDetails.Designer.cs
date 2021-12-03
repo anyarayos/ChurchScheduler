@@ -79,6 +79,12 @@ namespace ChurchSched
             this.lblDetailBalance = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.btnViewConfirm = new ChurchSched.Custom.CustomButtons();
+            this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.lblLogin = new System.Windows.Forms.Label();
+            this.panelBtnWrapper = new System.Windows.Forms.Panel();
+            this.btnMinimize = new System.Windows.Forms.Button();
+            this.btnMaximize = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.tblpEventsTimeDate.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -88,6 +94,8 @@ namespace ChurchSched
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.panelTitleBar.SuspendLayout();
+            this.panelBtnWrapper.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblpEventsTimeDate
@@ -719,6 +727,7 @@ namespace ChurchSched
             this.btnViewConfirm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
             this.btnViewConfirm.BorderRadius = 20;
             this.btnViewConfirm.BorderSize = 2;
+            this.btnViewConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViewConfirm.FlatAppearance.BorderSize = 0;
             this.btnViewConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnViewConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -732,6 +741,86 @@ namespace ChurchSched
             this.btnViewConfirm.UseVisualStyleBackColor = false;
             this.btnViewConfirm.Click += new System.EventHandler(this.btnViewConfirm_Click);
             // 
+            // panelTitleBar
+            // 
+            this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
+            this.panelTitleBar.Controls.Add(this.lblLogin);
+            this.panelTitleBar.Controls.Add(this.panelBtnWrapper);
+            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelTitleBar.Name = "panelTitleBar";
+            this.panelTitleBar.Size = new System.Drawing.Size(958, 36);
+            this.panelTitleBar.TabIndex = 20;
+            this.panelTitleBar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTitleBar_Paint);
+            this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
+            // 
+            // lblLogin
+            // 
+            this.lblLogin.AutoSize = true;
+            this.lblLogin.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblLogin.ForeColor = System.Drawing.Color.White;
+            this.lblLogin.Location = new System.Drawing.Point(24, 8);
+            this.lblLogin.Name = "lblLogin";
+            this.lblLogin.Size = new System.Drawing.Size(73, 22);
+            this.lblLogin.TabIndex = 4;
+            this.lblLogin.Text = "Details";
+            // 
+            // panelBtnWrapper
+            // 
+            this.panelBtnWrapper.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelBtnWrapper.Controls.Add(this.btnMinimize);
+            this.panelBtnWrapper.Controls.Add(this.btnMaximize);
+            this.panelBtnWrapper.Controls.Add(this.btnExit);
+            this.panelBtnWrapper.Location = new System.Drawing.Point(1129, 4);
+            this.panelBtnWrapper.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelBtnWrapper.Name = "panelBtnWrapper";
+            this.panelBtnWrapper.Size = new System.Drawing.Size(219, 29);
+            this.panelBtnWrapper.TabIndex = 3;
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
+            this.btnMinimize.BackgroundImage = global::ChurchSched.Properties.Resources.minimize;
+            this.btnMinimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
+            this.btnMinimize.Location = new System.Drawing.Point(111, 4);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(26, 22);
+            this.btnMinimize.TabIndex = 4;
+            this.btnMinimize.UseVisualStyleBackColor = false;
+            // 
+            // btnMaximize
+            // 
+            this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
+            this.btnMaximize.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMaximize.BackgroundImage")));
+            this.btnMaximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMaximize.Enabled = false;
+            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaximize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
+            this.btnMaximize.Location = new System.Drawing.Point(147, 4);
+            this.btnMaximize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.Size = new System.Drawing.Size(26, 22);
+            this.btnMaximize.TabIndex = 3;
+            this.btnMaximize.UseVisualStyleBackColor = false;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
+            this.btnExit.BackgroundImage = global::ChurchSched.Properties.Resources.close_button;
+            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
+            this.btnExit.Location = new System.Drawing.Point(181, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(26, 22);
+            this.btnExit.TabIndex = 2;
+            this.btnExit.UseVisualStyleBackColor = false;
+            // 
             // frmViewDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -740,6 +829,8 @@ namespace ChurchSched
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(958, 537);
+            this.ControlBox = false;
+            this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.btnViewConfirm);
             this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -752,12 +843,13 @@ namespace ChurchSched
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tblpEventsTimeDate);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmViewDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reservation Details";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmViewDetails_FormClosed);
             this.Load += new System.EventHandler(this.frmViewDetails_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmViewDetails_MouseDown);
             this.tblpEventsTimeDate.ResumeLayout(false);
             this.tblpEventsTimeDate.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -776,6 +868,9 @@ namespace ChurchSched
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.panelTitleBar.ResumeLayout(false);
+            this.panelTitleBar.PerformLayout();
+            this.panelBtnWrapper.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -833,5 +928,11 @@ namespace ChurchSched
         private System.Windows.Forms.Label lblDetailBalance;
         private System.Windows.Forms.Label label16;
         private Custom.CustomButtons btnViewConfirm;
+        private System.Windows.Forms.Panel panelTitleBar;
+        private System.Windows.Forms.Label lblLogin;
+        private System.Windows.Forms.Panel panelBtnWrapper;
+        private System.Windows.Forms.Button btnMinimize;
+        private System.Windows.Forms.Button btnMaximize;
+        private System.Windows.Forms.Button btnExit;
     }
 }

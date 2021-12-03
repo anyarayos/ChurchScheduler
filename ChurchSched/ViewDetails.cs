@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SQLite;
 using System.Drawing;
+using System.Linq;
+using System.Data.SQLite;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace ChurchSched
 {
@@ -16,6 +19,7 @@ namespace ChurchSched
         string requesteeName,requesteeEmail;
         string reservationType,reservationDate,reservationTime;
         string groom, bride, candidate, confirmand, purpose;
+
 
         private void tableLayoutPanel9_Paint(object sender, PaintEventArgs e)
         {
@@ -32,19 +36,52 @@ namespace ChurchSched
 
         }
 
-								private void frmViewDetails_FormClosed(object sender, FormClosedEventArgs e)
-								{
+	    private void frmViewDetails_FormClosed(object sender, FormClosedEventArgs e)
+		{
             this.Dispose();
-								}
+		}
 
         private void btnViewConfirm_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
-
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // width of ellipse
+            int nHeightEllipse // height of ellipse
+        );
 
 
         int paymentMode,paymentAmount, paymentBalance;
+
+        private void panelTitleBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+
+        private void frmViewDetails_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+        }
+
+        public const int HT_CAPTION = 0x2;
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+        }
 
         private void readReservationData()
         {
@@ -102,12 +139,17 @@ namespace ChurchSched
         public frmViewDetails()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
+       
 
         public frmViewDetails(int reservationID)
         {
             InitializeComponent();
             this.reservationID = reservationID;
+            this.FormBorderStyle = FormBorderStyle.None;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
 
         }
         private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
@@ -194,5 +236,6 @@ namespace ChurchSched
                 rbtnPartial.Checked = true;
             }
         }
+
     }
 }
