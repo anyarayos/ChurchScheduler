@@ -30,8 +30,11 @@ namespace ChurchSched
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLobbyPanel));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbRequestee = new System.Windows.Forms.TabPage();
-            this.btnLogOut = new ChurchSched.Custom.CustomButtons();
             this.btnDelRequestee = new ChurchSched.Custom.CustomButtons();
             this.btnClearRequestee = new ChurchSched.Custom.CustomButtons();
             this.btnEditRequestee = new ChurchSched.Custom.CustomButtons();
@@ -52,7 +55,6 @@ namespace ChurchSched
             this.label31 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tbReservation = new System.Windows.Forms.TabPage();
-            this.btnLogOut1 = new ChurchSched.Custom.CustomButtons();
             this.btnConfirmReserve = new ChurchSched.Custom.CustomButtons();
             this.btnEditReserve = new ChurchSched.Custom.CustomButtons();
             this.btnCancel = new ChurchSched.Custom.CustomButtons();
@@ -121,7 +123,6 @@ namespace ChurchSched
             // tbRequestee
             // 
             this.tbRequestee.BackColor = System.Drawing.SystemColors.Window;
-            this.tbRequestee.Controls.Add(this.btnLogOut);
             this.tbRequestee.Controls.Add(this.btnDelRequestee);
             this.tbRequestee.Controls.Add(this.btnClearRequestee);
             this.tbRequestee.Controls.Add(this.btnEditRequestee);
@@ -140,7 +141,7 @@ namespace ChurchSched
             this.tbRequestee.Controls.Add(this.label29);
             this.tbRequestee.Controls.Add(this.label30);
             this.tbRequestee.Controls.Add(this.label31);
-            this.tbRequestee.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.tbRequestee.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tbRequestee.Location = new System.Drawing.Point(4, 27);
             this.tbRequestee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbRequestee.Name = "tbRequestee";
@@ -149,26 +150,6 @@ namespace ChurchSched
             this.tbRequestee.TabIndex = 1;
             this.tbRequestee.Text = "REQUESTEE";
             this.tbRequestee.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbRequestee_MouseDown);
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.BackColor = System.Drawing.Color.White;
-            this.btnLogOut.BackgroundColor = System.Drawing.Color.White;
-            this.btnLogOut.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
-            this.btnLogOut.BorderRadius = 20;
-            this.btnLogOut.BorderSize = 2;
-            this.btnLogOut.FlatAppearance.BorderSize = 0;
-            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLogOut.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnLogOut.ForeColor = System.Drawing.Color.Black;
-            this.btnLogOut.Location = new System.Drawing.Point(839, 5);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(105, 40);
-            this.btnLogOut.TabIndex = 66;
-            this.btnLogOut.Text = "Log &Out";
-            this.btnLogOut.TextColor = System.Drawing.Color.Black;
-            this.btnLogOut.UseVisualStyleBackColor = false;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // btnDelRequestee
             // 
@@ -198,6 +179,7 @@ namespace ChurchSched
             this.btnClearRequestee.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
             this.btnClearRequestee.BorderRadius = 20;
             this.btnClearRequestee.BorderSize = 2;
+            this.btnClearRequestee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClearRequestee.FlatAppearance.BorderSize = 0;
             this.btnClearRequestee.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClearRequestee.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -239,6 +221,7 @@ namespace ChurchSched
             this.btnConfirmRequestee.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
             this.btnConfirmRequestee.BorderRadius = 20;
             this.btnConfirmRequestee.BorderSize = 2;
+            this.btnConfirmRequestee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfirmRequestee.FlatAppearance.BorderSize = 0;
             this.btnConfirmRequestee.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirmRequestee.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -275,6 +258,7 @@ namespace ChurchSched
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(468, 545);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 15);
@@ -285,40 +269,44 @@ namespace ChurchSched
             // 
             this.textSearchRequestee.Location = new System.Drawing.Point(525, 542);
             this.textSearchRequestee.Name = "textSearchRequestee";
-            this.textSearchRequestee.Size = new System.Drawing.Size(316, 24);
+            this.textSearchRequestee.Size = new System.Drawing.Size(316, 23);
             this.textSearchRequestee.TabIndex = 54;
             this.textSearchRequestee.TextChanged += new System.EventHandler(this.textSearchRequestee_TextChanged);
             // 
             // txtAddress
             // 
+            this.txtAddress.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtAddress.Location = new System.Drawing.Point(193, 185);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(154, 24);
+            this.txtAddress.Size = new System.Drawing.Size(154, 25);
             this.txtAddress.TabIndex = 32;
             // 
             // txtEmailAdd
             // 
+            this.txtEmailAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtEmailAdd.Location = new System.Drawing.Point(193, 144);
             this.txtEmailAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmailAdd.Name = "txtEmailAdd";
-            this.txtEmailAdd.Size = new System.Drawing.Size(154, 24);
+            this.txtEmailAdd.Size = new System.Drawing.Size(154, 25);
             this.txtEmailAdd.TabIndex = 31;
             // 
             // txtContactNum
             // 
+            this.txtContactNum.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtContactNum.Location = new System.Drawing.Point(193, 97);
             this.txtContactNum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtContactNum.Name = "txtContactNum";
-            this.txtContactNum.Size = new System.Drawing.Size(154, 24);
+            this.txtContactNum.Size = new System.Drawing.Size(154, 25);
             this.txtContactNum.TabIndex = 30;
             // 
             // txtRequestName
             // 
+            this.txtRequestName.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtRequestName.Location = new System.Drawing.Point(194, 51);
             this.txtRequestName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRequestName.Name = "txtRequestName";
-            this.txtRequestName.Size = new System.Drawing.Size(154, 24);
+            this.txtRequestName.Size = new System.Drawing.Size(154, 25);
             this.txtRequestName.TabIndex = 29;
             // 
             // pictureBox4
@@ -337,6 +325,8 @@ namespace ChurchSched
             // 
             this.dgvRequestees.AllowUserToAddRows = false;
             this.dgvRequestees.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dgvRequestees.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRequestees.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvRequestees.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvRequestees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -345,6 +335,8 @@ namespace ChurchSched
             this.dgvRequestees.Name = "dgvRequestees";
             this.dgvRequestees.ReadOnly = true;
             this.dgvRequestees.RowHeadersWidth = 51;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dgvRequestees.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRequestees.RowTemplate.Height = 29;
             this.dgvRequestees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRequestees.Size = new System.Drawing.Size(492, 457);
@@ -399,6 +391,7 @@ namespace ChurchSched
             this.tabControl.Controls.Add(this.tbReservation);
             this.tabControl.Controls.Add(this.tbAllReserve);
             this.tabControl.Controls.Add(this.tbPastEvents);
+            this.tabControl.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabControl.Location = new System.Drawing.Point(0, 0);
@@ -411,7 +404,6 @@ namespace ChurchSched
             // tbReservation
             // 
             this.tbReservation.BackColor = System.Drawing.SystemColors.Window;
-            this.tbReservation.Controls.Add(this.btnLogOut1);
             this.tbReservation.Controls.Add(this.btnConfirmReserve);
             this.tbReservation.Controls.Add(this.btnEditReserve);
             this.tbReservation.Controls.Add(this.btnCancel);
@@ -448,26 +440,6 @@ namespace ChurchSched
             this.tbReservation.TabIndex = 2;
             this.tbReservation.Text = "RESERVATION";
             this.tbReservation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbReservation_MouseDown);
-            // 
-            // btnLogOut1
-            // 
-            this.btnLogOut1.BackColor = System.Drawing.Color.White;
-            this.btnLogOut1.BackgroundColor = System.Drawing.Color.White;
-            this.btnLogOut1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(116)))), ((int)(((byte)(153)))));
-            this.btnLogOut1.BorderRadius = 20;
-            this.btnLogOut1.BorderSize = 2;
-            this.btnLogOut1.FlatAppearance.BorderSize = 0;
-            this.btnLogOut1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLogOut1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnLogOut1.ForeColor = System.Drawing.Color.Black;
-            this.btnLogOut1.Location = new System.Drawing.Point(839, 5);
-            this.btnLogOut1.Name = "btnLogOut1";
-            this.btnLogOut1.Size = new System.Drawing.Size(105, 40);
-            this.btnLogOut1.TabIndex = 73;
-            this.btnLogOut1.Text = "Log &Out";
-            this.btnLogOut1.TextColor = System.Drawing.Color.Black;
-            this.btnLogOut1.UseVisualStyleBackColor = false;
-            this.btnLogOut1.Click += new System.EventHandler(this.btnLogOut1_Click);
             // 
             // btnConfirmReserve
             // 
@@ -540,6 +512,7 @@ namespace ChurchSched
             // 
             // txtPaymentAmount
             // 
+            this.txtPaymentAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtPaymentAmount.Location = new System.Drawing.Point(216, 425);
             this.txtPaymentAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPaymentAmount.Name = "txtPaymentAmount";
@@ -570,6 +543,7 @@ namespace ChurchSched
             // txtAmountToBePaid
             // 
             this.txtAmountToBePaid.BackColor = System.Drawing.SystemColors.Window;
+            this.txtAmountToBePaid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtAmountToBePaid.Location = new System.Drawing.Point(127, 358);
             this.txtAmountToBePaid.Name = "txtAmountToBePaid";
             this.txtAmountToBePaid.ReadOnly = true;
@@ -618,6 +592,7 @@ namespace ChurchSched
             // txtIDNameReserve
             // 
             this.txtIDNameReserve.BackColor = System.Drawing.SystemColors.Window;
+            this.txtIDNameReserve.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtIDNameReserve.Location = new System.Drawing.Point(151, 51);
             this.txtIDNameReserve.Name = "txtIDNameReserve";
             this.txtIDNameReserve.ReadOnly = true;
@@ -637,6 +612,7 @@ namespace ChurchSched
             // 
             // txtAttendee2
             // 
+            this.txtAttendee2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtAttendee2.Location = new System.Drawing.Point(151, 278);
             this.txtAttendee2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAttendee2.Name = "txtAttendee2";
@@ -645,6 +621,7 @@ namespace ChurchSched
             // 
             // txtAttendee1
             // 
+            this.txtAttendee1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtAttendee1.Location = new System.Drawing.Point(151, 234);
             this.txtAttendee1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAttendee1.Name = "txtAttendee1";
@@ -780,7 +757,7 @@ namespace ChurchSched
             this.tbAllReserve.Controls.Add(this.txtSearchUpcoming);
             this.tbAllReserve.Controls.Add(this.pictureBox2);
             this.tbAllReserve.Controls.Add(this.label16);
-            this.tbAllReserve.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.tbAllReserve.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tbAllReserve.Location = new System.Drawing.Point(4, 27);
             this.tbAllReserve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbAllReserve.Name = "tbAllReserve";
@@ -800,6 +777,7 @@ namespace ChurchSched
             this.btnViewUpComing.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViewUpComing.FlatAppearance.BorderSize = 0;
             this.btnViewUpComing.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnViewUpComing.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnViewUpComing.ForeColor = System.Drawing.Color.Black;
             this.btnViewUpComing.Location = new System.Drawing.Point(731, 524);
             this.btnViewUpComing.Name = "btnViewUpComing";
@@ -814,6 +792,8 @@ namespace ChurchSched
             // 
             this.dgvUpcomingEvent.AllowUserToAddRows = false;
             this.dgvUpcomingEvent.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dgvUpcomingEvent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUpcomingEvent.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvUpcomingEvent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvUpcomingEvent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -821,6 +801,8 @@ namespace ChurchSched
             this.dgvUpcomingEvent.Name = "dgvUpcomingEvent";
             this.dgvUpcomingEvent.ReadOnly = true;
             this.dgvUpcomingEvent.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dgvUpcomingEvent.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUpcomingEvent.RowTemplate.Height = 25;
             this.dgvUpcomingEvent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUpcomingEvent.Size = new System.Drawing.Size(934, 450);
@@ -896,6 +878,7 @@ namespace ChurchSched
             this.btnViewPast.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViewPast.FlatAppearance.BorderSize = 0;
             this.btnViewPast.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnViewPast.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnViewPast.ForeColor = System.Drawing.Color.Black;
             this.btnViewPast.Location = new System.Drawing.Point(731, 524);
             this.btnViewPast.Name = "btnViewPast";
@@ -1148,7 +1131,5 @@ namespace ChurchSched
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel panel1;
-        private Custom.CustomButtons btnLogOut;
-        private Custom.CustomButtons btnLogOut1;
     }
 }

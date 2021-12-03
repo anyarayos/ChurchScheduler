@@ -150,7 +150,7 @@ namespace ChurchSched
             // 
             this.lblDetailEventType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailEventType.AutoSize = true;
-            this.lblDetailEventType.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailEventType.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailEventType.Location = new System.Drawing.Point(549, 6);
             this.lblDetailEventType.Name = "lblDetailEventType";
             this.lblDetailEventType.Size = new System.Drawing.Size(44, 17);
@@ -161,7 +161,7 @@ namespace ChurchSched
             // 
             this.lblDetailDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailDate.AutoSize = true;
-            this.lblDetailDate.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailDate.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailDate.Location = new System.Drawing.Point(551, 35);
             this.lblDetailDate.Name = "lblDetailDate";
             this.lblDetailDate.Size = new System.Drawing.Size(39, 17);
@@ -172,7 +172,7 @@ namespace ChurchSched
             // 
             this.lblDetailTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailTime.AutoSize = true;
-            this.lblDetailTime.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailTime.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailTime.Location = new System.Drawing.Point(551, 65);
             this.lblDetailTime.Name = "lblDetailTime";
             this.lblDetailTime.Size = new System.Drawing.Size(40, 17);
@@ -275,7 +275,7 @@ namespace ChurchSched
             // 
             this.lblDetailCandidate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailCandidate.AutoSize = true;
-            this.lblDetailCandidate.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailCandidate.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailCandidate.Location = new System.Drawing.Point(505, 6);
             this.lblDetailCandidate.Name = "lblDetailCandidate";
             this.lblDetailCandidate.Size = new System.Drawing.Size(131, 17);
@@ -286,7 +286,7 @@ namespace ChurchSched
             // 
             this.lblDetailConfirmand.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailConfirmand.AutoSize = true;
-            this.lblDetailConfirmand.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailConfirmand.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailConfirmand.Location = new System.Drawing.Point(500, 35);
             this.lblDetailConfirmand.Name = "lblDetailConfirmand";
             this.lblDetailConfirmand.Size = new System.Drawing.Size(141, 17);
@@ -297,7 +297,7 @@ namespace ChurchSched
             // 
             this.lblDetailPurpose.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailPurpose.AutoSize = true;
-            this.lblDetailPurpose.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailPurpose.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailPurpose.Location = new System.Drawing.Point(539, 65);
             this.lblDetailPurpose.Name = "lblDetailPurpose";
             this.lblDetailPurpose.Size = new System.Drawing.Size(63, 17);
@@ -349,7 +349,7 @@ namespace ChurchSched
             // 
             this.lblDetailGroom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailGroom.AutoSize = true;
-            this.lblDetailGroom.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailGroom.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailGroom.Location = new System.Drawing.Point(383, 6);
             this.lblDetailGroom.Name = "lblDetailGroom";
             this.lblDetailGroom.Size = new System.Drawing.Size(109, 17);
@@ -360,7 +360,7 @@ namespace ChurchSched
             // 
             this.lblDetailBride.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailBride.AutoSize = true;
-            this.lblDetailBride.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailBride.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailBride.Location = new System.Drawing.Point(389, 36);
             this.lblDetailBride.Name = "lblDetailBride";
             this.lblDetailBride.Size = new System.Drawing.Size(98, 17);
@@ -445,7 +445,7 @@ namespace ChurchSched
             // 
             this.lblDetailPaidAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailPaidAmount.AutoSize = true;
-            this.lblDetailPaidAmount.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailPaidAmount.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailPaidAmount.Location = new System.Drawing.Point(366, 7);
             this.lblDetailPaidAmount.Name = "lblDetailPaidAmount";
             this.lblDetailPaidAmount.Size = new System.Drawing.Size(93, 17);
@@ -486,7 +486,7 @@ namespace ChurchSched
             // 
             this.lblDetailAdminID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailAdminID.AutoSize = true;
-            this.lblDetailAdminID.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailAdminID.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailAdminID.Location = new System.Drawing.Point(536, 6);
             this.lblDetailAdminID.Name = "lblDetailAdminID";
             this.lblDetailAdminID.Size = new System.Drawing.Size(69, 17);
@@ -497,7 +497,7 @@ namespace ChurchSched
             // 
             this.lblDetailUserAdmin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailUserAdmin.AutoSize = true;
-            this.lblDetailUserAdmin.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailUserAdmin.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailUserAdmin.Location = new System.Drawing.Point(761, 6);
             this.lblDetailUserAdmin.Name = "lblDetailUserAdmin";
             this.lblDetailUserAdmin.Size = new System.Drawing.Size(75, 17);
@@ -519,7 +519,7 @@ namespace ChurchSched
             // 
             this.lblDetailsAdminName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailsAdminName.AutoSize = true;
-            this.lblDetailsAdminName.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailsAdminName.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailsAdminName.Location = new System.Drawing.Point(319, 6);
             this.lblDetailsAdminName.Name = "lblDetailsAdminName";
             this.lblDetailsAdminName.Size = new System.Drawing.Size(47, 17);
@@ -558,7 +558,7 @@ namespace ChurchSched
             // 
             this.lblDetailReservatorName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailReservatorName.AutoSize = true;
-            this.lblDetailReservatorName.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailReservatorName.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailReservatorName.Location = new System.Drawing.Point(376, 6);
             this.lblDetailReservatorName.Name = "lblDetailReservatorName";
             this.lblDetailReservatorName.Size = new System.Drawing.Size(47, 17);
@@ -569,7 +569,7 @@ namespace ChurchSched
             // 
             this.lblDetailReservatorEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailReservatorEmail.AutoSize = true;
-            this.lblDetailReservatorEmail.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailReservatorEmail.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailReservatorEmail.Location = new System.Drawing.Point(717, 6);
             this.lblDetailReservatorEmail.Name = "lblDetailReservatorEmail";
             this.lblDetailReservatorEmail.Size = new System.Drawing.Size(50, 17);
@@ -694,7 +694,7 @@ namespace ChurchSched
             // 
             this.lblDetailBalance.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDetailBalance.AutoSize = true;
-            this.lblDetailBalance.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblDetailBalance.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDetailBalance.Location = new System.Drawing.Point(504, 6);
             this.lblDetailBalance.Name = "lblDetailBalance";
             this.lblDetailBalance.Size = new System.Drawing.Size(134, 17);

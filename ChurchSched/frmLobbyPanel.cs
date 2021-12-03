@@ -1174,7 +1174,7 @@ namespace ChurchSched
             LoadPastEventsOnDGV();
         }
         //log out button in requestee tab
-        private void btnLogOut_Click(object sender, EventArgs e)
+        /*private void btnLogOut_Click(object sender, EventArgs e)
         {
             DialogResult dialog = MessageBox.Show("Are you sure you want to Logout ???", "Warning !!!", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
@@ -1204,7 +1204,7 @@ namespace ChurchSched
             {
                 //  
             }
-        }
+        }*/
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
