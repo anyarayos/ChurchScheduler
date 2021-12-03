@@ -423,7 +423,35 @@ namespace ChurchSched
             }
             DT = new DataTable();
             DB.Fill(DT);
-            dgvReservations.DataSource = DT;
+
+            DataTable DTChanged = DT.Clone();
+
+            DTChanged.Columns[4].DataType = typeof(string);
+            foreach (DataRow row in DT.Rows)
+												{
+                DTChanged.ImportRow(row);
+												}
+            
+            dgvReservations.DataSource = DTChanged;
+
+            if(selectedUserID > 0)
+												{
+                // Edit is_cancelled column
+                int statusIndex = 4;
+                dgvReservations.Columns[statusIndex].HeaderText = "Status";
+                for (int rowIndex = 0; rowIndex < dgvReservations.Rows.Count; rowIndex++)
+                {
+                    if (dgvReservations.Rows[rowIndex].Cells[statusIndex].Value.ToString().Equals("0"))
+                    {
+                        dgvReservations.Rows[rowIndex].Cells[statusIndex].Value = "Active";
+;
+                    }
+																				else
+																				{
+                        dgvReservations.Rows[rowIndex].Cells[statusIndex].Value = "Inative";
+                    }
+                }
+            }
         }
         private void PopulateSelectedReservation()
         {
