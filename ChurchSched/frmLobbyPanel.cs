@@ -271,14 +271,14 @@ namespace ChurchSched
                     //delete highlighted 
                     DialogResult dialogResult = MessageBox.Show(
                         // message box message
-                        "Are you sure to delete this Requestee ???\n" +
+                        "Are you sure to delete this Requestee?\n" +
                         "\nid: " + selectedUserID +
                         "\nname: " + requesteeSelectedRow.Cells[1].Value.ToString() +
                         "\ncontact: " + requesteeSelectedRow.Cells[2].Value.ToString() +
                         "\nemail: " + requesteeSelectedRow.Cells[3].Value.ToString() +
                         "\naddress: " + requesteeSelectedRow.Cells[4].Value.ToString(),
                         // message box title
-                        "Data Deletion Warning !!!",
+                        "Notice: Delete Requestee",
                         // message box buttons
                         MessageBoxButtons.YesNo
                     );
@@ -810,12 +810,13 @@ namespace ChurchSched
             LoadUpcomingEventsOnDGV();
             LoadPastEventsOnDGV();
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure that you would cancel this reservation?", "Warning !!!", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure to cancel this reservation?", "Notice: Cancel Reservation", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
+                MessageBox.Show("CANCEL RESERVATION feature is not yet implemented./n" +
+                    "-Dev Team");
                 //frmCancelationRemark cncl = new frmCancelationRemark();
                 //cncl.ShowDialog();
             }
@@ -828,7 +829,6 @@ namespace ChurchSched
             LoadUpcomingEventsOnDGV();
             LoadPastEventsOnDGV();
         }
-
         private void btnEditReserve_Click(object sender, EventArgs e)
         {
             // for wedding
@@ -845,8 +845,21 @@ namespace ChurchSched
                     {
                         if (CheckEnoughPaymentAmount(Convert.ToInt32(txtAmountToBePaid.Text), Convert.ToInt32(txtPaymentAmount.Text)))
                         {
-                            UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
-                            MessageBox.Show("Edit Success");
+                            // message box edit confirmation
+                            DialogResult confirmEdit = MessageBox.Show(
+                                // message box message
+                                "Are you sure to edit the reservation?\n",
+                                // message box title
+                                "Notice: Edit Confirmation",
+                                // message box buttons
+                                MessageBoxButtons.YesNo
+                            );
+                            // if edit confirmed
+                            if (confirmEdit == DialogResult.Yes)
+                            {
+                                UpdateReservation(selectedReservationID, currentAdminID, selectedUserID, cmbEvents.SelectedItem.ToString(), dtpDate.Value.ToString("yyyy/MM/dd"), cmbTime.SelectedItem.ToString(), txtAttendee1.Text, txtAttendee2.Text, CheckModeOfPayment(), Convert.ToDouble(txtPaymentAmount.Text));
+                                MessageBox.Show("Edit Success");
+                            }
                         }
                         else
                         {
@@ -1204,38 +1217,6 @@ namespace ChurchSched
             // PAST EVENTS PANEL ================
             LoadPastEventsOnDGV();
         }
-        //log out button in requestee tab
-        /*private void btnLogOut_Click(object sender, EventArgs e)
-        {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to Logout ???", "Warning !!!", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
-            {
-                frmAdminLogin a = new frmAdminLogin();
-                this.Dispose();
-                a.ShowDialog();
-
-            }
-            else
-            {
-                //  
-            }
-        }
-        //log out button in reservation tab
-        private void btnLogOut1_Click(object sender, EventArgs e)
-        {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to Logout ???", "Warning !!!", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
-            {
-                frmAdminLogin a = new frmAdminLogin();
-                this.Dispose();
-                a.ShowDialog();
-
-            }
-            else
-            {
-                //  
-            }
-        }*/
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
@@ -1262,7 +1243,6 @@ namespace ChurchSched
             if (dialog == DialogResult.Yes)
             {
                 this.Dispose();
-                sql_con.Close();
             }
         }
 

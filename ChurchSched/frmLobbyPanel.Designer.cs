@@ -30,10 +30,10 @@ namespace ChurchSched
         private void InitializeComponent()
         {
 												System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLobbyPanel));
-												System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-												System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-												System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-												System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+												System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+												System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+												System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+												System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
 												this.tbRequestee = new System.Windows.Forms.TabPage();
 												this.btnDelRequestee = new ChurchSched.Custom.CustomButtons();
 												this.btnClearRequestee = new ChurchSched.Custom.CustomButtons();
@@ -167,7 +167,7 @@ namespace ChurchSched
 												this.btnDelRequestee.Name = "btnDelRequestee";
 												this.btnDelRequestee.Size = new System.Drawing.Size(136, 52);
 												this.btnDelRequestee.TabIndex = 65;
-												this.btnDelRequestee.Text = "&Delete Requestee";
+												this.btnDelRequestee.Text = "Delete Requestee";
 												this.btnDelRequestee.TextColor = System.Drawing.Color.Black;
 												this.btnDelRequestee.UseVisualStyleBackColor = false;
 												this.btnDelRequestee.Click += new System.EventHandler(this.btnDelRequestee_Click);
@@ -188,7 +188,7 @@ namespace ChurchSched
 												this.btnClearRequestee.Name = "btnClearRequestee";
 												this.btnClearRequestee.Size = new System.Drawing.Size(136, 52);
 												this.btnClearRequestee.TabIndex = 64;
-												this.btnClearRequestee.Text = "C&lear";
+												this.btnClearRequestee.Text = "Clear All Fields";
 												this.btnClearRequestee.TextColor = System.Drawing.Color.Black;
 												this.btnClearRequestee.UseVisualStyleBackColor = false;
 												this.btnClearRequestee.Click += new System.EventHandler(this.btnClearRequestee_Click);
@@ -209,7 +209,7 @@ namespace ChurchSched
 												this.btnEditRequestee.Name = "btnEditRequestee";
 												this.btnEditRequestee.Size = new System.Drawing.Size(136, 52);
 												this.btnEditRequestee.TabIndex = 63;
-												this.btnEditRequestee.Text = "&Confirm Edit Requestee";
+												this.btnEditRequestee.Text = "Confirm Edit Requestee";
 												this.btnEditRequestee.TextColor = System.Drawing.Color.Black;
 												this.btnEditRequestee.UseVisualStyleBackColor = false;
 												this.btnEditRequestee.Click += new System.EventHandler(this.btnEditRequestee_Click);
@@ -230,7 +230,7 @@ namespace ChurchSched
 												this.btnConfirmRequestee.Name = "btnConfirmRequestee";
 												this.btnConfirmRequestee.Size = new System.Drawing.Size(136, 52);
 												this.btnConfirmRequestee.TabIndex = 62;
-												this.btnConfirmRequestee.Text = "&ConFirm Requestee";
+												this.btnConfirmRequestee.Text = "Confirm Requestee";
 												this.btnConfirmRequestee.TextColor = System.Drawing.Color.Black;
 												this.btnConfirmRequestee.UseVisualStyleBackColor = false;
 												this.btnConfirmRequestee.Click += new System.EventHandler(this.btnConfirmRequestee_Click);
@@ -241,9 +241,9 @@ namespace ChurchSched
 												this.label13.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
 												this.label13.Location = new System.Drawing.Point(46, 22);
 												this.label13.Name = "label13";
-												this.label13.Size = new System.Drawing.Size(196, 15);
+												this.label13.Size = new System.Drawing.Size(193, 15);
 												this.label13.TabIndex = 61;
-												this.label13.Text = "Fill out the  field with Requestee\'s Infomation";
+												this.label13.Text = "Fill out the field with Requestee\'s Infomation";
 												// 
 												// label9
 												// 
@@ -326,8 +326,8 @@ namespace ChurchSched
 												// 
 												this.dgvRequestees.AllowUserToAddRows = false;
 												this.dgvRequestees.AllowUserToDeleteRows = false;
-												dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-												this.dgvRequestees.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+												dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+												this.dgvRequestees.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
 												this.dgvRequestees.BackgroundColor = System.Drawing.SystemColors.Window;
 												this.dgvRequestees.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 												this.dgvRequestees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -336,8 +336,8 @@ namespace ChurchSched
 												this.dgvRequestees.Name = "dgvRequestees";
 												this.dgvRequestees.ReadOnly = true;
 												this.dgvRequestees.RowHeadersWidth = 51;
-												dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-												this.dgvRequestees.RowsDefaultCellStyle = dataGridViewCellStyle6;
+												dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+												this.dgvRequestees.RowsDefaultCellStyle = dataGridViewCellStyle10;
 												this.dgvRequestees.RowTemplate.Height = 29;
 												this.dgvRequestees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 												this.dgvRequestees.Size = new System.Drawing.Size(492, 457);
@@ -457,7 +457,7 @@ namespace ChurchSched
 												this.btnConfirmReserve.Name = "btnConfirmReserve";
 												this.btnConfirmReserve.Size = new System.Drawing.Size(139, 52);
 												this.btnConfirmReserve.TabIndex = 72;
-												this.btnConfirmReserve.Text = "&Confirm Reservation";
+												this.btnConfirmReserve.Text = "Confirm Reservation";
 												this.btnConfirmReserve.TextColor = System.Drawing.Color.Black;
 												this.btnConfirmReserve.UseVisualStyleBackColor = false;
 												this.btnConfirmReserve.Click += new System.EventHandler(this.btnConfirmReserve_Click);
@@ -477,7 +477,7 @@ namespace ChurchSched
 												this.btnEditReserve.Name = "btnEditReserve";
 												this.btnEditReserve.Size = new System.Drawing.Size(139, 52);
 												this.btnEditReserve.TabIndex = 71;
-												this.btnEditReserve.Text = "&Confirm Edit Reservation";
+												this.btnEditReserve.Text = "Confirm Edit Reservation";
 												this.btnEditReserve.TextColor = System.Drawing.Color.Black;
 												this.btnEditReserve.UseVisualStyleBackColor = false;
 												this.btnEditReserve.Click += new System.EventHandler(this.btnEditReserve_Click);
@@ -497,7 +497,7 @@ namespace ChurchSched
 												this.btnCancel.Name = "btnCancel";
 												this.btnCancel.Size = new System.Drawing.Size(139, 52);
 												this.btnCancel.TabIndex = 70;
-												this.btnCancel.Text = "Cancel &Reservation";
+												this.btnCancel.Text = "Cancel Reservation";
 												this.btnCancel.TextColor = System.Drawing.Color.Black;
 												this.btnCancel.UseVisualStyleBackColor = false;
 												this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -793,8 +793,8 @@ namespace ChurchSched
 												// 
 												this.dgvUpcomingEvent.AllowUserToAddRows = false;
 												this.dgvUpcomingEvent.AllowUserToDeleteRows = false;
-												dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-												this.dgvUpcomingEvent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+												dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+												this.dgvUpcomingEvent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
 												this.dgvUpcomingEvent.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
 												this.dgvUpcomingEvent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 												this.dgvUpcomingEvent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -802,8 +802,8 @@ namespace ChurchSched
 												this.dgvUpcomingEvent.Name = "dgvUpcomingEvent";
 												this.dgvUpcomingEvent.ReadOnly = true;
 												this.dgvUpcomingEvent.RowHeadersWidth = 51;
-												dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-												this.dgvUpcomingEvent.RowsDefaultCellStyle = dataGridViewCellStyle8;
+												dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+												this.dgvUpcomingEvent.RowsDefaultCellStyle = dataGridViewCellStyle12;
 												this.dgvUpcomingEvent.RowTemplate.Height = 25;
 												this.dgvUpcomingEvent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 												this.dgvUpcomingEvent.Size = new System.Drawing.Size(934, 450);
@@ -864,7 +864,7 @@ namespace ChurchSched
 												this.tbPastEvents.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
 												this.tbPastEvents.Location = new System.Drawing.Point(4, 27);
 												this.tbPastEvents.Name = "tbPastEvents";
-												this.tbPastEvents.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+												this.tbPastEvents.Padding = new System.Windows.Forms.Padding(3);
 												this.tbPastEvents.Size = new System.Drawing.Size(961, 624);
 												this.tbPastEvents.TabIndex = 4;
 												this.tbPastEvents.Text = "PAST EVENTS";
