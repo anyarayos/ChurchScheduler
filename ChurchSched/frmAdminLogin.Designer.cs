@@ -87,6 +87,7 @@ namespace ChurchSched
             // 
             this.lblForgot.AutoSize = true;
             this.lblForgot.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblForgot.Enabled = false;
             this.lblForgot.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.lblForgot.Location = new System.Drawing.Point(82, 264);
             this.lblForgot.Name = "lblForgot";
