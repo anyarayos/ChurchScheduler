@@ -88,7 +88,7 @@ namespace ChurchSched
 
         private void readReservationData()
         {
-            string sql_admin = "SELECT Reservations.admin_id, Accounts.username FROM Reservations INNER JOIN Accounts ON Reservations.admin_id = Accounts.id WHERE Reservations.reservation_id = " + reservationID.ToString();
+            string sql_admin = "SELECT Reservations.admin_id, Accounts.username, Accounts.admin_name FROM Reservations INNER JOIN Accounts ON Reservations.admin_id = Accounts.id WHERE Reservations.reservation_id = " + reservationID.ToString();
             //Note: Find a way to query the paymentMode, paymentAmount, paymentBalance
             string sql_reservation = "SELECT UserInfo.name, UserInfo.email, Reservations.type, Reservations.date, Reservations.time, " +
                 "Wedding.groom, Wedding.bride, Baptism.candidate, Confirmation.confirmand, Mass.purpose, Payments.mode_of_payment_id, Payments.balance, Prices.price " +
@@ -111,6 +111,7 @@ namespace ChurchSched
                     {
                         adminID = Convert.ToInt32(reader[0]);
                         username = reader[1] as string;
+                        adminName = reader[2] as string;
                         break;
                     }
                 }
@@ -179,7 +180,8 @@ namespace ChurchSched
             readReservationData();
             hideAttendeeLabels();
             lblDetailUserAdmin.Text = username;
-            lblDetailAdminID.Text = adminID.ToString();
+            lblDetailAdminID.Text = "Admin ID: " + adminID.ToString();
+            lblDetailsAdminName.Text = adminName;
 
             lblDetailReservatorName.Text = requesteeName;
             lblDetailReservatorEmail.Text = requesteeEmail;

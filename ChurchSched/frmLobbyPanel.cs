@@ -135,6 +135,13 @@ namespace ChurchSched
             // if data table returns a record, user exists
             return DT.Rows.Count == 1;
         }
+        private bool CheckIfUserHasReservations(int userID)
+								{
+            DB = new SQLiteDataAdapter("SELECT * FROM Reservations WHERE user_id='" + userID + "';", sql_con);
+            DT = new DataTable();
+            DB.Fill(DT);
+            return DT.Rows.Count > 0;
+        }
         private void InsertNewUserInfo(string name, string contact, string email, string address)
         {
             string SQLiteQuery = "INSERT INTO UserInfo (name, contact, email, address) VALUES ('" + name + "', '" + contact + "', '" + email + "', '" + address + "');";
@@ -252,33 +259,38 @@ namespace ChurchSched
             LoadUpcomingEventsOnDGV();
             LoadPastEventsOnDGV();
         }
-
-
         private void btnDelRequestee_Click(object sender, EventArgs e)
         {
             if (selectedUserID > 0)
             {
-                // populate textboxes with requestee's data grid view's selected row's value
-                // (incase changes were made after selecting row)
-                PopulateSelectedRequestee();
-                //delete highlighted 
-                DialogResult dialogResult = MessageBox.Show(
-                    // message box message
-                    "Are you sure to delete this Requestee ???\n" +
-                    "\nid: " + selectedUserID +
-                    "\nname: " + requesteeSelectedRow.Cells[1].Value.ToString() +
-                    "\ncontact: " + requesteeSelectedRow.Cells[2].Value.ToString() +
-                    "\nemail: " + requesteeSelectedRow.Cells[3].Value.ToString() +
-                    "\naddress: " + requesteeSelectedRow.Cells[4].Value.ToString(),
-                    // message box title
-                    "Data Deletion Warning !!!",
-                    // message box buttons
-                    MessageBoxButtons.YesNo
-                );
-                if (dialogResult == DialogResult.Yes)
-                {
-                    ExecuteQuery("DELETE FROM UserInfo WHERE Id='" + selectedUserID + "'");
-                    MessageBox.Show("Deleted");
+																if (!CheckIfUserHasReservations(selectedUserID))
+																{
+                    // populate textboxes with requestee's data grid view's selected row's value
+                    // (incase changes were made after selecting row)
+                    PopulateSelectedRequestee();
+                    //delete highlighted 
+                    DialogResult dialogResult = MessageBox.Show(
+                        // message box message
+                        "Are you sure to delete this Requestee ???\n" +
+                        "\nid: " + selectedUserID +
+                        "\nname: " + requesteeSelectedRow.Cells[1].Value.ToString() +
+                        "\ncontact: " + requesteeSelectedRow.Cells[2].Value.ToString() +
+                        "\nemail: " + requesteeSelectedRow.Cells[3].Value.ToString() +
+                        "\naddress: " + requesteeSelectedRow.Cells[4].Value.ToString(),
+                        // message box title
+                        "Data Deletion Warning !!!",
+                        // message box buttons
+                        MessageBoxButtons.YesNo
+                    );
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        ExecuteQuery("DELETE FROM UserInfo WHERE Id='" + selectedUserID + "'");
+                        MessageBox.Show("Deleted");
+                    }
+                }
+																else
+																{
+                    MessageBox.Show("This user has existing reservations, you cannot delete this requestee anymore.");
                 }
             }
             else
@@ -1249,16 +1261,9 @@ namespace ChurchSched
             DialogResult dialog = MessageBox.Show("Are you sure you want to Logout?", "Notice", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                frmAdminLogin adm = new frmAdminLogin();
                 this.Dispose();
-                adm.ShowDialog();
-                
+                sql_con.Close();
             }
-            else
-            {
-                //  
-            }
-            
         }
 
         //Instance Variables Needed To Move Form
