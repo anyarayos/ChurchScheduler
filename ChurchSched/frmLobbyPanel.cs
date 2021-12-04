@@ -961,7 +961,7 @@ namespace ChurchSched
                 "LEFT JOIN ModeOfPayments " +
                 "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
                 "LEFT JOIN Prices " +
-                "ON Prices.price_id = ModeOfPayments.mode_of_payment_id " +
+                "ON Prices.price_id = Payments.price_id " +
                 "LEFT JOIN UserInfo " +
                 "ON Reservations.user_id = UserInfo.id " +
                 "WHERE substr(date, 1, 10) >= '" + currentDateToday + "' " +
@@ -986,7 +986,6 @@ namespace ChurchSched
             }
             catch { }
         }
-
         private void btnViewUpComing_Click(object sender, EventArgs e)
         {
             bool hasID = selectedUpcomingReservationID > 0;
@@ -1077,7 +1076,7 @@ namespace ChurchSched
                 "LEFT JOIN ModeOfPayments " +
                 "ON Payments.mode_of_payment_id = ModeOfPayments.mode_of_payment_id " +
                 "LEFT JOIN Prices " +
-                "ON Prices.price_id = ModeOfPayments.mode_of_payment_id " +
+                "ON Prices.price_id = Payments.price_id " +
                 "LEFT JOIN UserInfo " +
                 "ON Reservations.user_id = UserInfo.id " +
                 "WHERE substr(date, 1, 10) < '" + currentDateToday + "' " +
@@ -1102,7 +1101,6 @@ namespace ChurchSched
             }
             catch { }
         }
-
         private void btnViewPast_Click(object sender, EventArgs e)
         {
             bool hasID = selectedPastReservationID > 0;
@@ -1116,7 +1114,6 @@ namespace ChurchSched
                 MessageBox.Show("No reservation selected.");
             }
         }
-
         private void txtSearchPast_TextChanged(object sender, EventArgs e)
         {
             bool searchBarEmpty = txtSearchPast.Text == "";
